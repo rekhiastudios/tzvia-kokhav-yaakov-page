@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ulpenat Tzvia Kokhav Ya'akov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  :root{
+    --bg: #06080d;
+    --bg-2: #0c1018;
+    --bg-3: #11161f;
+    --bg-4: #181e2a;
+    --line: rgba(180,200,230,0.08);
+    --line-2: rgba(180,200,230,0.16);
+    --line-3: rgba(180,200,230,0.28);
+    --fg: #e7ecf4;
+    --fg-soft: #9aa6b8;
+    --fg-mute: #5a6478;
+    --accent: #f4c46c;
+    --accent-deep: #b87f1f;
+    --accent-2: #6cf0e0;
+    --warn: #ff7b6b;
+    --good: #7ed957;
+  }
+  *{box-sizing:border-box}
+  html,body{ margin:0; padding:0; background: var(--bg); color: var(--fg); scroll-behavior: smooth;}
+  body{
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 12% 4%, rgba(244,196,108,0.06), transparent 38%),
+      radial-gradient(circle at 90% 84%, rgba(108,240,224,0.04), transparent 45%);
+    background-attachment: fixed;
+  }
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+  .display{ font-family: 'Sora', sans-serif; letter-spacing: -0.02em; }
+  ::selection{ background: var(--accent); color: #131722;}
+
+  .page{ max-width: 1480px; margin: 0 auto; padding: 0 32px 0;}
+
+  /* ── system bar ──────────────────────────────────────────────────── */
+  .sysbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-mute);
+    letter-spacing: .08em;
+  }
+  .sysbar .L, .sysbar .R{ display:flex; gap: 22px; align-items:center;}
+  .sysbar .chip{ color: var(--fg-soft);}
+  .sysbar .live{
+    display:inline-flex; align-items:center; gap: 8px;
+    color: var(--accent);
+  }
+  .sysbar .live::before{
+    content:''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot{ 0%,100%{opacity:1} 50%{opacity:.4} }
+  .sysbar .pill{
+    border: 1px solid var(--line-2); padding: 4px 10px; border-radius: 99px;
+    color: var(--fg-soft);
+  }
+
+  /* ── topnav ──────────────────────────────────────────────────────── */
+  .topnav{
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(14px);
+    background: rgba(6,8,13,0.78);
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    gap: 28px;
+  }
+  .brand{ display:flex; align-items:center; gap: 12px; cursor: pointer;}
+  .brand .logo-img{
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    filter: drop-shadow(0 0 12px rgba(244,196,108,0.2));
+  }
+  .brand .logo-img img{ width: 100%; height: 100%; object-fit: contain;}
+  .brand-text .name{ font-family:'Sora', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.005em;}
+  .brand-text .sub{ font-family:'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-mute); letter-spacing: .15em;}
+  .topnav nav{ display:flex; gap: 0; justify-content:center;}
+  .topnav nav a{
+    color: var(--fg-soft); text-decoration: none;
+    padding: 10px 16px;
+    font-size: 13px;
+    border: 1px solid transparent;
+    transition: color .14s, border-color .14s;
+    display:flex; align-items:center; gap: 8px;
+  }
+  .topnav nav a:hover{ color: var(--fg);}
+  .topnav nav a.active{ color: var(--fg); border-color: var(--line-2);}
+  .topnav nav a .idx{ font-family:'JetBrains Mono', monospace; font-size: 9px; color: var(--fg-mute); letter-spacing: .12em;}
+  .topnav .right{ display:flex; gap: 12px; align-items:center;}
+  .lang{ font-family:'JetBrains Mono', monospace; font-size: 11px; padding: 7px 11px; border: 1px solid var(--line-2); color: var(--fg-soft); letter-spacing: .08em; cursor: pointer; transition: border-color .14s, color .14s;}
+  .lang:hover{ border-color: var(--accent); color: var(--accent);}
+  .btn-primary{
+    background: var(--accent); color: #131722;
+    border: 1px solid var(--accent);
+    padding: 10px 18px;
+    font-family:'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px;
+    display:inline-flex; align-items:center; gap: 8px; cursor:pointer;
+    transition: background .14s, transform .14s, box-shadow .14s;
+    position: relative;
+  }
+  .btn-primary:hover{ background: #ffd58c; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(244,196,108,0.25);}
+  .btn-primary .arrow{ font-family:'JetBrains Mono', monospace; font-size: 14px;}
+
+  /* ── section header ─────────────────────────────────────────────── */
+  section{ margin-top: 80px;}
+  .sect-meta{
+    display:flex; gap: 18px; align-items: baseline;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--fg-mute); letter-spacing: .16em; text-transform: uppercase;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 28px;
+  }
+  .sect-meta .idx{ color: var(--accent);}
+  .sect-meta .title{ color: var(--fg); letter-spacing: .22em;}
+  .sect-meta .spec{ margin-left:auto; color: var(--fg-mute); letter-spacing: .12em;}
+
+  /* corner ticks */
+  .ticks{ position: relative;}
+  .ticks > .t1, .ticks > .t2, .ticks > .t3, .ticks > .t4{
+    position:absolute; width: 10px; height: 10px;
+    border: 1px solid var(--accent); pointer-events: none;
+  }
+  .ticks > .t1{ top:-1px; left:-1px; border-right: none; border-bottom: none;}
+  .ticks > .t2{ top:-1px; right:-1px; border-left: none; border-bottom: none;}
+  .ticks > .t3{ bottom:-1px; left:-1px; border-right: none; border-top: none;}
+  .ticks > .t4{ bottom:-1px; right:-1px; border-left: none; border-top: none;}
+
+  /* image utility — applies grain + vignette + dark cast */
+  .imgwrap{ position: relative; overflow: hidden; background: var(--bg-2);}
+  .imgwrap > img{
+    width: 100%; height: 100%; object-fit: cover; display:block;
+    filter: brightness(0.78) saturate(0.95) contrast(1.05);
+  }
+  .imgwrap::after{
+    content:''; position:absolute; inset:0; pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 50%, rgba(0,0,0,0.4) 100%);
+  }
+  .imgwrap.warm > img{ filter: brightness(0.7) sepia(.15) saturate(1.05) contrast(1.05);}
+
+  /* ── HERO ─────────────────────────────────────────────────────────── */
+  .hero{
+    position: relative;
+    height: 720px;
+    border: 1px solid var(--line-2);
+    overflow: hidden;
+    background: #0a0c12;
+    margin-top: 24px;
+  }
+  .hero .bg{
+    position:absolute; inset:0;
+  }
+  .hero .bg img{
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.35) saturate(1.05) contrast(1.1);
+    transform: scale(1.04);
+    animation: kenburns 24s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{
+    0%{ transform: scale(1.04) translateX(0); }
+    100%{ transform: scale(1.10) translateX(-2%); }
+  }
+  .hero .bg::after{
+    content:''; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(6,8,13,0.5) 0%, rgba(6,8,13,0.1) 30%, rgba(6,8,13,0.85) 100%),
+      linear-gradient(90deg, rgba(6,8,13,0.7) 0%, transparent 50%);
+  }
+  .hero .grid-lines{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 96px 96px;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  }
+  .hero .corner-tl, .hero .corner-tr, .hero .corner-bl, .hero .corner-br{
+    position:absolute; width: 24px; height: 24px; border-color: var(--accent);
+    border-style: solid; border-width: 0;
+  }
+  .hero .corner-tl{ top: 20px; left: 20px; border-top-width:1px; border-left-width:1px;}
+  .hero .corner-tr{ top: 20px; right:20px; border-top-width:1px; border-right-width:1px;}
+  .hero .corner-bl{ bottom: 20px; left: 20px; border-bottom-width:1px; border-left-width:1px;}
+  .hero .corner-br{ bottom: 20px; right:20px; border-bottom-width:1px; border-right-width:1px;}
+
+  .hero .video-tag{
+    position:absolute; top: 32px; left: 44px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--fg-soft); letter-spacing: .16em;
+    display:flex; align-items:center; gap: 10px;
+  }
+  .hero .video-tag .rec{
+    width: 8px; height: 8px; border-radius: 50%; background: var(--warn);
+    box-shadow: 0 0 12px rgba(255,123,107,0.7);
+    animation: pulse-dot 1.6s ease-in-out infinite;
+  }
+  .hero .telemetry{
+    position:absolute; top: 32px; right: 44px;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .12em;
+    text-align: right; line-height: 1.85;
+  }
+  .hero .telemetry .k{ color: var(--accent-2);}
+  .hero .telemetry .v{ color: var(--fg-soft);}
+
+  .hero .scanline{
+    position:absolute; top: 24%; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent 5%, rgba(244,196,108,0.4) 50%, transparent 95%);
+  }
+  .hero .scanline.b{ top: 76%; background: linear-gradient(90deg, transparent 5%, rgba(108,240,224,0.32) 50%, transparent 95%);}
+
+  .hero .play-target{
+    position:absolute; top: 42%; left: 56%;
+    width: 84px; height: 84px;
+    transform: translate(-50%, -50%);
+  }
+  .hero .play-target .ring1, .hero .play-target .ring2, .hero .play-target .ring3{
+    position: absolute; inset: 0;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+  }
+  .hero .play-target .ring2{ inset: -16px; border-color: rgba(244,196,108,0.4);}
+  .hero .play-target .ring3{ inset: -32px; border-color: rgba(244,196,108,0.18); animation: spin 18s linear infinite;}
+  .hero .play-target .ring3::before{
+    content:''; position:absolute; top: -3px; left: 50%; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; transform: translateX(-50%); box-shadow: 0 0 12px var(--accent);
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+  .hero .play-target .play{
+    position:absolute; top:50%; left:50%; transform: translate(-40%,-50%);
+    color: var(--accent); font-size: 24px;
+  }
+
+  .hero-content{
+    position: absolute; left: 44px; bottom: 44px; right: 44px;
+    z-index: 2;
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end;
+  }
+  .hero-content .kicker{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .26em; text-transform: uppercase;
+    color: var(--accent);
+    display:flex; align-items:center; gap: 12px;
+    margin-bottom: 22px;
+  }
+  .hero-content .kicker::before{ content:''; display:inline-block; width: 24px; height: 1px; background: var(--accent);}
+  .hero-content h1{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: clamp(48px, 5.6vw, 78px);
+    line-height: 0.98;
+    letter-spacing: -0.028em;
+    margin: 0 0 18px;
+    max-width: 940px;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.55);
+  }
+  .hero-content h1 .a{ color: var(--accent); font-style: italic; font-weight: 500;}
+  .hero-content .sub{
+    font-size: 17px; color: var(--fg-soft);
+    max-width: 580px; line-height: 1.5; margin: 0 0 28px;
+  }
+  .cta-cluster{ display:flex; gap: 12px; align-items:stretch;}
+  .cta-register{
+    background: var(--accent); color: #131722;
+    padding: 16px 24px;
+    font-family:'Space Grotesk', sans-serif; font-weight: 600;
+    border: 1px solid var(--accent);
+    cursor: pointer;
+    display:flex; flex-direction: column; gap: 3px;
+    min-width: 280px;
+    transition: background .14s, transform .14s, box-shadow .14s;
+  }
+  .cta-register:hover{ background: #ffd58c; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(244,196,108,0.3);}
+  .cta-register .top{ display:flex; justify-content:space-between; align-items:center; gap: 18px;}
+  .cta-register .ttl{ font-size: 15px;}
+  .cta-register .arr{ font-family:'JetBrains Mono', monospace; font-size: 18px;}
+  .cta-register .sub{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: rgba(19,23,34,0.7); letter-spacing: .14em; text-transform: uppercase;
+  }
+  .cta-trailer{
+    background: rgba(15,18,26,0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line-3);
+    padding: 14px 20px;
+    color: var(--fg);
+    min-width: 240px;
+    cursor: pointer;
+    display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center;
+    transition: border-color .14s, background .14s;
+  }
+  .cta-trailer:hover{ border-color: var(--accent-2); background: rgba(20,24,34,0.85);}
+  .cta-trailer .play{
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--accent-2);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--accent-2); font-size: 13px;
+    background: rgba(108,240,224,0.06);
+  }
+  .cta-trailer .ttl{ font-weight: 500; font-size: 15px;}
+  .cta-trailer .sub{ font-family:'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-mute); letter-spacing: .14em;}
+
+  .hero-side{
+    display: flex; flex-direction: column; gap: 8px; align-self: end;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .1em; text-align: right;
+  }
+  .hero-side .k{ color: var(--accent-2);}
+
+  /* ── ABOUT ──────────────────────────────────────────────────────── */
+  .about{
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px;
+    align-items: start;
+  }
+  .about h3{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: clamp(36px, 3.3vw, 48px); line-height: 1.05;
+    letter-spacing: -0.028em;
+    margin: 0 0 22px; max-width: 600px;
+  }
+  .about h3 .a{ color: var(--accent); font-style: italic; font-weight: 500;}
+  .about .lede{ font-size: 17px; line-height: 1.55; color: var(--fg-soft); max-width: 560px; margin: 0 0 18px;}
+  .about .body{ color: var(--fg-mute); font-size: 14px; line-height: 1.7; max-width: 560px;}
+  .about .body p{ margin: 0 0 12px;}
+  .about .body .pull{
+    border-left: 2px solid var(--accent);
+    padding: 4px 0 4px 16px;
+    margin: 18px 0;
+    color: var(--fg);
+    font-size: 16px; line-height: 1.5; font-style: italic;
+    max-width: 480px;
+  }
+  .about .body .pull .who{
+    display:block; font-style: normal; font-size: 11px;
+    font-family:'JetBrains Mono', monospace;
+    color: var(--fg-mute); letter-spacing: .14em; text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .stats{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    margin-top: 30px;
+    border: 1px solid var(--line-2);
+    background: var(--bg-2);
+  }
+  .stat{
+    padding: 22px 22px;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .stat:last-child{ border-right: none;}
+  .stat .l{ font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-mute);}
+  .stat .n{ font-family:'Sora', sans-serif; font-weight: 600; font-size: 40px; color: var(--fg); letter-spacing: -0.025em; margin-top: 6px; line-height: 1;}
+  .stat .n .u{ font-size: 18px; color: var(--accent); margin-left: 4px; font-weight: 500;}
+  .stat .delta{ font-family:'JetBrains Mono', monospace; font-size: 10px; color: var(--good); margin-top: 8px; letter-spacing: .1em;}
+  .stat .delta.neutral{ color: var(--fg-mute);}
+
+  .about-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 14px;
+  }
+  .about-grid .imgwrap.big{ grid-column: 1 / 3;}
+  .about-grid .imgwrap .caption{
+    position: absolute; bottom: 14px; left: 14px;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-soft); letter-spacing: .14em; text-transform: uppercase;
+    background: rgba(6,8,13,0.7);
+    padding: 5px 9px;
+    z-index: 2;
+    border: 1px solid var(--line-2);
+  }
+
+  /* ── NEWS ──────────────────────────────────────────────────────── */
+  .news-rail{
+    display:flex; gap: 16px; overflow-x: auto; padding: 2px 2px 20px;
+    scroll-snap-type: x mandatory;
+  }
+  .news-rail::-webkit-scrollbar{ height: 4px;}
+  .news-rail::-webkit-scrollbar-track{ background: var(--bg-2);}
+  .news-rail::-webkit-scrollbar-thumb{ background: var(--line-3);}
+  .news-card{
+    flex: 0 0 360px;
+    border: 1px solid var(--line-2);
+    background: var(--bg-2);
+    scroll-snap-align: start;
+    display:flex; flex-direction: column;
+    position: relative;
+    transition: border-color .14s, transform .18s;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .news-card:hover{ border-color: var(--accent); transform: translateY(-3px);}
+  .news-card .imgwrap{ height: 200px;}
+  .news-card .imgwrap img{ transition: transform .5s ease;}
+  .news-card:hover .imgwrap img{ transform: scale(1.05);}
+  .news-card .body{
+    padding: 20px 22px 24px;
+    display:flex; flex-direction:column; gap: 11px; flex: 1;
+  }
+  .news-card .meta{
+    display:flex; gap: 10px; align-items: center;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .16em; text-transform: uppercase;
+  }
+  .news-card .meta .tag{
+    color: var(--accent); border: 1px solid var(--line-2); padding: 3px 9px;
+  }
+  .news-card h4{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: 20px; line-height: 1.2; margin: 0;
+    letter-spacing: -0.014em;
+  }
+  .news-card .ex{
+    font-size: 13px; color: var(--fg-soft); margin: 0; line-height: 1.55; flex: 1;
+  }
+  .news-card .read{
+    margin-top: 6px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+    text-decoration: none;
+    display:inline-flex; align-items:center; gap: 8px;
+  }
+  .news-card .read .arr{ transition: transform .14s;}
+  .news-card:hover .read .arr{ transform: translateX(5px);}
+  .rail-foot{
+    display:flex; justify-content: space-between; align-items: center;
+    margin-top: 14px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px; color: var(--fg-mute);
+    letter-spacing: .12em;
+  }
+  .rail-foot .progress{ flex: 1; max-width: 320px; height: 1px; background: var(--line); margin: 0 24px;}
+  .rail-foot .progress .fill{ height: 100%; background: var(--accent); width: 38%; transition: width .3s;}
+  .iconbtn{
+    width: 38px; height: 38px;
+    border: 1px solid var(--line-2);
+    background: transparent; color: var(--fg-soft);
+    cursor: pointer;
+    font-family:'JetBrains Mono', monospace;
+    transition: border-color .14s, color .14s, background .14s;
+  }
+  .iconbtn:hover{ border-color: var(--accent); color: var(--accent); background: rgba(244,196,108,0.04);}
+
+  /* ── ACADEMIC ──────────────────────────────────────────────────── */
+  .acad-hero{
+    position: relative;
+    height: 520px;
+    border: 1px solid var(--line-2);
+    overflow: hidden;
+  }
+  .acad-hero .bg{ position:absolute; inset:0;}
+  .acad-hero .bg img{
+    width:100%; height:100%; object-fit: cover;
+    filter: brightness(0.4) contrast(1.05);
+    transform: scale(1.02);
+  }
+  .acad-hero .bg::after{
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(6,8,13,0.4) 0%, transparent 30%, rgba(6,8,13,0.9) 100%);
+  }
+  .acad-hero .grid-overlay{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .acad-hero .pulse{
+    position:absolute; top: 30%; left: 64%;
+    width: 130px; height: 130px;
+    border: 1px solid var(--accent-2);
+    border-radius: 50%;
+    opacity: .5;
+    animation: ringpulse 3.5s ease-in-out infinite;
+  }
+  .acad-hero .pulse.b{ width: 230px; height: 230px; top: 22%; left: 60%; animation-delay: 1.2s; opacity: .22;}
+  @keyframes ringpulse{
+    0%, 100% { transform: scale(1); opacity: .55;}
+    50% { transform: scale(1.06); opacity: .15;}
+  }
+  .acad-hero .play-glyph{
+    position:absolute; top: 38%; left: 67%;
+    transform: translate(-50%, -50%);
+    width: 70px; height: 70px;
+    border: 1px solid var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--accent); font-size: 20px;
+    background: rgba(244,196,108,0.06);
+    box-shadow: 0 0 40px rgba(244,196,108,0.2);
+  }
+  .acad-hero .video-tag{
+    position:absolute; top: 24px; left: 28px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--fg-soft); letter-spacing: .14em;
+    display:flex; align-items:center; gap: 8px;
+  }
+  .acad-hero .video-tag .rec{ width: 6px; height: 6px; border-radius: 50%; background: var(--warn); animation: pulse-dot 1.6s ease-in-out infinite;}
+  .acad-hero .copy{
+    position:absolute; left: 40px; right: 40px; bottom: 40px;
+    z-index: 2;
+  }
+  .acad-hero h3{
+    font-family:'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 16px;
+    display:flex; align-items:center; gap: 14px;
+  }
+  .acad-hero h3::before{ content:''; display:inline-block; width: 24px; height: 1px; background: var(--accent);}
+  .acad-hero h2{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: clamp(34px, 3.5vw, 50px);
+    line-height: 1.06; letter-spacing: -0.028em;
+    margin: 0; max-width: 940px;
+  }
+  .acad-hero h2 .a{ color: var(--accent); font-style: italic; font-weight: 500;}
+
+  .acad-areas{
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border: 1px solid var(--line-2); border-top: none;
+  }
+  .area{
+    padding: 24px 24px 26px;
+    border-right: 1px solid var(--line);
+    background: var(--bg-2);
+    display:flex; flex-direction: column; gap: 14px;
+    min-height: 220px;
+    transition: background .16s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .area:last-child{ border-right: none;}
+  .area::before{
+    content:''; position:absolute; left:0; right:0; bottom: 0;
+    height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .28s ease;
+  }
+  .area:hover{ background: var(--bg-3);}
+  .area:hover::before{ transform: scaleX(1);}
+  .area .top{ display:flex; justify-content: space-between; align-items:flex-start;}
+  .area .id{ font-family:'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-mute); letter-spacing: .14em;}
+  .area .icon{
+    width: 32px; height: 32px;
+    border: 1px solid var(--line-3);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-size: 14px;
+    color: var(--accent);
+  }
+  .area:hover .icon{ border-color: var(--accent); background: rgba(244,196,108,0.06);}
+  .area h5{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: 19px; margin: 0; letter-spacing: -0.014em;
+  }
+  .area .desc{ font-size: 13px; color: var(--fg-soft); line-height: 1.55; flex: 1;}
+  .area .more{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .14em; text-transform: uppercase;
+    display:flex; align-items:center; gap: 8px;
+  }
+  .area:hover .more{ color: var(--accent);}
+
+  /* ── CALENDAR ──────────────────────────────────────────────────── */
+  .cal-toolbar{
+    display:flex; justify-content: space-between; align-items: center;
+    margin-bottom: 18px;
+  }
+  .cal-toolbar .month{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: 32px; letter-spacing: -0.018em;
+  }
+  .cal-toolbar .month .y{ color: var(--fg-mute); font-weight: 400;}
+  .cal-toolbar .view{
+    display:flex; border: 1px solid var(--line-2);
+    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em;
+  }
+  .cal-toolbar .view .v{ padding: 9px 16px; color: var(--fg-mute); cursor:pointer; border-right: 1px solid var(--line); text-transform: uppercase; transition: color .14s, background .14s;}
+  .cal-toolbar .view .v:last-child{ border-right: none;}
+  .cal-toolbar .view .v.on{ background: var(--bg-3); color: var(--accent);}
+  .cal-toolbar .view .v:hover{ color: var(--fg);}
+  .cal-toolbar .nav-controls{ display:flex; gap: 8px;}
+
+  .cal-board{
+    border: 1px solid var(--line-2);
+    background: var(--bg-2);
+  }
+  .cal-dow{
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .16em; text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+  }
+  .cal-dow > div{ padding: 14px 16px; border-right: 1px solid var(--line);}
+  .cal-dow > div:last-child{ border-right: none;}
+  .cal-grid{ display: grid; grid-template-columns: repeat(7, 1fr);}
+  .day{
+    position: relative;
+    min-height: 110px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 14px;
+    background: var(--bg-2);
+    transition: background .14s;
+  }
+  .day:nth-child(7n){ border-right: none;}
+  .day.empty{ background: rgba(255,255,255,0.012);}
+  .day .n{ font-family:'JetBrains Mono', monospace; font-size: 11px; color: var(--fg-mute); letter-spacing: .08em;}
+  .day.today .n{ color: var(--accent);}
+  .day.today::before{
+    content:''; position:absolute; top: 10px; left: 10px; width: 4px; height: 4px;
+    background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent);
+  }
+  .day.today .n{ padding-left: 10px;}
+  .day.has-event{ cursor: pointer;}
+  .day.has-event:hover{ background: var(--bg-3);}
+  .day .ev{
+    margin-top: 8px;
+    padding: 7px 9px;
+    border-left: 2px solid var(--accent);
+    background: rgba(244,196,108,0.06);
+    font-size: 11px; line-height: 1.3;
+    color: var(--fg);
+    transition: background .14s;
+  }
+  .day:hover .ev{ background: rgba(244,196,108,0.14);}
+  .day .ev.cyan{ border-left-color: var(--accent-2); background: rgba(108,240,224,0.05);}
+  .day:hover .ev.cyan{ background: rgba(108,240,224,0.14);}
+  .day .ev.warn{ border-left-color: var(--warn); background: rgba(255,123,107,0.07);}
+  .day:hover .ev.warn{ background: rgba(255,123,107,0.16);}
+  .day .ev .t{ font-family:'JetBrains Mono', monospace; font-size: 9px; color: var(--fg-mute); letter-spacing: .1em;}
+
+  .hover-card{
+    position: absolute;
+    bottom: calc(100% + 14px); left: 50%;
+    width: 340px;
+    transform: translate(-50%, 8px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .18s, transform .18s;
+    background: var(--bg-3);
+    border: 1px solid var(--accent);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(244,196,108,0.12);
+    z-index: 40;
+  }
+  .day.has-event:hover .hover-card{ opacity: 1; pointer-events: auto; transform: translate(-50%, 0);}
+  .hover-card .hc-media{ height: 160px; position: relative; border-bottom: 1px solid var(--line); overflow: hidden;}
+  .hover-card .hc-media img{ width:100%; height:100%; object-fit:cover; filter: brightness(0.85);}
+  .hover-card .hc-media .play{
+    position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+    width: 44px; height: 44px; border: 1px solid var(--accent); color: var(--accent);
+    display:flex; align-items:center; justify-content:center; font-size: 14px;
+    background: rgba(244,196,108,0.1); backdrop-filter: blur(4px);
+  }
+  .hover-card .hc-body{ padding: 16px 18px 18px;}
+  .hover-card .hc-meta{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hover-card h6{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: 17px; margin: 0 0 4px; letter-spacing: -0.014em;
+  }
+  .hover-card .when{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .1em;
+    margin-bottom: 10px;
+  }
+  .hover-card .desc{ font-size: 12px; color: var(--fg-soft); line-height: 1.5;}
+  .hover-card .hc-cta{
+    margin-top: 12px;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+    display:flex; align-items:center; gap: 8px;
+    text-decoration: none;
+  }
+  .hover-card::after{
+    content:''; position:absolute;
+    bottom: -6px; left: 50%; transform: translateX(-50%) rotate(45deg);
+    width: 10px; height: 10px;
+    background: var(--bg-3);
+    border-right: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+  .cal-foot{
+    display:flex; justify-content: space-between; align-items:center;
+    margin-top: 18px;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .14em; text-transform: uppercase;
+  }
+  .cal-foot .legend{ display:flex; gap: 22px;}
+  .cal-foot .legend .l{ display:flex; align-items:center; gap: 8px;}
+  .cal-foot .legend .sw{ width: 8px; height: 8px;}
+
+  /* ── CONTACT ───────────────────────────────────────────────────── */
+  .contact{
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 0;
+    border: 1px solid var(--line-2);
+  }
+  .contact-side{
+    background: var(--bg-2);
+    padding: 36px;
+    border-right: 1px solid var(--line);
+    display:flex; flex-direction: column; gap: 20px;
+    position: relative;
+  }
+  .contact-side .kicker{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--accent); letter-spacing: .26em; text-transform: uppercase;
+    display:flex; align-items:center; gap: 12px;
+  }
+  .contact-side .kicker::before{ content:''; display:inline-block; width: 18px; height:1px; background: var(--accent);}
+  .contact-side h3{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: 34px; letter-spacing: -0.022em; line-height: 1.08;
+    margin: 0;
+  }
+  .contact-side h3 .a{ color: var(--accent); font-style: italic; font-weight: 500;}
+  .contact-side .lede{ font-size: 14px; color: var(--fg-soft); line-height: 1.6; margin: 0;}
+  .contact-info{ display:flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line);}
+  .info-row{
+    display: grid; grid-template-columns: 100px 1fr; gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .info-row .l{ font-family:'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-mute); letter-spacing: .14em; text-transform: uppercase;}
+  .info-row .v{ font-size: 14px; color: var(--fg);}
+  .map-mini{ height: 160px; margin-top: 10px; position: relative; overflow: hidden;}
+  .map-mini .pin{
+    position:absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 14px; height: 14px; background: var(--accent); border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(244,196,108,0.2), 0 0 16px var(--accent);
+  }
+  .map-mini .pin::after{
+    content:''; position:absolute; inset:-6px;
+    border: 1px solid var(--accent); border-radius: 50%; animation: pinpulse 2s ease-in-out infinite;
+  }
+  @keyframes pinpulse{ 0%{ transform: scale(1); opacity: 1;} 100%{ transform: scale(2.5); opacity: 0;}}
+  .map-mini .coord{
+    position:absolute; bottom: 12px; left: 14px;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--accent-2); letter-spacing: .12em;
+  }
+
+  .contact-form{ background: var(--bg); padding: 36px;}
+  .form-head{
+    display:flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 22px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--fg-mute); letter-spacing: .14em; text-transform: uppercase;
+  }
+  .form-head .step{ color: var(--accent);}
+  .form-head .right-meta{ color: var(--fg-soft);}
+  .field{ margin-bottom: 18px;}
+  .field label{
+    display:block;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .14em; text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+  .field .inp{
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--line-2);
+    color: var(--fg);
+    padding: 11px 13px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 14px;
+    transition: border-color .14s, background .14s;
+  }
+  .field .inp::placeholder{ color: var(--fg-mute);}
+  .field .inp:focus{ outline: none; border-color: var(--accent); background: rgba(244,196,108,0.03);}
+  .field.ta .inp{ min-height: 120px; resize: vertical; font-family: 'Space Grotesk', sans-serif;}
+  .form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px;}
+  .form-footer{
+    display:flex; justify-content: space-between; align-items: center; margin-top: 8px;
+    padding-top: 18px; border-top: 1px solid var(--line);
+  }
+  .form-footer .note{ font-family:'JetBrains Mono', monospace; font-size: 10px; color: var(--fg-mute); letter-spacing: .12em; text-transform: uppercase;}
+  .form-footer .note .ok{ color: var(--good); }
+  .submit-btn{
+    background: var(--accent); color: #131722;
+    border: 1px solid var(--accent);
+    padding: 12px 26px;
+    font-family:'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px;
+    display:inline-flex; align-items:center; gap: 10px; cursor:pointer;
+    transition: background .14s, box-shadow .14s, transform .14s;
+  }
+  .submit-btn:hover{ background: #ffd58c; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(244,196,108,0.3);}
+
+  /* ── DEVELOPED BY ──────────────────────────────────────────────── */
+  .devby{
+    position: relative;
+    height: 420px;
+    border: 1px solid var(--line-2);
+    overflow: hidden;
+  }
+  .devby .bg{ position:absolute; inset:0;}
+  .devby .bg img{ width:100%; height:100%; object-fit:cover; filter: brightness(0.32) saturate(0.7) hue-rotate(160deg);}
+  .devby .bg::after{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 30%, rgba(6,8,13,0.7) 100%),
+      radial-gradient(circle at 50% 50%, rgba(108,240,224,0.08), transparent 40%);
+  }
+  .devby .grid-overlay{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 90%);
+  }
+  .devby .scan{
+    position:absolute; left:0; right:0;
+    height: 1px; background: linear-gradient(90deg, transparent 5%, rgba(108,240,224,0.4) 50%, transparent 95%);
+  }
+  .devby .scan.a{ top: 20%;} .devby .scan.b{ bottom: 20%;}
+  .devby .video-tag{
+    position:absolute; top: 22px; left: 28px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--fg-soft); letter-spacing: .14em;
+    display:flex; align-items:center; gap: 8px;
+  }
+  .devby .video-tag .rec{ width: 6px; height: 6px; border-radius: 50%; background: var(--warn); animation: pulse-dot 1.6s ease-in-out infinite;}
+  .devby .corner-tl, .devby .corner-tr, .devby .corner-bl, .devby .corner-br{
+    position:absolute; width: 14px; height: 14px; border-color: var(--accent-2);
+    border-style: solid; border-width: 0;
+  }
+  .devby .corner-tl{ top: 14px; left: 14px; border-top-width:1px; border-left-width:1px;}
+  .devby .corner-tr{ top: 14px; right:14px; border-top-width:1px; border-right-width:1px;}
+  .devby .corner-bl{ bottom: 14px; left: 14px; border-bottom-width:1px; border-left-width:1px;}
+  .devby .corner-br{ bottom: 14px; right:14px; border-bottom-width:1px; border-right-width:1px;}
+
+  .devby .stack{
+    position: relative; z-index: 2;
+    height: 100%;
+    display:flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 18px;
+    padding: 24px;
+  }
+  .devby .kicker{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--accent-2); letter-spacing: .28em; text-transform: uppercase;
+    display:flex; align-items:center; gap: 14px;
+  }
+  .devby .kicker::before, .devby .kicker::after{
+    content:''; display:inline-block; width: 22px; height: 1px; background: var(--accent-2);
+  }
+  .devby .rekhia-mark{
+    width: 130px; height: 130px;
+    border: 1px solid var(--line-2);
+    background: rgba(255,255,255,0.04);
+    display:flex; align-items:center; justify-content:center;
+    padding: 16px;
+    position: relative;
+  }
+  .devby .rekhia-mark img{ width: 100%; height: 100%; object-fit: contain;}
+  .devby .rekhia-mark::before, .devby .rekhia-mark::after,
+  .devby .rekhia-mark > .a, .devby .rekhia-mark > .b{
+    content:''; position:absolute; width: 10px; height: 10px; border: 1px solid var(--accent-2);
+  }
+  .devby .rekhia-mark::before{ top: -1px; left: -1px; border-right: none; border-bottom: none;}
+  .devby .rekhia-mark::after{ top: -1px; right:-1px; border-left: none; border-bottom: none;}
+  .devby .rekhia-mark > .a{ bottom: -1px; left: -1px; border-right: none; border-top: none;}
+  .devby .rekhia-mark > .b{ bottom: -1px; right: -1px; border-left: none; border-top: none;}
+
+  .devby .studio-name{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: 26px; letter-spacing: -0.012em;
+  }
+  .devby .collab-label{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: .28em; text-transform: uppercase;
+    color: var(--fg-mute);
+    margin-top: 4px;
+  }
+  .collab-row{ display:flex; gap: 28px; align-items: center;}
+  .collab-row .x{ color: var(--fg-mute); font-family:'JetBrains Mono', monospace; font-size: 18px;}
+  .collab-item{ display:flex; flex-direction: column; align-items:center; gap: 8px;}
+  .collab-item .badge{
+    width: 64px; height: 64px;
+    background: rgba(255,255,255,0.96);
+    display:flex; align-items:center; justify-content:center;
+    padding: 6px;
+  }
+  .collab-item .badge img{ width: 100%; height: 100%; object-fit: contain;}
+  .collab-item .name{
+    font-family:'JetBrains Mono', monospace; font-size: 9px;
+    color: var(--fg-mute); letter-spacing: .16em; text-transform: uppercase;
+  }
+
+  /* ── FOOTER ────────────────────────────────────────────────────── */
+  .footer-big{
+    margin-top: 80px;
+    border-top: 1px solid var(--line-2);
+    padding-top: 56px;
+  }
+  .footer-top{
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr) 1.2fr;
+    gap: 40px;
+  }
+  .footer-brand{ display:flex; flex-direction: column; gap: 16px;}
+  .footer-brand .logo{
+    width: 60px; height: 60px;
+    padding: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line-2);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .footer-brand .logo img{ width: 100%; height: 100%; object-fit: contain;}
+  .footer-brand h4{
+    font-family:'Sora', sans-serif; font-weight: 600;
+    font-size: 19px; letter-spacing: -0.01em; line-height: 1.2;
+    margin: 0;
+  }
+  .footer-brand p{
+    font-size: 13px; color: var(--fg-soft); max-width: 290px; line-height: 1.6;
+    margin: 0;
+  }
+  .footer-brand .system-id{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .14em;
+    border: 1px solid var(--line-2); padding: 10px 12px;
+    max-width: 280px;
+    display:flex; flex-direction: column; gap: 4px;
+  }
+  .footer-brand .system-id .row{ display:flex; justify-content:space-between; gap: 12px;}
+  .footer-brand .system-id b{ color: var(--accent); font-weight: 400;}
+  .footer-col h5{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--accent); letter-spacing: .22em; text-transform: uppercase;
+    margin: 0 0 16px;
+  }
+  .footer-col ul{
+    list-style: none; padding: 0; margin: 0;
+    display:flex; flex-direction: column; gap: 10px;
+  }
+  .footer-col ul a{
+    color: var(--fg-soft); text-decoration: none; font-size: 13px;
+    display:flex; justify-content: space-between; align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color .14s, border-color .14s, padding-left .18s;
+  }
+  .footer-col ul a:hover{ color: var(--accent); border-bottom-color: var(--line); padding-left: 6px;}
+  .footer-col ul a .arr{ font-family:'JetBrains Mono', monospace; opacity: 0; transition: opacity .14s, transform .14s;}
+  .footer-col ul a:hover .arr{ opacity: 1; transform: translateX(2px);}
+
+  .newsletter-box .nlhint{ font-size: 12px; color: var(--fg-soft); margin: 0 0 12px; line-height: 1.55;}
+  .newsletter-form{ display:flex;}
+  .newsletter-form input{
+    flex:1; background: var(--bg-2); border: 1px solid var(--line-2); color: var(--fg);
+    padding: 11px 13px; font-family:'Space Grotesk', sans-serif; font-size: 13px;
+    outline: none; transition: border-color .14s;
+  }
+  .newsletter-form input:focus{ border-color: var(--accent);}
+  .newsletter-form button{
+    background: var(--accent); border: 1px solid var(--accent);
+    color: #131722; padding: 0 16px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em;
+    cursor:pointer; transition: background .14s;
+  }
+  .newsletter-form button:hover{ background: #ffd58c;}
+  .socials{ display:flex; gap: 8px; margin-top: 18px;}
+  .socials .s{
+    width: 38px; height: 38px;
+    border: 1px solid var(--line-2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .14em;
+    color: var(--fg-soft);
+    cursor: pointer;
+    transition: border-color .14s, color .14s, background .14s;
+  }
+  .socials .s:hover{ border-color: var(--accent); color: var(--accent); background: rgba(244,196,108,0.04);}
+
+  .footer-mega{
+    margin-top: 64px;
+    font-family:'Sora', sans-serif; font-weight: 700;
+    font-size: clamp(70px, 9.5vw, 142px);
+    line-height: .9; letter-spacing: -0.045em;
+    color: var(--fg);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 28px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display:flex; justify-content: space-between; align-items: center; gap: 36px;
+  }
+  .footer-mega .star{ color: var(--accent); font-family:'JetBrains Mono', monospace; font-size: .55em; vertical-align: middle;}
+  .footer-mega .small{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--fg-mute);
+    line-height: 1.6;
+    text-align: right;
+    font-weight: 400;
+  }
+
+  .footer-bottom{
+    margin-top: 20px;
+    display:flex; justify-content: space-between; align-items: center;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-mute); letter-spacing: .16em;
+    padding-bottom: 28px;
+    flex-wrap: wrap; gap: 14px;
+  }
+  .footer-bottom .left{ display:flex; gap: 18px; align-items:center;}
+  .footer-bottom .right{ display:flex; gap: 18px; align-items:center;}
+  .footer-bottom b{ color: var(--accent); font-weight: 400;}
+
+  /* ── Variants ──────────────────────────────────────────────────── */
+  .mode-light{
+    --bg: #f6f5ee;
+    --bg-2: #fffefb;
+    --bg-3: #efece1;
+    --bg-4: #e8e3d3;
+    --fg: #1a1f2a;
+    --fg-soft: #4d5566;
+    --fg-mute: #888e9a;
+    --line: rgba(20,28,40,0.08);
+    --line-2: rgba(20,28,40,0.18);
+    --line-3: rgba(20,28,40,0.32);
+  }
+  .density-compact section{ margin-top: 56px;}
+  .density-loose section{ margin-top: 104px;}
+  .accent-cyan{ --accent: #4dd8c8; --accent-2: #f4c46c;}
+  .accent-violet{ --accent: #b694ff; --accent-2: #f4c46c;}
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" data-presets="env,react">
+const { useState, useEffect } = React;
+const { TweaksPanel, TweakSection, TweakRadio, TweakToggle, useTweaks } = window;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "amber",
+  "density": "loose",
+  "ctaShape": "side",
+  "newsLayout": "carousel",
+  "mode": "dark"
+}/*EDITMODE-END*/;
+
+// Stable Unsplash CDN photos
+const IMG = {
+  hero:       'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1800&q=80&auto=format&fit=crop',  // library books atmospheric
+  aboutWide:  'https://images.unsplash.com/photo-1562774053-701939374585?w=1800&q=80&auto=format&fit=crop',     // modern campus
+  about1:     'https://images.unsplash.com/photo-1497486751825-1233686f5d54?w=900&q=80&auto=format&fit=crop',   // classroom study
+  about2:     'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=900&q=80&auto=format&fit=crop',   // lab
+  news1:      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80&auto=format&fit=crop',   // construction
+  news2:      'https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=900&q=80&auto=format&fit=crop',   // books for tanakh
+  news3:      'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=900&q=80&auto=format&fit=crop',   // open house gathering
+  news4:      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=900&q=80&auto=format&fit=crop',      // portrait
+  news5:      'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&q=80&auto=format&fit=crop',   // notebook memo
+  academic:   'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=1800&q=80&auto=format&fit=crop',  // student lab close-up
+  evtOpen:    'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=700&q=80&auto=format&fit=crop',
+  evtQuiz:    'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=700&q=80&auto=format&fit=crop',
+  evtSci:     'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?w=700&q=80&auto=format&fit=crop',
+  evtChesed:  'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=700&q=80&auto=format&fit=crop',
+  evtConcert: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=700&q=80&auto=format&fit=crop',
+  evtGrad:    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&q=80&auto=format&fit=crop',
+  devby:      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1800&q=80&auto=format&fit=crop',  // circuit / tech
+  map:        'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=900&q=80&auto=format&fit=crop',       // abstract terrain
+};
+
+/* ── SYSTEM BAR ─────────────────────────────────────────────────── */
+function SysBar(){
+  return (
+    <div className="sysbar">
+      <div className="L">
+        <span className="live">Admissions open</span>
+        <span className="chip">5786 · 2026–27</span>
+        <span className="chip">Kokhav Ya'akov · Mateh Binyamin · IL</span>
+      </div>
+      <div className="R">
+        <span className="pill">Sun–Thu 08:00 – 16:30 IDT</span>
+        <span>+972 (0)2 ‑ 000 ‑ 0000</span>
+      </div>
+    </div>
+  );
+}
+
+/* ── TOP NAV ───────────────────────────────────────────────────── */
+function TopNav(){
+  return (
+    <div className="topnav">
+      <div className="brand">
+        <div className="logo-img"><img src="assets/tzvia-logo.png" alt="Tzvia"/></div>
+        <div className="brand-text">
+          <div className="name">Ulpenat Tzvia</div>
+          <div className="sub">KOKHAV YA'AKOV · EST. 1998</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#" className="active"><span className="idx">01</span>Home</a>
+        <a href="#"><span className="idx">02</span>About</a>
+        <a href="#"><span className="idx">03</span>News</a>
+        <a href="#"><span className="idx">04</span>Academics</a>
+        <a href="#"><span className="idx">05</span>Calendar</a>
+        <a href="#"><span className="idx">06</span>Contact</a>
+      </nav>
+      <div className="right">
+        <span className="lang">EN / עב</span>
+        <button className="btn-primary">Register <span className="arrow">→</span></button>
+      </div>
+    </div>
+  );
+}
+
+/* ── HERO ───────────────────────────────────────────────────────── */
+function Hero({ ctaShape }){
+  return (
+    <section style={{marginTop: 32}}>
+      <div className="sect-meta">
+        <span className="idx">01 / 08</span>
+        <span className="title">HERO</span>
+        <span className="spec">Admissions · 2026–27 enrollment</span>
+      </div>
+      <div className="hero ticks"><span className="t1"></span><span className="t2"></span><span className="t3"></span><span className="t4"></span>
+        <div className="bg"><img src={IMG.hero} alt=""/></div>
+        <div className="grid-lines"></div>
+        <div className="scanline"></div>
+        <div className="scanline b"></div>
+        <div className="corner-tl"></div><div className="corner-tr"></div>
+        <div className="corner-bl"></div><div className="corner-br"></div>
+
+        <div className="video-tag"><span className="rec"></span>HERO LOOP · 00:42 · AUTOPLAY</div>
+        <div className="telemetry">
+          <span className="k">RES</span> <span className="v">3840 × 2160</span> · <span className="k">FPS</span> <span className="v">30</span><br/>
+          <span className="k">CHAPTER</span> <span className="v">01 / Welcome</span><br/>
+          <span className="k">CAPTION</span> <span className="v">EN · עב</span>
+        </div>
+
+        <div className="play-target">
+          <div className="ring1"></div>
+          <div className="ring2"></div>
+          <div className="ring3"></div>
+          <div className="play">▶</div>
+        </div>
+
+        <div className="hero-content">
+          <div>
+            <div className="kicker">Admissions open · 5786 / 2026–27</div>
+            <h1>Where <span className="a">tradition</span> meets the <span className="a">technology</span> of learning.</h1>
+            <p className="sub">Ulpenat Tzvia Kokhav Ya'akov — a religious-Zionist ulpana engineering the next generation of women in scholarship, science, and society.</p>
+
+            <div className="cta-cluster" style={{flexDirection: ctaShape === 'stacked' ? 'column' : 'row', alignItems: ctaShape === 'stacked' ? 'flex-start' : 'stretch'}}>
+              <button className="cta-register">
+                <div className="top">
+                  <span className="ttl">Register for 2026–27</span>
+                  <span className="arr">→</span>
+                </div>
+                <div className="sub">Application opens Aug 02 · 12 places remaining</div>
+              </button>
+              <button className="cta-trailer">
+                <div className="play">▶</div>
+                <div>
+                  <div className="ttl">Watch the trailer</div>
+                  <div className="sub">02:14 · 4K · EN + עב subs</div>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div className="hero-side">
+            <div><span className="k">LAT</span> 31.8347° N</div>
+            <div><span className="k">LON</span> 35.3275° E</div>
+            <div><span className="k">ELEV</span> 736 m</div>
+            <div><span className="k">CAMPUS</span> 11.2 ha</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── ABOUT ──────────────────────────────────────────────────────── */
+function About(){
+  return (
+    <section>
+      <div className="sect-meta">
+        <span className="idx">02 / 08</span>
+        <span className="title">ABOUT US</span>
+        <span className="spec">Institution narrative · stats · imagery</span>
+      </div>
+      <div className="about">
+        <div>
+          <h3>An institution built on <span className="a">Torah</span>, scaled by <span className="a">science</span>.</h3>
+          <p className="lede">Ulpenat Tzvia Kokhav Ya'akov is a religious-Zionist ulpana for young women — a community where the bet midrash, the laboratory, and the studio share the same blueprint.</p>
+          <div className="body">
+            <p>Since 1998, we've been one institution with two parallel commitments: to Torah, in its full depth, and to the academic rigor that prepares women to lead in any field they choose. Our graduates go to Hebrew University, the Technion, Bar-Ilan, and into national service — and they leave knowing exactly who they are.</p>
+            <p>We design the schedule, the campus, and the community around a single conviction: that intellectual seriousness and religious seriousness are not in tension — they're in dialogue.</p>
+            <div className="pull">
+              "Our students aren't choosing between heritage and the future. They're inheriting both at once."
+              <span className="who">— Head of school</span>
+            </div>
+          </div>
+          <div className="stats">
+            <div className="stat"><div className="l">Founded</div><div className="n">1998</div><div className="delta neutral">28 years of operation</div></div>
+            <div className="stat"><div className="l">Active students</div><div className="n">420<span className="u">+</span></div><div className="delta">↑ 6.2% YoY</div></div>
+            <div className="stat"><div className="l">Matriculation</div><div className="n">98<span className="u">%</span></div><div className="delta">national avg · 72%</div></div>
+          </div>
+        </div>
+        <div className="about-grid">
+          <div className="imgwrap big">
+            <img src={IMG.aboutWide} alt="Campus"/>
+            <div className="caption">CAMPUS · Kokhav Ya'akov</div>
+          </div>
+          <div className="imgwrap">
+            <img src={IMG.about1} alt="Classroom"/>
+            <div className="caption">BET MIDRASH</div>
+          </div>
+          <div className="imgwrap">
+            <img src={IMG.about2} alt="Lab"/>
+            <div className="caption">STEM WING</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── NEWS ──────────────────────────────────────────────────────── */
+const newsItems = [
+  { tag:'ANN', date:'2026.05.12', img: IMG.news1, title:'New STEM wing breaks ground next semester', ex:'A 1,200 sqm addition with new labs, makerspace, and a dedicated robotics studio…' },
+  { tag:'WIN', date:'2026.05.02', img: IMG.news2, title:'10th grade wins national Tanakh quiz', ex:'For the second consecutive year, our team brought home the regional title…' },
+  { tag:'EVT', date:'2026.04.28', img: IMG.news3, title:'Open House — June 4th, 17:00', ex:'Prospective students and families are welcome to tour the campus and meet faculty.' },
+  { tag:'ALM', date:'2026.04.15', img: IMG.news4, title:'Alumnae spotlight: Dr. R. Cohen on neuroscience', ex:'From Tzvia to Tel Aviv University — a conversation about research and meaning.' },
+  { tag:'UPD', date:'2026.04.03', img: IMG.news5, title:'Updated schedule & calendar for 5786', ex:'Read the full memo from administration regarding next year\'s policies and dates.' },
+];
+function News({ layout }){
+  return (
+    <section>
+      <div className="sect-meta">
+        <span className="idx">03 / 08</span>
+        <span className="title">NEWS &amp; UPDATES</span>
+        <span className="spec">{layout === 'grid' ? 'Grid · 3-up' : 'Carousel · ' + newsItems.length + ' items'}</span>
+      </div>
+      <div className="news-rail" style={layout === 'grid' ? { display:'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, overflow: 'visible'} : {}}>
+        {newsItems.map((n, i) => (
+          <article key={i} className="news-card">
+            <div className="imgwrap"><img src={n.img} alt=""/></div>
+            <div className="body">
+              <div className="meta">
+                <span className="tag">{n.tag}</span>
+                <span>{n.date}</span>
+              </div>
+              <h4>{n.title}</h4>
+              <p className="ex">{n.ex}</p>
+              <a className="read" href="#">Read article <span className="arr">→</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+      {layout === 'carousel' && (
+        <div className="rail-foot">
+          <span>02 / 05</span>
+          <div className="progress"><div className="fill"></div></div>
+          <div style={{display:'flex', gap: 8}}>
+            <button className="iconbtn">←</button>
+            <button className="iconbtn">→</button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ── ACADEMIC ──────────────────────────────────────────────────── */
+const academic_areas = [
+  { id:'AREA / 01', i:'∑', name:'Sciences & STEM', d:'Biology, chemistry, physics, computer science, robotics. Two wet labs, a makerspace, and a dedicated CS suite.' },
+  { id:'AREA / 02', i:'א', name:'Tanakh & Talmud', d:'Daily study, advanced shiurim, and bet midrash time woven into the schedule — not an add-on.' },
+  { id:'AREA / 03', i:'◇', name:'Arts & Design', d:'Studio, music, theatre, film, and a design lab — for makers, performers, and storytellers.' },
+  { id:'AREA / 04', i:'∞', name:'Humanities', d:'History, literature, philosophy, Hebrew & English — the long view, in two languages.' },
+];
+function Academic(){
+  return (
+    <section>
+      <div className="sect-meta">
+        <span className="idx">04 / 08</span>
+        <span className="title">ACTIVITIES &amp; ACADEMIA</span>
+        <span className="spec">4 academic tracks · cross-disciplinary</span>
+      </div>
+      <div className="acad-hero">
+        <div className="bg"><img src={IMG.academic} alt=""/></div>
+        <div className="grid-overlay"></div>
+        <div className="pulse"></div>
+        <div className="pulse b"></div>
+        <div className="play-glyph">▶</div>
+        <div className="video-tag"><span className="rec"></span>ACADEMIC REEL · 01:48</div>
+        <div className="copy">
+          <h3>ACTIVITIES &amp; ACADEMIC AREAS</h3>
+          <h2>Our academic areas blend <span className="a">knowledge</span>, <span className="a">creativity</span>, and real-world <span className="a">discovery</span>.</h2>
+        </div>
+      </div>
+      <div className="acad-areas">
+        {academic_areas.map((a, i) => (
+          <div key={i} className="area">
+            <div className="top">
+              <span className="id">{a.id}</span>
+              <span className="icon">{a.i}</span>
+            </div>
+            <h5>{a.name}</h5>
+            <div className="desc">{a.d}</div>
+            <div className="more">Explore <span>→</span></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── CALENDAR ──────────────────────────────────────────────────── */
+const calEvents = {
+  4:  { title:'Open House', when:'TUE · 17:00–19:30', kind:'', tag:'COMMUNITY', img: IMG.evtOpen,    desc:'Campus tours, classroom visits, Q&A with the head of school and academic deans.', media:'photo' },
+  9:  { title:'Tanakh Quiz Finals', when:'SUN · 10:00', kind:'cyan', tag:'ACADEMIC', img: IMG.evtQuiz, desc:'School-wide finals in the main hall — families welcome. Livestream available.', media:'photo' },
+  14: { title:'Science Fair', when:'FRI · 09:00–14:00', kind:'', tag:'ACADEMIC', img: IMG.evtSci,    desc:'Student-led projects across biology, chemistry, physics, and computer science.', media:'video' },
+  18: { title:'Chesed Day', when:'TUE · ALL DAY', kind:'cyan', tag:'COMMUNITY', img: IMG.evtChesed,  desc:'Volunteer activities across Kokhav Ya\'akov and Jerusalem — twelve partner organisations.', media:'photo' },
+  22: { title:'Spring Concert', when:'SAT · 20:30', kind:'', tag:'ARTS', img: IMG.evtConcert,         desc:'Vocal and instrumental ensembles in the amphitheatre. Tickets free for families.', media:'video' },
+  27: { title:'Graduation 5786', when:'THU · 18:00', kind:'warn', tag:'MAJOR', img: IMG.evtGrad,      desc:'Class of 5786 commencement ceremony — by invitation. Live-streamed to alumnae.', media:'photo' },
+};
+function Calendar(){
+  const days = [];
+  const startOffset = 5;
+  for (let i=0; i<startOffset; i++) days.push({ empty: true });
+  for (let d=1; d<=30; d++) days.push({ d });
+  while (days.length % 7 !== 0) days.push({ empty: true });
+  return (
+    <section>
+      <div className="sect-meta">
+        <span className="idx">05 / 08</span>
+        <span className="title">CALENDAR</span>
+        <span className="spec">Hover any event to expand</span>
+      </div>
+      <div className="cal-toolbar">
+        <div className="month">June <span className="y">/ 2026 · 5786</span></div>
+        <div style={{display:'flex', gap: 18, alignItems: 'center'}}>
+          <div className="view">
+            <div className="v">Month</div>
+            <div className="v on">Week</div>
+            <div className="v">List</div>
+            <div className="v">Sync</div>
+          </div>
+          <div className="nav-controls">
+            <button className="iconbtn">←</button>
+            <button className="iconbtn">→</button>
+          </div>
+        </div>
+      </div>
+      <div className="cal-board">
+        <div className="cal-dow">
+          <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+        </div>
+        <div className="cal-grid">
+          {days.map((c, i) => {
+            if (c.empty) return <div key={i} className="day empty"></div>;
+            const ev = calEvents[c.d];
+            const today = c.d === 15;
+            return (
+              <div key={i} className={`day ${ev ? 'has-event':''} ${today ? 'today':''}`}>
+                <div className="n">{String(c.d).padStart(2,'0')}</div>
+                {ev && (
+                  <>
+                    <div className={`ev ${ev.kind}`}>
+                      <div className="t">{ev.when}</div>
+                      <div>{ev.title}</div>
+                    </div>
+                    <div className="hover-card">
+                      <div className="hc-media">
+                        <img src={ev.img} alt=""/>
+                        {ev.media === 'video' && <div className="play">▶</div>}
+                      </div>
+                      <div className="hc-body">
+                        <div className="hc-meta">{ev.tag} · {ev.when}</div>
+                        <h6>{ev.title}</h6>
+                        <div className="when">JUNE {String(c.d).padStart(2,'0')} · 2026</div>
+                        <div className="desc">{ev.desc}</div>
+                        <a href="#" className="hc-cta">Event details <span>→</span></a>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="cal-foot">
+        <div className="legend">
+          <div className="l"><span className="sw" style={{background:'var(--accent)'}}></span>Community / general</div>
+          <div className="l"><span className="sw" style={{background:'var(--accent-2)'}}></span>Academic</div>
+          <div className="l"><span className="sw" style={{background:'var(--warn)'}}></span>Major event</div>
+        </div>
+        <div>Hover any cell to expand ↑</div>
+      </div>
+    </section>
+  );
+}
+
+/* ── CONTACT ───────────────────────────────────────────────────── */
+function Contact(){
+  return (
+    <section>
+      <div className="sect-meta">
+        <span className="idx">06 / 08</span>
+        <span className="title">CONTACT</span>
+        <span className="spec">2-business-day response · TLS encrypted</span>
+      </div>
+      <div className="contact">
+        <div className="contact-side">
+          <div className="kicker">Get in touch</div>
+          <h3>Tell us who you are. We'll <span className="a">route you</span> to the right person.</h3>
+          <p className="lede">Whether you're a prospective family, an alumna, a partner organisation, or a journalist — drop us a line and we'll respond within two business days.</p>
+          <div className="contact-info">
+            <div className="info-row"><div className="l">Address</div><div className="v">Kokhav Ya'akov, Mateh Binyamin · 9062600 · Israel</div></div>
+            <div className="info-row"><div className="l">Office</div><div className="v">+972 (0)2 ‑ 000 ‑ 0000</div></div>
+            <div className="info-row"><div className="l">Mail</div><div className="v">office@ulpenat-tzvia.org.il</div></div>
+            <div className="info-row"><div className="l">Hours</div><div className="v">Sun–Thu · 08:00–16:30 IDT</div></div>
+            <div className="info-row"><div className="l">Admissions</div><div className="v">admissions@ulpenat-tzvia.org.il</div></div>
+          </div>
+          <div className="imgwrap map-mini">
+            <img src={IMG.map} alt=""/>
+            <div className="pin"></div>
+            <div className="coord">31.8347° N · 35.3275° E</div>
+          </div>
+        </div>
+        <form className="contact-form" onSubmit={e=>e.preventDefault()}>
+          <div className="form-head">
+            <span><span className="step">step 01 / 03</span> · personal details</span>
+            <span className="right-meta">↳ TLS-encrypted</span>
+          </div>
+          <div className="form-row">
+            <div className="field"><label>Full name</label><input className="inp" placeholder="e.g. Sarah Levi"/></div>
+            <div className="field"><label>You are…</label><input className="inp" placeholder="parent · student · alumna · other"/></div>
+          </div>
+          <div className="form-row">
+            <div className="field"><label>Email</label><input className="inp" placeholder="you@example.com"/></div>
+            <div className="field"><label>Phone</label><input className="inp" placeholder="+972…"/></div>
+          </div>
+          <div className="field"><label>Topic</label><input className="inp" placeholder="Admissions · campus tour · partnership · press…"/></div>
+          <div className="field ta"><label>Message</label><textarea className="inp" placeholder="Tell us a little about your inquiry…"></textarea></div>
+          <div className="form-footer">
+            <div className="note"><span className="ok">●</span> Avg. response time: 1.4 business days</div>
+            <button className="submit-btn">Send message <span>→</span></button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+/* ── DEVELOPED BY ──────────────────────────────────────────────── */
+function DevelopedBy(){
+  return (
+    <section>
+      <div className="sect-meta">
+        <span className="idx">07 / 08</span>
+        <span className="title">DEVELOPED BY</span>
+        <span className="spec">Studio credit · institutional collaborators</span>
+      </div>
+      <div className="devby">
+        <div className="bg"><img src={IMG.devby} alt=""/></div>
+        <div className="grid-overlay"></div>
+        <div className="scan a"></div>
+        <div className="scan b"></div>
+        <div className="corner-tl"></div><div className="corner-tr"></div>
+        <div className="corner-bl"></div><div className="corner-br"></div>
+        <div className="video-tag"><span className="rec"></span>STUDIO REEL · LOOP</div>
+        <div className="stack">
+          <div className="kicker">Designed &amp; engineered by</div>
+          <div className="rekhia-mark"><span className="a"></span><span className="b"></span>
+            <img src="assets/rekhia-logo.png" alt="Rekhia Studio"/>
+          </div>
+          <div className="studio-name">Rekhia Studio</div>
+          <div className="collab-label">in collaboration with</div>
+          <div className="collab-row">
+            <div className="collab-item">
+              <div className="badge"><img src="assets/tzvia-logo.png" alt="Tzvia"/></div>
+              <div className="name">Ulpenat Tzvia</div>
+            </div>
+            <div className="x">×</div>
+            <div className="collab-item">
+              <div className="badge"><img src="assets/moe-logo.png" alt="MoE"/></div>
+              <div className="name">Ministry of Education · Israel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────────── */
+function FooterBig(){
+  return (
+    <footer className="footer-big">
+      <div className="footer-top">
+        <div className="footer-brand">
+          <div className="logo"><img src="assets/tzvia-logo.png" alt="Tzvia"/></div>
+          <h4>Ulpenat Tzvia<br/>Kokhav Ya'akov</h4>
+          <p>A religious-Zionist ulpana for young women — engineering the next generation of leaders, thinkers, and makers.</p>
+          <div className="system-id">
+            <div className="row"><span><b>INST_ID</b></span><span>IL.NETA.TZV.014</span></div>
+            <div className="row"><span><b>MoE_REF</b></span><span>940-217-0021</span></div>
+            <div className="row"><span><b>ACCRED</b></span><span>A-grade · 2025</span></div>
+          </div>
+          <div className="socials">
+            <div className="s">FB</div>
+            <div className="s">IG</div>
+            <div className="s">YT</div>
+            <div className="s">WA</div>
+            <div className="s">TG</div>
+          </div>
+        </div>
+        <div className="footer-col">
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#">About <span className="arr">→</span></a></li>
+            <li><a href="#">Academic areas <span className="arr">→</span></a></li>
+            <li><a href="#">News &amp; updates <span className="arr">→</span></a></li>
+            <li><a href="#">Calendar <span className="arr">→</span></a></li>
+            <li><a href="#">Gallery <span className="arr">→</span></a></li>
+            <li><a href="#">Alumnae network <span className="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h5>Admissions</h5>
+          <ul>
+            <li><a href="#">Register 2026–27 <span className="arr">→</span></a></li>
+            <li><a href="#">Open house <span className="arr">→</span></a></li>
+            <li><a href="#">Scholarships <span className="arr">→</span></a></li>
+            <li><a href="#">FAQ for families <span className="arr">→</span></a></li>
+            <li><a href="#">Tour the campus <span className="arr">→</span></a></li>
+            <li><a href="#">Download brochure <span className="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h5>Contact &amp; systems</h5>
+          <ul>
+            <li><a href="#">Office hours <span className="arr">→</span></a></li>
+            <li><a href="#">Staff directory <span className="arr">→</span></a></li>
+            <li><a href="#">Parent portal <span className="arr">→</span></a></li>
+            <li><a href="#">Accessibility <span className="arr">→</span></a></li>
+            <li><a href="#">Privacy &amp; terms <span className="arr">→</span></a></li>
+          </ul>
+          <div className="newsletter-box" style={{marginTop: 22}}>
+            <h5 style={{marginBottom: 10}}>Newsletter</h5>
+            <p className="nlhint">Monthly notes from the head of school + admissions reminders.</p>
+            <div className="newsletter-form">
+              <input placeholder="your@email"/>
+              <button>JOIN →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-mega">
+        <span>U<span className="star">✦</span>L<span className="star">✦</span>P<span className="star">✦</span>E<span className="star">✦</span>N<span className="star">✦</span>A<span className="star">✦</span>T &nbsp; TZVIA</span>
+        <span className="small">KOKHAV YA'AKOV<br/>EST. 1998</span>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="left">
+          <span>© 2026 ULPENAT TZVIA KOKHAV YA'AKOV</span>
+          <span>·</span>
+          <span>SITE BY <b>REKHIA STUDIO</b></span>
+          <span>·</span>
+          <span>w/ ISRAEL MINISTRY OF EDUCATION</span>
+        </div>
+        <div className="right">
+          <span>v1.0</span>
+          <span>BUILD 2026.05.17</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ── APP ────────────────────────────────────────────────────────── */
+function App(){
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const accentClass = t.accent === 'cyan' ? 'accent-cyan' : t.accent === 'violet' ? 'accent-violet' : '';
+  const modeClass = t.mode === 'light' ? 'mode-light' : '';
+  const densityClass = `density-${t.density}`;
+  return (
+    <div className={`page ${accentClass} ${modeClass} ${densityClass}`}>
+      <SysBar/>
+      <TopNav/>
+      <Hero ctaShape={t.ctaShape}/>
+      <About/>
+      <News layout={t.newsLayout}/>
+      <Academic/>
+      <Calendar/>
+      <Contact/>
+      <DevelopedBy/>
+      <FooterBig/>
+
+      <TweaksPanel title="Site Tweaks">
+        <TweakSection label="Theme" />
+        <TweakRadio label="Mode" value={t.mode} options={[
+          { value:'dark', label:'Dark' },
+          { value:'light', label:'Light' },
+        ]} onChange={v=>setTweak('mode', v)} />
+        <TweakRadio label="Accent" value={t.accent} options={[
+          { value:'amber', label:'Amber' },
+          { value:'cyan', label:'Cyan' },
+          { value:'violet', label:'Violet' },
+        ]} onChange={v=>setTweak('accent', v)} />
+
+        <TweakSection label="Hero" />
+        <TweakRadio label="CTA layout" value={t.ctaShape} options={[
+          { value:'side', label:'Side-by-side' },
+          { value:'stacked', label:'Stacked' },
+        ]} onChange={v=>setTweak('ctaShape', v)} />
+
+        <TweakSection label="News" />
+        <TweakRadio label="Layout" value={t.newsLayout} options={[
+          { value:'carousel', label:'Carousel' },
+          { value:'grid', label:'3-up grid' },
+        ]} onChange={v=>setTweak('newsLayout', v)} />
+
+        <TweakSection label="Layout" />
+        <TweakRadio label="Density" value={t.density} options={[
+          { value:'compact', label:'Compact' },
+          { value:'regular', label:'Regular' },
+          { value:'loose', label:'Loose' },
+        ]} onChange={v=>setTweak('density', v)} />
+      </TweaksPanel>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+</script>
+</body>
+</html>

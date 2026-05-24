@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ulpenat Tzvia — Wireframe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Architects+Daughter&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  :root{
+    --paper: #f8f5ee;
+    --paper-2: #efeadc;
+    --ink: #111;
+    --ink-soft: #444;
+    --rule: #1a1a1a;
+    --rule-soft: rgba(17,17,17,0.35);
+    --accent: #1a3a8a;      /* tzvia blue, muted */
+    --accent-warm: #d49a3b; /* wheat gold */
+    --highlight: #fff2a8;
+    --crit: #c8412a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);}
+  body{
+    font-family: 'Kalam', 'Caveat', cursive;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,0,0,0.025), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.02), transparent 50%);
+    background-attachment: fixed;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  .hand{ font-family:'Caveat', cursive; }
+  .arch{ font-family:'Architects Daughter', cursive; }
+
+  /* page width */
+  .page { max-width: 1400px; margin: 0 auto; padding: 24px 28px 80px; }
+
+  /* annotation tags */
+  .tag {
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    background: var(--ink); color: var(--paper);
+    padding: 3px 8px; border-radius: 2px;
+  }
+  .tag.alt { background: transparent; color: var(--ink); border: 1px dashed var(--ink); }
+  .tag.warn { background: var(--crit); color:#fff; }
+  .tag.note { background: var(--highlight); color: var(--ink); border: 1px solid rgba(0,0,0,0.4); }
+
+  /* sketch primitives */
+  .sk-box {
+    border: 2px solid var(--rule);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.4);
+    position: relative;
+  }
+  .sk-box.dashed { border-style: dashed; }
+  .sk-box.tilt-1 { transform: rotate(-0.25deg); }
+  .sk-box.tilt-2 { transform: rotate(0.3deg); }
+  .sk-stripes {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(17,17,17,0.06) 0 8px,
+      transparent 8px 18px
+    );
+  }
+  .sk-x { /* placeholder X */
+    position: relative;
+    overflow: hidden;
+  }
+  .sk-x::before, .sk-x::after{
+    content:''; position:absolute; inset:0;
+    border-left: 1.5px solid rgba(17,17,17,0.35);
+    border-right: 1.5px solid rgba(17,17,17,0.35);
+  }
+  .sk-x::before { transform: rotate(0); border:none;
+    background:
+      linear-gradient(to top right, transparent calc(50% - 1px), rgba(17,17,17,0.4) 50%, transparent calc(50% + 1px)),
+      linear-gradient(to bottom right, transparent calc(50% - 1px), rgba(17,17,17,0.4) 50%, transparent calc(50% + 1px));
+  }
+  .sk-x::after { display:none; }
+  .sk-label {
+    position:absolute; top:-12px; left:14px;
+    background: var(--paper); padding: 0 8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .sk-corner-id {
+    position: absolute; top: 8px; right: 10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: .08em;
+    color: rgba(17,17,17,0.5);
+  }
+
+  /* section spacing */
+  section { margin-top: 36px; }
+  .section-head{
+    display:flex; align-items:baseline; gap: 14px;
+    border-bottom: 1.5px dashed var(--rule-soft);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+  }
+  .section-head .num{
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    background: var(--ink); color: var(--paper);
+    padding: 4px 8px; border-radius: 3px;
+  }
+  .section-head h2{
+    font-family:'Caveat', cursive;
+    font-weight: 700; font-size: 32px; margin:0; color: var(--ink);
+  }
+  .section-head .meta{
+    margin-left:auto;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(17,17,17,0.55);
+  }
+
+  /* squiggle underline */
+  .squig{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='8'><path d='M0 5 Q 10 0 20 5 T 40 5 T 60 5 T 80 5 T 100 5 T 120 5' fill='none' stroke='%231a3a8a' stroke-width='2'/></svg>");
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    padding-bottom: 6px;
+  }
+
+  /* HEADER NAV */
+  .topnav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 6px 4px 12px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 18px;
+  }
+  .topnav .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Caveat', cursive; font-size: 22px; font-weight:700;
+  }
+  .brand .logo-stub{
+    width: 38px; height: 38px; border:2px solid var(--ink); border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-size:10px;
+    background: rgba(26,58,138,0.08);
+  }
+  .topnav nav{
+    display:flex; gap: 22px;
+    font-family:'Kalam', cursive; font-size: 18px;
+  }
+  .topnav nav a{ color: var(--ink); text-decoration: none; border-bottom: 1.5px solid transparent; padding-bottom: 2px;}
+  .topnav nav a.active{ border-bottom: 1.5px solid var(--ink); }
+  .topnav .lang{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    border:1.5px solid var(--ink); padding: 4px 10px; border-radius: 99px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    border: 2.5px solid var(--ink);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, #0c1d3a, #1a3a8a 60%, #224a9b);
+  }
+  .hero-video-overlay{
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 14px, transparent 14px 28px);
+    opacity: .55;
+  }
+  .hero .play-symbol{
+    position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+    width: 110px; height: 110px; border-radius: 50%;
+    border: 3px dashed rgba(255,255,255,0.65);
+    display:flex; align-items:center; justify-content:center;
+    color: rgba(255,255,255,0.85);
+    font-family:'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .1em;
+    text-align:center;
+  }
+  .hero .video-tag{
+    position:absolute; top:18px; left:18px;
+    background: rgba(0,0,0,0.55); color:#fff;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    padding: 4px 9px; border-radius: 3px; letter-spacing:.08em;
+  }
+  .hero .video-tag .dot{
+    display:inline-block; width:8px; height:8px; border-radius:50%;
+    background: #e44; margin-right:6px; vertical-align: middle;
+  }
+  .hero .corner-tag{
+    position:absolute; top:18px; right:18px;
+    color: rgba(255,255,255,0.7);
+    font-family:'JetBrains Mono', monospace; font-size:10px;
+    letter-spacing: .12em;
+  }
+  .hero-content{
+    position:absolute; left: 0; right:0; bottom: 0;
+    padding: 36px 44px 38px;
+    color: #fff;
+  }
+  .hero-content .kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: .25em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+  }
+  .hero-content h1{
+    font-family:'Caveat', cursive;
+    font-size: 76px; line-height: .95; margin: 0 0 6px;
+    font-weight: 700;
+    max-width: 900px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .hero-content h1 .blue-accent{ color: #ffd773; }
+  .hero-content .sub{
+    font-family:'Kalam', cursive; font-size: 20px;
+    max-width: 580px;
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 22px;
+  }
+  .cta-stack{
+    display:flex; gap: 14px; align-items: stretch; flex-wrap: wrap;
+  }
+  .cta-primary{
+    background: var(--accent-warm);
+    color: #1a1a1a;
+    border: 2.5px solid #1a1a1a;
+    padding: 14px 22px;
+    border-radius: 6px;
+    font-family:'Kalam', cursive; font-weight: 700; font-size: 20px;
+    display:flex; align-items:center; gap: 10px;
+    box-shadow: 4px 4px 0 0 rgba(0,0,0,0.55);
+    cursor:pointer;
+  }
+  .cta-primary .arrow{ font-family:'JetBrains Mono', monospace; }
+  .cta-trailer{
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(2px);
+    border: 2px dashed rgba(255,255,255,0.8);
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: #fff;
+    display:flex; align-items:center; gap: 12px;
+    cursor:pointer;
+  }
+  .cta-trailer .play-glyph{
+    width: 32px; height: 32px; border-radius: 50%;
+    background: #fff; color: #111;
+    display:flex; align-items:center; justify-content:center;
+    font-size: 14px;
+  }
+  .cta-trailer .small{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .cta-trailer .label{
+    font-family:'Kalam', cursive; font-size: 18px; line-height: 1.1;
+  }
+
+  /* annotation arrow lines */
+  .annot{
+    position:absolute;
+    font-family:'Caveat', cursive;
+    color: var(--ink);
+    font-size: 18px;
+    pointer-events: none;
+  }
+  .annot.light{ color: rgba(255,255,255,0.85); }
+  .annot::before{
+    content:'';
+    position:absolute;
+    border-left: 1.5px dashed currentColor;
+    border-bottom: 1.5px dashed currentColor;
+    border-bottom-left-radius: 12px;
+    width: 30px; height: 30px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about{
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px;
+    align-items: start;
+  }
+  .about-copy h3{
+    font-family:'Caveat', cursive; font-size: 42px; margin: 8px 0 6px;
+  }
+  .about-copy .lede{
+    font-family:'Kalam', cursive; font-size: 19px; line-height: 1.55;
+    color: var(--ink); margin: 0 0 14px;
+  }
+  .about-copy .body{
+    font-family:'Kalam', cursive; font-size: 16px; line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .about-copy .body p{ margin: 0 0 10px; }
+  .about-stats{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin-top: 18px;
+  }
+  .stat{
+    border: 2px solid var(--ink); border-radius: 6px;
+    padding: 10px 12px; background: rgba(255,255,255,0.4);
+  }
+  .stat .n{ font-family:'Caveat', cursive; font-size: 36px; line-height: 1; }
+  .stat .l{ font-family:'JetBrains Mono', monospace; font-size: 10px; letter-spacing:.12em; text-transform: uppercase; color: var(--ink-soft);}
+  .about-visual{
+    position:relative;
+    height: 380px;
+  }
+  .about-visual .photo{
+    position:absolute; inset: 0;
+    border: 2px solid var(--ink); border-radius: 6px;
+    overflow:hidden; background: var(--paper-2);
+  }
+  .about-visual .photo.a{ left: 0; top: 10px; width: 60%; height: 70%; transform: rotate(-1.2deg); }
+  .about-visual .photo.b{ right: 0; top: 80px; width: 55%; height: 70%; transform: rotate(1.5deg); }
+  .photo-stub{
+    height:100%; width:100%;
+    display:flex; align-items:center; justify-content:center;
+    background-image:
+      linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.05)),
+      repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0 12px, transparent 12px 24px);
+    color: rgba(0,0,0,0.55);
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .12em; text-transform: uppercase;
+    text-align:center; padding: 12px;
+  }
+
+  /* ===== NEWS CAROUSEL ===== */
+  .news-rail{
+    display:flex; gap: 18px; overflow-x: auto; padding: 4px 2px 18px;
+    scroll-snap-type: x mandatory;
+  }
+  .news-rail::-webkit-scrollbar{ height: 8px; }
+  .news-rail::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.3); border-radius: 4px; }
+  .news-card{
+    flex: 0 0 320px;
+    border: 2px solid var(--ink); border-radius: 8px;
+    background: rgba(255,255,255,0.55);
+    overflow:hidden; scroll-snap-align: start;
+    display:flex; flex-direction: column;
+  }
+  .news-card .thumb{
+    height: 170px;
+  }
+  .news-card .meta{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 12px 14px 0;
+    display:flex; gap:8px; align-items:center;
+  }
+  .news-card .meta .pill{
+    background: var(--ink); color: var(--paper); padding: 2px 7px; border-radius: 99px;
+  }
+  .news-card h4{
+    font-family:'Caveat', cursive; font-size: 26px;
+    margin: 4px 14px 6px; line-height: 1.05; font-weight:700;
+  }
+  .news-card .ex{
+    font-family:'Kalam', cursive; font-size: 14px;
+    margin: 0 14px 12px; color: var(--ink-soft); flex:1;
+  }
+  .news-card .read{
+    margin: 0 14px 14px;
+    font-family:'Kalam', cursive; font-size: 16px;
+    color: var(--accent); font-weight: 700;
+    display:flex; align-items:center; gap: 6px;
+  }
+  .rail-controls{
+    display:flex; justify-content: space-between; align-items: center;
+    margin-top: 4px;
+  }
+  .rail-controls .dots{ display:flex; gap: 6px; }
+  .rail-controls .dot{ width:10px; height:10px; border-radius:50%; border:1.5px solid var(--ink); }
+  .rail-controls .dot.on{ background: var(--ink); }
+  .arrow-btn{
+    width: 38px; height: 38px; border:2px solid var(--ink); border-radius: 50%;
+    background: var(--paper); font-family:'JetBrains Mono', monospace; font-weight: 700;
+    cursor:pointer; box-shadow: 3px 3px 0 0 rgba(0,0,0,0.4);
+  }
+
+  /* ===== ACTIVITIES / ACADEMIC ===== */
+  .academic-hero{
+    position: relative;
+    height: 480px;
+    border: 2.5px solid var(--ink); border-radius: 8px;
+    overflow:hidden;
+    background:
+      linear-gradient(160deg, #1a1a1a, #2b2b2b 60%, #3a3a3a);
+  }
+  .academic-hero .grid-overlay{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .academic-hero .play-symbol{
+    position:absolute; top: 38%; left:50%; transform: translate(-50%,-50%);
+    width: 90px; height: 90px; border-radius: 50%;
+    border: 3px dashed rgba(255,255,255,0.55);
+    display:flex; align-items:center; justify-content:center;
+    color: #fff;
+  }
+  .academic-hero .copy{
+    position:absolute; left: 40px; right: 40px; bottom: 36px; color:#fff;
+  }
+  .academic-hero h3{
+    font-family:'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: .25em; text-transform: uppercase;
+    margin: 0 0 10px; color: var(--accent-warm);
+  }
+  .academic-hero h2{
+    font-family:'Caveat', cursive; font-size: 54px; line-height: 1.02;
+    margin: 0; max-width: 920px;
+  }
+  .academic-areas{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-top: 18px;
+  }
+  .area{
+    border: 2px dashed var(--ink); border-radius: 6px;
+    background: rgba(255,255,255,0.4);
+    padding: 14px; min-height: 130px;
+    display:flex; flex-direction:column; justify-content: space-between;
+  }
+  .area .icon{
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    background: rgba(26,58,138,0.08);
+  }
+  .area h5{ font-family:'Caveat', cursive; font-size: 24px; margin: 8px 0 2px;}
+  .area .desc{ font-family:'Kalam', cursive; font-size: 13px; color: var(--ink-soft); }
+
+  /* ===== CALENDAR ===== */
+  .cal-head{
+    display:flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px;
+  }
+  .cal-head .month{
+    font-family:'Caveat', cursive; font-size: 30px; font-weight:700;
+  }
+  .cal-head .controls{ display:flex; gap: 8px; align-items:center; font-family:'JetBrains Mono', monospace; font-size:12px;}
+  .calendar{
+    border: 2px solid var(--ink); border-radius: 8px;
+    background: rgba(255,255,255,0.5);
+    padding: 14px;
+  }
+  .cal-dow{
+    display:grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing:.1em; text-transform: uppercase; color: var(--ink-soft);
+    padding: 0 4px 8px;
+    border-bottom: 1.5px dashed var(--rule-soft);
+  }
+  .cal-grid{
+    display:grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
+    padding-top: 10px;
+  }
+  .day{
+    position:relative;
+    aspect-ratio: 1 / 0.85;
+    border: 1.5px solid var(--rule-soft); border-radius: 4px;
+    padding: 6px 8px;
+    background: rgba(255,255,255,0.35);
+    font-family:'Kalam', cursive; font-size: 14px;
+  }
+  .day.empty{ background: transparent; border-style: dashed; opacity:.4; }
+  .day .n{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .day.has-event{
+    border: 2px solid var(--ink);
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+  }
+  .day .ev-dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    position: absolute; top: 8px; right: 8px;
+  }
+  .day .ev-dot.warm{ background: var(--accent-warm); }
+  .day .ev-dot.crit{ background: var(--crit); }
+  .day .ev-label{
+    font-family:'Caveat', cursive; font-size: 18px;
+    line-height: 1.05;
+    margin-top: 4px;
+  }
+  /* hover card */
+  .day.has-event:hover .hover-card{
+    opacity:1; transform: translate(-50%, 0) rotate(-1deg); pointer-events: auto;
+  }
+  .hover-card{
+    position:absolute; bottom: calc(100% + 12px); left: 50%;
+    width: 280px; transform: translate(-50%, 8px) rotate(-1deg);
+    opacity: 0; transition: opacity .15s ease, transform .15s ease;
+    border: 2px solid var(--ink); border-radius: 6px;
+    background: var(--paper);
+    padding: 10px;
+    box-shadow: 6px 6px 0 0 rgba(0,0,0,0.35);
+    z-index: 30;
+    pointer-events: none;
+  }
+  .hover-card .media{
+    height: 100px; border:1.5px solid var(--ink); border-radius: 4px;
+    margin-bottom: 8px;
+    position:relative;
+  }
+  .hover-card .media .play{
+    position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+    width: 32px; height: 32px; border-radius:50%; border: 2px solid var(--ink);
+    background: var(--paper);
+    display:flex; align-items:center; justify-content:center; font-size: 13px;
+  }
+  .hover-card h6{
+    font-family:'Caveat', cursive; font-size: 22px;
+    margin: 0 0 2px; font-weight: 700;
+  }
+  .hover-card .when{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-soft); letter-spacing:.1em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hover-card .text{
+    font-family:'Kalam', cursive; font-size: 13px; color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .hover-card::after{
+    content:''; position:absolute; bottom: -8px; left: 50%; transform: translateX(-50%) rotate(45deg);
+    width: 12px; height: 12px;
+    background: var(--paper);
+    border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink);
+  }
+  .cal-legend{
+    display:flex; gap: 18px; margin-top: 12px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-soft); letter-spacing: .08em;
+  }
+  .cal-legend .swatch{ display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align: middle; }
+
+  /* ===== CONTACT FORM ===== */
+  .contact{
+    display:grid; grid-template-columns: 1fr 1.1fr; gap: 28px;
+    align-items: start;
+  }
+  .contact-side h3{
+    font-family:'Caveat', cursive; font-size: 42px; margin: 0 0 6px;
+  }
+  .contact-side p{ font-family:'Kalam', cursive; font-size:16px; color: var(--ink-soft);}
+  .contact-info{ display:flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+  .info-row{
+    display:flex; gap: 10px; align-items:flex-start;
+    font-family:'Kalam', cursive; font-size: 16px;
+  }
+  .info-row .icon{
+    width: 26px; height: 26px; border:1.5px solid var(--ink); border-radius: 4px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-size: 11px; flex-shrink: 0;
+  }
+  form.contact-form{
+    border: 2px solid var(--ink); border-radius: 8px;
+    background: rgba(255,255,255,0.5);
+    padding: 22px;
+    box-shadow: 6px 6px 0 0 rgba(0,0,0,0.18);
+  }
+  .field{ display:flex; flex-direction:column; gap: 5px; margin-bottom: 14px;}
+  .field label{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing:.12em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .field .inp{
+    border:none; border-bottom: 2px dashed var(--ink);
+    background: transparent;
+    padding: 6px 4px;
+    font-family:'Kalam', cursive; font-size: 16px;
+    color: rgba(17,17,17,0.5);
+  }
+  .field.ta .inp{
+    border: 2px dashed var(--ink); border-radius: 4px;
+    min-height: 90px; padding: 8px;
+  }
+  .form-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .submit-row{
+    display:flex; justify-content: space-between; align-items:center;
+    margin-top: 6px;
+  }
+  .submit-btn{
+    background: var(--ink); color: var(--paper);
+    padding: 12px 24px; border-radius: 6px; border: 2px solid var(--ink);
+    font-family:'Kalam', cursive; font-weight: 700; font-size: 18px;
+    box-shadow: 4px 4px 0 0 var(--accent-warm);
+    cursor:pointer;
+  }
+  .form-note{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--ink-soft); letter-spacing:.1em;
+  }
+
+  /* ===== DEVELOPED BY ===== */
+  .devby{
+    position:relative;
+    height: 360px;
+    border: 2.5px solid var(--ink); border-radius: 8px;
+    overflow:hidden;
+    background:
+      linear-gradient(120deg, #111 0%, #1a1a1a 50%, #2a2a2a 100%);
+    color: #fff;
+  }
+  .devby .grid-overlay{
+    position:absolute; inset:0; opacity: .35;
+    background-image:
+      radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08), transparent 50%),
+      radial-gradient(circle at 70% 60%, rgba(255,255,255,0.06), transparent 50%);
+  }
+  .devby .video-tag{
+    position:absolute; top:18px; left:18px;
+    background: rgba(255,255,255,0.15); color:#fff;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    padding: 4px 9px; border-radius: 3px; letter-spacing:.08em;
+    border: 1px dashed rgba(255,255,255,0.4);
+  }
+  .devby .stack{
+    position: relative; z-index: 2;
+    height: 100%;
+    display:flex; flex-direction: column;
+    align-items:center; justify-content:center;
+    gap: 16px;
+    padding: 20px;
+    text-align:center;
+  }
+  .devby .kicker{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .25em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .devby .rekhia-logo{
+    width: 130px; height: 130px; border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1.5px dashed rgba(255,255,255,0.4);
+    display:flex; align-items:center; justify-content:center;
+    overflow: hidden;
+  }
+  .devby .rekhia-logo img{ width: 100%; height: 100%; object-fit: contain; }
+  .devby .studio-name{
+    font-family:'Caveat', cursive; font-size: 36px;
+  }
+  .devby .collab-label{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+  }
+  .collab-logos{
+    display:flex; gap: 28px; align-items: center;
+  }
+  .collab-logos .lg{
+    width: 64px; height: 64px; border-radius: 6px;
+    background: rgba(255,255,255,0.92);
+    border: 1.5px solid rgba(255,255,255,0.6);
+    display:flex; align-items:center; justify-content:center;
+    padding: 6px;
+  }
+  .collab-logos .lg img{ width: 100%; height: 100%; object-fit: contain; }
+  .collab-logos .label{
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: rgba(255,255,255,0.6); text-align: center; margin-top: 4px;
+    letter-spacing: .08em;
+  }
+  .collab-item{ display:flex; flex-direction: column; align-items:center; gap: 4px;}
+
+  /* ===== FOOTER ===== */
+  footer.big{
+    margin-top: 40px;
+    border-top: 3px solid var(--ink);
+    background: #0e1320;
+    color: #f0ece4;
+    padding: 48px 36px 24px;
+    border-radius: 8px 8px 0 0;
+  }
+  footer.big .top{
+    display:grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: 36px;
+  }
+  footer.big .brandbox{
+    display:flex; flex-direction: column; gap: 14px;
+  }
+  footer.big .brandbox .logo{
+    width: 70px; height: 70px;
+    background: rgba(255,255,255,0.06); border: 1.5px dashed rgba(255,255,255,0.3);
+    border-radius: 8px;
+    display:flex; align-items:center; justify-content:center;
+    padding: 8px;
+  }
+  footer.big .brandbox .logo img{ width: 100%; height: 100%; object-fit: contain;}
+  footer.big .brandbox h4{
+    font-family:'Caveat', cursive; font-size: 30px; margin: 0;
+  }
+  footer.big .brandbox p{
+    font-family:'Kalam', cursive; font-size: 14px; color: rgba(255,255,255,0.6);
+    max-width: 260px; margin: 0;
+  }
+  footer.big h5{
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--accent-warm);
+    margin: 0 0 14px;
+  }
+  footer.big ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction: column; gap: 7px;}
+  footer.big ul a{
+    color: rgba(255,255,255,0.78); text-decoration: none;
+    font-family:'Kalam', cursive; font-size: 16px;
+  }
+  footer.big ul a:hover{ color: #fff; text-decoration: underline; text-decoration-style: dashed;}
+  footer.big .socials{ display:flex; gap: 10px; margin-top: 10px;}
+  footer.big .socials .s{
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-size: 10px;
+    color: rgba(255,255,255,0.7);
+  }
+  .newsletter{
+    margin-top: 12px;
+    display:flex; gap: 0; max-width: 280px;
+  }
+  .newsletter input{
+    flex:1; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.3);
+    color: #fff; padding: 8px 10px;
+    border-radius: 4px 0 0 4px; outline: none;
+    font-family:'Kalam', cursive; font-size: 14px;
+  }
+  .newsletter button{
+    background: var(--accent-warm); border: 1.5px solid var(--accent-warm);
+    color: #111; padding: 0 14px; border-radius: 0 4px 4px 0;
+    font-family:'Kalam', cursive; font-weight: 700; cursor:pointer;
+  }
+  footer.big .bottom{
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(255,255,255,0.25);
+    display:flex; justify-content: space-between; align-items: center;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: rgba(255,255,255,0.55); letter-spacing: .08em;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer.big .bottom .credit{ display:flex; gap: 14px; align-items: center;}
+  footer.big .bottom .credit b{ color: rgba(255,255,255,0.8); font-weight: normal; }
+
+  /* wireframe banner */
+  .wf-banner{
+    display:flex; gap: 12px; align-items:center; justify-content: space-between;
+    padding: 8px 12px;
+    border: 1.5px dashed var(--rule-soft);
+    border-radius: 4px;
+    margin-bottom: 14px;
+    font-family:'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-soft);
+    background: rgba(255,255,255,0.4);
+  }
+  .wf-banner .title{
+    color: var(--ink); letter-spacing:.18em; text-transform: uppercase;
+  }
+  .wf-banner .dot{ width: 8px; height: 8px; border-radius:50%; background: var(--crit); display:inline-block; margin-right: 6px;}
+
+  /* tweak: image stripped variant */
+  .stripped .photo-stub, .stripped .thumb, .stripped .sk-stripes{
+    background-image: repeating-linear-gradient(135deg, rgba(0,0,0,0.07) 0 10px, transparent 10px 20px) !important;
+  }
+  .stripped .hero, .stripped .academic-hero, .stripped .devby{
+    background: var(--paper-2) !important;
+    color: var(--ink) !important;
+  }
+  .stripped .hero-content, .stripped .academic-hero .copy, .stripped .devby .stack{ color: var(--ink) !important;}
+  .stripped .hero-content h1, .stripped .academic-hero h2, .stripped .devby .studio-name{
+    text-shadow:none !important; color: var(--ink) !important;
+  }
+  .stripped .hero-content h1 .blue-accent{ color: var(--accent) !important;}
+  .stripped .academic-hero h3{ color: var(--accent) !important;}
+  .stripped .hero-content .kicker, .stripped .hero-content .sub{ color: var(--ink-soft) !important;}
+  .stripped .hero-video-overlay, .stripped .academic-hero .grid-overlay, .stripped .devby .grid-overlay{
+    opacity: .15 !important;
+  }
+  .stripped .cta-trailer{ color: var(--ink) !important; border-color: var(--ink) !important; background: rgba(255,255,255,0.4)!important;}
+  .stripped .cta-trailer .small{ color: var(--ink-soft) !important;}
+  .stripped .hero .video-tag, .stripped .devby .video-tag{
+    background: rgba(0,0,0,0.6) !important; color:#fff!important;
+  }
+  .stripped .devby .rekhia-logo, .stripped .devby .collab-logos .lg{
+    background: rgba(0,0,0,0.04) !important; border-color: var(--ink) !important;
+  }
+  .stripped .collab-logos .label, .stripped .devby .kicker, .stripped .devby .collab-label{ color: var(--ink-soft) !important;}
+
+  /* news layout variant: grid */
+  .news-grid{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .news-grid .news-card{ flex: initial; }
+
+  /* hide-color tweak: all monochrome */
+  .mono-only :is(.cta-primary, .submit-btn){ background: var(--ink)!important; color: var(--paper)!important;}
+  .mono-only :is(.news-card .read, .blue-accent, .academic-hero h3){ color: var(--ink)!important;}
+  .mono-only .day .ev-dot{ background: var(--ink) !important; }
+  .mono-only .day .ev-dot.warm, .mono-only .day .ev-dot.crit{ background: var(--ink) !important;}
+  .mono-only footer.big{ background: var(--ink) !important; }
+  .mono-only .submit-btn{ box-shadow: 4px 4px 0 0 var(--ink-soft) !important;}
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" data-presets="env,react">
+const { useState, useEffect, useMemo } = React;
+const { TweaksPanel, TweakSection, TweakRadio, TweakToggle, TweakSlider, useTweaks } = window;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "heroLayout": "bottom-left",
+  "newsLayout": "carousel",
+  "showAnnotations": true,
+  "monochrome": false,
+  "stripped": false,
+  "ctaStyle": "stacked"
+}/*EDITMODE-END*/;
+
+// ---------- helpers ----------
+const Tag = ({ children, kind='' }) => <span className={`tag ${kind}`}>{children}</span>;
+const Annotation = ({ children, style, light }) => (
+  <div className={`annot ${light ? 'light':''}`} style={style}>{children}</div>
+);
+
+// ---------- HEADER ----------
+function Header(){
+  return (
+    <div className="topnav">
+      <div className="brand">
+        <div className="logo-stub">LOGO</div>
+        <div>
+          <div style={{fontSize:22, lineHeight:1}}>Ulpenat Tzvia</div>
+          <div className="mono" style={{fontSize:10, color:'#555', letterSpacing:'.15em'}}>KOKHAV YA'AKOV</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#" className="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">News</a>
+        <a href="#">Academics</a>
+        <a href="#">Calendar</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div style={{display:'flex', gap:10, alignItems:'center'}}>
+        <span className="lang">EN / עב</span>
+        <button className="cta-primary" style={{padding:'8px 14px', fontSize:15, boxShadow:'3px 3px 0 0 rgba(0,0,0,0.5)'}}>Register →</button>
+      </div>
+    </div>
+  );
+}
+
+// ---------- HERO ----------
+function Hero({ layout, ctaStyle, showAnnotations }){
+  const align = layout === 'centered' ? 'center' : layout === 'split' ? 'left' : 'left';
+  const justify = layout === 'centered' ? 'center' : 'flex-start';
+  return (
+    <section style={{marginTop: 8}}>
+      <div className="wf-banner">
+        <span className="title"><span className="dot"></span>SECTION 01 — HERO</span>
+        <span>Full-bleed video • H1 + dual CTA • Bottom-left anchor</span>
+        <span>Viewport: 100vw × ~80vh</span>
+      </div>
+      <div className="hero" style={{position:'relative'}}>
+        <div className="hero-video-overlay"></div>
+        <div className="video-tag"><span className="dot"></span>VIDEO LOOP · 0:00 / 0:42</div>
+        <div className="corner-tag">[ HERO_BG_VIDEO.mp4 — autoplay · muted · loop ]</div>
+        <div className="play-symbol">
+          <div>
+            <div style={{fontSize:24}}>▶</div>
+            <div style={{marginTop:4}}>FULL-BLEED VIDEO</div>
+          </div>
+        </div>
+
+        <div className="hero-content" style={{
+          textAlign: align,
+          display:'flex', flexDirection: 'column',
+          alignItems: align === 'center' ? 'center' : 'flex-start',
+        }}>
+          <div className="kicker">Registration open · 5786 / 2026–27</div>
+          <h1>A place where <span className="blue-accent">faith</span>,<br/>scholarship & <span className="blue-accent">discovery</span> meet.</h1>
+          <p className="sub">Ulpenat Tzvia Kokhav Ya'akov — religious-Zionist girls' high school. Now enrolling for the new academic year.</p>
+
+          {ctaStyle === 'stacked' ? (
+            <div className="cta-stack" style={{justifyContent: justify}}>
+              <button className="cta-primary">
+                Register for 2026–27 <span className="arrow">→</span>
+              </button>
+              <button className="cta-trailer">
+                <div className="play-glyph">▶</div>
+                <div>
+                  <div className="small">02:14 · School trailer</div>
+                  <div className="label">Watch the trailer</div>
+                </div>
+              </button>
+            </div>
+          ) : (
+            <div className="cta-stack" style={{justifyContent: justify, flexDirection: 'column', alignItems: align === 'center' ? 'center' : 'flex-start'}}>
+              <button className="cta-primary" style={{minWidth: 320}}>
+                Register for the New School Year <span className="arrow">→</span>
+              </button>
+              <button className="cta-trailer" style={{minWidth: 320}}>
+                <div className="play-glyph">▶</div>
+                <div>
+                  <div className="small">02:14 · School trailer</div>
+                  <div className="label">Watch the trailer</div>
+                </div>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {showAnnotations && (
+          <>
+            <Annotation light style={{bottom: 175, left: 100, width: 200}}>
+              <div style={{position:'relative', paddingLeft: 36, paddingBottom: 26}}>
+                <div style={{position:'absolute', left:0, top:-4}}>
+                  <div style={{width: 30, height: 30, borderLeft:'1.5px dashed rgba(255,255,255,0.85)', borderBottom: '1.5px dashed rgba(255,255,255,0.85)', borderBottomLeftRadius: 12}}></div>
+                </div>
+                H1 — institution promise
+              </div>
+            </Annotation>
+            <Annotation light style={{bottom: 36, left: 510, width: 200}}>
+              <div style={{position:'relative', paddingLeft: 36, paddingBottom: 26}}>
+                <div style={{position:'absolute', left:0, top:-4}}>
+                  <div style={{width: 30, height: 30, borderLeft:'1.5px dashed rgba(255,255,255,0.85)', borderBottom: '1.5px dashed rgba(255,255,255,0.85)', borderBottomLeftRadius: 12}}></div>
+                </div>
+                primary CTA — register flow
+              </div>
+            </Annotation>
+          </>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// ---------- ABOUT ----------
+function About(){
+  return (
+    <section>
+      <div className="section-head">
+        <span className="num">02</span>
+        <h2 className="squig">About Us</h2>
+        <span className="meta">{`<section id="about">`}</span>
+      </div>
+      <div className="about">
+        <div className="about-copy">
+          <div className="hand" style={{fontSize:22, color:'var(--accent)'}}>~ Who we are</div>
+          <h3>Rooted in Torah, reaching for excellence.</h3>
+          <p className="lede">Ulpenat Tzvia Kokhav Ya'akov is a religious-Zionist ulpana for young women — a community where Torah study, academic rigor, and personal growth meet in one place.</p>
+          <div className="body">
+            <p>[ ~ 4–5 short lorem-ipsum paragraphs of institutional copy: our history, our pedagogy, leadership voice, values, alumnae outcomes. Aim 220–280 words. ]</p>
+            <p>[ Quote pull-out — head of school, ~25 words. ]</p>
+          </div>
+          <div className="about-stats">
+            <div className="stat tilt-1"><div className="n">1998</div><div className="l">Founded</div></div>
+            <div className="stat tilt-2"><div className="n">420+</div><div className="l">Students</div></div>
+            <div className="stat tilt-1"><div className="n">98%</div><div className="l">Matriculation</div></div>
+          </div>
+        </div>
+        <div className="about-visual">
+          <div className="photo a sk-x">
+            <div className="photo-stub">[ photo — classroom / beit midrash ]</div>
+          </div>
+          <div className="photo b sk-x">
+            <div className="photo-stub">[ photo — campus / students ]</div>
+          </div>
+          <div className="hand" style={{position:'absolute', bottom: -28, right: 0, fontSize: 18}}>
+            ↑ swap with real photos · 16:10 crop
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- NEWS ----------
+const newsItems = [
+  { tag:'Announcement', date:'May 12 · 2026', title:'New STEM wing breaks ground next semester', ex:'A 1,200 sqm addition with new labs, makerspace and a dedicated robotics studio…' },
+  { tag:'Achievement', date:'May 02 · 2026', title:'10th grade wins national Tanakh quiz', ex:'For the second consecutive year, our team brought home the regional…' },
+  { tag:'Event', date:'Apr 28 · 2026', title:'Open House — June 4th, 17:00', ex:'Prospective students and families are welcome to tour the campus…' },
+  { tag:'Alumnae', date:'Apr 15 · 2026', title:'Alumnae spotlight: Dr. R. Cohen on neuroscience', ex:'From Tzvia to Tel Aviv University — a conversation about research…' },
+  { tag:'Update', date:'Apr 03 · 2026', title:'Updated dress code & schedule for 5786', ex:'Read the full memo from administration regarding next year…' },
+];
+
+function News({ layout }){
+  return (
+    <section>
+      <div className="section-head">
+        <span className="num">03</span>
+        <h2 className="squig">News & Updates</h2>
+        <span className="meta">{layout === 'grid' ? 'grid · 3-up' : 'carousel · scroll-snap · 5+ items'}</span>
+      </div>
+
+      <div className={layout === 'grid' ? 'news-grid' : 'news-rail'}>
+        {newsItems.map((n, i) => (
+          <article key={i} className="news-card">
+            <div className="thumb sk-stripes" style={{position:'relative', borderBottom:'1.5px dashed var(--rule)'}}>
+              <div style={{position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', color:'rgba(0,0,0,0.5)', fontFamily:'JetBrains Mono', fontSize:11, letterSpacing:'.12em', textTransform:'uppercase'}}>
+                [ image — 16:10 ]
+              </div>
+            </div>
+            <div className="meta">
+              <span className="pill">{n.tag}</span>
+              <span>{n.date}</span>
+            </div>
+            <h4>{n.title}</h4>
+            <p className="ex">{n.ex}</p>
+            <a className="read" href="#">Read more →</a>
+          </article>
+        ))}
+      </div>
+
+      {layout === 'carousel' && (
+        <div className="rail-controls">
+          <div className="dots">
+            <span className="dot on"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </div>
+          <div style={{display:'flex', gap:8}}>
+            <button className="arrow-btn">←</button>
+            <button className="arrow-btn">→</button>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+// ---------- ACTIVITIES & ACADEMIC ----------
+const academic_areas = [
+  { i:'φ', name:'Sciences & STEM', d:'Bio · chem · physics · CS · robotics' },
+  { i:'א', name:'Tanakh & Talmud', d:'Daily study · advanced shiurim' },
+  { i:'⌘', name:'Arts & Design', d:'Studio · music · theatre · film' },
+  { i:'∞', name:'Humanities', d:'History · literature · philosophy' },
+];
+
+function Academic(){
+  return (
+    <section>
+      <div className="section-head">
+        <span className="num">04</span>
+        <h2 className="squig">Activities & Academia</h2>
+        <span className="meta">full-bleed video · area cards beneath</span>
+      </div>
+
+      <div className="academic-hero" style={{position:'relative'}}>
+        <div className="grid-overlay"></div>
+        <div className="video-tag" style={{position:'absolute', top:18, left:18, background:'rgba(255,255,255,0.15)', color:'#fff', fontFamily:'JetBrains Mono', fontSize:11, padding:'4px 9px', borderRadius:3, letterSpacing:'.08em', border:'1px dashed rgba(255,255,255,0.4)'}}>
+          <span style={{display:'inline-block', width:8, height:8, borderRadius:'50%', background:'#e44', marginRight:6, verticalAlign:'middle'}}></span>VIDEO · classroom B-roll
+        </div>
+        <div className="play-symbol">
+          <div style={{textAlign:'center'}}>
+            <div style={{fontSize:22}}>▶</div>
+            <div className="mono" style={{fontSize:10, marginTop:4, letterSpacing:'.1em'}}>FULL-BLEED</div>
+          </div>
+        </div>
+        <div className="copy">
+          <h3>ACTIVITIES & ACADEMIC AREAS</h3>
+          <h2>Our academic areas blend knowledge,<br/>creativity, and real-world discovery.</h2>
+        </div>
+      </div>
+
+      <div className="academic-areas">
+        {academic_areas.map((a, i) => (
+          <div key={i} className="area">
+            <div>
+              <div className="icon">{a.i}</div>
+              <h5>{a.name}</h5>
+              <div className="desc">{a.d}</div>
+            </div>
+            <div className="mono" style={{fontSize:10, color:'var(--accent)', letterSpacing:'.1em', marginTop:8}}>EXPLORE →</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------- CALENDAR ----------
+const events = {
+  4:  { title:'Open House', when:'Tue · 17:00–19:30', kind:'accent', note:'Campus tours, meet teachers, Q&A with the head of school.', media:'photo' },
+  9:  { title:'Tanakh Quiz Finals', when:'Sun · 10:00', kind:'warm', note:'School-wide finals in the main hall — families welcome.', media:'photo' },
+  14: { title:'Science Fair 2026', when:'Fri · 09:00–14:00', kind:'accent', note:'Student-led projects across biology, chemistry, physics, CS.', media:'video' },
+  18: { title:'Chesed Day', when:'Tue · all day', kind:'warm', note:'Volunteer activities across Kokhav Ya\'akov and Jerusalem.', media:'photo' },
+  22: { title:'Spring Concert', when:'Sat night · 20:30', kind:'accent', note:'Vocal & instrumental ensembles in the amphitheatre.', media:'video' },
+  27: { title:'Graduation 5786', when:'Thu · 18:00', kind:'crit', note:'Class of 5786 commencement ceremony — by invitation.', media:'photo' },
+};
+
+function Calendar(){
+  // build a 30-day grid starting on Sun (offset 0 to keep simple)
+  const days = [];
+  const startOffset = 5; // friday-ish start to break alignment
+  for (let i = 0; i < startOffset; i++) days.push({ empty: true });
+  for (let d = 1; d <= 30; d++) days.push({ d });
+  while (days.length % 7 !== 0) days.push({ empty: true });
+
+  return (
+    <section>
+      <div className="section-head">
+        <span className="num">05</span>
+        <h2 className="squig">Institutional Calendar</h2>
+        <span className="meta">hover a date · card with media + details</span>
+      </div>
+      <div className="cal-head">
+        <div className="month">June · 2026</div>
+        <div className="controls">
+          <button className="arrow-btn" style={{width:28, height:28, fontSize:11}}>←</button>
+          <span>Month · Week · List</span>
+          <button className="arrow-btn" style={{width:28, height:28, fontSize:11}}>→</button>
+        </div>
+      </div>
+      <div className="calendar">
+        <div className="cal-dow">
+          <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+        </div>
+        <div className="cal-grid">
+          {days.map((cell, i) => {
+            if (cell.empty) return <div key={i} className="day empty"></div>;
+            const ev = events[cell.d];
+            return (
+              <div key={i} className={`day ${ev ? 'has-event':''}`}>
+                <div className="n">{cell.d}</div>
+                {ev && (
+                  <>
+                    <span className={`ev-dot ${ev.kind === 'warm' ? 'warm' : ev.kind === 'crit' ? 'crit' : ''}`}></span>
+                    <div className="ev-label">{ev.title}</div>
+                    <div className="hover-card">
+                      <div className="media sk-stripes">
+                        {ev.media === 'video' && <div className="play">▶</div>}
+                        <div style={{position:'absolute', top:6, left:8, fontFamily:'JetBrains Mono', fontSize:9, color:'rgba(0,0,0,0.55)', letterSpacing:'.1em'}}>
+                          [ {ev.media === 'video' ? 'VIDEO' : 'PHOTO'} ]
+                        </div>
+                      </div>
+                      <h6>{ev.title}</h6>
+                      <div className="when">{ev.when}</div>
+                      <div className="text">{ev.note}</div>
+                      <a className="mono" href="#" style={{fontSize:10, color:'var(--accent)', display:'inline-block', marginTop:6, letterSpacing:'.1em'}}>EVENT DETAILS →</a>
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="cal-legend">
+        <div><span className="swatch" style={{background:'var(--accent)'}}></span>Academic</div>
+        <div><span className="swatch" style={{background:'var(--accent-warm)'}}></span>Community</div>
+        <div><span className="swatch" style={{background:'var(--crit)'}}></span>Major event</div>
+        <div style={{marginLeft:'auto'}} className="hand">try hovering ↑</div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- CONTACT ----------
+function Contact(){
+  return (
+    <section>
+      <div className="section-head">
+        <span className="num">06</span>
+        <h2 className="squig">Get In Touch</h2>
+        <span className="meta">{`<form id="contact">`}</span>
+      </div>
+      <div className="contact">
+        <div className="contact-side">
+          <div className="hand" style={{fontSize:22, color:'var(--accent)'}}>~ Questions?</div>
+          <h3>We'd love to hear from you.</h3>
+          <p>Whether you're a prospective family, an alumna, or partnering with our school — drop us a line and we'll respond within 2 business days.</p>
+          <div className="contact-info">
+            <div className="info-row"><span className="icon">📍</span><div>Kokhav Ya'akov, Mateh Binyamin · 9062600 · Israel</div></div>
+            <div className="info-row"><span className="icon">✉</span><div>office@ulpenat-tzvia.org.il</div></div>
+            <div className="info-row"><span className="icon">☏</span><div>+972 (0)2 ‑ 000 ‑ 0000</div></div>
+            <div className="info-row"><span className="icon">⏰</span><div>Sun–Thu · 08:00–16:30</div></div>
+          </div>
+        </div>
+
+        <form className="contact-form" onSubmit={e=>e.preventDefault()}>
+          <div className="form-row">
+            <div className="field"><label>Full name</label><input className="inp" placeholder="e.g. Sarah Levi"/></div>
+            <div className="field"><label>I am a…</label><input className="inp" placeholder="parent / student / other"/></div>
+          </div>
+          <div className="form-row">
+            <div className="field"><label>Email</label><input className="inp" placeholder="you@example.com"/></div>
+            <div className="field"><label>Phone</label><input className="inp" placeholder="+972…"/></div>
+          </div>
+          <div className="field"><label>Topic</label><input className="inp" placeholder="Admissions · tour · question…"/></div>
+          <div className="field ta"><label>Message</label><textarea className="inp" placeholder="Tell us a little about your inquiry…"></textarea></div>
+          <div className="submit-row">
+            <div className="form-note">[ NEEDS · spam protection · success state · email routing ]</div>
+            <button className="submit-btn">Send message →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+// ---------- DEVELOPED BY ----------
+function DevelopedBy(){
+  return (
+    <section>
+      <div className="section-head">
+        <span className="num">07</span>
+        <h2 className="squig">Developed By</h2>
+        <span className="meta">full-bleed video · brand stack · collaborators</span>
+      </div>
+      <div className="devby">
+        <div className="grid-overlay"></div>
+        <div className="video-tag"><span style={{display:'inline-block', width:8, height:8, borderRadius:'50%', background:'#e44', marginRight:6, verticalAlign:'middle'}}></span>VIDEO · studio reel loop</div>
+        <div className="stack">
+          <div className="kicker">— Designed & built by —</div>
+          <div className="rekhia-logo">
+            <img src="assets/rekhia-logo.png" alt="Rekhia Studio" />
+          </div>
+          <div className="studio-name">Rekhia Studio</div>
+
+          <div className="collab-label">~ In collaboration with ~</div>
+          <div className="collab-logos">
+            <div className="collab-item">
+              <div className="lg"><img src="assets/tzvia-logo.png" alt="Tzvia"/></div>
+              <div className="label">ULPENAT TZVIA</div>
+            </div>
+            <div className="hand" style={{color:'rgba(255,255,255,0.6)', fontSize:22, alignSelf:'center'}}>×</div>
+            <div className="collab-item">
+              <div className="lg"><img src="assets/moe-logo.png" alt="Ministry of Education" style={{filter:'invert(0)'}}/></div>
+              <div className="label">MINISTRY OF EDUCATION · ISRAEL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------- FOOTER ----------
+function Footer(){
+  return (
+    <footer className="big">
+      <div className="top">
+        <div className="brandbox">
+          <div className="logo"><img src="assets/tzvia-logo.png" alt="Tzvia"/></div>
+          <h4>Ulpenat Tzvia<br/>Kokhav Ya'akov</h4>
+          <p>A religious-Zionist ulpana — where Torah, knowledge, and discovery meet.</p>
+          <div className="socials">
+            <span className="s">FB</span>
+            <span className="s">IG</span>
+            <span className="s">YT</span>
+            <span className="s">WA</span>
+          </div>
+        </div>
+
+        <div>
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Academic Areas</a></li>
+            <li><a href="#">News & Updates</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Alumnae Network</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Admissions</h5>
+          <ul>
+            <li><a href="#">Register 2026–27</a></li>
+            <li><a href="#">Open House</a></li>
+            <li><a href="#">Scholarships</a></li>
+            <li><a href="#">FAQ for families</a></li>
+            <li><a href="#">Tour the campus</a></li>
+            <li><a href="#">Download brochure</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact & Support</h5>
+          <ul>
+            <li><a href="#">Office hours</a></li>
+            <li><a href="#">Staff directory</a></li>
+            <li><a href="#">Parent portal</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Privacy & terms</a></li>
+          </ul>
+          <h5 style={{marginTop:18}}>Newsletter</h5>
+          <div className="newsletter">
+            <input placeholder="your@email"/>
+            <button>Join →</button>
+          </div>
+        </div>
+      </div>
+      <div className="bottom">
+        <div className="credit">
+          <span>© 2026 Ulpenat Tzvia Kokhav Ya'akov</span>
+          <span>·</span>
+          <span>Site by <b>Rekhia Studio</b></span>
+          <span>·</span>
+          <span>w/ Israel Ministry of Education</span>
+        </div>
+        <div>v0.1 · wireframe</div>
+      </div>
+    </footer>
+  );
+}
+
+// ---------- APP ----------
+function App(){
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const cls = [
+    t.stripped ? 'stripped' : '',
+    t.monochrome ? 'mono-only' : '',
+  ].join(' ');
+  return (
+    <div className={`page ${cls}`}>
+      <Header/>
+      <Hero layout={t.heroLayout} ctaStyle={t.ctaStyle} showAnnotations={t.showAnnotations}/>
+      <About/>
+      <News layout={t.newsLayout}/>
+      <Academic/>
+      <Calendar/>
+      <Contact/>
+      <DevelopedBy/>
+      <Footer/>
+
+      <TweaksPanel title="Wireframe Tweaks">
+        <TweakSection label="Hero" />
+        <TweakRadio label="CTA anchor" value={t.heroLayout} options={[
+          { value:'bottom-left', label:'Bottom-left' },
+          { value:'centered', label:'Centered' },
+        ]} onChange={v => setTweak('heroLayout', v)} />
+        <TweakRadio label="CTA shape" value={t.ctaStyle} options={[
+          { value:'stacked', label:'Side-by-side' },
+          { value:'split', label:'Stacked' },
+        ]} onChange={v => setTweak('ctaStyle', v)} />
+
+        <TweakSection label="News" />
+        <TweakRadio label="Layout" value={t.newsLayout} options={[
+          { value:'carousel', label:'Carousel' },
+          { value:'grid', label:'3-up grid' },
+        ]} onChange={v => setTweak('newsLayout', v)} />
+
+        <TweakSection label="Mode" />
+        <TweakToggle label="Hero annotations" value={t.showAnnotations} onChange={v => setTweak('showAnnotations', v)} />
+        <TweakToggle label="Strip color" value={t.stripped} onChange={v => setTweak('stripped', v)} />
+        <TweakToggle label="Monochrome accents" value={t.monochrome} onChange={v => setTweak('monochrome', v)} />
+      </TweaksPanel>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+</script>
+</body>
+</html>

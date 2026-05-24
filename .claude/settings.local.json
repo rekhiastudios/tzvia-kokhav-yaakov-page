@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "WebFetch(domain:api.anthropic.com)",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\itzha\\\\portafolio\\\\tzvia-page\\\\t\\\\design\" -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })",
+      "Bash(curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(Object.keys\\({...p.dependencies,...\\(p.devDependencies||{}\\)}\\),null,2\\)\\)\")",
+      "Bash(npm install *)",
+      "Bash(node -e \"require\\('react-leaflet'\\); console.log\\('ok'\\)\")",
+      "Bash(dir \"c:\\\\Users\\\\itzha\\\\portafolio\\\\tzvia-page\\\\public\" /b)",
+      "Bash(mkdir -p \"c:/Users/itzha/portafolio/tzvia-page/components/academy\" && mkdir -p \"c:/Users/itzha/portafolio/tzvia-page/app/[locale]/academy/[category]/[activity]\")",
+      "Bash(npx tsc *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\itzha\\portafolio\\tzvia-page\\app\\[locale]\\academy\\[category]"
+    ]
+  }
+}

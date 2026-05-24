@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ulpenat Tzvia Kokhav Ya'akov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  :root{
+    --bg:        #fafaf6;
+    --bg-2:      #ffffff;
+    --bg-3:      #f1efe7;
+    --ink:       #000b21;
+    --ink-soft:  #2a3754;
+    --ink-mute:  #6c7388;
+    --line:      rgba(0,11,33,0.10);
+    --line-2:    rgba(0,11,33,0.20);
+    --line-3:    rgba(0,11,33,0.35);
+    --gold:      #eca948;
+    --gold-deep: #c98f2c;
+    --shadow-sm: 0 1px 0 rgba(0,11,33,0.04), 0 6px 16px -8px rgba(0,11,33,0.10);
+    --shadow-md: 0 1px 0 rgba(0,11,33,0.05), 0 14px 32px -16px rgba(0,11,33,0.14);
+    --shadow-lg: 0 2px 0 rgba(0,11,33,0.04), 0 28px 60px -28px rgba(0,11,33,0.22);
+  }
+  .zone-dark{
+    --bg:        #000b21;
+    --bg-2:      #061634;
+    --bg-3:      #0c1f44;
+    --ink:       #ffffff;
+    --ink-soft:  rgba(255,255,255,0.82);
+    --ink-mute:  rgba(255,255,255,0.5);
+    --line:      rgba(255,255,255,0.10);
+    --line-2:    rgba(255,255,255,0.22);
+    --line-3:    rgba(255,255,255,0.35);
+  }
+  *{box-sizing:border-box}
+  html,body{ margin:0; padding:0; background: var(--bg); color: var(--ink); scroll-behavior: smooth;}
+  body{
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px; font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  .page{ padding: 0 56px;}
+  @media (max-width: 900px){ .page{ padding: 0 24px;}}
+  section{ padding-top: 120px;}
+
+  /* ── SECTION HEADER (no meta now) ─────────────────────── */
+  .sect-hd{
+    display:flex; flex-direction: column;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line-2);
+    margin-bottom: 56px;
+  }
+  .sect-hd .num{
+    font-family:'Bebas Neue', sans-serif; font-size: 13px;
+    letter-spacing: .32em;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .sect-hd .num::before{ content:'//  '; opacity: .6;}
+  .sect-hd h2{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: clamp(48px, 6vw, 88px);
+    line-height: 0.95; letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .sect-hd h2 .gold{ color: var(--gold);}
+  .sect-hd h2 .stop{ color: var(--gold);}
+
+  /* ── ANNOUNCEMENT STRIP (over hero) ───────────────────── */
+  .announce{
+    position: absolute; top: 0; left: 0; right: 0;
+    z-index: 12;
+    padding: 8px 56px;
+    background: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    display: flex; justify-content: center; align-items: center; gap: 16px;
+    font-family:'Instrument Sans', sans-serif;
+    font-size: 11px; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: .16em; text-transform: uppercase;
+  }
+  .announce::before{
+    content:''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold); display: inline-block;
+    box-shadow: 0 0 8px rgba(236,169,72,0.6);
+  }
+  .announce a{ color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;}
+  .announce a .arr{ transition: transform .14s;}
+  .announce a:hover .arr{ transform: translateX(4px);}
+
+  /* ── TOP NAV — sticky + morph from floating pill to full-width bar ── */
+  .topnav-wrap{
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 56px 80px 0;
+    pointer-events: none;
+    transition: padding 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .topnav-wrap.scrolled{ padding: 0;}
+  .topnav{
+    pointer-events: auto;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: rgba(10, 18, 38, 0.55);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 32px;
+    transition: max-width 0.55s cubic-bezier(0.25,0.1,0.25,1),
+                border-radius 0.55s cubic-bezier(0.25,0.1,0.25,1),
+                padding 0.55s cubic-bezier(0.25,0.1,0.25,1),
+                background 0.55s ease,
+                border-color 0.55s ease,
+                box-shadow 0.55s ease;
+  }
+  .topnav-wrap.scrolled .topnav{
+    max-width: 100%;
+    border-radius: 0;
+    padding: 16px 56px;
+    background: rgba(0, 11, 33, 0.94);
+    border-color: rgba(255,255,255,0.04);
+    border-width: 0 0 1px 0;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  }
+  .topnav .brand{
+    display: flex; align-items: center; gap: 14px;
+    cursor: pointer;
+  }
+  .topnav .brand .logo-circle{
+    width: 56px; height: 56px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  }
+  .topnav .brand .logo-circle img{
+    width: 100%; height: 100%; object-fit: contain;
+  }
+  .topnav .brand .brand-text{
+    color: #fff;
+    line-height: 1.2;
+  }
+  .topnav .brand .brand-text .name{
+    font-family:'Secular One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .topnav .brand .brand-text .sub{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: .28em;
+    margin-top: 2px;
+  }
+  .topnav .right{
+    display: flex; align-items: center; gap: 36px;
+  }
+  .topnav nav{
+    display: flex; gap: 36px;
+  }
+  .topnav nav a{
+    font-family:'Instrument Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    padding: 6px 0;
+    position: relative;
+    transition: color .14s;
+  }
+  .topnav nav a::before{
+    content:'·'; position:absolute;
+    left: 50%; bottom: -10px; transform: translateX(-50%);
+    color: var(--gold); opacity: 0;
+    transition: opacity .18s;
+    font-size: 16px; line-height: 0;
+  }
+  .topnav nav a:hover{ color: #fff;}
+  .topnav nav a:hover::before, .topnav nav a.active::before{ opacity: 1;}
+  .topnav nav a.active{ color: #fff;}
+  .lang-toggle{
+    font-family:'Instrument Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: .2em; text-transform: uppercase;
+    cursor: pointer; transition: color .14s;
+    padding-left: 12px;
+    border-left: 1px solid rgba(255,255,255,0.18);
+  }
+  .lang-toggle:hover{ color: var(--gold);}
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .hero .video-bg{
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=2400&q=85&auto=format&fit=crop');
+    background-size: cover; background-position: center;
+    transform: scale(1.04);
+    animation: kenburns 28s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{
+    0%{ transform: scale(1.04) translateX(0);}
+    100%{ transform: scale(1.12) translateX(-2%);}
+  }
+  .hero .video-bg::after{
+    content:''; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,11,33,0.55) 0%, rgba(0,11,33,0.30) 25%, rgba(0,11,33,0.35) 55%, rgba(0,11,33,0.92) 100%),
+      linear-gradient(90deg, rgba(0,11,33,0.55) 0%, transparent 55%);
+  }
+  .hero .micro-grid{
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+    background-size: 96px 96px;
+    mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 90%);
+    pointer-events: none;
+  }
+
+  .hero-content{
+    position: absolute; left: 56px; right: 56px; bottom: 56px;
+    z-index: 5;
+  }
+  .hero-content .copy{ max-width: 720px;}
+  .hero-content .kicker{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: .34em;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .hero-content .kicker::before{
+    content:''; display: inline-block; width: 28px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-content .kicker .b{ color: var(--gold);}
+  .hero-content h1{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: clamp(36px, 4.2vw, 64px);
+    line-height: 0.95; letter-spacing: -0.018em;
+    text-transform: uppercase;
+    margin: 0 0 28px;
+    color: #ffffff;
+    max-width: 720px;
+  }
+  .hero-content h1 span{ display: block;}
+  .hero-content h1 .gold{ color: var(--gold); position: relative;}
+  .hero-content h1 .gold::after{
+    content:''; position: absolute; left: 0; right: 0; bottom: -4px;
+    height: 3px; background: var(--gold); opacity: 0.22;
+  }
+
+  .hero-cta{ display: flex; gap: 22px; align-items: center;}
+  .btn-pill{
+    background: var(--gold);
+    color: #000b21;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family:'Instrument Sans', sans-serif;
+    font-weight: 700; font-size: 11px;
+    letter-spacing: .22em; text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: background .14s, transform .14s, box-shadow .14s;
+  }
+  .btn-pill:hover{
+    background: #f5b860; transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(236,169,72,0.35);
+  }
+  .btn-pill .arr{ font-family:'Inter'; font-weight: 400; font-size: 14px;}
+  .hero-cta .ghost{
+    background: transparent; border: none;
+    color: rgba(255,255,255,0.85);
+    font-family:'Instrument Sans', sans-serif;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: .22em; text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 6px 4px;
+    transition: color .14s;
+  }
+  .hero-cta .ghost:hover{ color: var(--gold);}
+  .hero-cta .ghost:hover .play-circle{ border-color: var(--gold); background: rgba(236,169,72,0.1);}
+  .hero-cta .play-circle{
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.4);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 10px;
+    transition: border-color .14s, background .14s;
+  }
+
+  /* ── ABOUT ────────────────────────────────────────────── */
+  .about{
+    display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px;
+    align-items: start;
+  }
+  .about-copy h3{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: clamp(36px, 3.4vw, 52px);
+    line-height: 1.0; letter-spacing: -0.018em;
+    text-transform: uppercase;
+    color: var(--ink); margin: 0 0 30px;
+    max-width: 580px;
+  }
+  .about-copy h3 .gold{ color: var(--gold);}
+  .about-copy .lede{
+    font-size: 18px; line-height: 1.55;
+    color: var(--ink); font-weight: 400;
+    max-width: 560px; margin: 0 0 24px;
+  }
+  .about-copy .body{
+    color: var(--ink-soft); font-size: 14.5px; line-height: 1.7;
+    max-width: 540px;
+  }
+  .about-copy .body p{ margin: 0 0 14px;}
+  .about-copy .body .pull{
+    margin: 28px 0;
+    padding: 18px 0 18px 24px;
+    border-left: 2px solid var(--gold);
+    color: var(--ink);
+    font-family:'Secular One', sans-serif;
+    font-size: 22px; line-height: 1.3; font-weight: 400;
+    letter-spacing: -0.008em;
+    max-width: 480px;
+  }
+  .about-copy .body .pull .who{
+    display: block;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: .26em; text-transform: uppercase;
+    margin-top: 12px;
+  }
+  .stats-row{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    margin-top: 44px;
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+  }
+  .stat-il{
+    padding: 24px 24px 22px 0;
+    border-right: 1px solid var(--line);
+  }
+  .stat-il:last-child{ border-right: none;}
+  .stat-il .n{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: 52px; line-height: 1;
+    color: var(--ink); letter-spacing: -0.02em;
+  }
+  .stat-il .n .u{ font-size: 18px; color: var(--gold); margin-left: 4px;}
+  .stat-il .l{
+    font-family:'Bebas Neue', sans-serif; font-size: 12px;
+    color: var(--ink-mute); letter-spacing: .26em; text-transform: uppercase;
+    margin-top: 12px;
+  }
+  .about-imgs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 320px 240px;
+    gap: 14px;
+  }
+  .about-imgs .img-wrap{
+    position: relative; overflow: hidden;
+    background: var(--bg-3);
+    box-shadow: var(--shadow-md);
+  }
+  .about-imgs .img-wrap.big{ grid-column: 1 / 3;}
+  .about-imgs .img-wrap img{
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.94) saturate(0.96);
+    transition: transform .8s ease;
+  }
+  .about-imgs .img-wrap:hover img{ transform: scale(1.04);}
+  .about-imgs .img-wrap .caption{
+    position: absolute; bottom: 12px; left: 14px;
+    font-family:'Bebas Neue', sans-serif; font-size: 11px;
+    color: #fff; letter-spacing: .24em; text-transform: uppercase;
+    background: rgba(0,11,33,0.7);
+    padding: 4px 10px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ── NEWS ───────────────────────────────────────────── */
+  .news-grid{
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .news-card{
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column;
+    cursor: pointer;
+    transition: transform .2s ease, border-color .18s, box-shadow .2s;
+    overflow: hidden;
+  }
+  .news-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: var(--shadow-md);
+  }
+  .news-card .thumb{
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+  }
+  .news-card .thumb img{
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .6s ease;
+  }
+  .news-card:hover .thumb img{ transform: scale(1.05);}
+  .news-card .thumb .tag-overlay{
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(255,255,255,0.96);
+    color: var(--ink);
+    padding: 5px 12px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+  }
+  .news-card .body{
+    padding: 24px 24px 28px;
+    display: flex; flex-direction: column; gap: 14px;
+    flex: 1;
+  }
+  .news-card .meta{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: .24em; text-transform: uppercase;
+  }
+  .news-card h4{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: 19px; line-height: 1.18;
+    text-transform: uppercase;
+    letter-spacing: -0.008em;
+    color: var(--ink);
+    margin: 0;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .news-card .ex{
+    font-size: 13.5px; color: var(--ink-soft);
+    line-height: 1.55; margin: 0;
+    flex: 1;
+  }
+  .news-card .read{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 12px; color: var(--gold-deep);
+    letter-spacing: .26em; text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 4px;
+  }
+  .news-card .read .arr{ transition: transform .14s; font-family:'Inter';}
+  .news-card:hover .read .arr{ transform: translateX(5px);}
+  .news-foot{
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 40px;
+    font-family:'Instrument Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    color: var(--ink-mute);
+    letter-spacing: .16em; text-transform: uppercase;
+  }
+  .news-foot .more-link{
+    color: var(--ink); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: .28em;
+    padding: 12px 22px;
+    border: 1px solid var(--ink);
+    border-radius: 99px;
+    transition: background .14s, color .14s;
+  }
+  .news-foot .more-link:hover{ background: var(--ink); color: var(--bg);}
+
+  /* ── ACTIVITIES (extracurriculars — bento grid) ─────── */
+  .acts-intro{
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: end;
+    margin-bottom: 40px;
+  }
+  .acts-intro h3{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: clamp(32px, 3vw, 44px);
+    line-height: 1.02; letter-spacing: -0.012em;
+    text-transform: uppercase;
+    color: var(--ink); margin: 0 0 16px;
+    max-width: 560px;
+  }
+  .acts-intro h3 .gold{ color: var(--gold);}
+  .acts-intro p{
+    font-size: 15.5px; color: var(--ink-soft);
+    line-height: 1.6; margin: 0; max-width: 460px;
+  }
+  .acts-filters{
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .acts-filters .chip{
+    border: 1px solid var(--line-2);
+    background: transparent;
+    color: var(--ink-soft);
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 12px; letter-spacing: .24em; text-transform: uppercase;
+    cursor: pointer;
+    transition: background .14s, color .14s, border-color .14s;
+  }
+  .acts-filters .chip:hover{ border-color: var(--ink);}
+  .acts-filters .chip.on{
+    background: var(--ink); color: #fff; border-color: var(--ink);
+  }
+  .acts-filters .count{
+    margin-left: auto;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: .24em; text-transform: uppercase;
+    align-self: center;
+  }
+
+  .bento{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 260px;
+    gap: 14px;
+  }
+  .tile{
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-3);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .25s, transform .25s;
+  }
+  .tile:hover{ box-shadow: var(--shadow-lg); transform: translateY(-2px);}
+  .tile img{
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.7);
+    transition: filter .35s, transform .8s ease;
+  }
+  .tile:hover img{ filter: brightness(0.55); transform: scale(1.06);}
+  .tile::after{
+    content:''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,11,33,0.0) 30%, rgba(0,11,33,0.55) 65%, rgba(0,11,33,0.92) 100%);
+    pointer-events: none;
+  }
+  .tile .body{
+    position: absolute; left: 0; right: 0; bottom: 0;
+    z-index: 2;
+    padding: 22px 24px 24px;
+    color: #fff;
+  }
+  .tile .body .cat{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 11px; color: var(--gold);
+    letter-spacing: .28em; text-transform: uppercase;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  .tile .body h5{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: 22px; line-height: 1.05;
+    margin: 0 0 6px;
+    text-transform: uppercase;
+    letter-spacing: -0.008em;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .tile.big .body h5, .tile.col-2 .body h5{ font-size: 36px;}
+  .tile .body .desc{
+    font-size: 13px; color: rgba(255,255,255,0.78);
+    line-height: 1.5;
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, margin-top .3s ease;
+  }
+  .tile:hover .body .desc{ max-height: 100px; margin-top: 6px;}
+  .tile .schedule{
+    position: absolute; top: 16px; right: 16px;
+    z-index: 3;
+    background: rgba(255,255,255,0.96);
+    color: var(--ink);
+    padding: 6px 12px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 10px;
+    opacity: 0; transform: translateY(-6px);
+    transition: opacity .28s ease, transform .28s ease;
+  }
+  .tile:hover .schedule{ opacity: 1; transform: translateY(0);}
+  .tile .schedule b{
+    font-weight: 400; color: var(--gold-deep);
+    letter-spacing: .18em;
+  }
+  .tile .schedule .sep{
+    width: 1px; height: 10px; background: var(--line-2);
+    display: inline-block;
+  }
+  .tile.col-2{ grid-column: span 2;}
+  .tile.row-2{ grid-row: span 2;}
+
+  .acts-foot{
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 40px;
+  }
+  .acts-foot .legend{
+    font-family:'Bebas Neue', sans-serif; font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: .26em; text-transform: uppercase;
+  }
+  .acts-foot .all-link{
+    color: var(--ink); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 14px; letter-spacing: .28em;
+    padding: 13px 24px;
+    border: 1px solid var(--ink);
+    border-radius: 99px;
+    transition: background .14s, color .14s;
+  }
+  .acts-foot .all-link:hover{ background: var(--ink); color: var(--bg);}
+  .acts-foot .all-link .arr{ font-family:'Inter'; transition: transform .14s;}
+  .acts-foot .all-link:hover .arr{ transform: translateX(4px);}
+
+  /* ── EVENTS (replacing calendar) ───────────────────── */
+  .ev-intro{
+    display: flex; justify-content: space-between; align-items: end;
+    margin-bottom: 32px;
+    gap: 32px;
+  }
+  .ev-intro p{
+    font-size: 16px; color: var(--ink-soft);
+    line-height: 1.6; margin: 0; max-width: 500px;
+  }
+  .ev-views{
+    display: flex; border: 1px solid var(--line-2);
+    border-radius: 999px; overflow: hidden;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 12px; letter-spacing: .24em;
+  }
+  .ev-views .v{
+    padding: 10px 18px; color: var(--ink-mute);
+    cursor: pointer; text-transform: uppercase;
+    transition: background .14s, color .14s;
+  }
+  .ev-views .v.on{ background: var(--ink); color: #fff;}
+  .ev-views .v:hover:not(.on){ color: var(--ink);}
+
+  .ev-list{
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .ev-row{
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    grid-template-columns: 130px 1.4fr 1fr auto;
+    gap: 32px;
+    align-items: center;
+    padding: 24px 28px;
+    cursor: pointer;
+    transition: transform .18s, box-shadow .18s, border-color .18s;
+  }
+  .ev-row:hover{
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gold);
+  }
+  .ev-row .date-box{
+    text-align: center;
+    border-right: 1px solid var(--line);
+    padding-right: 16px;
+  }
+  .ev-row .date-box .day{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: 56px; line-height: 1;
+    color: var(--ink); letter-spacing: -0.02em;
+  }
+  .ev-row .date-box .mo{
+    font-family:'Bebas Neue', sans-serif; font-size: 13px;
+    color: var(--gold-deep); letter-spacing: .3em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .ev-row .date-box .dow{
+    font-family:'Bebas Neue', sans-serif; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: .26em; text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .ev-row.featured .date-box .day{ color: var(--gold);}
+  .ev-row .ev-body .cat{
+    font-family:'Bebas Neue', sans-serif; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: .26em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .ev-row .ev-body .cat .badge{
+    background: rgba(236,169,72,0.16);
+    color: var(--gold-deep);
+    padding: 3px 10px;
+    margin-right: 12px;
+    border-radius: 99px;
+  }
+  .ev-row .ev-body h5{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: 24px; line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--ink); margin: 0 0 6px;
+    letter-spacing: -0.008em;
+  }
+  .ev-row .ev-body .desc{
+    font-size: 13.5px; color: var(--ink-soft);
+    line-height: 1.5; margin: 0;
+  }
+  .ev-row .ev-meta{
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .ev-row .ev-meta .row{
+    display: flex; align-items: center; gap: 12px;
+    font-family:'Instrument Sans', sans-serif; font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .ev-row .ev-meta .row .lbl{
+    font-family:'Bebas Neue', sans-serif; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: .22em; text-transform: uppercase;
+    width: 60px; flex-shrink: 0;
+  }
+  .ev-row .rsvp{
+    background: var(--ink); color: #fff;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 99px;
+    font-family:'Instrument Sans', sans-serif;
+    font-weight: 700; font-size: 11px;
+    letter-spacing: .22em; text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: background .14s;
+  }
+  .ev-row .rsvp:hover{ background: var(--gold); color: var(--ink);}
+  .ev-row.community .rsvp{
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--line-2);
+  }
+  .ev-row.community .rsvp:hover{ background: var(--ink); color: #fff; border-color: var(--ink);}
+  .ev-foot{
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 32px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: .24em; text-transform: uppercase;
+  }
+  .ev-foot .all-link{
+    color: var(--ink); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .ev-foot .all-link .arr{ font-family:'Inter'; transition: transform .14s;}
+  .ev-foot .all-link:hover .arr{ transform: translateX(4px);}
+
+  /* ── CONTACT ──────────────────────────────────────── */
+  .contact{
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px;
+    align-items: start;
+  }
+  .contact-side{ display: flex; flex-direction: column; gap: 22px;}
+  .contact-side h3{
+    font-family:'Secular One', sans-serif; font-weight: 400;
+    font-size: clamp(38px, 3.6vw, 56px);
+    line-height: 1.0; letter-spacing: -0.012em;
+    text-transform: uppercase;
+    color: var(--ink); margin: 0;
+  }
+  .contact-side h3 .gold{ color: var(--gold);}
+  .contact-side .lede{
+    font-size: 16px; color: var(--ink-soft);
+    line-height: 1.6; margin: 0; max-width: 480px;
+  }
+  .contact-info{
+    margin-top: 14px;
+    display: flex; flex-direction: column;
+    border-top: 1px solid var(--line-2);
+  }
+  .info-row{
+    display: grid; grid-template-columns: 120px 1fr; gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .info-row .l{
+    font-family:'Bebas Neue', sans-serif; font-size: 12px;
+    color: var(--ink-mute); letter-spacing: .26em; text-transform: uppercase;
+  }
+  .info-row .v{ font-size: 15px; color: var(--ink); font-weight: 500;}
+  .info-row .v.mono{
+    font-family:'Instrument Sans', sans-serif;
+    font-size: 14px; letter-spacing: 0.01em;
+  }
+  .map-wrap{
+    height: 220px; margin-top: 22px;
+    position: relative; overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .map-wrap img{
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.85) saturate(0.7);
+  }
+  .map-wrap .pin{
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 14px; height: 14px;
+    background: var(--gold); border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(236,169,72,0.18), 0 0 14px var(--gold);
+    z-index: 2;
+  }
+  .map-wrap .pin::after{
+    content:''; position: absolute; inset: -8px;
+    border: 1px solid var(--gold); border-radius: 50%;
+    animation: pinpulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pinpulse{
+    0%{ transform: scale(0.6); opacity: 1;}
+    100%{ transform: scale(2.4); opacity: 0;}
+  }
+  .map-wrap .coord{
+    position: absolute; bottom: 14px; left: 16px;
+    z-index: 2;
+    font-family:'Bebas Neue', sans-serif; font-size: 12px;
+    color: #fff; letter-spacing: .22em;
+    background: rgba(0,11,33,0.7);
+    padding: 4px 10px;
+  }
+
+  .contact-form{
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    padding: 36px 40px 40px;
+  }
+  .form-head{
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 28px;
+    font-family:'Bebas Neue', sans-serif; font-size: 12px;
+    color: var(--ink-mute); letter-spacing: .26em; text-transform: uppercase;
+  }
+  .form-head .step{ color: var(--gold);}
+  .field{ margin-bottom: 22px;}
+  .field label{
+    display: block;
+    font-family:'Bebas Neue', sans-serif; font-size: 12px;
+    color: var(--ink-mute); letter-spacing: .26em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .field .inp{
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--line-2);
+    color: var(--ink);
+    padding: 10px 0 12px;
+    font-family:'Inter', sans-serif;
+    font-size: 16px;
+    transition: border-color .14s;
+  }
+  .field .inp::placeholder{ color: var(--ink-mute);}
+  .field .inp:focus{ outline: none; border-bottom-color: var(--gold);}
+  .field.ta .inp{
+    min-height: 110px; resize: vertical;
+    border: 1px solid var(--line-2);
+    padding: 12px 14px;
+  }
+  .form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px;}
+  .form-footer{
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 14px; padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .form-footer .note{
+    font-family:'Bebas Neue', sans-serif; font-size: 12px;
+    color: var(--ink-mute); letter-spacing: .24em; text-transform: uppercase;
+  }
+  .form-footer .note b{ color: var(--ink);}
+  .submit-btn{
+    background: var(--ink); color: #fff;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 99px;
+    font-family:'Instrument Sans', sans-serif;
+    font-weight: 700; font-size: 12px;
+    letter-spacing: .22em; text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 12px;
+    transition: background .14s, transform .14s;
+  }
+  .submit-btn:hover{ background: var(--gold); color: var(--ink); transform: translateY(-1px);}
+
+  /* ── PARTNERS strip (was Developed By, now no label) ── */
+  .partners{
+    margin-top: 120px;
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex; justify-content: center; align-items: center;
+    gap: 64px;
+  }
+  .partners .partner{
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    opacity: 0.7;
+    transition: opacity .2s;
+  }
+  .partners .partner:hover{ opacity: 1;}
+  .partners .partner .badge{
+    height: 64px; width: 64px;
+    border-radius: 50%;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    padding: 10px;
+    box-shadow: var(--shadow-sm);
+  }
+  .partners .partner.light-bg .badge{
+    background: #ffffff;
+    border: 1px solid var(--line);
+  }
+  .partners .partner .badge img{
+    height: 100%; width: auto; object-fit: contain;
+  }
+  .partners .partner .name{
+    font-family:'Bebas Neue', sans-serif; font-size: 10px;
+    color: var(--ink-mute); letter-spacing: .26em; text-transform: uppercase;
+  }
+  .partners .x{
+    color: var(--line-3);
+    font-family:'Secular One', sans-serif; font-size: 22px;
+  }
+
+  /* ── FOOTER (dark navy) ──────────────────────────── */
+  .footer-big{
+    margin-top: 0;
+    padding: 80px 56px 36px;
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .footer-top{
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr) 1.2fr;
+    gap: 56px;
+  }
+  .footer-brand{ display: flex; flex-direction: column; gap: 18px;}
+  .footer-brand .logo-grp{ display: flex; gap: 14px; align-items: center;}
+  .footer-brand .logo-grp .mark{
+    width: 64px; height: 64px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 6px;
+  }
+  .footer-brand .logo-grp .mark img{
+    width: 100%; height: 100%; object-fit: contain;
+  }
+  .footer-brand .logo-grp .nm{
+    font-family:'Secular One', sans-serif;
+    font-size: 22px; color: #fff;
+    text-transform: uppercase; letter-spacing: .02em; line-height: 1.05;
+  }
+  .footer-brand .logo-grp .nm small{
+    display: block;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 11px; color: rgba(255,255,255,0.5);
+    letter-spacing: .3em; font-weight: 400;
+    margin-top: 6px;
+  }
+  .footer-brand p{
+    font-size: 13.5px; color: rgba(255,255,255,0.7);
+    max-width: 300px; line-height: 1.65; margin: 0;
+  }
+  .footer-col h5{
+    font-family:'Bebas Neue', sans-serif; font-size: 14px;
+    color: var(--gold); letter-spacing: .3em; text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .footer-col ul{
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .footer-col ul a{
+    color: rgba(255,255,255,0.78); text-decoration: none;
+    font-size: 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 2px 0;
+    transition: color .14s, padding-left .18s;
+  }
+  .footer-col ul a:hover{ color: var(--gold); padding-left: 4px;}
+  .footer-col ul a .arr{
+    font-family:'Inter', sans-serif; opacity: 0;
+    transition: opacity .14s, transform .14s;
+  }
+  .footer-col ul a:hover .arr{ opacity: .8; transform: translateX(2px);}
+  .newsletter-box h5{
+    font-family:'Bebas Neue', sans-serif; font-size: 14px;
+    color: var(--gold); letter-spacing: .3em; text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .newsletter-box .nlhint{
+    font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.55;
+    margin: 0 0 14px;
+  }
+  .newsletter-form{ display: flex; border-bottom: 1px solid rgba(255,255,255,0.2);}
+  .newsletter-form input{
+    flex: 1; background: transparent; border: none;
+    color: #fff;
+    padding: 10px 0;
+    font-family:'Inter', sans-serif; font-size: 14px;
+    outline: none;
+  }
+  .newsletter-form input::placeholder{ color: rgba(255,255,255,0.4);}
+  .newsletter-form button{
+    background: transparent; border: none;
+    color: var(--gold);
+    padding: 0 6px;
+    font-family:'Inter', sans-serif; font-size: 14px;
+    cursor: pointer;
+  }
+  .socials{ display: flex; gap: 8px; margin-top: 22px;}
+  .socials .s{
+    width: 38px; height: 38px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family:'Bebas Neue', sans-serif; font-size: 11px;
+    color: rgba(255,255,255,0.7); letter-spacing: .14em;
+    cursor: pointer;
+    transition: border-color .14s, color .14s, background .14s;
+  }
+  .socials .s:hover{ border-color: var(--gold); color: var(--gold); background: rgba(236,169,72,0.06);}
+
+  .footer-bottom{
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family:'Bebas Neue', sans-serif; font-size: 11px;
+    color: rgba(255,255,255,0.45); letter-spacing: .28em; text-transform: uppercase;
+    flex-wrap: wrap; gap: 14px;
+  }
+  .footer-bottom .left{ display: flex; gap: 24px; align-items: center;}
+  .footer-bottom .right{ display: flex; gap: 24px; align-items: center;}
+  .footer-bottom b{ color: var(--gold); font-weight: 400;}
+  .footer-bottom a{ color: rgba(255,255,255,0.6); text-decoration: none; transition: color .14s;}
+  .footer-bottom a:hover{ color: var(--gold);}
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+<script type="text/babel" data-presets="env,react">
+
+const { useState, useEffect } = React;
+
+const IMG = {
+  hero: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=2400&q=85&auto=format&fit=crop',
+  aboutBig: 'https://images.unsplash.com/photo-1562774053-701939374585?w=1800&q=80&auto=format&fit=crop',
+  about1: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=900&q=80&auto=format&fit=crop',
+  about2: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=900&q=80&auto=format&fit=crop',
+  news1: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80&auto=format&fit=crop',
+  news2: 'https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=900&q=80&auto=format&fit=crop',
+  news3: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=900&q=80&auto=format&fit=crop',
+  news4: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&q=80&auto=format&fit=crop',
+  actRobot: 'https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=1200&q=80&auto=format&fit=crop',
+  actChoir: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=900&q=80&auto=format&fit=crop',
+  actArt: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80&auto=format&fit=crop',
+  actBeit: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=1400&q=80&auto=format&fit=crop',
+  actTheatre: 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=900&q=80&auto=format&fit=crop',
+  actSport: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=80&auto=format&fit=crop',
+  actDebate: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=900&q=80&auto=format&fit=crop',
+  actChesed: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=900&q=80&auto=format&fit=crop',
+  map: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1400&q=80&auto=format&fit=crop'
+};
+
+/* ── ANNOUNCE ──────────────────────────────────────── */
+function Announce() {
+  return (
+    <div className="announce">
+      <span>Admissions open · 5786 / 2026–27</span>
+      <span style={{ opacity: .4 }}>·</span>
+      <a href="#contact">Begin application <span className="arr">→</span></a>
+    </div>);
+
+}
+
+/* ── TOP NAV (logo left, menu right) ──────────────── */
+function TopNav() {
+  return (
+    <div className="topnav">
+      <div className="brand">
+        <div className="logo-circle">
+          <img src="assets/tzvia-logo.png" alt="Ulpenat Tzvia" />
+        </div>
+        <div className="brand-text">
+          <div className="name">Ulpenat Tzvia</div>
+          <div className="sub">Kokhav Ya'akov</div>
+        </div>
+      </div>
+      <div className="right">
+        <nav>
+          <a href="#about" className="active">About</a>
+          <a href="#activities">Activities</a>
+          <a href="#news">News</a>
+          <a href="#events">Events</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <span className="lang-toggle">EN · עב</span>
+      </div>
+    </div>);
+
+}
+
+/* ── HERO ──────────────────────────────────────────── */
+function Hero() {
+  return (
+    <section className="hero zone-dark" style={{ paddingTop: 0, marginTop: 0 }}>
+      <div className="video-bg"></div>
+      <div className="micro-grid"></div>
+
+      <Announce />
+      <TopNav />
+
+      <div className="hero-content">
+        <div className="copy">
+          <div className="kicker">
+            ADMISSIONS · 5786 <span className="b">/</span> 2026–27
+          </div>
+          <h1>
+            <span>A SCHOOL OF</span>
+            <span>SCHOLARSHIP</span>
+            <span className="gold">AND PURPOSE.</span>
+          </h1>
+          <div className="hero-cta">
+            <button className="btn-pill">Begin Application <span className="arr">→</span></button>
+            <button className="ghost">
+              <span className="play-circle">▶</span>
+              Watch the Film
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+/* ── SECTION HEADER (no meta) ─────────────────────── */
+function SectHd({ num, title, gold }) {
+  return (
+    <div className="sect-hd">
+      <div className="num">{num}</div>
+      <h2>
+        {title} {gold && <span className="gold">{gold}</span>}<span className="stop">.</span>
+      </h2>
+    </div>);
+
+}
+
+/* ── ABOUT ───────────────────────────────────────── */
+function About() {
+  return (
+    <section id="about">
+      <SectHd num="02   ABOUT US" title="THE" gold="INSTITUTION" />
+      <div className="about">
+        <div className="about-copy">
+          <h3>An institution built on <span className="gold">Torah</span>, sharpened by inquiry.</h3>
+          <p className="lede">Ulpenat Tzvia Kokhav Ya'akov is a religious-Zionist ulpana for young women — a community where the beit midrash, the lab, and the studio share the same blueprint.</p>
+          <div className="body">
+            <p>For twenty-eight years, our campus in the heart of Mateh Binyamin has formed students who are at home both in tradition and in the world. We learn rigorously, we live in community, and we expect every student to leave knowing how to ask better questions than she did when she arrived.</p>
+            <div className="pull">
+              "We don't teach our students to choose between Torah and the world — we teach them that the world is where Torah is studied most honestly."
+              <span className="who">— Head of School</span>
+            </div>
+            <p>Our faculty includes leading women scholars, scientists, and educators. Graduates go on to sherut leumi, the IDF, and Israel's top universities — and stay in touch long after.</p>
+          </div>
+          <div className="stats-row">
+            <div className="stat-il">
+              <div className="n">28<span className="u">YRS</span></div>
+              <div className="l">Operating since 1998</div>
+            </div>
+            <div className="stat-il">
+              <div className="n">420</div>
+              <div className="l">Active students</div>
+            </div>
+            <div className="stat-il">
+              <div className="n">98<span className="u">%</span></div>
+              <div className="l">Matriculation rate</div>
+            </div>
+          </div>
+        </div>
+        <div className="about-imgs">
+          <div className="img-wrap big">
+            <img src={IMG.aboutBig} alt="" />
+            <span className="caption">Main Campus · Kokhav Ya'akov</span>
+          </div>
+          <div className="img-wrap">
+            <img src={IMG.about1} alt="" />
+            <span className="caption">Beit Midrash</span>
+          </div>
+          <div className="img-wrap">
+            <img src={IMG.about2} alt="" />
+            <span className="caption">STEM · Lab</span>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+/* ── ACTIVITIES (extracurriculars bento) ─────────── */
+const categories = ['ALL', 'TORAH', 'ARTS', 'SCIENCE', 'SPORTS', 'COMMUNITY'];
+const activities = [
+{ cat: 'SCIENCE', name: 'ROBOTICS LAB', sched: ['MON·THU', '16:30'], img: 'actRobot', desc: 'Build, code, and compete. FIRST team founded in 2019.', big: true },
+{ cat: 'ARTS', name: 'CHOIR', sched: ['TUE', '15:30'], img: 'actChoir', desc: 'Two ensembles · solo and harmony work.' },
+{ cat: 'ARTS', name: 'VISUAL ART', sched: ['WED', '16:00'], img: 'actArt', desc: 'Studio with full painting, drawing, and ceramics.' },
+{ cat: 'TORAH', name: 'BEIT MIDRASH CHAVRUTA', sched: ['SUN–THU', '07:30'], img: 'actBeit', desc: 'Optional pre-dawn learning · seder fixed by age.', wide: true },
+{ cat: 'ARTS', name: 'THEATRE', sched: ['MON', '17:00'], img: 'actTheatre', desc: 'Two productions a year · all roles by students.' },
+{ cat: 'SPORTS', name: 'BASKETBALL', sched: ['TUE·THU', '17:00'], img: 'actSport', desc: 'Inter-school league · two age divisions.' },
+{ cat: 'TORAH', name: 'DEBATE & MACHSHAVA', sched: ['WED', '19:00'], img: 'actDebate', desc: 'Philosophy circle · monthly public lectures.', tall: true },
+{ cat: 'COMMUNITY', name: 'CHESED', sched: ['FRI', '09:00'], img: 'actChesed', desc: 'Community service · ongoing local projects.' }];
+
+function Activities() {
+  const [active, setActive] = useState('ALL');
+  const filtered = active === 'ALL' ? activities : activities.filter((a) => a.cat === active);
+
+  return (
+    <section id="activities">
+      <SectHd num="04   ACTIVITIES" title="LIFE BEYOND" gold="THE CLASSROOM" />
+      <div className="acts-intro">
+        <div>
+          <h3>Twenty-four ways to <span className="gold">find your people</span>.</h3>
+          <p>Every Tzvia student picks at least one activity each year. Some are competitive teams, some are quiet studios, some are pre-dawn chavrutas — all are part of the school day.</p>
+        </div>
+      </div>
+      <div className="acts-filters">
+        {categories.map((c, i) =>
+        <button key={i}
+        className={`chip ${active === c ? 'on' : ''}`}
+        onClick={() => setActive(c)}>
+            {c}
+          </button>
+        )}
+        <div className="count">{filtered.length} OF {activities.length}</div>
+      </div>
+      <div className="bento">
+        {filtered.map((a, i) => {
+          const cls = ['tile', a.big ? 'col-2 row-2' : '', a.wide ? 'col-2' : '', a.tall ? 'row-2' : ''].join(' ').trim();
+          return (
+            <article key={i} className={cls} style={{ height: "144.75px" }}>
+              <img src={IMG[a.img]} alt={a.name} style={{ height: "26px" }} />
+              <div className="schedule">
+                <b>{a.sched[0]}</b>
+                <span className="sep"></span>
+                <span>{a.sched[1]}</span>
+              </div>
+              <div className="body" style={{ height: "144.75px" }}>
+                <div className="cat">{a.cat}</div>
+                <h5>{a.name}</h5>
+                <div className="desc">{a.desc}</div>
+              </div>
+            </article>);
+
+        })}
+      </div>
+      <div className="acts-foot">
+        <div className="legend">Showing {filtered.length} · {activities.length} total activities</div>
+        <a className="all-link" href="#">See All Activities <span className="arr">→</span></a>
+      </div>
+    </section>);
+
+}
+
+/* ── NEWS ────────────────────────────────────────── */
+const newsItems = [
+{ tag: 'ANNOUNCEMENT', date: '2026 · 05 · 12', img: 'news1',
+  title: 'New STEM wing breaks ground next semester',
+  ex: 'A 1,200 sqm addition with new labs, a makerspace, and a dedicated robotics studio.' },
+{ tag: 'ACHIEVEMENT', date: '2026 · 05 · 02', img: 'news2',
+  title: 'Tenth grade takes the national Tanakh quiz',
+  ex: 'For the second consecutive year, our team brought home the regional title.' },
+{ tag: 'EVENT', date: '2026 · 04 · 28', img: 'news3',
+  title: 'Open House — June 4th, 17:00',
+  ex: 'Prospective students and families are welcome to tour campus and meet faculty.' },
+{ tag: 'ALUMNAE', date: '2026 · 04 · 15', img: 'news4',
+  title: 'Spotlight — Dr. R. Cohen on neuroscience',
+  ex: 'From Tzvia to Tel Aviv University — research, family, meaning.' }];
+
+function News() {
+  return (
+    <section id="news">
+      <SectHd num="03   DISPATCH" title="LATEST FROM" gold="CAMPUS" />
+      <div className="news-grid">
+        {newsItems.map((n, i) =>
+        <article key={i} className="news-card">
+            <div className="thumb">
+              <img src={IMG[n.img]} alt={n.title} />
+              <span className="tag-overlay">{n.tag}</span>
+            </div>
+            <div className="body">
+              <div className="meta">{n.date}</div>
+              <h4>{n.title}</h4>
+              <p className="ex">{n.ex}</p>
+              <a className="read" href="#">Read article <span className="arr">→</span></a>
+            </div>
+          </article>
+        )}
+      </div>
+      <div className="news-foot">
+        <span>04 / 24 ITEMS</span>
+        <a className="more-link" href="#">All Dispatches <span className="arr">→</span></a>
+      </div>
+    </section>);
+
+}
+
+/* ── EVENTS (cards, not calendar) ────────────────── */
+const events = [
+{ day: '04', mo: 'JUN', dow: 'TUE', cat: 'OPEN TO PUBLIC', title: 'OPEN HOUSE · CAMPUS TOUR',
+  desc: 'Prospective students and families welcome — guided tour, mini-classes, and Q&A with faculty.',
+  time: '17:00 – 19:30', loc: 'Main Campus · Building A',
+  featured: true },
+{ day: '07', mo: 'JUN', dow: 'FRI', cat: 'COMMUNITY', title: 'TANAKH BOWL · FINAL ROUND',
+  desc: 'Annual quiz final · students and alumni invited to watch.',
+  time: '09:00 – 11:00', loc: 'Beit Midrash', community: true },
+{ day: '12', mo: 'JUN', dow: 'WED', cat: 'OPEN TO PUBLIC', title: 'YOM HASHAVUA · COMMUNAL LEARNING',
+  desc: 'A full day of public learning · women scholars from across Israel teach side by side.',
+  time: 'All day · 08:00 – 18:00', loc: 'Beit Midrash · open seating' },
+{ day: '15', mo: 'JUN', dow: 'SAT', cat: 'COMMUNITY', title: 'SPRING CONCERT',
+  desc: 'Annual concert · choir, orchestra and the music studio program.',
+  time: '19:30 – 21:30', loc: 'Main Auditorium', community: true },
+{ day: '21', mo: 'JUN', dow: 'FRI', cat: 'OPEN TO PUBLIC', title: '12TH GRADE MATRICULATION',
+  desc: 'Closing ceremony for graduating class · families and alumnae welcome.',
+  time: '10:00 – 12:30', loc: 'Main Auditorium' }];
+
+function Events() {
+  return (
+    <section id="events">
+      <SectHd num="05   EVENTS" title="WHAT'S" gold="COMING UP" />
+      <div className="ev-intro">
+        <p>Public and community events for the next month. Sign up below — limited seating for tours.</p>
+        <div className="ev-views">
+          <span className="v on">Upcoming</span>
+          <span className="v">This month</span>
+          <span className="v">All</span>
+        </div>
+      </div>
+      <div className="ev-list">
+        {events.map((e, i) =>
+        <article key={i} className={`ev-row ${e.featured ? 'featured' : ''} ${e.community ? 'community' : ''}`}>
+            <div className="date-box">
+              <div className="day">{e.day}</div>
+              <div className="mo">{e.mo}</div>
+              <div className="dow">{e.dow}</div>
+            </div>
+            <div className="ev-body">
+              <div className="cat">
+                <span className="badge">{e.cat}</span>
+              </div>
+              <h5>{e.title}</h5>
+              <p className="desc">{e.desc}</p>
+            </div>
+            <div className="ev-meta">
+              <div className="row"><span className="lbl">Time</span>{e.time}</div>
+              <div className="row"><span className="lbl">Where</span>{e.loc}</div>
+            </div>
+            <button className="rsvp">RSVP <span>→</span></button>
+          </article>
+        )}
+      </div>
+      <div className="ev-foot">
+        <span>05 SHOWING · 18 UPCOMING</span>
+        <a className="all-link" href="#">Full Calendar <span className="arr">→</span></a>
+      </div>
+    </section>);
+
+}
+
+/* ── CONTACT ─────────────────────────────────────── */
+function Contact() {
+  return (
+    <section id="contact">
+      <SectHd num="06   CONTACT" title="VISIT, WRITE," gold="APPLY" />
+      <div className="contact">
+        <div className="contact-side">
+          <h3>Come <span className="gold">visit us</span> on campus, or send a note.</h3>
+          <p className="lede">We're a 25-minute drive from Jerusalem. Campus tours are scheduled on Tuesdays and Thursdays — sign up below, or write the office directly.</p>
+          <div className="contact-info">
+            <div className="info-row">
+              <div className="l">Address</div>
+              <div className="v">Kokhav Ya'akov, Mateh Binyamin · IL</div>
+            </div>
+            <div className="info-row">
+              <div className="l">Office</div>
+              <div className="v mono">+972 (0)2 — 000 — 0000</div>
+            </div>
+            <div className="info-row">
+              <div className="l">Admissions</div>
+              <div className="v mono">admissions@ulpenat-tzvia.ac.il</div>
+            </div>
+            <div className="info-row">
+              <div className="l">Hours</div>
+              <div className="v mono">Sun–Thu · 08:00 — 16:30 IDT</div>
+            </div>
+          </div>
+          <div className="map-wrap">
+            <img src={IMG.map} alt="" />
+            <div className="pin"></div>
+            <div className="coord">31.8347° N · 35.3275° E</div>
+          </div>
+        </div>
+
+        <div className="contact-form">
+          <div className="form-head">
+            <span><span className="step">STEP 01</span> / 02 — YOUR DETAILS</span>
+            <span>ENCRYPTED · TLS</span>
+          </div>
+          <div className="form-row">
+            <div className="field">
+              <label>First name</label>
+              <input className="inp" placeholder="Your first name" />
+            </div>
+            <div className="field">
+              <label>Last name</label>
+              <input className="inp" placeholder="Your last name" />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="field">
+              <label>Email</label>
+              <input className="inp" placeholder="you@example.com" />
+            </div>
+            <div className="field">
+              <label>Phone</label>
+              <input className="inp" placeholder="+972 ..." />
+            </div>
+          </div>
+          <div className="field">
+            <label>I'm writing about</label>
+            <input className="inp" placeholder="Admissions · campus tour · general inquiry" />
+          </div>
+          <div className="field ta">
+            <label>Message</label>
+            <textarea className="inp" placeholder="Tell us a little about yourself or your daughter — and how we can help."></textarea>
+          </div>
+          <div className="form-footer">
+            <span className="note">Replies within <b>24h</b> · Sun–Thu</span>
+            <button className="submit-btn">Send Message <span>→</span></button>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+/* ── PARTNERS (replaces "Developed by") ──────────── */
+function Partners() {
+  return (
+    <div className="partners">
+      <div className="partner">
+        <div className="badge"><img src="assets/moe-logo.png" alt="Ministry of Education" /></div>
+        <div className="name">Ministry of Education</div>
+      </div>
+      <div className="x">×</div>
+      <div className="partner light-bg">
+        <div className="badge"><img src="assets/tzvia-logo.png" alt="Tzvia Network" /></div>
+        <div className="name">Tzvia Network</div>
+      </div>
+      <div className="x">×</div>
+      <div className="partner light-bg">
+        <div className="badge"><img src="assets/rekhia-logo.png" alt="Studio Rekhia" /></div>
+        <div className="name">REKHIA STUDIO</div>
+      </div>
+    </div>);
+
+}
+
+/* ── FOOTER ──────────────────────────────────────── */
+function FooterBig() {
+  return (
+    <footer className="footer-big zone-dark">
+      <div className="footer-top">
+        <div className="footer-brand">
+          <div className="logo-grp">
+            <div className="mark"><img src="assets/tzvia-logo.png" alt="Tzvia" /></div>
+            <div className="nm">
+              Ulpenat<br />Tzvia
+              <small>KOKHAV YA'AKOV · 1998</small>
+            </div>
+          </div>
+          <p>A religious-Zionist ulpana for young women at the heart of Mateh Binyamin. Twenty-eight years of scholarship, community, and quiet excellence.</p>
+        </div>
+        <div className="footer-col">
+          <h5>The School</h5>
+          <ul>
+            <li><a href="#about">About <span className="arr">→</span></a></li>
+            <li><a href="#">Faculty <span className="arr">→</span></a></li>
+            <li><a href="#">Beit Midrash <span className="arr">→</span></a></li>
+            <li><a href="#">Campus <span className="arr">→</span></a></li>
+            <li><a href="#">Alumnae <span className="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h5>Admissions</h5>
+          <ul>
+            <li><a href="#contact">Apply 2026–27 <span className="arr">→</span></a></li>
+            <li><a href="#">Tuition <span className="arr">→</span></a></li>
+            <li><a href="#events">Open House <span className="arr">→</span></a></li>
+            <li><a href="#">FAQ <span className="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div className="footer-col">
+          <h5>Life on Campus</h5>
+          <ul>
+            <li><a href="#activities">Activities <span className="arr">→</span></a></li>
+            <li><a href="#events">Events <span className="arr">→</span></a></li>
+            <li><a href="#news">Dispatches <span className="arr">→</span></a></li>
+            <li><a href="#">Publications <span className="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div className="newsletter-box">
+          <h5>Newsletter</h5>
+          <p className="nlhint">A quarterly note from the head of school — community, scholarship, and what's next.</p>
+          <div className="newsletter-form">
+            <input placeholder="your@email" />
+            <button>→</button>
+          </div>
+          <div className="socials">
+            <span className="s">IG</span>
+            <span className="s">FB</span>
+            <span className="s">YT</span>
+            <span className="s">TG</span>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <div className="left">
+          <span>© 2026 · Ulpenat Tzvia Kokhav Ya'akov</span>
+          <span>EST. <b>1998</b></span>
+        </div>
+        <div className="right">
+          <a href="#">Privacy</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </footer>);
+
+}
+
+/* ── ROOT ────────────────────────────────────────── */
+function App() {
+  return (
+    <div>
+      <Hero />
+      <div className="page">
+        <About />
+        <News />
+        <Activities />
+        <Events />
+        <Contact />
+      </div>
+      <div className="page"><Partners /></div>
+      <FooterBig />
+    </div>);
+
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
