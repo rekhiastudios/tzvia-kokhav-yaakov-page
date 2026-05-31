@@ -11,10 +11,42 @@
       "Bash(node -e \"require\\('react-leaflet'\\); console.log\\('ok'\\)\")",
       "Bash(dir \"c:\\\\Users\\\\itzha\\\\portafolio\\\\tzvia-page\\\\public\" /b)",
       "Bash(mkdir -p \"c:/Users/itzha/portafolio/tzvia-page/components/academy\" && mkdir -p \"c:/Users/itzha/portafolio/tzvia-page/app/[locale]/academy/[category]/[activity]\")",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(mkdir -p \"c:/Users/itzha/portafolio/tzvia-page/app/[locale]/about-us\" && mkdir -p \"c:/Users/itzha/portafolio/tzvia-page/components/about\" && echo \"done\")",
+      "Bash(node -e \"const f=require\\('./messages/he.json'\\);console.log\\(JSON.stringify\\(f.resourcesPage,null,2\\)\\)\")",
+      "Bash(node -e \"const f=require\\('./messages/en.json'\\);console.log\\(JSON.stringify\\(f.resourcesPage.forms,null,2\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(awk -F: '$1>=1043 && $1<=1320')",
+      "Bash(npx eslint *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(node *)",
+      "Bash(echo \"he/academy: $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/he/academy\\)\")",
+      "Bash(echo \"en/academy: $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/en/academy\\)\")",
+      "Bash(echo \"he/academy/arts: $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/he/academy/arts\\)\")",
+      "Bash(echo \"he/academy:       $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/he/academy\\)\")",
+      "Bash(echo \"en/academy:       $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/en/academy\\)\")",
+      "Bash(echo \"he/academy/arts:  $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/he/academy/arts\\)\")",
+      "Bash(powershell *)",
+      "PowerShell(Get-CimInstance *)",
+      "PowerShell(Get-Process *)",
+      "Bash(npx next *)",
+      "PowerShell($f=\"C:\\\\Users\\\\itzha\\\\portafolio\\\\tzvia-page\\\\components\\\\about\\\\AboutUsPageClient.tsx\"; $b=[System.IO.File]::ReadAllBytes\\($f\\); \"Length bytes: $\\($b.Length\\)\"; \"CR count: $\\(\\($b | Where-Object {$_ -eq 13}\\).Count\\)\"; \"LF count: $\\(\\($b | Where-Object {$_ -eq 10}\\).Count\\)\")",
+      "PowerShell($f=\"C:\\\\Users\\\\itzha\\\\portafolio\\\\tzvia-page\\\\components\\\\about\\\\AboutUsPageClient.tsx\"; $lines=[System.IO.File]::ReadAllLines\\($f\\); \"Total lines: $\\($lines.Count\\)\"; for\\($i=339;$i -lt 700 -and $i -lt $lines.Count;$i++\\){ \"{0}: {1}\" -f \\($i+1\\), $lines[$i] })",
+      "PowerShell($f=\"C:\\\\Users\\\\itzha\\\\portafolio\\\\tzvia-page\\\\components\\\\about\\\\AboutUsPageClient.tsx\"; $t=\"$env:TEMP\\\\about_clean.tsx\"; $c=[System.IO.File]::ReadAllText\\($f\\); [System.IO.File]::WriteAllText\\($t,\\($c -replace \"`r\",\"\"\\)\\); \"written\"; \"lines now: \" + \\([System.IO.File]::ReadAllLines\\($t\\)\\).Count)",
+      "PowerShell($t=\"$env:TEMP\\\\about_clean.tsx\"; $lines=[System.IO.File]::ReadAllLines\\($t\\); $ne=0; for\\($i=0;$i -lt $lines.Count;$i++\\){ if\\($lines[$i].Trim\\(\\) -ne \"\"\\){ $ne++ } }; \"Non-empty lines: $ne\"; \"Last non-empty index:\"; for\\($i=$lines.Count-1;$i -ge 0;$i--\\){ if\\($lines[$i].Trim\\(\\) -ne \"\"\\){ \"$\\($i+1\\): $\\($lines[$i]\\)\"; break } })",
+      "PowerShell($t=\"$env:TEMP\\\\about_clean.tsx\"; $lines=[System.IO.File]::ReadAllLines\\($t\\); $m=@\\(\\); for\\($i=0;$i -lt $lines.Count;$i++\\){ if\\($lines[$i] -match \"community|Community|facts|Fact|leadership|Leadership|values|Values|profile|Profile\"\\){ $m += \\($i+1\\) } }; \"Matching line numbers:\"; $m -join \", \")",
+      "PowerShell($f=\"C:\\\\Users\\\\itzha\\\\portafolio\\\\tzvia-page\\\\components\\\\about\\\\AboutUsPageClient.tsx\"; $lines=[System.IO.File]::ReadAllLines\\($f\\); $out=foreach\\($i in 0..\\($lines.Count-1\\)\\){ if\\($lines[$i] -match \"Community|Fact sheet|Leadership|Values|profiles|section id\"\\){ \"LINE $\\($i+1\\)\" } }; $out -join \"`n\")",
+      "PowerShell(\"test123\")",
+      "Bash(tr -d '\\\\r')",
+      "Bash(grep -nE \"function |=> \\\\{|return \\\\\\(|useState|interface |type |export\" /tmp/about_nocr.tsx)",
+      "Read(//tmp/**)"
     ],
     "additionalDirectories": [
-      "c:\\Users\\itzha\\portafolio\\tzvia-page\\app\\[locale]\\academy\\[category]"
+      "c:\\Users\\itzha\\portafolio\\tzvia-page\\app\\[locale]\\academy\\[category]",
+      "c:\\Users\\itzha\\portafolio\\tzvia-page\\app\\[locale]"
     ]
+  },
+  "enabledPlugins": {
+    "vercel@claude-plugins-official": true
   }
 }

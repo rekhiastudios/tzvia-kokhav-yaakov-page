@@ -16,12 +16,19 @@ const PIN = divIcon({
   iconAnchor: [10, 10],
 });
 
-export default function CampusMap() {
+type CampusMapProps = {
+  /** Show the floating info card overlay (school name + coords + directions CTA). */
+  showCard?: boolean;
+  /** Extra class applied to the map wrapper so callers can override sizing/border. */
+  className?: string;
+};
+
+export default function CampusMap({showCard = true, className}: CampusMapProps) {
   const locale = useLocale();
   const isHe = locale === 'he';
 
   return (
-    <div className="tz-map-wrap">
+    <div className={`tz-map-wrap${className ? ` ${className}` : ''}`}>
       <MapContainer
         center={[LAT, LNG]}
         zoom={16}
@@ -40,22 +47,24 @@ export default function CampusMap() {
       </MapContainer>
 
       {/* Floating card — bottom of the map */}
-      <div className="tz-map-card">
-        <div className="tz-map-card-body">
-          <p className="tz-map-card-name">
-            {isHe ? 'אולפנת צביה כוכב יעקב' : "Ulpenat Tzvia Kokhav Ya'akov"}
-          </p>
-          <p className="tz-map-card-coords">31.8824° N · 35.2401° E</p>
+      {showCard && (
+        <div className="tz-map-card">
+          <div className="tz-map-card-body">
+            <p className="tz-map-card-name">
+              {isHe ? 'אולפנת צביה כוכב יעקב' : "Ulpenat Tzvia Kokhav Ya'akov"}
+            </p>
+            <p className="tz-map-card-coords">31.8824° N · 35.2401° E</p>
+          </div>
+          <a
+            href={GMAPS}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tz-map-card-cta"
+          >
+            {isHe ? 'נווט אלינו' : 'Directions'} <span className="arr">→</span>
+          </a>
         </div>
-        <a
-          href={GMAPS}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="tz-map-card-cta"
-        >
-          {isHe ? 'נווט אלינו' : 'Directions'} <span className="arr">→</span>
-        </a>
-      </div>
+      )}
     </div>
   );
 }

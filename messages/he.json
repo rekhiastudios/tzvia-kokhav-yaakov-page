@@ -13,7 +13,10 @@
     "menu": "פתיחת תפריט",
     "menuLabel": "תפריט",
     "menuClose": "סגור תפריט",
-    "home": "דף הבית"
+    "home": "דף הבית",
+    "admissions": "הרשמה",
+    "resources": "משאבים",
+    "rent": "השכרת הקמפוס"
   },
   "hero": {
     "admissionsOpen": "ההרשמות פתוחות",
@@ -342,6 +345,10 @@
     "h1Main": "חיים מעבר",
     "h1Gold": "לכיתה",
     "intro": "תכנית מלאה של פעילויות, תחומים אקדמיים ומסלולי העשרה — שנועדו לפתח כל תלמידה כאדם שלם.",
+    "breadcrumbHome": "בית",
+    "breadcrumbAcademy": "אקדמיה",
+    "heroSubEyebrow": "פעילויות ותחומים אקדמיים",
+    "heroWatermark": "תחומים.",
     "countActivities": "פעילויות",
     "countCategories": "קטגוריות",
     "allLabel": "הכל",
@@ -371,6 +378,79 @@
       {"slug": "humanities", "idx": 4, "label": "מדעי הרוח",     "desc": "טקסט, היסטוריה ומחשבה — התחומים שמעצבים כיצד אנו קוראים את הכל."}
     ]
   },
+  "aboutPage": {
+    "breadcrumbHome": "דף הבית",
+    "breadcrumbAbout": "קצת עלינו",
+    "heroEyebrow": "על האולפנה",
+    "heroWatermark": "המוסד.",
+    "heroH1": "נבנה על תורה,",
+    "heroH2": "ומחודד בחקירה.",
+    "heroDesc": "אולפנה ציונית-דתית לבנות בלב מטה בנימין — שבה לימוד תורה, מצוינות אקדמית ואהבת הארץ נפגשים.",
+    "numbersEyebrow": "במספרים",
+    "stats": [
+      { "value": "ט׳—י״ב", "label": "שכבות לימוד" },
+      { "value": "6", "label": "כיתות סה״כ" },
+      { "value": "27.5", "label": "תלמידות לכיתה" },
+      { "value": "233", "label": "סה״כ תלמידות" }
+    ],
+    "factSheetEyebrow": "דף מידע",
+    "factSheetTitle": "הפרטים.",
+    "facts": [
+      { "label": "ראש האולפנה", "value": "תהילה ביטי" },
+      { "label": "רשת", "value": "רשת נעם-צביה" },
+      { "label": "סוג מוסד", "value": "פנימייה חלקית" },
+      { "label": "שנת הקמה", "value": "2005" },
+      { "label": "מגמות לימוד", "value": "לימודי ארץ ישראל · ביולוגיה · כימיה · מדעי החברה · תיאטרון" },
+      { "label": "כיתות", "value": "ט'—י\"ב" },
+      { "label": "כיתות סה\"כ", "value": "6" },
+      { "label": "תלמידות לכיתה (בממוצע)", "value": "27.5" },
+      { "label": "מיקום", "value": "כוכב יעקב, מטה בנימין" },
+      { "label": "אזורי מגורים", "value": "מטה בנימין · ירושלים (~25 דק׳)" },
+      { "label": "הסעות יומיות", "value": "6 קווים מסובסדים — בית אל · פסגות · מכמש · כוכב השחר · הר חומה · גילה" }
+    ],
+    "philosophyEyebrow": "הפילוסופיה שלנו",
+    "philosophyWatermark": "בניין הארץ.",
+    "philosophyTitleLine1": "שותפות",
+    "philosophyTitleLine2": "לבניין הארץ.",
+    "philosophyBody": [
+      "אולפנת צביה כוכב יעקב שואפת לחנך בנות יראות שמים ובעלות מידות טובות, מובילות הלכה המונחות על ידי תורה ואמונה, מודעות לתפקידן בדור הגאולה.",
+      "הבנות שותפות בעיצוב העם ובניין הארץ. הקפדה על דקדוקי המצוות לצד שמירת רוח ההלכה הן ממאפיינות הבסיסיים של האולפנה.",
+      "האולפנה היא בית חם — תומכת ומקבלת — עבור תלמידות המנווטות את שנות ההתבגרות, עם דגש על בניין קשרים אישיים בין הצוות לתלמידות."
+    ],
+    "philosophyQuote": "אנחנו לא מלמדות את התלמידות לבחור בין תורה לעולם — אנחנו מלמדות אותן שהעולם הוא המקום שבו לומדים תורה בצורה הכנה ביותר.",
+    "philosophyQuoteWho": "ראש האולפנה",
+    "leadershipEyebrow": "הנהגה",
+    "leadershipTitle": "צביה כוכב יעקב.",
+    "leaders": [
+      { "initials": "ת.ב", "name": "תהילה ביטי", "role": "ראש האולפנה", "bio": "תהילה ביטי מובילה את אולפנת צביה כבר מעל לעשור, ובנתה אחת מהקהילות החינוכיות התורנית-ציוניות המכובדות ביותר במטה בנימין." },
+      { "initials": "א.מ", "name": "אוריה מזרחי", "role": "מנהל הלימודים", "bio": "אוריה מזרחי מנהל את התכנית האקדמית ומסלולי הבגרות, ושותף לצוות בשמירה על הוראה מאתגרת ומתקדמת." },
+      { "initials": "מ.כ", "name": "מרים כהן", "role": "רכזת לימודי קודש", "bio": "מרים כהן מובילה את בית המדרש ותכנית לימודי הקודש, ושוזרת לימוד תורה יומי בתוך מקצב חיי האולפנה." },
+      { "initials": "ח.ל", "name": "חיה לוי", "role": "רכזת חיי חברה", "bio": "חיה לוי מובילה את תכניות החברה והפנימייה, ובונה את הבית החם והמכיל שבו האולפנה ידועה." },
+      { "initials": "ב.ש", "name": "בתיה שפירא", "role": "רכזת המגמות", "bio": "בתיה שפירא מתאמת את מסלולי ההתמחות, מלימודי ארץ ישראל ועד המדעים והתיאטרון." }
+    ],
+    "specsEyebrow": "מסלולים אקדמיים",
+    "specsTitle": "מגמות.",
+    "specs": [
+      { "name": "לימודי ארץ ישראל", "desc": "חקירה מעמיקה של הגאוגרפיה, הארכאולוגיה וההיסטוריה של ארץ ישראל." },
+      { "name": "ביולוגיה", "desc": "מסלול מדעי מבוסס מעבדה המוביל לבגרות מלאה." },
+      { "name": "כימיה", "desc": "מסלול כימיה מתקדם עם עבודה מעבדתית ומתודולוגיית מחקר." },
+      { "name": "מדעי החברה", "desc": "סוציולוגיה, פסיכולוגיה ולימודים אזרחיים המעצבים את קריאת החברה." },
+      { "name": "תיאטרון", "desc": "משחק, בימוי ובמאות שמגיעים לשיאם בהפקה שנתית." }
+    ],
+    "timelineEyebrow": "היסטוריה",
+    "timelineTitle": "הסיפור שלנו.",
+    "milestones": [
+      { "year": "2005", "title": "הקמה", "desc": "אולפנת צביה כוכב יעקב פותחת את שעריה לראשונה." },
+      { "year": "2012", "title": "עשור ראשון", "desc": "האולפנה מגיעה לרישום מלא בכל ארבע שכבות הגיל ומוסיפה את מסלול ההתמחות הראשון." },
+      { "year": "2020", "title": "כנף קמפוס חדשה", "desc": "הרחבה משמעותית מוסיפה כיתות חדשות, מעבדת מדעים ומתקני בית מדרש." },
+      { "year": "2026", "title": "היום", "desc": "233 תלמידות בכיתות ט'–י\"ב, חמישה מסלולים אקדמיים וקהילה תוססת המושרשת בתורה וציונות." }
+    ],
+    "ctaEyebrow": "הרשמה",
+    "ctaTitle": "ההרשמות פתוחות לשנה",
+    "ctaYear": "ה'תשפ\"ו / 2026—27",
+    "ctaPrimary": "הגישי מועמדות",
+    "ctaSecondary": "הורדת פרוספקט"
+  },
   "newsArchive": {
     "eyebrow": "ארכיון עדכונים",
     "h1": "כל הסיפורים מהקמפוס.",
@@ -398,5 +478,354 @@
     "nlPlaceholder": "your@email",
     "subscribe": "הרשמה",
     "notFound": "המאמר לא נמצא."
+  },
+  "admissionsPage": {
+    "breadcrumbHome": "דף הבית",
+    "breadcrumbAdmissions": "הרשמה",
+    "heroEyebrow": "הרשמה",
+    "heroSubEyebrow": "הרשמה · ה׳תשפ״ו / 2026—27",
+    "heroWatermark": "התהליך.",
+    "heroTitleLine1": "הורים יקרים",
+    "heroTitleLine2": "ובנות",
+    "heroTitleLine3": "אהובות.",
+    "heroDesc": "אנו מזמינות בחמימות תלמידות כיתה ח׳ ומשפחותיהן לגלות מה אולפנת צביה יכולה להציע. תהליך הקבלה שלנו נועד להיות ברור, מכבד ומסביר פנים.",
+    "heroCta1": "התחילי מועמדות",
+    "heroCta2": "לוחות זמנים",
+    "quickFactsTitle": "תאריכים מרכזיים",
+    "quickFacts": [
+      { "label": "פתיחת ההרשמה", "date": "21/01", "time": "16:00", "dow": "ג׳ · שלישי" },
+      { "label": "סגירת ההרשמה", "date": "19/02", "time": null, "dow": "ב׳ · שני" },
+      { "label": "הודעות קבלה", "date": "16/03", "time": null, "dow": "ב׳ · שני" }
+    ],
+    "stepsEyebrow": "כך זה עובד",
+    "stepsTitle": "חמישה שלבים מכאן ל",
+    "stepsTitleBrand": "צביה.",
+    "steps": [
+      {
+        "num": "01",
+        "badge": "נדרש",
+        "meta": "בכל עת",
+        "title": "פגישות משפחה.",
+        "desc": "פגישת היכרות ראשונית בין המשפחה לצוות הקבלה ללמידה על האולפנה, ערכיה ורקע התלמידה.",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "num": "02",
+        "badge": "חיצוני",
+        "meta": "21/01—19/02",
+        "title": "הגשה דרך פורטל חמד.",
+        "desc": "כל הבקשות מעובדות דרך מערכת הרישום חמד של משרד החינוך. ההגשות פתוחות מ-21 בינואר עד 19 בפברואר.",
+        "link": "https://rishum.app/hemed",
+        "linkLabel": "RISHUM.APP/HEMED"
+      },
+      {
+        "num": "03",
+        "badge": "פנים מול פנים",
+        "meta": "בהזמנה בלבד",
+        "title": "יום הכרות בקמפוס.",
+        "desc": "התלמידות המוזמנות מבלות יום באולפנה — משתתפות בשיעורים, פוגשות את הצוות והתלמידות ומשתתפות בהערכה קצרה ומובנית.",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "num": "04",
+        "badge": "תשובות",
+        "meta": "מ-09/03 · 16:00",
+        "title": "קבלת תשובה.",
+        "desc": "הודעות קבלה נשלחות החל מ-9 במרץ בשעה 16:00 דרך מערכת חמד ובפנייה ישירה מהאולפנה.",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "num": "05",
+        "badge": "סופי",
+        "meta": "עד 16/03",
+        "title": "אישור סופי.",
+        "desc": "משפחות שהתקבלו מאשרות את מקומן עד 16 במרץ. צוות הקבלה זמין לכל שאלה לאורך כל התהליך.",
+        "link": null,
+        "linkLabel": null
+      }
+    ],
+    "openHouseEyebrow": "בית פתוח",
+    "openHouseTitle": "מצפות לפגוש",
+    "openHouseTitleBrand": "תלמידות כיתה ח׳.",
+    "openHouseDesc": "בואו לאחד משני ימי הבית הפתוח שלנו — כל אחד מותאם לתלמידות מאזורים שונים.",
+    "openHouseDays": [
+      {
+        "badge": "יום 1",
+        "title": "אזור בנימין",
+        "time": "10:00",
+        "desc": "בית פתוח לתלמידות מישובי מטה בנימין וקהילות הסביבה."
+      },
+      {
+        "badge": "יום 2",
+        "title": "ירושלים וסביבותיה",
+        "time": "10:00",
+        "desc": "בית פתוח לתלמידות מירושלים ואזור המטרופולין הרחב."
+      }
+    ],
+    "resourcesEyebrow": "משאבים",
+    "resourcesTitle": "כל מה שצריך.",
+    "resources": [
+      {
+        "icon": "MessageSquare",
+        "title": "שאלות?",
+        "desc": "צוות הקבלה שלנו זמין לענות על כל שאלה בנוגע לתהליך, לאולפנה או לחיי התלמידה בצביה.",
+        "cta": "צרי קשר",
+        "href": "/contact"
+      },
+      {
+        "icon": "FileText",
+        "title": "טפסים ומסמכים",
+        "desc": "הורידי טפסים נדרשים, קראי את הפרוספקט של האולפנה וקבלי חומרים משלימים לתהליך הרישום.",
+        "cta": "למשאבים",
+        "href": "/resources"
+      }
+    ],
+    "ctaEyebrow": "מצפות לפגוש אתכן",
+    "ctaTitle": "מוכנות להתחיל?",
+    "ctaWho": "— אולפנת צביה כוכב יעקב",
+    "ctaPrimary": "התחילי מועמדות",
+    "ctaSecondary": "הורדת מדריך"
+  },
+  "rentPage": {
+    "breadcrumbFacilities": "מתקנים",
+    "breadcrumbRent": "השכרת הקמפוס",
+    "heroEyebrow": "ארחו אירוע אצלנו",
+    "heroSubEyebrow": "מתקנים · כוכב יעקב",
+    "heroWatermark": "הקמפוס.",
+    "heroCta1": "שלחי פנייה",
+    "heroCta2": "גלי את החלל",
+    "heroTitleLine1": "הקמפוס,",
+    "heroTitleLine2": "אחרי",
+    "heroTitleLine3": "השעות.",
+    "heroDesc1": "שבת משפחתית? חגיגה משפחתית? סמינר? שבע ברכות? בר מצווה?",
+    "heroDesc2": "קמפוס אולפנת צביה כוכב יעקב מציע פינה שקטה בבנימין, נסיעה קצרה מירושלים. שטחים ירוקים ופתוחים, חדרי שינה חדשים וממוזגים ואולם אוכל מלא.",
+    "heroDesc3Pre": "הקמפוס יכול לארח בין ",
+    "heroDesc3Bold": "50 ל-250 אורחים",
+    "heroDesc3Post": " (מינימום 50 אורחים).",
+    "heroStats": [
+      { "value": "50—250", "label": "קיבולת אורחים" },
+      { "value": "~25", "label": "דקות מירושלים" },
+      { "value": "A/C", "label": "כל המעונות" },
+      { "value": "1", "label": "חדר אוכל מלא" }
+    ],
+    "eventsEyebrow": "מתאים ל",
+    "eventsTitleLine1": "מה אנחנו",
+    "eventsTitleBrand": "מארחים.",
+    "events": [
+      { "icon": "Home", "title": "שבת משפחתית" },
+      { "icon": "Users", "title": "חגיגות משפחה" },
+      { "icon": "BookOpen", "title": "סמינרים" },
+      { "icon": "Heart", "title": "שבע ברכות" },
+      { "icon": "Star", "title": "בר / בת מצווה" }
+    ],
+    "galleryEyebrow": "החלל",
+    "galleryTitleLine1": "גלי את",
+    "galleryTitleBrand": "הקמפוס.",
+    "galleryItems": [
+      { "label": "חדר האוכל · מסודר לאירוע", "featured": true, "isMore": false },
+      { "label": "חצר הגן", "featured": false, "isMore": false },
+      { "label": "שורת המעונות", "featured": false, "isMore": false },
+      { "label": "חדר שינה · A/C", "featured": false, "isMore": false },
+      { "label": "+8 נוספים", "featured": false, "isMore": true }
+    ],
+    "featuredBadge": "מוצג",
+    "amenitiesEyebrow": "שירותים",
+    "amenitiesTitleLine1": "מה",
+    "amenitiesTitleBrand": "כלול.",
+    "amenities": [
+      "חדר אוכל מרווח",
+      "שטחים ירוקים ופתוחים וחצרות",
+      "מרחק קצר מירושלים",
+      "חדרי שינה ממוזגים",
+      "מיקום שקט בבנימין",
+      "מתקנים משופצים לאחרונה"
+    ],
+    "ctaEyebrow": "הזמינו את התאריך שלכם",
+    "ctaTitle": "בואו נתכנן את האירוע שלכם.",
+    "ctaDesc": "פנו אלינו לבדיקת זמינות ולהזמנת מקום לאירוע הקרוב שלכם.",
+    "ctaContactLabel": "יצירת קשר",
+    "ctaPhoneLabel": "התקשרו או ווצאפ",
+    "contact": {
+      "name": "חיה",
+      "phone": "052-8087891",
+      "phoneHref": "tel:+97252-8087891",
+      "whatsappHref": "https://wa.me/972528087891"
+    },
+    "ctaBtn1": "שילחו פנייה",
+    "ctaBtn2": "בדיקת זמינות",
+    "ctaBtn3": "צפייה במיקום"
+  },
+  "resourcesPage": {
+    "breadcrumbHome": "דף הבית",
+    "breadcrumbResources": "משאבים",
+    "heroEyebrow": "משאבים",
+    "heroSubEyebrow": "להורים ותלמידות",
+    "heroWatermark": "הורדות.",
+    "heroTitleLine1": "משאבים",
+    "heroTitleLine2": "והורדות.",
+    "heroDesc": "רשימות ספרים לשנה הלימודית הנוכחית, טפסים מנהליים ומסמכים נוספים שתצטרכו לאורך שנות הלימוד בצביה.",
+    "tabBookLists": "רשימות ספרים",
+    "tabForms": "טפסים",
+    "heroStats": [
+      { "value": "5", "label": "רשימות ספרים" },
+      { "value": "3", "label": "טפסי מינהל" }
+    ],
+    "bookListsEyebrow": "01 · שנה אקדמית",
+    "bookListsYear": "ה׳תשפ״ו · 2026—27",
+    "bookListsTitle": "רשימות ספרים.",
+    "bookListsDesc": "ספרי לימוד נדרשים לשנה הלימודית הקרובה, מסודרים לפי שכבת גיל. הרשימות מתעדכנות מדי שנה לפני תחילת שנת הלימודים.",
+    "bookListsBadge": "מתעדכן שנתית",
+    "gradeLabel": "כיתה",
+    "downloadBtn": "הורדה",
+    "allListsTitle": "כל הרשימות יחד",
+    "allListsMeta": "ZIP · 5 קבצים",
+    "downloadAllBtn": "הורד הכל",
+    "allListsHref": null,
+    "bookLists": [
+      { "grade": "ט׳", "title": "כיתה ט׳ — רשימת ספרים", "meta": "PDF · רשימת ספרים ט תשפ״ו", "href": null },
+      { "grade": "2ט", "title": "כיתה ט׳ (קטנה) — רשימת ספרים", "meta": "PDF · כיתה קטנה תשפ״ו", "href": null },
+      { "grade": "י׳", "title": "כיתה י׳ — רשימת ספרים", "meta": "PDF · רשימת ספרים י תשפ״ו", "href": null },
+      { "grade": "יא׳", "title": "כיתה יא׳ — רשימת ספרים", "meta": "PDF · רשימת ספרים יא תשפ״ו", "href": null },
+      { "grade": "יב׳", "title": "כיתה יב׳ — רשימת ספרים", "meta": "PDF · רשימת ספרים יב תשפ״ו", "href": null }
+    ],
+    "formsEyebrow": "02 · מינהל",
+    "formsEvergreen": "תמידי",
+    "formsTitle": "טפסים.",
+    "formsDesc": "טפסים מנהליים — הדפיסו, מלאו והגישו למשרד. הטפסים זמינים לאורך כל השנה.",
+    "formsBadge": "תמיד זמין",
+    "forms": [
+      { "category": "תשלום", "type": "PDF", "title": "הוראת קבע", "subtitle": "טופס הוראת קבע", "desc": "להגדרת תשלום שכר לימוד חודשי אוטומטי.", "href": null },
+      { "category": "תשלום", "type": "PDF", "title": "פרטי כרטיס אשראי", "subtitle": "טופס פרטי אשראי", "desc": "לתשלום חד פעמי או חיוב אשראי חוזר.", "href": null },
+      { "category": "עלייה", "type": "PDF", "title": "עלית הנוער", "subtitle": "טופס עלית הנוער", "desc": "טופס לתכנית עליית הנוער.", "href": null }
+    ],
+    "ctaEyebrow": "לא מצאת?",
+    "ctaTitle": "מחפשים משהו אחר?",
+    "ctaDesc": "המשרד יכול לשלוח לכם כל טופס שאינו מופיע כאן.",
+    "ctaBtn": "צרו קשר עם המשרד"
+  },
+  "contactPage": {
+    "breadcrumbHome": "דף הבית",
+    "breadcrumbContact": "יצירת קשר",
+    "heroEyebrow": "יצירת קשר",
+    "heroSubEyebrow": "נשמח לשמוע מכם",
+    "heroTitleLine1": "בואו",
+    "heroTitleLine2": "נדבר.",
+    "heroWatermark": "נדבר.",
+    "heroStats": [
+      {"value": "3",    "label": "מחלקות"},
+      {"value": "< 2",  "label": "ימי תגובה"}
+    ],
+    "heroCta1": "שלחו הודעה",
+    "heroCta2": "פנייה ישירה",
+    "heroDesc": "פנו ישירות לאדם הנכון, או שלחו לנו הודעה ואנו נפנה אותה. אנו שואפים לחזור תוך שני ימי עסקים.",
+    "directEyebrow": "פנו ישירות",
+    "directTitleGhost": "פנייה",
+    "directTitleGold": "ישירה.",
+    "contacts": [
+      {
+        "badge": "ראשי",
+        "dept": "מזכירות כללית",
+        "name": "קבלת קהל",
+        "desc": "שאלות כלליות, ענייני מינהל, תיאום ביקורים.",
+        "phone": "02-9978049",
+        "phoneHref": "tel:+97229978049",
+        "phoneExt": null,
+        "email": "zviyaky@gmail.com",
+        "emailHref": "mailto:zviyaky@gmail.com",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "badge": "עונתי",
+        "dept": "הרשמה",
+        "name": "צוות ההרשמה",
+        "desc": "תהליך ההגשה, בית פתוח, ראיונות, תיעוד.",
+        "phone": "02-9978049",
+        "phoneHref": "tel:+97229978049",
+        "phoneExt": "שלוחה 2",
+        "email": null,
+        "emailHref": null,
+        "link": "/admissions",
+        "linkLabel": "← לדף ההרשמה"
+      },
+      {
+        "badge": "ישיר",
+        "dept": "השכרת הקמפוס",
+        "name": "חיה",
+        "desc": "שבת משפחתית, אירועים, סמינרים, שבע ברכות, בר/בת מצווה.",
+        "phone": "052-8087891",
+        "phoneHref": "tel:+972528087891",
+        "phoneExt": null,
+        "email": null,
+        "emailHref": null,
+        "link": "/facilities/rent",
+        "linkLabel": "← לדף ההשכרה",
+        "tourContact": true
+      }
+    ],
+    "formEyebrow": "שלחו הודעה",
+    "formIntro": "אנו נפנה את הפנייה לצוות הנכון ונחזור תוך שני ימי עסקים.",
+    "formTopicLabel": "על מה הפנייה?",
+    "topics": [
+      {"id": "general",    "label": "שאלה כללית"},
+      {"id": "admissions", "label": "הרשמה"},
+      {"id": "rental",     "label": "השכרת הקמפוס"},
+      {"id": "forms",      "label": "טפסים ומסמכים"},
+      {"id": "other",      "label": "אחר"}
+    ],
+    "fieldName": "שם",
+    "fieldNamePlaceholder": "שם מלא",
+    "fieldPhone": "טלפון",
+    "fieldPhonePlaceholder": "05X-XXXXXXX",
+    "fieldEmail": "אימייל",
+    "fieldEmailPlaceholder": "your@email.com",
+    "fieldMessage": "הודעה",
+    "fieldMessageHint": "לפחות 20 תווים",
+    "fieldMessagePlaceholder": "כיצד נוכל לעזור?",
+    "privacyCheckPre": "אני מאשר/ת שקראתי ומסכים/ה ל",
+    "privacyPolicyLink": "מדיניות הפרטיות",
+    "privacyCheckPost": ". המידע ישמש אך ורק למענה לפנייתי.",
+    "recaptchaNote": "מוגן על ידי reCAPTCHA —",
+    "recaptchaPrivacy": "פרטיות",
+    "recaptchaTerms": "תנאים",
+    "submitBtn": "שליחת הודעה",
+    "errRequired": "שדה חובה",
+    "errEmail": "כתובת אימייל לא תקינה",
+    "errMsgShort": "יש להזין לפחות 20 תווים",
+    "errPrivacy": "יש לאשר את מדיניות הפרטיות",
+    "successMsg": "תודה — ניצור קשר תוך שני ימי עסקים.",
+    "visitEyebrow": "בקרו אותנו",
+    "visitTitle": "הקמפוס שלנו.",
+    "visitLine1": "אולפנת צביה כוכב יעקב",
+    "visitLine2": "כוכב יעקב · מטה בנימין",
+    "visitLine3": "כ-25 דקות מירושלים",
+    "openInMapsBtn": "פתח במפות",
+    "directionsBtn": "הנחיות הגעה",
+    "bookTourBtn": "הזמן סיור",
+    "mapsHref": "https://www.google.com/maps/search/?api=1&query=31.882419,35.240107",
+    "directionsHref": "https://www.google.com/maps/dir/?api=1&destination=31.882419,35.240107",
+    "hoursTitle": "שעות הפעילות",
+    "hours": [
+      {"day": "ראשון — חמישי", "time": "08:00 — 16:00"},
+      {"day": "שישי",           "time": "08:00 — 12:00"},
+      {"day": "שבת וחגים",      "time": "סגור"}
+    ],
+    "faxLabel": "פקס",
+    "faxNumber": "153-2970-9610",
+    "actionsEyebrow": "מעדיפים דרך אחרת?",
+    "actionsTitle": "פעולות מהירות.",
+    "actions": [
+      {"id": "whatsapp",   "tag": "וואטסאפ",      "label": "צ'אט מהיר",      "href": "https://wa.me/97229978049"},
+      {"id": "schedule",   "tag": "תיאום",         "label": "קביעת ביקור",    "href": "/admissions"},
+      {"id": "faq",        "tag": "שאלות נפוצות",  "label": "שאלות נפוצות",  "href": "#"},
+      {"id": "newsletter", "tag": "ניוזלטר",        "label": "קבלת עדכונים",   "href": "#"}
+    ],
+    "privacyBannerBold": "הפרטיות שלכם חשובה לנו.",
+    "privacyBannerText": " המידע שמסרתם ישמש אך ורק למענה לפנייתכם ולמתן תמיכה מקצועית. קראו את ",
+    "privacyBannerLink": "מדיניות הפרטיות",
+    "privacyPolicyHref": "#"
   }
 }

@@ -67,12 +67,14 @@ export function NavBar() {
   }, []);
 
   const navLinks = [
-    {label: t('about'),    href: '#about'},
-    {label: t('academy'),  href: '#academy'},
-    {label: t('news'),     href: '#news'},
-    {label: t('calendar'), href: '#calendar'},
-    {label: t('contact'),  href: '#contact'},
-  ] as const;
+    {label: t('about'),       href: '/about-us'},
+    {label: t('academy'),     href: '/academy'},
+    {label: t('admissions'),  href: '/admissions'},
+    {label: t('resources'),   href: '/resources'},
+    {label: t('news'),        href: '/news'},
+    {label: t('rent'),        href: '/facilities/rent'},
+    {label: t('contact'),     href: '/contact'},
+  ];
 
   const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
 
@@ -166,17 +168,23 @@ export function NavBar() {
 
         {/* Nav links */}
         <nav className="menu-overlay-nav" aria-label={t('brand')}>
-          {navLinks.map(({label, href}) => (
-            <a
-              key={href}
-              href={href}
-              className="menu-overlay-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              <span>{label}</span>
-              <ChevronIcon className="menu-overlay-chevron" aria-hidden="true" strokeWidth={1.5} />
-            </a>
-          ))}
+          {navLinks.map(({label, href}) => {
+            const content = (
+              <>
+                <span>{label}</span>
+                <ChevronIcon className="menu-overlay-chevron" aria-hidden="true" strokeWidth={1.5} />
+              </>
+            );
+            return href.startsWith('/') ? (
+              <Link key={href} href={href} className="menu-overlay-link" onClick={() => setMenuOpen(false)}>
+                {content}
+              </Link>
+            ) : (
+              <a key={href} href={href} className="menu-overlay-link" onClick={() => setMenuOpen(false)}>
+                {content}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Bottom branding watermark */}

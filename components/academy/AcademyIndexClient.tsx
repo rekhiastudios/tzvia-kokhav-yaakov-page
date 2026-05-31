@@ -80,92 +80,118 @@ export function AcademyIndexClient({activities, initialCategorySlug}: Props) {
       : activities.filter((a) => a.catIdx === activeIdx).length;
 
   return (
-    <div className="tz-acp-page tz-page">
-      {/* ── Page header ── */}
-      <div className="tz-acp-hd">
-        <div className="tz-sect-num">{t('eyebrow')}</div>
-        <h1 className="tz-acp-h1">
-          {t('h1Main')}<br />
-          <span className="tz-gold">{t('h1Gold')}</span>
-          <span className="tz-gold">.</span>
-        </h1>
-        <p className="tz-acp-intro">{t('intro')}</p>
-      </div>
+    <div className="tz-acp-root">
 
-      {/* ── Filter bar ── */}
-      <div className="tz-acp-filterrow">
-        <div className="tz-acts-filters">
-          <button
-            type="button"
-            className={`tz-acts-chip${activeIdx === 0 ? ' on' : ''}`}
-            onClick={() => setActiveIdx(0)}
-          >
-            {t('allLabel')}
-          </button>
-          {cats.map((c) => (
-            <button
-              key={c.idx}
-              type="button"
-              className={`tz-acts-chip${activeIdx === c.idx ? ' on' : ''}`}
-              onClick={() => setActiveIdx(c.idx)}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
-        <span className="tz-acp-count">
-          {totalVisible} {t('countActivities')} · {visibleCats.length} {t('countCategories')}
-        </span>
-      </div>
-
-      <div className="tz-acp-sep" />
-
-      {/* ── Category groups ── */}
-      {visibleCats.map((cat, gi) => {
-        const catActivities = activities.filter((a) => a.catIdx === cat.idx);
-        const groupNum = String(gi + 1).padStart(2, '0');
-        return (
-          <div key={cat.slug} className="tz-acp-group">
-            <div className="tz-acp-group-hd">
-              <div className="tz-acp-group-meta">
-                <span className="tz-acp-group-num">{'// '}{groupNum}</span>
-                <span className="tz-acp-group-line" aria-hidden="true" />
-                <span className="tz-acp-group-count">
-                  {catActivities.length} {t('activitiesUnit').toUpperCase()}
-                </span>
-              </div>
-              <div className="tz-acp-group-name-wrap">
-                <span className="tz-acp-group-wm" aria-hidden="true">{cat.label}</span>
-                <p className="tz-acp-group-desc">{cat.desc}</p>
-              </div>
+      {/* ── 1. Hero ── */}
+      <header className="tz-acp-hero">
+        <div aria-hidden="true" className="tz-acp-hero-wm">{t('heroWatermark')}</div>
+        <div className="tz-acp-hero-inner tz-page">
+          <nav className="tz-acp-crumb" aria-label="breadcrumb">
+            <Link href="/">{t('breadcrumbHome')}</Link>
+            <span aria-hidden="true">›</span>
+            <span>{t('breadcrumbAcademy')}</span>
+          </nav>
+          <p className="tz-acp-hero-eyebrow">{'// '}{t('eyebrow')}</p>
+          <p className="tz-acp-hero-sub-eyebrow">{'// '}{t('heroSubEyebrow')}</p>
+          <div className="tz-acp-hero-content">
+            <div className="tz-acp-hero-lhs">
+              <h1 className="tz-acp-hero-h1">
+                <span className="tz-acp-hero-h1-line">{t('h1Main')}</span>
+                <span className="tz-acp-hero-h1-gold">{t('h1Gold')}.</span>
+              </h1>
+              <p className="tz-acp-hero-desc">{t('intro')}</p>
             </div>
-
-            <div
-              className="tz-acp-cards"
-              data-cat={cat.slug}
-              data-count={catActivities.length}
-            >
-              {catActivities.map((act) => (
-                <ActivityCard key={act.slug} act={act} />
-              ))}
+            <div className="tz-acp-hero-stats-card">
+              <div className="tz-acp-hero-stat">
+                <span className="tz-acp-hero-stat-val">{activities.length}</span>
+                <span className="tz-acp-hero-stat-label">{t('countActivities')}</span>
+              </div>
+              <div className="tz-acp-hero-stat">
+                <span className="tz-acp-hero-stat-val">{cats.length}</span>
+                <span className="tz-acp-hero-stat-label">{t('countCategories')}</span>
+              </div>
             </div>
           </div>
-        );
-      })}
+        </div>
+      </header>
 
-      {/* ── Advisor CTA ── */}
-      <div className="tz-acp-advisor">
-        <div className="tz-acp-advisor-inner">
-          <p className="tz-acp-advisor-eyebrow">{'// '}{t('advisorEyebrow')}</p>
-          <h2 className="tz-acp-advisor-title">{t('advisorTitle')}</h2>
-          <p className="tz-acp-advisor-desc">{t('advisorDesc')}</p>
-          <div className="tz-acp-advisor-btns">
-            <a href="#contact" className="tz-btn-pill">
-              {t('advisorCta')} <span>→</span>
-            </a>
-            <button type="button" className="tz-acp-advisor-ghost">
-              {t('advisorGuide')}
+      {/* ── 2. Body ── */}
+      <div className="tz-acp-body tz-page">
+        {/* ── Filter bar ── */}
+        <div className="tz-acp-filterrow">
+          <div className="tz-acts-filters">
+            <button
+              type="button"
+              className={`tz-acts-chip${activeIdx === 0 ? ' on' : ''}`}
+              onClick={() => setActiveIdx(0)}
+            >
+              {t('allLabel')}
             </button>
+            {cats.map((c) => (
+              <button
+                key={c.idx}
+                type="button"
+                className={`tz-acts-chip${activeIdx === c.idx ? ' on' : ''}`}
+                onClick={() => setActiveIdx(c.idx)}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+          <span className="tz-acp-count">
+            {totalVisible} {t('countActivities')} · {visibleCats.length} {t('countCategories')}
+          </span>
+        </div>
+
+        <div className="tz-acp-sep" />
+
+        {/* ── Category groups ── */}
+        {visibleCats.map((cat, gi) => {
+          const catActivities = activities.filter((a) => a.catIdx === cat.idx);
+          const groupNum = String(gi + 1).padStart(2, '0');
+          return (
+            <div key={cat.slug} className="tz-acp-group">
+              <div className="tz-acp-group-hd">
+                <div className="tz-acp-group-meta">
+                  <span className="tz-acp-group-num">{'// '}{groupNum}</span>
+                  <span className="tz-acp-group-line" aria-hidden="true" />
+                  <span className="tz-acp-group-count">
+                    {catActivities.length} {t('activitiesUnit').toUpperCase()}
+                  </span>
+                </div>
+                <div className="tz-acp-group-name-wrap">
+                  <span className="tz-acp-group-wm" aria-hidden="true">{cat.label}</span>
+                  <p className="tz-acp-group-desc">{cat.desc}</p>
+                </div>
+              </div>
+
+              <div
+                className="tz-acp-cards"
+                data-cat={cat.slug}
+                data-count={catActivities.length}
+              >
+                {catActivities.map((act) => (
+                  <ActivityCard key={act.slug} act={act} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+
+        {/* ── Advisor CTA ── */}
+        <div className="tz-acp-advisor">
+          <div className="tz-acp-advisor-inner">
+            <p className="tz-acp-advisor-eyebrow">{'// '}{t('advisorEyebrow')}</p>
+            <h2 className="tz-acp-advisor-title">{t('advisorTitle')}</h2>
+            <p className="tz-acp-advisor-desc">{t('advisorDesc')}</p>
+            <div className="tz-acp-advisor-btns">
+              <a href="#contact" className="tz-btn-pill">
+                {t('advisorCta')} <span>→</span>
+              </a>
+              <button type="button" className="tz-acp-advisor-ghost">
+                {t('advisorGuide')}
+              </button>
+            </div>
           </div>
         </div>
       </div>

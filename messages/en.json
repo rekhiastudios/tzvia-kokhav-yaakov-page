@@ -13,7 +13,10 @@
     "menu": "Open menu",
     "menuLabel": "MENU",
     "menuClose": "Close menu",
-    "home": "Home"
+    "home": "Home",
+    "admissions": "Admissions",
+    "resources": "Resources",
+    "rent": "Rent the Campus"
   },
   "hero": {
     "admissionsOpen": "Admissions open",
@@ -342,6 +345,10 @@
     "h1Main": "LIFE BEYOND",
     "h1Gold": "THE CLASSROOM",
     "intro": "A full programme of activities, academic disciplines, and enrichment tracks — designed to develop each student as a whole person.",
+    "breadcrumbHome": "Home",
+    "breadcrumbAcademy": "Academy",
+    "heroSubEyebrow": "ACTIVITIES & ACADEMIC AREAS",
+    "heroWatermark": "DISCIPLINES.",
     "countActivities": "ACTIVITIES",
     "countCategories": "CATEGORIES",
     "allLabel": "ALL",
@@ -371,6 +378,79 @@
       {"slug": "humanities", "idx": 4, "label": "HUMANITIES",     "desc": "Text, history, and thought — the disciplines that shape how we read everything else."}
     ]
   },
+  "aboutPage": {
+    "breadcrumbHome": "Home",
+    "breadcrumbAbout": "About",
+    "heroEyebrow": "About the Ulpana",
+    "heroWatermark": "THE INSTITUTION.",
+    "heroH1": "BUILT ON TORAH,",
+    "heroH2": "INQUIRY.",
+    "heroDesc": "A religious-Zionist girls' high school in the heart of Mateh Binyamin — where Torah study, academic excellence, and love of the land meet.",
+    "numbersEyebrow": "BY THE NUMBERS",
+    "stats": [
+      { "value": "9—12", "label": "Grades Offered" },
+      { "value": "6", "label": "Total Classes" },
+      { "value": "27.5", "label": "Students Per Class" },
+      { "value": "233", "label": "Total Students" }
+    ],
+    "factSheetEyebrow": "FACT SHEET",
+    "factSheetTitle": "THE DETAILS.",
+    "facts": [
+      { "label": "Head of School", "value": "Tehila Biti" },
+      { "label": "Network", "value": "Noam-Tzvia Network" },
+      { "label": "Institution Type", "value": "Partial Boarding School" },
+      { "label": "Founded", "value": "2005" },
+      { "label": "Academic Tracks", "value": "Land of Israel Studies · Biology · Chemistry · Social Sciences · Theatre" },
+      { "label": "Grades", "value": "9 — 12" },
+      { "label": "Total Classes", "value": "6" },
+      { "label": "Students / Class (avg.)", "value": "27.5" },
+      { "label": "Location", "value": "Kochav Ya'akov, Mateh Binyamin" },
+      { "label": "Catchment", "value": "Mateh Binyamin · Jerusalem (~25 min)" },
+      { "label": "Daily Transport", "value": "6 subsidized routes — Beit El · Psagot · Michmas · Kochav HaShachar · Har Homa · Gilo" }
+    ],
+    "philosophyEyebrow": "OUR PHILOSOPHY",
+    "philosophyWatermark": "BUILDING OF THE LAND.",
+    "philosophyTitleLine1": "PARTNERS IN THE",
+    "philosophyTitleLine2": "BUILDING OF THE LAND.",
+    "philosophyBody": [
+      "Ulpenat Tzvia Kochav Ya'akov aspires to educate young women of yirat shamayim — God-fearing women of good character, leaders of halakha guided by Torah and faith, conscious of their role in the generation of redemption.",
+      "Students participate in shaping the people and the land. A meticulous emphasis on the precise observance of mitzvot, alongside the spirit of halakha, is one of the foundational characteristics of the ulpana.",
+      "The ulpana is a warm home — supportive and embracing — for students navigating the years of adolescence, with an emphasis on building personal relationships between staff and students."
+    ],
+    "philosophyQuote": "We don't teach our students to choose between Torah and the world — we teach them that the world is where Torah is studied most honestly.",
+    "philosophyQuoteWho": "Head of School",
+    "leadershipEyebrow": "LEADERSHIP",
+    "leadershipTitle": "TZVIA KOCHAV YA'AKOV.",
+    "leaders": [
+      { "initials": "TB", "name": "Tehila Biti", "role": "Head of School", "bio": "Tehila Biti has led Ulpenat Tzvia for over a decade, building one of the most respected Torah-Zionist educational communities in Mateh Binyamin." },
+      { "initials": "UM", "name": "Uria Mizrahi", "role": "Director of Studies", "bio": "Uria Mizrahi oversees the academic program and matriculation tracks, partnering with staff to keep teaching rigorous and forward-looking." },
+      { "initials": "MC", "name": "Miriam Cohen", "role": "Dean of Torah Studies", "bio": "Miriam Cohen guides the beit midrash and kodesh curriculum, weaving daily Torah study into the rhythm of school life." },
+      { "initials": "CL", "name": "Chaya Levi", "role": "Director of Student Life", "bio": "Chaya Levi leads the social and dormitory programs, building the warm, embracing home the ulpana is known for." },
+      { "initials": "BS", "name": "Batya Shapira", "role": "Head of Academic Tracks", "bio": "Batya Shapira coordinates the specialization tracks, from Land of Israel studies to the sciences and theatre." }
+    ],
+    "specsEyebrow": "ACADEMIC TRACKS",
+    "specsTitle": "SPECIALISATIONS.",
+    "specs": [
+      { "name": "Land of Israel Studies", "desc": "Deep exploration of the geography, archaeology, and history of the land of Israel." },
+      { "name": "Biology", "desc": "Laboratory-based science track leading to full matriculation." },
+      { "name": "Chemistry", "desc": "Advanced chemistry track with laboratory practice and research methodology." },
+      { "name": "Social Sciences", "desc": "Sociology, psychology, and civic studies that shape how students read society." },
+      { "name": "Theatre", "desc": "Acting, directing, and stagecraft culminating in an annual production." }
+    ],
+    "timelineEyebrow": "HISTORY",
+    "timelineTitle": "OUR STORY.",
+    "milestones": [
+      { "year": "2005", "title": "Founding", "desc": "Ulpenat Tzvia Kochav Ya'akov opens its doors for the first time." },
+      { "year": "2012", "title": "First Decade", "desc": "The school reaches full enrollment across all four grade levels and adds its first specialisation track." },
+      { "year": "2020", "title": "New Campus Wing", "desc": "A major expansion adds new classrooms, a science laboratory, and beit midrash facilities." },
+      { "year": "2026", "title": "Today", "desc": "233 students across grades 9–12, five academic tracks, and a vibrant community rooted in Torah and Zionism." }
+    ],
+    "ctaEyebrow": "ADMISSIONS",
+    "ctaTitle": "Admissions are open for",
+    "ctaYear": "5786 / 2026—27",
+    "ctaPrimary": "Begin Application",
+    "ctaSecondary": "Download Brochure"
+  },
   "newsArchive": {
     "eyebrow": "DISPATCH ARCHIVE",
     "h1": "EVERY STORY FROM CAMPUS.",
@@ -398,5 +478,354 @@
     "nlPlaceholder": "your@email",
     "subscribe": "SUBSCRIBE",
     "notFound": "Article not found."
+  },
+  "admissionsPage": {
+    "breadcrumbHome": "Home",
+    "breadcrumbAdmissions": "Admissions",
+    "heroEyebrow": "ADMISSIONS",
+    "heroSubEyebrow": "ADMISSIONS · 5786 / 2026—27",
+    "heroWatermark": "THE PROCESS.",
+    "heroTitleLine1": "DEAR PARENTS",
+    "heroTitleLine2": "AND BELOVED",
+    "heroTitleLine3": "DAUGHTERS.",
+    "heroDesc": "We warmly invite eighth-grade students and their families to explore what Ulpenat Tzvia has to offer. Our admissions process is designed to be clear, respectful, and welcoming.",
+    "heroCta1": "BEGIN APPLICATION",
+    "heroCta2": "VIEW KEY DATES",
+    "quickFactsTitle": "KEY DATES",
+    "quickFacts": [
+      { "label": "REGISTRATION OPENS", "date": "21/01", "time": "16:00", "dow": "Tuesday" },
+      { "label": "REGISTRATION CLOSES", "date": "19/02", "time": null, "dow": "Monday" },
+      { "label": "FINAL ACCEPTANCE", "date": "16/03", "time": null, "dow": "Monday" }
+    ],
+    "stepsEyebrow": "HOW IT WORKS",
+    "stepsTitle": "FIVE STEPS FROM HERE TO",
+    "stepsTitleBrand": "TZVIA.",
+    "steps": [
+      {
+        "num": "01",
+        "badge": "REQUIRED",
+        "meta": "ONGOING",
+        "title": "Family Meetings.",
+        "desc": "An initial meeting between the family and the admissions team to learn about the school, its values, and the student's background.",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "num": "02",
+        "badge": "EXTERNAL",
+        "meta": "21/01—19/02",
+        "title": "Submit via the Chemed Portal.",
+        "desc": "All applications are processed through the Ministry of Education's Chemed registration system. Submissions are open from January 21st to February 19th.",
+        "link": "https://rishum.app/hemed",
+        "linkLabel": "RISHUM.APP/HEMED"
+      },
+      {
+        "num": "03",
+        "badge": "IN-PERSON",
+        "meta": "BY INVITATION",
+        "title": "Campus Assessment Day.",
+        "desc": "Invited students spend a day at the ulpana — attending classes, meeting staff and students, and participating in a short structured assessment.",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "num": "04",
+        "badge": "RESPONSES",
+        "meta": "FROM 09/03 · 16:00",
+        "title": "Receive Your Response.",
+        "desc": "Acceptance notifications are sent out from March 9th at 16:00 via the Chemed system and by direct contact from the school.",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "num": "05",
+        "badge": "FINAL",
+        "meta": "BY 16/03",
+        "title": "Final Confirmation.",
+        "desc": "Accepted families confirm their place by March 16th. The admissions team remains available for any questions throughout this period.",
+        "link": null,
+        "linkLabel": null
+      }
+    ],
+    "openHouseEyebrow": "OPEN HOUSE",
+    "openHouseTitle": "WE LOOK FORWARD TO",
+    "openHouseTitleBrand": "EIGHTH-GRADE STUDENTS.",
+    "openHouseDesc": "Join us for one of our two open house events — each tailored to students from different regions.",
+    "openHouseDays": [
+      {
+        "badge": "DAY 1",
+        "title": "Binyamin Region",
+        "time": "10:00",
+        "desc": "Open house for students from Mateh Binyamin settlements and surrounding communities."
+      },
+      {
+        "badge": "DAY 2",
+        "title": "Jerusalem & Surroundings",
+        "time": "10:00",
+        "desc": "Open house for students from Jerusalem and the greater metropolitan area."
+      }
+    ],
+    "resourcesEyebrow": "RESOURCES",
+    "resourcesTitle": "EVERYTHING YOU NEED.",
+    "resources": [
+      {
+        "icon": "MessageSquare",
+        "title": "Questions?",
+        "desc": "Our admissions team is available to answer any questions about the process, the school, or student life at Tzvia.",
+        "cta": "CONTACT ADMISSIONS",
+        "href": "/contact"
+      },
+      {
+        "icon": "FileText",
+        "title": "Forms & Documents",
+        "desc": "Download required forms, read the school prospectus, and access supplementary materials for the application process.",
+        "cta": "GO TO RESOURCES",
+        "href": "/resources"
+      }
+    ],
+    "ctaEyebrow": "WE LOOK FORWARD TO MEETING YOU",
+    "ctaTitle": "Ready to begin?",
+    "ctaWho": "— Ulpenat Tzvia Kochav Ya'akov",
+    "ctaPrimary": "BEGIN APPLICATION",
+    "ctaSecondary": "DOWNLOAD GUIDE"
+  },
+  "rentPage": {
+    "breadcrumbFacilities": "FACILITIES",
+    "breadcrumbRent": "RENT THE CAMPUS",
+    "heroEyebrow": "HOST AN EVENT WITH US",
+    "heroSubEyebrow": "FACILITIES · KOCHAV YA'AKOV",
+    "heroWatermark": "THE CAMPUS.",
+    "heroCta1": "SEND AN ENQUIRY",
+    "heroCta2": "EXPLORE THE SPACE",
+    "heroTitleLine1": "THE CAMPUS,",
+    "heroTitleLine2": "AFTER",
+    "heroTitleLine3": "HOURS.",
+    "heroDesc1": "Family Shabbat? Family celebration? Seminar? Sheva Berachot? Bar Mitzvah?",
+    "heroDesc2": "The Ulpenat Tzvia Kochav Ya'akov campus offers a quiet corner in Binyamin, a short drive from Jerusalem. Green open spaces, new and air-conditioned dormitory rooms, and a full dining hall.",
+    "heroDesc3Pre": "The campus can host between ",
+    "heroDesc3Bold": "50 and 250 guests",
+    "heroDesc3Post": " (50 guest minimum).",
+    "heroStats": [
+      { "value": "50—250", "label": "GUEST CAPACITY" },
+      { "value": "~25", "label": "MIN. FROM JERUSALEM" },
+      { "value": "A/C", "label": "ALL DORMITORIES" },
+      { "value": "1", "label": "FULL DINING HALL" }
+    ],
+    "eventsEyebrow": "IDEAL FOR",
+    "eventsTitleLine1": "WHAT WE",
+    "eventsTitleBrand": "HOST.",
+    "events": [
+      { "icon": "Home", "title": "Family Shabbat" },
+      { "icon": "Users", "title": "Family celebrations" },
+      { "icon": "BookOpen", "title": "Seminars" },
+      { "icon": "Heart", "title": "Sheva Berachot" },
+      { "icon": "Star", "title": "Bar / Bat Mitzvah" }
+    ],
+    "galleryEyebrow": "THE SPACE",
+    "galleryTitleLine1": "EXPLORE THE",
+    "galleryTitleBrand": "CAMPUS.",
+    "galleryItems": [
+      { "label": "DINING HALL · SET FOR EVENT", "featured": true, "isMore": false },
+      { "label": "GARDEN COURTYARD", "featured": false, "isMore": false },
+      { "label": "DORMITORY ROW", "featured": false, "isMore": false },
+      { "label": "BEDROOM · A/C", "featured": false, "isMore": false },
+      { "label": "+8 MORE", "featured": false, "isMore": true }
+    ],
+    "featuredBadge": "FEATURED",
+    "amenitiesEyebrow": "AMENITIES",
+    "amenitiesTitleLine1": "WHAT'S",
+    "amenitiesTitleBrand": "INCLUDED.",
+    "amenities": [
+      "Spacious dining hall",
+      "Green open spaces and courtyards",
+      "Short distance from Jerusalem",
+      "Air-conditioned dormitory rooms",
+      "Quiet location in Binyamin",
+      "Newly renovated facilities"
+    ],
+    "ctaEyebrow": "RESERVE YOUR DATE",
+    "ctaTitle": "Let's plan your event.",
+    "ctaDesc": "Reach out to check availability and reserve a place for your upcoming event.",
+    "ctaContactLabel": "CONTACT",
+    "ctaPhoneLabel": "CALL OR WHATSAPP",
+    "contact": {
+      "name": "Chaya",
+      "phone": "052-8087891",
+      "phoneHref": "tel:+97252-8087891",
+      "whatsappHref": "https://wa.me/972528087891"
+    },
+    "ctaBtn1": "SEND AN ENQUIRY",
+    "ctaBtn2": "CHECK AVAILABILITY",
+    "ctaBtn3": "VIEW LOCATION"
+  },
+  "resourcesPage": {
+    "breadcrumbHome": "Home",
+    "breadcrumbResources": "Resources",
+    "heroEyebrow": "RESOURCES",
+    "heroSubEyebrow": "FOR PARENTS & STUDENTS",
+    "heroWatermark": "DOWNLOADS.",
+    "heroTitleLine1": "RESOURCES &",
+    "heroTitleLine2": "DOWNLOADS.",
+    "heroDesc": "Book lists for the current academic year, administrative forms, and other documents you may need throughout your time at Tzvia.",
+    "tabBookLists": "BOOK LISTS",
+    "tabForms": "FORMS",
+    "heroStats": [
+      { "value": "5", "label": "BOOK LISTS" },
+      { "value": "3", "label": "ADMIN FORMS" }
+    ],
+    "bookListsEyebrow": "01 · ACADEMIC YEAR",
+    "bookListsYear": "5786 · 2026—27",
+    "bookListsTitle": "BOOK LISTS.",
+    "bookListsDesc": "Required textbooks for the upcoming academic year, organized by grade level. Lists are updated annually before the new year begins.",
+    "bookListsBadge": "UPDATED ANNUALLY",
+    "gradeLabel": "GRADE",
+    "downloadBtn": "DOWNLOAD",
+    "allListsTitle": "All lists at once",
+    "allListsMeta": "ZIP · 5 files",
+    "downloadAllBtn": "DOWNLOAD ALL",
+    "allListsHref": null,
+    "bookLists": [
+      { "grade": "9", "title": "Grade 9 — Book list", "meta": "PDF · Grade 9 Book List 5786", "href": null },
+      { "grade": "9B", "title": "Grade 9 (Small class) — Book list", "meta": "PDF · Small Class Book List 5786", "href": null },
+      { "grade": "10", "title": "Grade 10 — Book list", "meta": "PDF · Grade 10 Book List 5786", "href": null },
+      { "grade": "11", "title": "Grade 11 — Book list", "meta": "PDF · Grade 11 Book List 5786", "href": null },
+      { "grade": "12", "title": "Grade 12 — Book list", "meta": "PDF · Grade 12 Book List 5786", "href": null }
+    ],
+    "formsEyebrow": "02 · ADMINISTRATION",
+    "formsEvergreen": "EVERGREEN",
+    "formsTitle": "FORMS.",
+    "formsDesc": "Administrative forms — print, fill, and submit to the office. These remain available throughout the year.",
+    "formsBadge": "ALWAYS AVAILABLE",
+    "forms": [
+      { "category": "PAYMENT", "type": "PDF", "title": "Standing Payment Order", "subtitle": "Direct debit authorisation form", "desc": "For setting up automatic monthly tuition payments.", "href": null },
+      { "category": "PAYMENT", "type": "PDF", "title": "Credit Card Details", "subtitle": "One-time or recurring charge form", "desc": "For one-time or recurring credit card payments.", "href": null },
+      { "category": "IMMIGRATION", "type": "PDF", "title": "Aliyat HaNoar", "subtitle": "Youth Aliyah registration form", "desc": "Form for the Youth Aliyah programme.", "href": null }
+    ],
+    "ctaEyebrow": "CAN'T FIND IT?",
+    "ctaTitle": "Looking for something else?",
+    "ctaDesc": "The office can send you any form not listed here.",
+    "ctaBtn": "CONTACT THE OFFICE"
+  },
+  "contactPage": {
+    "breadcrumbHome": "Home",
+    "breadcrumbContact": "Contact",
+    "heroEyebrow": "CONTACT",
+    "heroSubEyebrow": "GET IN TOUCH",
+    "heroTitleLine1": "LET'S",
+    "heroTitleLine2": "TALK.",
+    "heroWatermark": "LET'S",
+    "heroStats": [
+      {"value": "3",      "label": "DEPARTMENTS"},
+      {"value": "< 2",    "label": "DAYS REPLY"}
+    ],
+    "heroCta1": "SEND A MESSAGE",
+    "heroCta2": "DIRECT CONTACT",
+    "heroDesc": "Reach the right person directly, or send us a message and we'll route it for you. We aim to reply within two business days.",
+    "directEyebrow": "REACH THE RIGHT PERSON",
+    "directTitleGhost": "DIRECT",
+    "directTitleGold": "CONTACT.",
+    "contacts": [
+      {
+        "badge": "PRIMARY",
+        "dept": "GENERAL OFFICE",
+        "name": "Main Reception",
+        "desc": "General questions, administrative matters, scheduling visits.",
+        "phone": "02-9978049",
+        "phoneHref": "tel:+97229978049",
+        "phoneExt": null,
+        "email": "zviyaky@gmail.com",
+        "emailHref": "mailto:zviyaky@gmail.com",
+        "link": null,
+        "linkLabel": null
+      },
+      {
+        "badge": "SEASONAL",
+        "dept": "ADMISSIONS",
+        "name": "Registration Team",
+        "desc": "Application process, open house, interviews, documentation.",
+        "phone": "02-9978049",
+        "phoneHref": "tel:+97229978049",
+        "phoneExt": "ext. 2",
+        "email": null,
+        "emailHref": null,
+        "link": "/admissions",
+        "linkLabel": "ADMISSIONS PAGE →"
+      },
+      {
+        "badge": "DIRECT",
+        "dept": "CAMPUS RENTAL",
+        "name": "Chaya",
+        "desc": "Family Shabbat, celebrations, seminars, sheva berachot, bar / bat mitzvah.",
+        "phone": "052-8087891",
+        "phoneHref": "tel:+972528087891",
+        "phoneExt": null,
+        "email": null,
+        "emailHref": null,
+        "link": "/facilities/rent",
+        "linkLabel": "RENTAL PAGE →",
+        "tourContact": true
+      }
+    ],
+    "formEyebrow": "SEND A MESSAGE",
+    "formIntro": "We'll route your message to the right team and respond within two business days.",
+    "formTopicLabel": "WHAT'S YOUR MESSAGE ABOUT?",
+    "topics": [
+      {"id": "general",    "label": "General question"},
+      {"id": "admissions", "label": "Admissions"},
+      {"id": "rental",     "label": "Campus rental"},
+      {"id": "forms",      "label": "Forms & docs"},
+      {"id": "other",      "label": "Other"}
+    ],
+    "fieldName": "NAME",
+    "fieldNamePlaceholder": "Your full name",
+    "fieldPhone": "PHONE",
+    "fieldPhonePlaceholder": "05X-XXXXXXX",
+    "fieldEmail": "EMAIL",
+    "fieldEmailPlaceholder": "your@email.com",
+    "fieldMessage": "YOUR MESSAGE",
+    "fieldMessageHint": "min. 20 characters",
+    "fieldMessagePlaceholder": "How can we help you?",
+    "privacyCheckPre": "I confirm that I have read and accept the",
+    "privacyPolicyLink": "privacy policy",
+    "privacyCheckPost": ". My data will be used solely to respond to my enquiry.",
+    "recaptchaNote": "Protected by reCAPTCHA —",
+    "recaptchaPrivacy": "Privacy",
+    "recaptchaTerms": "Terms",
+    "submitBtn": "SEND MESSAGE",
+    "errRequired": "This field is required",
+    "errEmail": "Please enter a valid email",
+    "errMsgShort": "Minimum 20 characters required",
+    "errPrivacy": "Please accept the privacy policy",
+    "successMsg": "Thank you — we'll be in touch within two business days.",
+    "visitEyebrow": "VISIT US",
+    "visitTitle": "Our campus.",
+    "visitLine1": "Ulpenat Tzvia Kochav Ya'akov",
+    "visitLine2": "Kochav Ya'akov · Mateh Binyamin",
+    "visitLine3": "~25 minutes from Jerusalem",
+    "openInMapsBtn": "OPEN IN MAPS",
+    "directionsBtn": "DIRECTIONS",
+    "bookTourBtn": "BOOK A TOUR",
+    "mapsHref": "https://www.google.com/maps/search/?api=1&query=31.882419,35.240107",
+    "directionsHref": "https://www.google.com/maps/dir/?api=1&destination=31.882419,35.240107",
+    "hoursTitle": "OFFICE HOURS",
+    "hours": [
+      {"day": "Sunday — Thursday", "time": "08:00 — 16:00"},
+      {"day": "Friday",            "time": "08:00 — 12:00"},
+      {"day": "Shabbat & Chagim", "time": "Closed"}
+    ],
+    "faxLabel": "FAX",
+    "faxNumber": "153-2970-9610",
+    "actionsEyebrow": "PREFER ANOTHER WAY?",
+    "actionsTitle": "ACTIONS.",
+    "actions": [
+      {"id": "whatsapp",   "tag": "WHATSAPP",   "label": "Quick chat",       "href": "https://wa.me/97229978049"},
+      {"id": "schedule",   "tag": "SCHEDULE",   "label": "Book a visit",     "href": "/admissions"},
+      {"id": "faq",        "tag": "FAQ",         "label": "Common questions", "href": "#"},
+      {"id": "newsletter", "tag": "NEWSLETTER", "label": "Get updates",      "href": "#"}
+    ],
+    "privacyBannerBold": "Your privacy matters.",
+    "privacyBannerText": " Information shared on this site is used exclusively to respond to your enquiry and provide the professional support you need. Read our full ",
+    "privacyBannerLink": "privacy policy",
+    "privacyPolicyHref": "#"
   }
 }
