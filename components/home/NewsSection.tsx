@@ -1,15 +1,12 @@
-import {useTranslations} from 'next-intl';
-
-interface NewsItem {
-  tag: string;
-  date: string;
-  title: string;
-  excerpt: string;
-}
+import Image from 'next/image';
+import {useLocale, useTranslations} from 'next-intl';
+import {Link} from '@/i18n/navigation';
+import {getArticles} from '@/lib/articles';
 
 export function NewsSection() {
   const t = useTranslations('news');
-  const items = t.raw('items') as NewsItem[];
+  const locale = useLocale();
+  const items = getArticles(locale).slice(0, 4);
 
   return (
     <section id="news" className="tz-section tz-page">
@@ -22,15 +19,25 @@ export function NewsSection() {
         </h2>
       </div>
 
-      {/* 4-column news grid */}
+      {/* 4-column news grid — each card links to its article */}
       <div className="tz-news-grid">
-        {items.map((item, i) => (
-          <article key={i} className="tz-news-card">
-            {/* Image placeholder */}
+        {items.map((item) => (
+          <Link key={item.slug} href={`/news/${item.slug}`} className="tz-news-card">
+            {/* Cover image (falls back to a tag placeholder) */}
             <div className="tz-news-thumb tz-ph">
-              <div className="tz-ph-inner">
-                <div>{item.tag.slice(0, 3)}</div>
-              </div>
+              {item.coverImage ? (
+                <Image
+                  src={item.coverImage}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+              ) : (
+                <div className="tz-ph-inner">
+                  <div>{item.tag.slice(0, 3)}</div>
+                </div>
+              )}
             </div>
 
             {/* Card body */}
@@ -40,21 +47,21 @@ export function NewsSection() {
                 <span>{item.date}</span>
               </div>
               <h4>{item.title}</h4>
-              <p className="tz-news-excerpt">{item.excerpt}</p>
-              <a className="tz-news-read" href="#">
+              <p className="tz-news-excerpt">{item.lede}</p>
+              <span className="tz-news-read">
                 {t('readLink')} <span className="arr">→</span>
-              </a>
+              </span>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
 
       {/* Footer row */}
       <div className="tz-news-foot">
         <span>{t('countLabel')}</span>
-        <a className="tz-news-more" href="#">
+        <Link className="tz-news-more" href="/news">
           {t('allLink')} <span>→</span>
-        </a>
+        </Link>
       </div>
     </section>
   );

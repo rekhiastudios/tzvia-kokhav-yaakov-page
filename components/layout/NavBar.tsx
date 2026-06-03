@@ -19,11 +19,12 @@
  *     from the inline-start edge with staggered nav links.
  */
 
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {ChevronLeft, ChevronRight, Menu, Search, X} from 'lucide-react';
-import {useLocale, useTranslations} from 'next-intl';
-import {Link, usePathname} from '@/i18n/navigation';
+import {useLocale, useMessages, useTranslations} from 'next-intl';
+import {Link, usePathname, useRouter} from '@/i18n/navigation';
 import {cn} from '@/lib/utils';
+import {buildSearchIndex, searchEntries, type SearchType} from '@/lib/search';
 import Image from 'next/image';
 
 const SCROLL_THRESHOLD_PX = 72;
@@ -66,6 +67,59 @@ export function NavBar() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  // ── Search ────────────────────────────────────────────────────────────────
+  const ts = useTranslations('search');
+  const messages = useMessages();
+  const router = useRouter();
+  const [query, setQuery] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchWrapRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const searchIndex = useMemo(
+    () => buildSearchIndex(locale, messages as Parameters<typeof buildSearchIndex>[1]),
+    [locale, messages],
+  );
+  const results = useMemo(() => searchEntries(searchIndex, query), [searchIndex, query]);
+  const showResults = searchOpen && query.trim().length > 0;
+
+  const typeLabel = (type: SearchType) =>
+    ts(
+      type === 'page'
+        ? 'typePage'
+        : type === 'article'
+          ? 'typeArticle'
+          : type === 'activity'
+            ? 'typeActivity'
+            : 'typeEvent',
+    );
+
+  function closeSearch() {
+    setSearchOpen(false);
+    setQuery('');
+  }
+
+  // Close search on outside click
+  useEffect(() => {
+    if (!searchOpen) return;
+    const onDown = (e: MouseEvent) => {
+      if (!searchWrapRef.current?.contains(e.target as Node)) setSearchOpen(false);
+    };
+    document.addEventListener('mousedown', onDown);
+    return () => document.removeEventListener('mousedown', onDown);
+  }, [searchOpen]);
+
+  function onSearchKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Escape') {
+      closeSearch();
+      searchInputRef.current?.blur();
+    } else if (e.key === 'Enter' && results.length > 0) {
+      e.preventDefault();
+      router.push(results[0].href);
+      closeSearch();
+    }
+  }
+
   const navLinks = [
     {label: t('about'),       href: '/about-us'},
     {label: t('academy'),     href: '/academy'},
@@ -86,20 +140,65 @@ export function NavBar() {
           <div className="navbar-cluster">
             {/* Search: button first so in RTL it anchors at inline-start (right),
                 input slides out toward the end (left), displacing menu + lang. */}
-            <div className="navbar-search-wrap" role="search">
+            <div
+              className={cn('navbar-search-wrap', searchOpen && 'is-active')}
+              role="search"
+              ref={searchWrapRef}
+            >
               <button
                 type="button"
                 className="navbar-icon-btn navbar-search-btn"
                 aria-label={t('search')}
+                aria-expanded={showResults}
+                onClick={() => {
+                  setSearchOpen(true);
+                  searchInputRef.current?.focus();
+                }}
               >
                 <Search aria-hidden="true" strokeWidth={2.2} />
               </button>
               <input
+                ref={searchInputRef}
                 type="text"
                 className="navbar-search-input"
-                placeholder={t('search')}
+                placeholder={ts('placeholder')}
                 aria-label={t('search')}
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setSearchOpen(true);
+                }}
+                onFocus={() => setSearchOpen(true)}
+                onKeyDown={onSearchKeyDown}
               />
+
+              {showResults && (
+                <div className="navbar-search-results" role="listbox">
+                  {results.length === 0 ? (
+                    <p className="navbar-search-empty">{ts('noResults')}</p>
+                  ) : (
+                    results.map((r, i) => (
+                      <Link
+                        key={`${r.href}-${i}`}
+                        href={r.href}
+                        role="option"
+                        className="navbar-search-result"
+                        style={{'--i': i} as React.CSSProperties}
+                        onClick={closeSearch}
+                      >
+                        <span className="navbar-search-result-type">{typeLabel(r.type)}</span>
+                        <span className="navbar-search-result-text">
+                          <span className="navbar-search-result-title">{r.title}</span>
+                          {r.subtitle && (
+                            <span className="navbar-search-result-sub">{r.subtitle}</span>
+                          )}
+                        </span>
+                        <ChevronIcon className="navbar-search-result-arr" aria-hidden="true" strokeWidth={2} />
+                      </Link>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
 
             <button

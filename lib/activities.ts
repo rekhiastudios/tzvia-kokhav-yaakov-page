@@ -13,6 +13,8 @@ export interface ActivityMeta {
   grades?: string;
   schedule?: string;
   since?: string;
+  /** Photo gallery (absolute URLs) shown on the activity detail page. */
+  gallery?: string[];
 }
 
 export interface ActivityFaculty {
@@ -37,12 +39,12 @@ export interface ActivityDetail extends ActivityMeta {
   aboutWatermark: string;
   aboutGoldTitle: string;
   aboutBody: string[];
-  glance: Array<{label: string; value: string}>;
-  faculty: ActivityFaculty[];
+  glance: Array<{ label: string; value: string }>;
+  faculty?: ActivityFaculty[];
   timelineTitle: string;
   timeline: ActivityTimeline[];
-  milestones: ActivityMilestone[];
-  testimonial: {
+  milestones?: ActivityMilestone[];
+  testimonial?: {
     quote: string;
     name: string;
     sub: string;
@@ -51,8 +53,11 @@ export interface ActivityDetail extends ActivityMeta {
   relatedSlugs: string[];
 }
 
-const ACTIVITIES_EN: ActivityDetail[] = [
+
+
+export const ACTIVITIES_EN: ActivityDetail[] = [
   // ── ARTS ──────────────────────────────────────────────────────────────
+
   {
     slug: 'theatre',
     name: 'Theatre',
@@ -62,98 +67,54 @@ const ACTIVITIES_EN: ActivityDetail[] = [
     img: '/arts.png',
     size: 'big',
     badge: 'FEATURED',
-    grades: '9 — 12',
-    schedule: 'Mon · Wed',
-    since: '2009',
-    desc: 'Three productions a year, from Tanakh adaptations to contemporary Israeli playwrights.',
-    lede: 'A four-year programme where students stage three full productions a year — from Tanakh adaptations to contemporary Israeli playwrights.',
-    aboutWatermark: 'TREAT IT AS',
-    aboutGoldTitle: 'SERIOUS STUDY.',
+    grades: '10 — 12',
+    desc:
+      'A three-year, five-unit track combining dramatic literature, acting, directing, stage work, and creative collaboration.',
+    lede:
+      'Theatre at Ulpanat Tzvia Kokhav Yaakov is a three-year academic track where students study dramatic texts, develop practical performance skills, and bring ideas to life on stage.',
+    aboutWatermark: 'FROM TEXT',
+    aboutGoldTitle: 'TO STAGE.',
     aboutBody: [
-      'Students who join the theatre programme commit to three productions a year and weekly workshops in voice, movement, and text analysis. The programme treats performance as a form of careful reading: every scene begins on the page, in close study, before it ever reaches the stage.',
-      'Past productions have ranged from Megillat Esther staged in modern dress to original works developed with visiting playwrights from the Cameri Theatre in Tel Aviv.',
+      'The theatre track is taught from 10th through 12th grade and leads to five study units. It combines a rigorous theoretical foundation with practical experience, allowing students to encounter theatre as both an academic field and a creative discipline.',
+      'Students explore plays, genres, historical periods, and methods for analysing dramatic works. Alongside this theoretical study, they develop skills in acting, directing, public speaking, and stagecraft. The programme encourages careful reading, confidence, collaboration, and the ability to transform a written text into a shared artistic experience.',
+      'Students also encounter professional theatre through repertory performances and bring their learning together through stage productions presented to the school community.',
     ],
     glance: [
-      {label: 'Hours / week', value: '6'},
-      {label: 'Productions / year', value: '3'},
-      {label: 'Avg. cohort', value: '24'},
-      {label: 'Audition?', value: 'Yes'},
+      { label: 'Duration', value: '3 years' },
+      { label: 'Grades', value: '10 — 12' },
+      { label: 'Study units', value: '5' },
+      { label: 'Approach', value: 'Theory + practice' },
     ],
-    faculty: [
-      {initials: 'RM', name: 'Rivka Mor', role: 'Programme Director'},
-      {initials: 'DG', name: 'Dov Gefen', role: 'Voice & Text'},
-      {initials: 'SK', name: 'Shoshana Katz', role: 'Movement'},
-    ],
-    timelineTitle: 'THE ARC.',
+    timelineTitle: 'THE PROGRAMME.',
     timeline: [
-      {period: 'Tishrei · Cheshvan', title: 'Fall studio piece', desc: 'Small ensemble work; devised collaboratively over six weeks.'},
-      {period: 'Tevet · Adar', title: 'Purim main stage', desc: 'Full production opening the week of Purim; two public performances.'},
-      {period: 'Iyar · Sivan', title: 'Closing showcase', desc: 'Senior-led pieces presented to families and faculty.'},
+      {
+        period: 'FOCUS 01',
+        title: 'Dramatic literature',
+        desc:
+          'Plays, genres, historical periods, and methods for analysing dramatic works.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'Performance skills',
+        desc:
+          'Acting, directing, public speaking, and an introduction to the elements of stage production.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'From study to production',
+        desc:
+          'Collaborative creative work that brings dramatic ideas from the page to the stage.',
+      },
     ],
     milestones: [
-      {num: '15', label: 'Years Running'},
-      {num: '42', label: 'Productions Staged'},
-      {num: '3', label: 'National Awards'},
-      {num: '300+', label: 'Alumnae Trained'},
+      { num: '3', label: 'Years of Study' },
+      { num: '5', label: 'Study Units' },
+      { num: '2', label: 'Theory + Practice' },
+      { num: '1', label: 'Creative Process' },
     ],
-    testimonial: {
-      quote: 'I learned to read a text the way you read a person — slowly, and assuming there\'s more underneath than what\'s on the surface.',
-      name: 'Yael Avraham',
-      sub: 'Alumna · Class of 2022',
-      initials: 'YA',
-    },
-    relatedSlugs: ['visual-arts', 'dance', 'music-ensemble'],
+    relatedSlugs: ['dance', 'jewish-thought', 'social-sciences'],
   },
-  {
-    slug: 'visual-arts',
-    name: 'Visual Arts',
-    cat: 'ARTS',
-    catSlug: 'arts',
-    catIdx: 1,
-    img: '/arts.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'Tue · Thu',
-    since: '2012',
-    desc: 'Studio practice, drawing, painting, and digital media.',
-    lede: 'A studio-based programme in drawing, painting, sculpture, photography, and digital design — every student finds her visual voice.',
-    aboutWatermark: 'SEEING AS',
-    aboutGoldTitle: 'SERIOUS PRACTICE.',
-    aboutBody: [
-      'The visual arts programme runs across all four years, with a dedicated studio open to students six days a week. Work is portfolio-based, and seniors submit work to national art competitions.',
-      'The curriculum moves from foundational drawing in 9th grade through advanced studio practice, photography, and digital design in the upper years.',
-    ],
-    glance: [
-      {label: 'Hours / week', value: '4'},
-      {label: 'Exhibitions / year', value: '2'},
-      {label: 'Avg. cohort', value: '18'},
-      {label: 'Portfolio required?', value: 'No'},
-    ],
-    faculty: [
-      {initials: 'TL', name: 'Tamar Levy', role: 'Studio Lead'},
-      {initials: 'NB', name: 'Noa Ben-David', role: 'Photography'},
-    ],
-    timelineTitle: 'THE YEAR.',
-    timeline: [
-      {period: 'Tishrei · Kislev', title: 'Foundation drawing', desc: 'Still life, line, and observation.'},
-      {period: 'Tevet · Adar', title: 'Theme project', desc: 'Each student develops a personal theme across media.'},
-      {period: 'Iyar · Sivan', title: 'End-of-year exhibition', desc: 'Public show on campus; alumnae and families invited.'},
-    ],
-    milestones: [
-      {num: '12', label: 'Years Running'},
-      {num: '8', label: 'National Awards'},
-      {num: '200+', label: 'Alumnae Trained'},
-      {num: '2', label: 'Exhibitions / Year'},
-    ],
-    testimonial: {
-      quote: 'The studio taught me that seeing carefully is itself a discipline — as rigorous as any text.',
-      name: 'Miriam Shapiro',
-      sub: 'Alumna · Class of 2021',
-      initials: 'MS',
-    },
-    relatedSlugs: ['theatre', 'dance'],
-  },
+
   {
     slug: 'dance',
     name: 'Dance',
@@ -161,51 +122,50 @@ const ACTIVITIES_EN: ActivityDetail[] = [
     catSlug: 'arts',
     catIdx: 1,
     img: '/arts.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'Wed · Fri',
-    since: '2015',
-    desc: 'Modern, folk, and choreographed performance.',
-    lede: 'Technique, choreography, and performance — dance as a precise physical language and a form of communal expression.',
-    aboutWatermark: 'THE BODY AS',
-    aboutGoldTitle: 'INSTRUMENT.',
+    size: 'tall',
+    desc:
+      'Movement, creativity, discipline, and personal expression within a supportive learning environment.',
+    lede:
+      'Dance at Ulpanat Tzvia Kokhav Yaakov offers students a creative space to explore movement, develop confidence, and discover a powerful form of personal expression.',
+    aboutWatermark: 'MOVEMENT AS',
+    aboutGoldTitle: 'EXPRESSION.',
     aboutBody: [
-      'The dance programme covers modern technique, Israeli folk forms, and original choreography. Students perform at school events and in the year-end showcase.',
-      'Advanced students join the school\'s dance ensemble, which has performed at regional and national festivals.',
+      'Dance gives students an opportunity to communicate ideas and emotions beyond words. Through movement, they can develop greater body awareness, creativity, attentiveness, and confidence in their own ability to express themselves.',
+      'The learning process also nurtures perseverance, precision, self-discipline, and the ability to grow gradually through practice. Dance creates room for individual development while encouraging students to listen to one another, cooperate, and take part in a shared creative experience.',
+      'This track is suited to students who wish to combine movement with thought, creativity with discipline, and personal growth with a supportive group environment.',
     ],
     glance: [
-      {label: 'Hours / week', value: '5'},
-      {label: 'Performances / year', value: '4'},
-      {label: 'Avg. cohort', value: '20'},
-      {label: 'Audition?', value: 'No'},
+      { label: 'Focus', value: 'Movement + expression' },
+      { label: 'Skills', value: 'Creativity · discipline' },
+      { label: 'Approach', value: 'Personal + collaborative' },
+      { label: 'Setting', value: 'Supportive group learning' },
     ],
-    faculty: [
-      {initials: 'HL', name: 'Hila Levi', role: 'Movement Director'},
-      {initials: 'RK', name: 'Rachel Koren', role: 'Folk & Ensemble'},
-    ],
-    timelineTitle: 'THE YEAR.',
+    timelineTitle: 'THE CREATIVE PROCESS.',
     timeline: [
-      {period: 'Tishrei · Cheshvan', title: 'Technique foundations', desc: 'Body alignment, rhythm, and ensemble work.'},
-      {period: 'Tevet · Adar', title: 'Choreography project', desc: 'Students create and rehearse original short works.'},
-      {period: 'Iyar · Sivan', title: 'Year-end performance', desc: 'Full programme performed for school and families.'},
+      {
+        period: 'FOCUS 01',
+        title: 'Movement awareness',
+        desc:
+          'Developing attentiveness, coordination, and a deeper awareness of movement.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'Personal expression',
+        desc:
+          'Exploring how ideas and emotions can be expressed through a physical language.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'Creative collaboration',
+        desc:
+          'Learning to listen, cooperate, and take part in a shared artistic process.',
+      },
     ],
-    milestones: [
-      {num: '9', label: 'Years Running'},
-      {num: '6', label: 'Festival Awards'},
-      {num: '150+', label: 'Alumnae Trained'},
-      {num: '4', label: 'Performances / Year'},
-    ],
-    testimonial: {
-      quote: 'Dance gave me a discipline I carry into everything — precision, patience, and the courage to be present.',
-      name: 'Shira Cohen',
-      sub: 'Alumna · Class of 2023',
-      initials: 'SC',
-    },
-    relatedSlugs: ['theatre', 'visual-arts'],
+    relatedSlugs: ['theatre', 'basketball'],
   },
 
   // ── SCIENCE ───────────────────────────────────────────────────────────
+
   {
     slug: 'biology',
     name: 'Biology',
@@ -213,49 +173,48 @@ const ACTIVITIES_EN: ActivityDetail[] = [
     catSlug: 'science',
     catIdx: 2,
     img: '/science.png',
-    size: '',
-    badge: 'IN-PERSON',
-    grades: '9 — 12',
-    schedule: 'Sun · Tue',
-    since: '1998',
-    desc: 'Wet lab, dissections, and field studies in Mateh Binyamin.',
-    lede: 'From cell biology to ecology — a hands-on, lab-based programme built around the living landscape of Mateh Binyamin.',
-    aboutWatermark: 'INQUIRY AS',
-    aboutGoldTitle: 'DAILY PRACTICE.',
+    size: 'wide',
+    desc:
+      'An exploration of living organisms, the human body, and the biological processes that shape life.',
+    lede:
+      'Biology at Ulpanat Tzvia Kokhav Yaakov invites curious students to explore the living world, understand the human body, and examine the processes taking place within us and around us.',
+    aboutWatermark: 'LIFE FROM',
+    aboutGoldTitle: 'WITHIN.',
     aboutBody: [
-      'Biology at Tzvia is taught in our dedicated wet lab, with regular field work in the Binyamin hills. Students in 11th–12th grade follow the full matriculation track and sit the national biology bagrut.',
-      'The school participates in the national science olympiad, and graduates regularly go on to biology and medicine programmes at Israeli universities.',
+      'The biology track opens a door to the rich and complex world of living organisms. Students deepen their understanding of the human body, the natural world, and the systems that make life possible.',
+      'The programme introduces students to fascinating topics such as the brain, the reproductive system, the body’s defence mechanisms, and the way the nervous system allows the sense of touch to function. Students also encounter the smallest living organisms and explore the remarkable diversity of life.',
+      'Biology encourages students to observe carefully, ask meaningful questions, and search for evidence-based explanations. Rather than simply learning that something occurs, they examine how it happens and which biological processes make it possible.',
     ],
     glance: [
-      {label: 'Hours / week', value: '5'},
-      {label: 'Bagrut units', value: '5'},
-      {label: 'Lab sessions / week', value: '2'},
-      {label: 'Field trips / year', value: '3'},
+      { label: 'Focus', value: 'Living organisms' },
+      { label: 'Human biology', value: 'Body systems' },
+      { label: 'Key skill', value: 'Scientific thinking' },
+      { label: 'Approach', value: 'Observation + inquiry' },
     ],
-    faculty: [
-      {initials: 'DB', name: 'Dr. Dina Bar-Oz', role: 'Head of Science'},
-      {initials: 'AL', name: 'Avital Luria', role: 'Lab Instructor'},
-    ],
-    timelineTitle: 'THE YEAR.',
+    timelineTitle: 'AREAS OF EXPLORATION.',
     timeline: [
-      {period: 'Tishrei · Kislev', title: 'Cellular biology', desc: 'Microscopy, cell division, and genetics foundations.'},
-      {period: 'Tevet · Nisan', title: 'Ecology fieldwork', desc: 'Flora and fauna survey of the Binyamin hills.'},
-      {period: 'Iyar · Sivan', title: 'Bagrut preparation', desc: 'Full review cycle and mock examinations.'},
+      {
+        period: 'FOCUS 01',
+        title: 'The human body',
+        desc:
+          'Exploring the systems and biological processes that influence everyday life.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'The nervous system and senses',
+        desc:
+          'Understanding how the brain, nerves, and sensory processes help us experience the world.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'The diversity of life',
+        desc:
+          'Investigating living organisms and developing a deeper appreciation for the natural world.',
+      },
     ],
-    milestones: [
-      {num: '26', label: 'Years Running'},
-      {num: '94%', label: 'Bagrut Pass Rate'},
-      {num: '12', label: 'Olympiad Medals'},
-      {num: '60+', label: 'Med School Alumnae'},
-    ],
-    testimonial: {
-      quote: 'The lab work made abstract concepts concrete — I arrived at university already knowing how to think like a scientist.',
-      name: 'Dr. Rachel Cohen',
-      sub: 'Alumna · Class of 2014',
-      initials: 'RC',
-    },
     relatedSlugs: ['physics', 'chemistry'],
   },
+
   {
     slug: 'physics',
     name: 'Physics',
@@ -265,46 +224,47 @@ const ACTIVITIES_EN: ActivityDetail[] = [
     img: '/science.png',
     size: '',
     badge: 'ONLINE',
-    grades: '10 — 12',
-    schedule: 'Mon · Wed · Thu',
-    since: '2008',
-    desc: 'Synchronous online track with weekly problem sets.',
-    lede: 'A rigorous physics track taught synchronously online, with weekly problem sessions and monthly on-campus lab days.',
-    aboutWatermark: 'LAWS THAT',
-    aboutGoldTitle: 'GOVERN EVERYTHING.',
+    desc:
+      'Scientific questions, analytical thinking, and a deeper understanding of the technologies that surround us.',
+    lede:
+      'Physics at Ulpanat Tzvia Kokhav Yaakov helps students understand the principles behind everyday phenomena and modern technology while developing precise and analytical thinking.',
+    aboutWatermark: 'UNDERSTAND',
+    aboutGoldTitle: 'THE WORLD.',
     aboutBody: [
-      'The physics programme is delivered as a synchronous online course, taught by a specialist at Mifteach — one of Israel\'s leading distance-learning providers. Students attend live sessions and submit weekly problem sets.',
-      'Monthly on-campus lab days ensure students get hands-on experimental experience alongside the theoretical curriculum.',
+      'Why is the sky blue? What is an electrical current? Can a mobile phone affect our health? What is radioactive material, and how can it be used to fight cancer while also posing risks?',
+      'Physics begins with questions about the world around us. The track invites students to examine familiar phenomena from a scientific perspective and discover the principles that explain how nature and technology work.',
+      'The subject is much more than a collection of formulas. It develops analytical thinking, precision, intellectual curiosity, and the ability to approach complex questions in a structured way. The online learning format makes this field accessible to students who wish to deepen their scientific understanding.',
     ],
     glance: [
-      {label: 'Hours / week', value: '6'},
-      {label: 'Bagrut units', value: '5'},
-      {label: 'Lab days / month', value: '1'},
-      {label: 'Format', value: 'Online + lab'},
+      { label: 'Format', value: 'Online' },
+      { label: 'Focus', value: 'Everyday phenomena' },
+      { label: 'Topics', value: 'Energy · electricity · radiation' },
+      { label: 'Key skill', value: 'Analytical thinking' },
     ],
-    faculty: [
-      {initials: 'EP', name: 'Eitan Peretz', role: 'Physics Instructor'},
-    ],
-    timelineTitle: 'THE YEAR.',
+    timelineTitle: 'QUESTIONS THAT LEAD TO DISCOVERY.',
     timeline: [
-      {period: 'Tishrei · Tevet', title: 'Mechanics & waves', desc: 'Motion, forces, energy, and oscillation.'},
-      {period: 'Shevat · Nisan', title: 'Electricity & optics', desc: 'Circuits, light, and electromagnetic theory.'},
-      {period: 'Iyar · Sivan', title: 'Exam preparation', desc: 'Full curriculum review and mock bagrut.'},
+      {
+        period: 'FOCUS 01',
+        title: 'Phenomena in everyday life',
+        desc:
+          'Looking at familiar experiences through a scientific and analytical lens.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'Electricity and technology',
+        desc:
+          'Understanding how scientific principles shape the devices and systems around us.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'Radiation and its uses',
+        desc:
+          'Exploring how scientific knowledge can support medicine while requiring careful understanding.',
+      },
     ],
-    milestones: [
-      {num: '16', label: 'Years Running'},
-      {num: '89%', label: 'Pass Rate (5 units)'},
-      {num: '3', label: 'Olympiad Finalists'},
-      {num: '40+', label: 'Engineering Alumnae'},
-    ],
-    testimonial: {
-      quote: 'Physics online sounds counterintuitive, but the structured problem sets built a rigour I carry into my engineering work.',
-      name: 'Neta Grossman',
-      sub: 'Alumna · Class of 2017',
-      initials: 'NG',
-    },
-    relatedSlugs: ['chemistry', 'biology'],
+    relatedSlugs: ['biology', 'chemistry'],
   },
+
   {
     slug: 'chemistry',
     name: 'Chemistry',
@@ -314,250 +274,109 @@ const ACTIVITIES_EN: ActivityDetail[] = [
     img: '/science.png',
     size: '',
     badge: 'ONLINE',
-    grades: '10 — 12',
-    schedule: 'Tue · Thu',
-    since: '2011',
-    desc: 'Online theory paired with on-campus practical sessions.',
-    lede: 'Chemistry theory delivered online, with on-campus practical sessions in our fully equipped lab — the best of both models.',
+    desc:
+      'Online learning, scientific exploration, home experiments, and practical visits to the Davidson Institute.',
+    lede:
+      'Chemistry at Ulpanat Tzvia Kokhav Yaakov combines accessible online learning with experiments and practical encounters that make scientific ideas tangible.',
     aboutWatermark: 'MATTER AND',
-    aboutGoldTitle: 'ITS CHANGES.',
+    aboutGoldTitle: 'CHANGE.',
     aboutBody: [
-      'The chemistry programme combines a synchronous online theory course with biweekly practical sessions in Tzvia\'s chemistry lab. Students follow the full 5-unit matriculation curriculum.',
-      'The programme prepares students for the national bagrut and for further study in chemistry, pharmacy, and the life sciences.',
+      'Chemistry gives students an opportunity to explore materials, reactions, and the scientific processes taking place all around us. The track combines guided online learning with practical experimentation.',
+      'Students meet online each week with a teacher and a group of learners from different parts of the country. Lessons include presentations, videos, assignments, and experiments that can be carried out at home. This combination helps transform complex scientific ideas into clear and tangible experiences.',
+      'Several times during the year, students are invited to the Davidson Institute for Science Education. These visits allow them to conduct experiments in real laboratories and become familiar with a professional scientific environment.',
     ],
     glance: [
-      {label: 'Hours / week', value: '5'},
-      {label: 'Bagrut units', value: '5'},
-      {label: 'Lab sessions / two weeks', value: '1'},
-      {label: 'Format', value: 'Online + lab'},
+      { label: 'Format', value: 'Online' },
+      { label: 'Online meeting', value: 'Weekly' },
+      { label: 'Home experiments', value: 'Included' },
+      { label: 'Institute visits', value: 'Several each year' },
     ],
-    faculty: [
-      {initials: 'SM', name: 'Sara Mizrahi', role: 'Chemistry Instructor'},
-      {initials: 'AL', name: 'Avital Luria', role: 'Lab Instructor'},
-    ],
-    timelineTitle: 'THE YEAR.',
+    timelineTitle: 'LEARN, EXPERIMENT, DISCOVER.',
     timeline: [
-      {period: 'Tishrei · Kislev', title: 'Atomic structure', desc: 'Periodic table, bonding, and molecular geometry.'},
-      {period: 'Tevet · Adar', title: 'Reactions & equilibrium', desc: 'Kinetics, thermodynamics, and acid-base chemistry.'},
-      {period: 'Nisan · Sivan', title: 'Practical exams', desc: 'Lab component of bagrut and full review.'},
+      {
+        period: 'FOCUS 01',
+        title: 'Guided online study',
+        desc:
+          'Weekly learning through explanations, presentations, videos, and group interaction.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'Experiments at home',
+        desc:
+          'Practical activities that make scientific concepts more concrete and understandable.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'Davidson Institute visits',
+        desc:
+          'Opportunities to work in laboratory settings and encounter science beyond the screen.',
+      },
     ],
     milestones: [
-      {num: '13', label: 'Years Running'},
-      {num: '92%', label: 'Pass Rate (5 units)'},
-      {num: '5', label: 'Chemistry Olympiad'},
-      {num: '30+', label: 'Pharmacy Alumnae'},
+      { num: '1', label: 'Online Meeting / Week' },
+      { num: 'HOME', label: 'Experiments Included' },
+      { num: 'LAB', label: 'Practical Encounters' },
+      { num: '∞', label: 'Questions to Explore' },
     ],
-    testimonial: {
-      quote: 'The blend of online theory and hands-on lab time gave me exactly the preparation I needed for university chemistry.',
-      name: 'Batya Rosenberg',
-      sub: 'Alumna · Class of 2019',
-      initials: 'BR',
-    },
     relatedSlugs: ['biology', 'physics'],
   },
 
   // ── SPORTS ────────────────────────────────────────────────────────────
+  // Basketball is an editorial addition requested for the new website.
+  // Operational details should be added after confirmation by the school.
+
   {
-    slug: 'volleyball',
-    name: 'Volleyball',
+    slug: 'basketball',
+    name: 'Basketball',
     cat: 'SPORTS',
     catSlug: 'sports',
     catIdx: 3,
     img: '/humanities.png',
     size: 'wide',
     badge: 'IN-PERSON',
-    grades: '9 — 12',
-    schedule: 'Sun · Tue',
-    since: '2001',
-    desc: 'Inter-school league play across two age divisions.',
-    lede: 'Competitive volleyball in two age divisions, with inter-school league play across Mateh Binyamin and the Jerusalem corridor.',
-    aboutWatermark: 'STRONG BODY',
-    aboutGoldTitle: 'STRONG MIND.',
+    desc:
+      'Movement, teamwork, coordination, and confidence developed through a shared sporting experience.',
+    lede:
+      'Basketball at Ulpanat Tzvia Kokhav Yaakov creates a space for students to move, cooperate, build confidence, and experience the value of working toward a shared goal.',
+    aboutWatermark: 'MOVE AS',
+    aboutGoldTitle: 'A TEAM.',
     aboutBody: [
-      'The volleyball programme runs two competitive squads — junior (grades 9–10) and senior (grades 11–12) — each playing in the regional league from Tishrei through Adar.',
-      'Training emphasises technique, team communication, and conditioning. The senior squad has reached the regional semi-finals in three of the last five years.',
+      'Basketball is more than a physical activity. It gives students an opportunity to develop coordination, attentiveness, persistence, and the ability to make decisions while working together with others.',
+      'The sport encourages students to communicate, support one another, and understand the importance of both individual effort and collective responsibility. Every practice becomes an opportunity to grow stronger, more focused, and more confident.',
+      'Within a supportive educational environment, basketball can help students discover the value of discipline, teamwork, resilience, and enjoying the process of improvement.',
     ],
     glance: [
-      {label: 'Sessions / week', value: '3'},
-      {label: 'Season length', value: '6 months'},
-      {label: 'Age divisions', value: '2'},
-      {label: 'League', value: 'Regional'},
+      { label: 'Format', value: 'In person' },
+      { label: 'Focus', value: 'Movement + teamwork' },
+      { label: 'Skills', value: 'Coordination · resilience' },
+      { label: 'Approach', value: 'Practice + shared play' },
     ],
-    faculty: [
-      {initials: 'OA', name: 'Orly Azoulay', role: 'Head Coach'},
-      {initials: 'MN', name: 'Michal Nevo', role: 'Junior Coach'},
-    ],
-    timelineTitle: 'THE SEASON.',
+    timelineTitle: 'GROWING THROUGH SPORT.',
     timeline: [
-      {period: 'Tishrei · Cheshvan', title: 'Pre-season', desc: 'Conditioning, technique drills, and team formation.'},
-      {period: 'Kislev · Adar', title: 'League season', desc: 'Regional fixtures — home and away.'},
-      {period: 'Nisan · Iyar', title: 'Play-offs', desc: 'Top-four teams advance to regional semi-finals.'},
+      {
+        period: 'FOCUS 01',
+        title: 'Movement foundations',
+        desc:
+          'Developing coordination, attentiveness, and confidence through active participation.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'Teamwork',
+        desc:
+          'Learning to communicate, cooperate, and take responsibility within a group.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'Persistence and growth',
+        desc:
+          'Building resilience and discovering the value of consistent effort over time.',
+      },
     ],
-    milestones: [
-      {num: '23', label: 'Years Running'},
-      {num: '3', label: 'Semi-final Appearances'},
-      {num: '2', label: 'Age Divisions'},
-      {num: '400+', label: 'Players Trained'},
-    ],
-    testimonial: {
-      quote: 'The team taught me what I could only learn alongside others — accountability, resilience, and the discipline of showing up.',
-      name: 'Adina Weiss',
-      sub: 'Alumna · Class of 2020',
-      initials: 'AW',
-    },
-    relatedSlugs: ['running'],
-  },
-  {
-    slug: 'running',
-    name: 'Running',
-    cat: 'SPORTS',
-    catSlug: 'sports',
-    catIdx: 3,
-    img: '/humanities.png',
-    size: 'wide',
-    badge: 'IN-PERSON',
-    grades: '9 — 12',
-    schedule: 'Mon · Thu',
-    since: '2005',
-    desc: 'Cross-country training with seasonal regional meets.',
-    lede: 'Cross-country and road running — individual discipline, team spirit, and the rolling hills of Mateh Binyamin as a training ground.',
-    aboutWatermark: 'ONE STEP',
-    aboutGoldTitle: 'AT A TIME.',
-    aboutBody: [
-      'The running programme offers structured training for all levels, from first-time runners to competitive athletes. Weekly sessions cover distance, interval work, and strength conditioning.',
-      'The school enters teams in the regional cross-country series each spring, and individual runners regularly qualify for district championships.',
-    ],
-    glance: [
-      {label: 'Sessions / week', value: '2'},
-      {label: 'Season', value: 'Year-round'},
-      {label: 'Meets / year', value: '4'},
-      {label: 'All abilities?', value: 'Yes'},
-    ],
-    faculty: [
-      {initials: 'RP', name: 'Ruth Perelman', role: 'Running Coach'},
-    ],
-    timelineTitle: 'THE SEASON.',
-    timeline: [
-      {period: 'Tishrei · Cheshvan', title: 'Base training', desc: 'Aerobic base, form, and weekly distance runs.'},
-      {period: 'Kislev · Adar', title: 'Interval work', desc: 'Speed sessions and hill repeats; first regional meet.'},
-      {period: 'Nisan · Sivan', title: 'Race season', desc: 'Three regional meets; district championships for qualifiers.'},
-    ],
-    milestones: [
-      {num: '19', label: 'Years Running'},
-      {num: '4', label: 'Meets / Year'},
-      {num: '8', label: 'District Medalists'},
-      {num: '300+', label: 'Runners Trained'},
-    ],
-    testimonial: {
-      quote: 'Running taught me patience with myself — that every improvement is built one session at a time.',
-      name: 'Tamar Elul',
-      sub: 'Alumna · Class of 2018',
-      initials: 'TE',
-    },
-    relatedSlugs: ['volleyball'],
+    relatedSlugs: ['dance', 'theatre'],
   },
 
   // ── HUMANITIES ────────────────────────────────────────────────────────
-  {
-    slug: 'israeli-thought',
-    name: 'Israeli Thought',
-    cat: 'HUMANITIES',
-    catSlug: 'humanities',
-    catIdx: 4,
-    img: '/beit-midrash.png',
-    size: '',
-    badge: undefined,
-    grades: '10 — 12',
-    schedule: 'Sun · Wed',
-    since: '2003',
-    desc: 'Zionist philosophy, Jewish identity, and contemporary Israeli society.',
-    lede: 'A rigorous study of Zionist thought from Herzl to the present — primary sources, competing visions, and the questions that still define Israeli society.',
-    aboutWatermark: 'WHO WE',
-    aboutGoldTitle: 'ARE BECOMING.',
-    aboutBody: [
-      'The programme spans classical Zionist texts (Herzl, Achad Ha\'am, Jabotinsky, Rav Kook), the early state period, and contemporary debates around identity, religion, and democracy.',
-      'Students engage with primary sources and are expected to construct and defend original arguments. The course culminates in a substantial research essay.',
-    ],
-    glance: [
-      {label: 'Hours / week', value: '3'},
-      {label: 'Primary texts', value: '20+'},
-      {label: 'Research essay?', value: 'Yes'},
-      {label: 'Bagrut elective?', value: 'Yes'},
-    ],
-    faculty: [
-      {initials: 'YM', name: 'Yosef Melamed', role: 'Head of Humanities'},
-      {initials: 'ES', name: 'Esther Sela', role: 'Research Supervisor'},
-    ],
-    timelineTitle: 'THE YEAR.',
-    timeline: [
-      {period: 'Tishrei · Kislev', title: 'Classical texts', desc: 'Herzl, Achad Ha\'am, and early Zionist debate.'},
-      {period: 'Tevet · Adar', title: 'State and society', desc: 'The founding generation and contemporary challenges.'},
-      {period: 'Nisan · Sivan', title: 'Research project', desc: 'Independent essay defended before a faculty panel.'},
-    ],
-    milestones: [
-      {num: '21', label: 'Years Running'},
-      {num: '20+', label: 'Primary Texts'},
-      {num: '95%', label: 'Bagrut Pass Rate'},
-      {num: '500+', label: 'Alumnae Trained'},
-    ],
-    testimonial: {
-      quote: 'This course gave me a language for questions I\'d been carrying since childhood — and the rigour to actually answer them.',
-      name: 'Devorah Tal',
-      sub: 'Alumna · Class of 2022',
-      initials: 'DT',
-    },
-    relatedSlugs: ['national-excursions', 'social-sciences', 'jewish-history'],
-  },
-  {
-    slug: 'national-excursions',
-    name: 'National Excursions',
-    cat: 'HUMANITIES',
-    catSlug: 'humanities',
-    catIdx: 4,
-    img: '/humanities.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'Monthly',
-    since: '1998',
-    desc: 'Journeys across Israel — from the Galilee to the Negev.',
-    lede: 'Every grade travels. The land of Israel as a classroom — geography, history, and memory brought to life through encounter.',
-    aboutWatermark: 'THE LAND',
-    aboutGoldTitle: 'AS TEACHER.',
-    aboutBody: [
-      'National excursions are embedded in the school calendar from grade 9 through 12. Each trip is designed to complement classroom learning — Biblical archaeology, modern military history, ecology, and social geography.',
-      'Grade 12 takes a three-day capstone journey through the south — from the Negev highlands to Eilat — that brings together four years of study.',
-    ],
-    glance: [
-      {label: 'Trips / year', value: '4'},
-      {label: 'Total days in field', value: '8'},
-      {label: 'Grades', value: '9 — 12'},
-      {label: 'Capstone trip?', value: 'Yes (Gr. 12)'},
-    ],
-    faculty: [
-      {initials: 'AM', name: 'Avi Menashe', role: 'Field Studies Lead'},
-      {initials: 'DH', name: 'Dafna Hirsch', role: 'Archaeology Guide'},
-    ],
-    timelineTitle: 'THE YEAR.',
-    timeline: [
-      {period: 'Cheshvan', title: 'Binyamin hills', desc: 'Local archaeology and landscape — starting close to home.'},
-      {period: 'Adar', title: 'Galilee & Golan', desc: 'Second Temple sites, water systems, and the north.'},
-      {period: 'Iyar', title: 'Negev capstone (Gr. 12)', desc: 'Three-day journey through the southern landscape.'},
-    ],
-    milestones: [
-      {num: '26', label: 'Years Running'},
-      {num: '4', label: 'Trips / Year'},
-      {num: '100+', label: 'Sites Visited'},
-      {num: '1,500+', label: 'Students Traveled'},
-    ],
-    testimonial: {
-      quote: 'The land stopped being a map and became a home. That shift happened on these trips.',
-      name: 'Lior Tal',
-      sub: 'Alumna · Class of 2023',
-      initials: 'LT',
-    },
-    relatedSlugs: ['israeli-thought', 'jewish-history'],
-  },
+
   {
     slug: 'social-sciences',
     name: 'Social Sciences',
@@ -566,102 +385,210 @@ const ACTIVITIES_EN: ActivityDetail[] = [
     catIdx: 4,
     img: '/humanities.png',
     size: '',
-    badge: undefined,
-    grades: '10 — 12',
-    schedule: 'Sun · Tue',
-    since: '2006',
-    desc: 'Sociology, psychology, and civic studies.',
-    lede: 'Sociology, psychology, and civic education — learning to read society as carefully as you read a text.',
+    desc:
+      'Psychology, sociology, and research tools for understanding individuals, groups, and society.',
+    lede:
+      'Social Sciences at Ulpanat Tzvia Kokhav Yaakov gives students a new lens for understanding people, communities, and the forces that shape everyday life.',
     aboutWatermark: 'SOCIETY AS',
-    aboutGoldTitle: 'TEXT.',
+    aboutGoldTitle: 'A QUESTION.',
     aboutBody: [
-      'The social sciences track combines sociology, social psychology, and civic studies. Students analyse Israeli society through both quantitative data and qualitative case studies.',
-      'The programme includes a community research project in which students survey, interview, and present findings on a social issue of their choice.',
+      'The social sciences track helps students examine familiar experiences from a new perspective. Why do people behave as they do? How do groups influence individuals? How are attitudes connected to actions? How do values and norms shape everyday life?',
+      'The five-unit programme combines psychology and sociology with a research project. Students explore cultures, values, norms, gender, social roles, different types of groups, and the ways in which society influences the individual.',
+      'In psychology, they encounter topics such as emotions, cognition, perception, attention, attitudes, behaviour, and social influence. The research component gives students an opportunity to ask questions, examine information, and draw thoughtful conclusions.',
     ],
     glance: [
-      {label: 'Hours / week', value: '4'},
-      {label: 'Research project?', value: 'Yes'},
-      {label: 'Bagrut track?', value: 'Yes'},
-      {label: 'Avg. cohort', value: '22'},
+      { label: 'Study units', value: '5' },
+      { label: 'Psychology', value: '2 units' },
+      { label: 'Sociology', value: '2 units' },
+      { label: 'Research project', value: '1 unit' },
     ],
-    faculty: [
-      {initials: 'LB', name: 'Leah Barak', role: 'Sociology'},
-      {initials: 'HR', name: 'Hannah Rosen', role: 'Psychology'},
-    ],
-    timelineTitle: 'THE YEAR.',
+    timelineTitle: 'A NEW WAY TO SEE THE WORLD.',
     timeline: [
-      {period: 'Tishrei · Tevet', title: 'Foundations', desc: 'Key concepts in sociology and social psychology.'},
-      {period: 'Shevat · Nisan', title: 'Field research', desc: 'Community survey design, data collection, and analysis.'},
-      {period: 'Iyar · Sivan', title: 'Presentations', desc: 'Students present research findings to peers and faculty.'},
+      {
+        period: 'FOCUS 01',
+        title: 'Psychology',
+        desc:
+          'Emotions, cognition, perception, attitudes, behaviour, and social influence.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'Sociology',
+        desc:
+          'Cultures, values, norms, social roles, groups, and the relationship between society and the individual.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'Research',
+        desc:
+          'Asking meaningful questions, examining findings, and developing evidence-based conclusions.',
+      },
     ],
     milestones: [
-      {num: '18', label: 'Years Running'},
-      {num: '22', label: 'Avg. Cohort'},
-      {num: '96%', label: 'Bagrut Pass Rate'},
-      {num: '400+', label: 'Alumnae Trained'},
+      { num: '5', label: 'Study Units' },
+      { num: '2', label: 'Psychology Units' },
+      { num: '2', label: 'Sociology Units' },
+      { num: '1', label: 'Research Project' },
     ],
-    testimonial: {
-      quote: 'The research project changed how I move through the world — I ask better questions now, and I listen differently.',
-      name: 'Ronit Katz',
-      sub: 'Alumna · Class of 2021',
-      initials: 'RK',
-    },
-    relatedSlugs: ['israeli-thought', 'jewish-history'],
+    relatedSlugs: ['jewish-thought', 'land-of-israel'],
   },
+
   {
-    slug: 'jewish-history',
-    name: 'Jewish History',
+    slug: 'land-of-israel',
+    name: 'Land of Israel',
+    cat: 'HUMANITIES',
+    catSlug: 'humanities',
+    catIdx: 4,
+    img: '/humanities.png',
+    size: 'big',
+    desc:
+      'Jerusalem, the Negev, and the mountain region explored through history, geography, nature, and research.',
+    lede:
+      'Land of Israel studies at Ulpanat Tzvia Kokhav Yaakov offers a multidisciplinary encounter with the landscapes, stories, and natural features that shape the country.',
+    aboutWatermark: 'THE LAND AS',
+    aboutGoldTitle: 'A LIVING TEXT.',
+    aboutBody: [
+      'The Land of Israel track gives students an opportunity to explore the country in depth. The programme focuses on three central areas: Jerusalem, the Negev, and the mountain region.',
+      'Understanding the land extends far beyond historical events. Students encounter the many elements that shape a region: geography, plants, animals, soil, human stories, and the relationship between nature and culture.',
+      'The track includes two study units dedicated to Jerusalem, one focused on the Negev, one on the mountain region, and an additional research unit. This multidisciplinary approach helps students see the land not simply as a map, but as a complex and meaningful living environment.',
+    ],
+    glance: [
+      { label: 'Study units', value: '5' },
+      { label: 'Jerusalem', value: '2 units' },
+      { label: 'Negev + mountain region', value: '2 units' },
+      { label: 'Research project', value: '1 unit' },
+    ],
+    timelineTitle: 'READING THE LAND.',
+    timeline: [
+      {
+        period: 'FOCUS 01',
+        title: 'Jerusalem',
+        desc:
+          'A deeper encounter with the history, geography, and distinctive character of the city.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'The Negev and the mountain region',
+        desc:
+          'Exploring contrasting landscapes and the natural and human stories that shape them.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'Independent research',
+        desc:
+          'Choosing a topic, exploring it in depth, and developing structured independent learning skills.',
+      },
+    ],
+    milestones: [
+      { num: '5', label: 'Study Units' },
+      { num: '2', label: 'Jerusalem Units' },
+      { num: '1', label: 'Negev Unit' },
+      { num: '1+1', label: 'Mountain + Research' },
+    ],
+    relatedSlugs: ['jewish-thought', 'social-sciences'],
+  },
+
+  {
+    slug: 'jewish-thought',
+    name: 'Jewish Thought',
     cat: 'HUMANITIES',
     catSlug: 'humanities',
     catIdx: 4,
     img: '/beit-midrash.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'Mon · Wed',
-    since: '1998',
-    desc: 'From the Biblical period to the modern state — history as living memory.',
-    lede: 'Four thousand years in four years — a rigorous and living engagement with Jewish history from Sinai to the State.',
-    aboutWatermark: 'MEMORY AS',
-    aboutGoldTitle: 'IDENTITY.',
+    size: 'tall',
+    desc:
+      'Tradition, identity, values, and meaningful questions explored through Jewish intellectual thought.',
+    lede:
+      'Jewish Thought at Ulpanat Tzvia Kokhav Yaakov invites students to encounter ideas that have shaped Jewish tradition and to explore questions of identity, faith, values, and meaning.',
+    aboutWatermark: 'QUESTIONS WITH',
+    aboutGoldTitle: 'DEPTH.',
     aboutBody: [
-      'Jewish history is taught across all four years, moving from ancient through modern periods. The curriculum follows the national matriculation syllabus but extends it with primary sources, historiographical debates, and oral history projects.',
-      'Students in 12th grade choose a specialisation: ancient period, Shoah and revival, or modern Israel — and complete an extended research essay.',
+      'Jewish thought reflects the ongoing effort of Jewish thinkers throughout history to reinterpret the intellectual foundations of Jewish tradition and culture and to address the challenges they raise.',
+      'The track invites students into a rich world of ideas, questions, and discussions. It provides space to explore identity, faith, values, responsibility, and meaning while examining how ideas from the past continue to encounter life in the present.',
+      'The learning process encourages students to ask questions, listen to different perspectives, express ideas clearly, and approach complex issues with depth, sensitivity, and responsibility.',
     ],
     glance: [
-      {label: 'Hours / week', value: '4'},
-      {label: 'Bagrut units', value: '5'},
-      {label: 'Specialisations', value: '3'},
-      {label: 'Research essay?', value: 'Yes (Gr. 12)'},
+      { label: 'Focus', value: 'Jewish thought' },
+      { label: 'Themes', value: 'Identity · values · meaning' },
+      { label: 'Approach', value: 'Study + reflection' },
+      { label: 'Key skill', value: 'Independent thinking' },
     ],
-    faculty: [
-      {initials: 'YM', name: 'Yosef Melamed', role: 'Head of Humanities'},
-      {initials: 'NF', name: 'Naomi Friedman', role: 'Modern History'},
-    ],
-    timelineTitle: 'THE YEAR.',
+    timelineTitle: 'IDEAS THAT CONTINUE TO SPEAK.',
     timeline: [
-      {period: 'Tishrei · Kislev', title: 'Ancient & medieval', desc: 'Biblical, Second Temple, diaspora — foundations of memory.'},
-      {period: 'Tevet · Nisan', title: 'Modern period', desc: 'Emancipation, Shoah, Zionism, and the founding of the state.'},
-      {period: 'Iyar · Sivan', title: 'Research essay', desc: 'Extended essay in chosen specialisation; faculty review.'},
+      {
+        period: 'FOCUS 01',
+        title: 'Tradition and interpretation',
+        desc:
+          'Encountering the intellectual foundations of Jewish tradition and culture.',
+      },
+      {
+        period: 'FOCUS 02',
+        title: 'Identity and values',
+        desc:
+          'Exploring questions of faith, responsibility, and the ideas that shape personal and communal life.',
+      },
+      {
+        period: 'FOCUS 03',
+        title: 'Thoughtful dialogue',
+        desc:
+          'Learning to ask questions, listen carefully, and engage with complex issues in a meaningful way.',
+      },
     ],
-    milestones: [
-      {num: '26', label: 'Years Running'},
-      {num: '97%', label: 'Bagrut Pass Rate'},
-      {num: '3', label: 'Specialisations'},
-      {num: '600+', label: 'Alumnae Trained'},
+    relatedSlugs: ['land-of-israel', 'social-sciences', 'theatre'],
+  },
+  {
+    slug: 'visual-arts',
+    name: 'Visual Arts',
+    cat: 'ARTS',
+    catSlug: 'arts',
+    catIdx: 1,
+    img: '/arts.png',
+    size: 'wide',
+    desc:
+      'A flexible creative activity where student volunteers paint, draw, design decorations, and contribute to special events across the Ulpana.',
+    lede:
+      'Visual Arts at Ulpanat Tzvia Kokhav Yaakov gives students opportunities to bring creativity into school life through collaborative projects, decorations, and artistic contributions for meaningful events.',
+    aboutWatermark: 'CREATIVITY IN',
+    aboutGoldTitle: 'ACTION.',
+    aboutBody: [
+      'Visual Arts is a flexible creative activity that takes shape throughout the school year according to the needs of the Ulpana. Rather than following a fixed weekly programme, it invites students to participate voluntarily in artistic projects connected to special occasions, school events, and shared spaces.',
+      'Students may paint, draw, create decorations, prepare visual elements, and help transform an idea into something tangible. Each project offers a different opportunity to experiment with colour, composition, materials, and collaborative work.',
+      'The activity allows students to contribute their talents in a practical and visible way. Their creativity becomes part of the atmosphere of the Ulpana, enriching events and helping create spaces that feel thoughtful, welcoming, and connected to the school community.',
     ],
-    testimonial: {
-      quote: 'History class at Tzvia felt urgent — like the past was something we were responsible for, not just required to memorise.',
-      name: 'Naomi Gross',
-      sub: 'Alumna · Class of 2020',
-      initials: 'NG',
-    },
-    relatedSlugs: ['israeli-thought', 'national-excursions', 'social-sciences'],
+    glance: [
+      { label: 'Format', value: 'Voluntary activity' },
+      { label: 'Frequency', value: 'Event-based' },
+      { label: 'Focus', value: 'Painting · drawing · decoration' },
+      { label: 'Approach', value: 'Creative collaboration' },
+    ],
+    timelineTitle: 'FROM IDEA TO CREATION.',
+    timeline: [
+      {
+        period: 'STEP 01',
+        title: 'A shared purpose',
+        desc:
+          'Each project begins with a school event, occasion, or space that can be enriched through visual creativity.',
+      },
+      {
+        period: 'STEP 02',
+        title: 'Creative contribution',
+        desc:
+          'Student volunteers paint, draw, design, and prepare decorations or other artistic elements.',
+      },
+      {
+        period: 'STEP 03',
+        title: 'A visible result',
+        desc:
+          'The completed work becomes part of the Ulpana environment and contributes to the atmosphere of the event.',
+      },
+    ],
+    relatedSlugs: ['theatre', 'dance'],
   },
 ];
 
-const ACTIVITIES_HE: ActivityDetail[] = [
-  // ── אמנויות ───────────────────────────────────────────────────────────
+
+export const ACTIVITIES_HE: ActivityDetail[] = [
+  // ── אמנויות ──────────────────────────────────────────────────────────
+
   {
     slug: 'theatre',
     name: 'תיאטרון',
@@ -671,48 +598,103 @@ const ACTIVITIES_HE: ActivityDetail[] = [
     img: '/arts.png',
     size: 'big',
     badge: 'FEATURED',
-    grades: '9 — 12',
-    schedule: 'שני · רביעי',
-    since: '2009',
-    desc: 'שלוש הפקות בשנה, ממגילת אסתר ועד מחזאים ישראלים עכשוויים.',
-    lede: 'תכנית ארבע שנתית שבה תלמידות מביימות שלוש הפקות מלאות בשנה — ממגילת אסתר בתלבושת מודרנית ועד מחזאים ישראלים עכשוויים.',
-    aboutWatermark: 'התייחסי לזה',
-    aboutGoldTitle: 'כלמידה רצינית.',
+    grades: 'י׳ — י״ב',
+    desc:
+      'מסלול תלת־שנתי בן חמש יחידות המשלב ספרות דרמטית, משחק, בימוי, עבודה בימתית ויצירה משותפת.',
+    lede:
+      'מגמת התיאטרון באולפנת צביה כוכב יעקב היא מסלול תלת־שנתי שבו התלמידות לומדות טקסטים דרמטיים, מפתחות כישורי במה והופכות רעיונות ליצירה חיה.',
+    aboutWatermark: 'מהטקסט',
+    aboutGoldTitle: 'אל הבמה.',
     aboutBody: [
-      'תלמידות בתכנית התיאטרון מתחייבות לשלוש הפקות בשנה וסדנאות שבועיות בקול, תנועה ואנליזת טקסט. התכנית מתייחסת להופעה כאל צורה של קריאה מדוקדקת: כל סצנה מתחילה בדף, בעיון מעמיק, לפני שמגיעה לבמה.',
-      'הפקות עבר כללו את מגילת אסתר בתלבושת מודרנית ועד יצירות מקוריות שפותחו עם מחזאים מבאים ממחזאות קמרי בתל אביב.',
+      'מגמת התיאטרון נלמדת מכיתה י׳ ועד כיתה י״ב ומקנה חמש יחידות לימוד. היא משלבת בסיס עיוני מעמיק עם התנסות מעשית, ומאפשרת לתלמידות להכיר את התיאטרון הן כתחום דעת והן כמרחב יצירתי.',
+      'התלמידות לומדות מחזות, ז׳אנרים, תקופות שונות בתולדות התיאטרון ודרכים לניתוח יצירות דרמטיות. לצד הלימוד העיוני הן מתנסות במשחק, בימוי, עמידה מול קהל והיכרות עם מרכיבי ההפקה הבימתית. התהליך מעודד קריאה מעמיקה, ביטחון עצמי, שיתוף פעולה ויכולת להפוך טקסט כתוב לחוויה אמנותית משותפת.',
+      'כחלק מהלימודים התלמידות נחשפות גם לתיאטרון מקצועי באמצעות צפייה בהצגות רפרטואריות ומביאות את התהליך לידי ביטוי בהפקות במה המוצגות בפני קהילת האולפנה.',
     ],
     glance: [
-      { label: 'שעות / שבוע', value: '6' },
-      { label: 'הפקות / שנה', value: '3' },
-      { label: 'ממוצע קבוצה', value: '24' },
-      { label: 'אודישן?', value: 'כן' },
+      { label: 'משך המסלול', value: '3 שנים' },
+      { label: 'שכבות גיל', value: 'י׳ — י״ב' },
+      { label: 'יחידות לימוד', value: '5' },
+      { label: 'גישה לימודית', value: 'עיון + מעשה' },
     ],
-    faculty: [
-      { initials: 'RM', name: 'רבקה מור', role: 'מנהלת תכנית' },
-      { initials: 'DG', name: 'דב גפן', role: 'קול וטקסט' },
-      { initials: 'SK', name: 'שושנה כץ', role: 'תנועה' },
-    ],
-    timelineTitle: 'הקשת.',
+    timelineTitle: 'התהליך הלימודי.',
     timeline: [
-      { period: 'תשרי · חשון', title: 'יצירה בסתיו', desc: 'עבודת הרכב קטנה; פותחת שיתופית על פני שישה שבועות.' },
-      { period: 'טבת · אדר', title: 'הפקת פורים', desc: 'הפקה מלאה הנפתחת בשבוע פורים; שתי הופעות ציבוריות.' },
-      { period: 'אייר · סיוון', title: 'תצוגת סיום', desc: 'יצירות בהובלת הכיתות הבכירות המוצגות למשפחות ולצוות.' },
+      {
+        period: 'מוקד 01',
+        title: 'ספרות דרמטית',
+        desc:
+          'היכרות עם מחזות, ז׳אנרים, תקופות שונות ודרכים לניתוח יצירות דרמטיות.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'כישורי במה',
+        desc:
+          'משחק, בימוי, עמידה מול קהל והיכרות עם המרכיבים המרכזיים של הפקה תיאטרונית.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'מלמידה להפקה',
+        desc:
+          'עבודה יצירתית משותפת ההופכת רעיון וטקסט להצגה חיה על הבמה.',
+      },
     ],
     milestones: [
-      { num: '15', label: 'שנות פעילות' },
-      { num: '42', label: 'הפקות על הבמה' },
-      { num: '3', label: 'פרסים ארציים' },
-      { num: '300+', label: 'בוגרות שאומנו' },
+      { num: '3', label: 'שנות לימוד' },
+      { num: '5', label: 'יחידות לימוד' },
+      { num: '2', label: 'עיון + מעשה' },
+      { num: '1', label: 'תהליך יצירתי' },
     ],
-    testimonial: {
-      quote: 'למדתי לקרוא טקסט כמו שקוראים אדם — לאט, ובהנחה שיש יותר מתחת לפני השטח.',
-      name: 'יעל אברהם',
-      sub: 'בוגרת · מחזור 2022',
-      initials: 'YA',
-    },
-    relatedSlugs: ['visual-arts', 'dance', 'music-ensemble'],
+    relatedSlugs: ['dance', 'visual-arts', 'jewish-thought'],
   },
+
+  {
+    slug: 'dance',
+    name: 'מחול',
+    cat: 'אמנויות',
+    catSlug: 'arts',
+    catIdx: 1,
+    img: '/arts.png',
+    size: 'tall',
+    desc:
+      'תנועה, יצירתיות, התמדה וביטוי אישי בתוך מרחב לימודי תומך ומשותף.',
+    lede:
+      'מגמת המחול באולפנת צביה כוכב יעקב מעניקה לתלמידות מרחב יצירתי לחקור תנועה, לפתח ביטחון ולגלות דרך משמעותית לביטוי אישי.',
+    aboutWatermark: 'תנועה כדרך',
+    aboutGoldTitle: 'לביטוי.',
+    aboutBody: [
+      'המחול מאפשר לתלמידות לבטא רעיונות ורגשות בדרך שאינה תלויה במילים. באמצעות תנועה הן מפתחות מודעות גופנית, יצירתיות, הקשבה וביטחון ביכולת להביא את עצמן לידי ביטוי.',
+      'תהליך הלמידה מטפח גם התמדה, דיוק, משמעת עצמית ויכולת להתקדם בהדרגה מתוך תרגול. המחול מעניק מקום להתפתחות אישית, ובמקביל מעודד הקשבה לאחרות, שיתוף פעולה והשתתפות בתהליך יצירתי משותף.',
+      'המגמה מתאימה לתלמידות המבקשות לשלב בין תנועה למחשבה, בין יצירתיות למשמעת ובין צמיחה אישית לבין חוויה קבוצתית תומכת.',
+    ],
+    glance: [
+      { label: 'מוקד', value: 'תנועה + ביטוי אישי' },
+      { label: 'מיומנויות', value: 'יצירתיות · התמדה' },
+      { label: 'גישה', value: 'אישי + קבוצתי' },
+      { label: 'מסגרת', value: 'למידה תומכת ומשותפת' },
+    ],
+    timelineTitle: 'התהליך היצירתי.',
+    timeline: [
+      {
+        period: 'מוקד 01',
+        title: 'מודעות לתנועה',
+        desc:
+          'פיתוח הקשבה, קואורדינציה והיכרות מעמיקה יותר עם עולם התנועה.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'ביטוי אישי',
+        desc:
+          'גילוי הדרך שבה רעיונות ורגשות יכולים לקבל ביטוי באמצעות שפה תנועתית.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'יצירה משותפת',
+        desc:
+          'למידה של הקשבה, שיתוף פעולה והשתתפות בתהליך אמנותי קבוצתי.',
+      },
+    ],
+    relatedSlugs: ['theatre', 'visual-arts', 'basketball'],
+  },
+
   {
     slug: 'visual-arts',
     name: 'אמנות חזותית',
@@ -720,453 +702,259 @@ const ACTIVITIES_HE: ActivityDetail[] = [
     catSlug: 'arts',
     catIdx: 1,
     img: '/arts.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'שלישי · חמישי',
-    since: '2012',
-    desc: 'עבודת סטודיו, רישום, ציור ומדיה דיגיטלית.',
-    lede: 'תכנית סטודיו בציור, ציור בצבעי מים, פיסול, צילום ועיצוב דיגיטלי — כל תלמידה מוצאת את קולה החזותי.',
-    aboutWatermark: 'לראות היא',
-    aboutGoldTitle: 'תרגול רציני.',
+    size: 'wide',
+    desc:
+      'פעילות יצירתית גמישה שבה תלמידות מתנדבות מציירות, מעצבות ומכינות תפאורה וקישוטים לאירועים מיוחדים באולפנה.',
+    lede:
+      'האמנות החזותית באולפנת צביה כוכב יעקב מאפשרת לתלמידות להביא יצירתיות אל חיי האולפנה באמצעות פרויקטים משותפים, קישוטים ותרומות אמנותיות לאירועים משמעותיים.',
+    aboutWatermark: 'יצירתיות',
+    aboutGoldTitle: 'בפעולה.',
     aboutBody: [
-      'תכנית האמנות החזותית פועלת על פני ארבע השנים, עם סטודיו ייעודי הפתוח לתלמידות שישה ימים בשבוע. העבודה מבוססת על תיק יצירות, ותלמידות הכיתות הבכירות מגישות עבודות לתחרויות אמנות ארציות.',
-      'תכנית הלימודים עוברת מרישום יסודי בכיתה ט\' דרך עבודת סטודיו מתקדמת, צילום ועיצוב דיגיטלי בשנים הגבוהות יותר.',
+      'האמנות החזותית היא פעילות יצירתית גמישה המתקיימת לאורך השנה בהתאם לצרכים של האולפנה. במקום תוכנית שבועית קבועה, התלמידות מוזמנות להשתתף בהתנדבות בפרויקטים אמנותיים הקשורים לאירועים מיוחדים, מועדים ומרחבים משותפים.',
+      'במהלך הפעילות התלמידות יכולות לצייר, לאייר, להכין קישוטים, לעצב אלמנטים חזותיים ולהפוך רעיון למשהו מוחשי. כל פרויקט מציע הזדמנות אחרת להתנסות בצבע, קומפוזיציה, חומרים ועבודה משותפת.',
+      'הפעילות מאפשרת לתלמידות לתרום מכישוריהן באופן מעשי ונראה לעין. היצירתיות שלהן הופכת לחלק מהאווירה באולפנה, מעשירה אירועים ומסייעת ליצור מרחבים נעימים, מזמינים ומחוברים לקהילה.',
     ],
     glance: [
-      { label: 'שעות / שבוע', value: '4' },
-      { label: 'תערוכות / שנה', value: '2' },
-      { label: 'ממוצע קבוצה', value: '18' },
-      { label: 'תיק יצירות נדרש?', value: 'לא' },
+      { label: 'סוג הפעילות', value: 'פעילות התנדבותית' },
+      { label: 'תדירות', value: 'בהתאם לאירועים' },
+      { label: 'מוקד', value: 'ציור · איור · קישוט' },
+      { label: 'גישה', value: 'יצירה משותפת' },
     ],
-    faculty: [
-      { initials: 'TL', name: 'תמר לוי', role: 'מובילת סטודיו' },
-      { initials: 'NB', name: 'נועה בן-דוד', role: 'צילום' },
-    ],
-    timelineTitle: 'השנה.',
+    timelineTitle: 'מרעיון ליצירה.',
     timeline: [
-      { period: 'תשרי · כסלו', title: 'רישום יסודי', desc: 'טבע דומם, קו ותצפית.' },
-      { period: 'טבת · אדר', title: 'פרויקט נושא', desc: 'כל תלמידה מפתחת נושא אישי על פני מדיות שונות.' },
-      { period: 'אייר · סיוון', title: 'תערוכת סוף שנה', desc: 'הצגה ציבורית בקמפוס; בוגרות ומשפחות מוזמנות.' },
+      {
+        period: 'שלב 01',
+        title: 'מטרה משותפת',
+        desc:
+          'כל פרויקט מתחיל באירוע, מועד או מרחב באולפנה שניתן להעשיר באמצעות יצירה חזותית.',
+      },
+      {
+        period: 'שלב 02',
+        title: 'תרומה יצירתית',
+        desc:
+          'התלמידות המתנדבות מציירות, מאיירות, מעצבות ומכינות קישוטים או אלמנטים אמנותיים נוספים.',
+      },
+      {
+        period: 'שלב 03',
+        title: 'תוצאה שנוכחת במרחב',
+        desc:
+          'העבודות המוגמרות הופכות לחלק מסביבת האולפנה ותורמות לאווירה של האירוע.',
+      },
     ],
-    milestones: [
-      { num: '12', label: 'שנות פעילות' },
-      { num: '8', label: 'פרסים ארציים' },
-      { num: '200+', label: 'בוגרות שאומנו' },
-      { num: '2', label: 'תערוכות / שנה' },
-    ],
-    testimonial: {
-      quote: 'הסטודיו לימד אותי שלראות בקפידה היא בפני עצמה משמעת — קפדנית כמו כל טקסט.',
-      name: 'מרים שפירו',
-      sub: 'בוגרת · מחזור 2021',
-      initials: 'MS',
-    },
     relatedSlugs: ['theatre', 'dance'],
   },
-  {
-    slug: 'dance',
-    name: 'ריקוד',
-    cat: 'אמנויות',
-    catSlug: 'arts',
-    catIdx: 1,
-    img: '/arts.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'רביעי · שישי',
-    since: '2015',
-    desc: 'ריקוד מודרני, עממי והופעות כוריאוגרפיות.',
-    lede: 'טכניקה, כוריאוגרפיה והופעה — ריקוד כשפה גופנית מדויקת וצורה של ביטוי קהילתי.',
-    aboutWatermark: 'הגוף הוא',
-    aboutGoldTitle: 'כלי.',
-    aboutBody: [
-      'תכנית הריקוד מכסה טכניקה מודרנית, צורות עממיות ישראליות וכוריאוגרפיה מקורית. התלמידות מופיעות באירועי בית הספר ובהצגת סוף השנה.',
-      'תלמידות מתקדמות מצטרפות להרכב הריקוד של בית הספר, שהופיע בפסטיבלים אזוריים וארציים.',
-    ],
-    glance: [
-      { label: 'שעות / שבוע', value: '5' },
-      { label: 'הופעות / שנה', value: '4' },
-      { label: 'ממוצע קבוצה', value: '20' },
-      { label: 'אודישן?', value: 'לא' },
-    ],
-    faculty: [
-      { initials: 'HL', name: 'הילה לוי', role: 'מנהלת תנועה' },
-      { initials: 'RK', name: 'רחל קורן', role: 'ריקוד עממי והרכב' },
-    ],
-    timelineTitle: 'השנה.',
-    timeline: [
-      { period: 'תשרי · חשון', title: 'יסודות טכניקה', desc: 'יישור גוף, קצב ועבודת הרכב.' },
-      { period: 'טבת · אדר', title: 'פרויקט כוריאוגרפיה', desc: 'תלמידות יוצרות וחוזרות על יצירות קצרות מקוריות.' },
-      { period: 'אייר · סיוון', title: 'הופעת סוף שנה', desc: 'תכנית מלאה המוצגת בפני בית הספר ומשפחות.' },
-    ],
-    milestones: [
-      { num: '9', label: 'שנות פעילות' },
-      { num: '6', label: 'פרסי פסטיבל' },
-      { num: '150+', label: 'בוגרות שאומנו' },
-      { num: '4', label: 'הופעות / שנה' },
-    ],
-    testimonial: {
-      quote: 'הריקוד נתן לי משמעת שאני נושאת לכל מקום — דיוק, סבלנות והאומץ להיות נוכחת.',
-      name: 'שירה כהן',
-      sub: 'בוגרת · מחזור 2023',
-      initials: 'SC',
-    },
-    relatedSlugs: ['theatre', 'visual-arts'],
-  },
 
-  // ── מדע ───────────────────────────────────────────────────────────────
+  // ── מדעים ─────────────────────────────────────────────────────────────
+
   {
     slug: 'biology',
     name: 'ביולוגיה',
-    cat: 'מדע וטכנולוגיה',
+    cat: 'מדעים',
     catSlug: 'science',
     catIdx: 2,
     img: '/science.png',
-    size: '',
-    badge: 'IN-PERSON',
-    grades: '9 — 12',
-    schedule: 'ראשון · שלישי',
-    since: '1998',
-    desc: 'מעבדה רטובה, ניתוחים ולימודי שטח במטה בנימין.',
-    lede: 'מביולוגיה תאית ועד אקולוגיה — תכנית מבוססת מעבדה הבנויה סביב הנוף החי של מטה בנימין.',
-    aboutWatermark: 'חקירה כ',
-    aboutGoldTitle: 'תרגול יומיומי.',
+    size: 'wide',
+    desc:
+      'היכרות עם עולם החי, גוף האדם והתהליכים הביולוגיים המעצבים את החיים.',
+    lede:
+      'מגמת הביולוגיה באולפנת צביה כוכב יעקב מזמינה תלמידות סקרניות לחקור את עולם החיים, להבין את גוף האדם ולהעמיק בתהליכים המתרחשים בתוכנו וסביבנו.',
+    aboutWatermark: 'החיים',
+    aboutGoldTitle: 'מבפנים.',
     aboutBody: [
-      'הביולוגיה בצביה נלמדת במעבדה הרטובה הייעודית שלנו, עם עבודת שטח קבועה בגבעות הבנימין. תלמידות בכיתות י"א—י"ב עוקבות אחר מסלול הבגרות המלא ויושבות בבגרות הלאומית בביולוגיה.',
-      'בית הספר משתתף באולימפיאדת המדעים הארצית, ובוגרות עוברות בקביעות לתכניות ביולוגיה ורפואה באוניברסיטאות הישראליות.',
+      'מגמת הביולוגיה פותחת דלת לעולם העשיר והמורכב של היצורים החיים. התלמידות מעמיקות בהבנת גוף האדם, הטבע והמערכות המאפשרות את קיומם של החיים.',
+      'הלימודים חושפים את התלמידות לנושאים מרתקים כגון פעילות המוח, מערכת הרבייה, מנגנוני ההגנה של הגוף והדרך שבה מערכת העצבים מאפשרת לחוש מגע. הן מכירות גם יצורים חיים זעירים ולומדות על המגוון הרחב הקיים בעולם החי.',
+      'הביולוגיה מעודדת התבוננות מדויקת, שאילת שאלות וחיפוש אחר הסברים מבוססים. במקום להסתפק בידיעה שתופעה מסוימת מתרחשת, התלמידות בוחנות כיצד היא מתרחשת ואילו תהליכים ביולוגיים מאפשרים אותה.',
     ],
     glance: [
-      { label: 'שעות / שבוע', value: '5' },
-      { label: 'יחידות בגרות', value: '5' },
-      { label: 'מפגשי מעבדה / שבוע', value: '2' },
-      { label: 'טיולי שדה / שנה', value: '3' },
+      { label: 'מוקד', value: 'עולם החי' },
+      { label: 'ביולוגיה אנושית', value: 'מערכות הגוף' },
+      { label: 'מיומנות מרכזית', value: 'חשיבה מדעית' },
+      { label: 'גישה', value: 'התבוננות + חקר' },
     ],
-    faculty: [
-      { initials: 'DB', name: 'ד"ר דינה בר-אוז', role: 'ראש המדעים' },
-      { initials: 'AL', name: 'אביטל לוריא', role: 'מדריכת מעבדה' },
-    ],
-    timelineTitle: 'השנה.',
+    timelineTitle: 'תחומי חקר.',
     timeline: [
-      { period: 'תשרי · כסלו', title: 'ביולוגיה תאית', desc: 'מיקרוסקופיה, חלוקת תאים ויסודות גנטיקה.' },
-      { period: 'טבת · ניסן', title: 'עבודת שדה אקולוגית', desc: 'סקר צומח ובעלי חיים בגבעות הבנימין.' },
-      { period: 'אייר · סיוון', title: 'הכנה לבגרות', desc: 'מחזור חזרה מלא ובחינות מדומות.' },
+      {
+        period: 'מוקד 01',
+        title: 'גוף האדם',
+        desc:
+          'היכרות עם המערכות והתהליכים הביולוגיים המשפיעים על חיי היום־יום.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'מערכת העצבים והחושים',
+        desc:
+          'הבנת הדרך שבה המוח, העצבים והחושים מאפשרים לנו לחוות את העולם.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'מגוון החיים',
+        desc:
+          'חקירת יצורים חיים ופיתוח הבנה עמוקה יותר של עולם הטבע.',
+      },
     ],
-    milestones: [
-      { num: '26', label: 'שנות פעילות' },
-      { num: '94%', label: 'אחוז מעבר בגרות' },
-      { num: '12', label: 'מדליות אולימפיאדה' },
-      { num: '60+', label: 'בוגרות בבתי ספר לרפואה' },
-    ],
-    testimonial: {
-      quote: 'עבודת המעבדה הפכה מושגים מופשטים למוחשיים — הגעתי לאוניברסיטה וכבר ידעתי לחשוב כמו מדענית.',
-      name: 'ד"ר רחל כהן',
-      sub: 'בוגרת · מחזור 2014',
-      initials: 'RC',
-    },
     relatedSlugs: ['physics', 'chemistry'],
   },
+
   {
     slug: 'physics',
     name: 'פיזיקה',
-    cat: 'מדע וטכנולוגיה',
+    cat: 'מדעים',
     catSlug: 'science',
     catIdx: 2,
     img: '/science.png',
     size: '',
     badge: 'ONLINE',
-    grades: '10 — 12',
-    schedule: 'שני · רביעי · חמישי',
-    since: '2008',
-    desc: 'מסלול מקוון סינכרוני עם שיעורי בעיות שבועיים.',
-    lede: 'מסלול פיזיקה קפדני הנלמד מקוון בסינכרוניות, עם מפגשי בעיות שבועיים וימי מעבדה חודשיים בקמפוס.',
-    aboutWatermark: 'חוקים שנמצאים',
-    aboutGoldTitle: 'בכל מקום.',
+    desc:
+      'שאלות מדעיות, חשיבה אנליטית והבנה מעמיקה יותר של התופעות והטכנולוגיות המקיפות אותנו.',
+    lede:
+      'מגמת הפיזיקה באולפנת צביה כוכב יעקב מסייעת לתלמידות להבין את העקרונות שמאחורי תופעות יום־יומיות וטכנולוגיות מתקדמות, תוך פיתוח חשיבה מדויקת ואנליטית.',
+    aboutWatermark: 'להבין את',
+    aboutGoldTitle: 'העולם.',
     aboutBody: [
-      'תכנית הפיזיקה מועברת כקורס מקוון סינכרוני, הנלמד על ידי מומחה ממפתח — אחד מספקי הלמידה מרחוק המובילים בישראל. התלמידות נוכחות בשיעורים חיים ומגישות שיעורי בעיות שבועיים.',
-      'ימי מעבדה חודשיים בקמפוס מבטיחים שהתלמידות מקבלות ניסיון מעשי ניסיוני לצד תכנית הלימודים התיאורטית.',
+      'מדוע השמים כחולים? מהו זרם חשמלי? האם טלפון נייד יכול להשפיע על הבריאות שלנו? מהו חומר רדיואקטיבי, וכיצד ניתן להשתמש בו לטיפול רפואי תוך הבנת הסיכונים הכרוכים בו?',
+      'הפיזיקה מתחילה בשאלות על העולם שסביבנו. המגמה מזמינה את התלמידות להתבונן בתופעות מוכרות מנקודת מבט מדעית ולגלות את העקרונות המסבירים כיצד פועלים הטבע והטכנולוגיה.',
+      'פיזיקה אינה רק אוסף של נוסחאות. היא מפתחת חשיבה אנליטית, דיוק, סקרנות אינטלקטואלית ויכולת להתמודד עם שאלות מורכבות בצורה מסודרת. המסגרת המקוונת מאפשרת לתלמידות המעוניינות בכך להעמיק בתחום המדעי בצורה נגישה.',
     ],
     glance: [
-      { label: 'שעות / שבוע', value: '6' },
-      { label: 'יחידות בגרות', value: '5' },
-      { label: 'ימי מעבדה / חודש', value: '1' },
-      { label: 'פורמט', value: 'מקוון + מעבדה' },
+      { label: 'מתכונת', value: 'מקוון' },
+      { label: 'מוקד', value: 'תופעות מחיי היום־יום' },
+      { label: 'נושאים', value: 'אנרגיה · חשמל · קרינה' },
+      { label: 'מיומנות מרכזית', value: 'חשיבה אנליטית' },
     ],
-    faculty: [
-      { initials: 'EP', name: 'איתן פרץ', role: 'מורה לפיזיקה' },
-    ],
-    timelineTitle: 'השנה.',
+    timelineTitle: 'שאלות שמובילות לגילוי.',
     timeline: [
-      { period: 'תשרי · טבת', title: 'מכניקה וגלים', desc: 'תנועה, כוחות, אנרגיה ותנודות.' },
-      { period: 'שבט · ניסן', title: 'חשמל ואופטיקה', desc: 'מעגלים, אור ותורת האלקטרומגנטיקה.' },
-      { period: 'אייר · סיוון', title: 'הכנה לבחינות', desc: 'חזרה מלאה על החומר ובגרות מדומה.' },
+      {
+        period: 'מוקד 01',
+        title: 'תופעות בחיי היום־יום',
+        desc:
+          'התבוננות בחוויות מוכרות באמצעות כלים מדעיים וחשיבה אנליטית.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'חשמל וטכנולוגיה',
+        desc:
+          'הבנת העקרונות המדעיים המעצבים את המכשירים והמערכות המקיפים אותנו.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'קרינה והשימושים בה',
+        desc:
+          'היכרות עם הדרך שבה ידע מדעי יכול לסייע ברפואה תוך הבנה אחראית של הסיכונים.',
+      },
     ],
-    milestones: [
-      { num: '16', label: 'שנות פעילות' },
-      { num: '89%', label: 'אחוז מעבר (5 יחידות)' },
-      { num: '3', label: 'גמרניות אולימפיאדה' },
-      { num: '40+', label: 'בוגרות בהנדסה' },
-    ],
-    testimonial: {
-      quote: 'פיזיקה מקוונת נשמע נגד האינטואיציה, אבל שיעורי הבעיות המובנים בנו קפדנות שאני נושאת לעבודת ההנדסה שלי.',
-      name: 'נטע גרוסמן',
-      sub: 'בוגרת · מחזור 2017',
-      initials: 'NG',
-    },
-    relatedSlugs: ['chemistry', 'biology'],
+    relatedSlugs: ['biology', 'chemistry'],
   },
+
   {
     slug: 'chemistry',
     name: 'כימיה',
-    cat: 'מדע וטכנולוגיה',
+    cat: 'מדעים',
     catSlug: 'science',
     catIdx: 2,
     img: '/science.png',
     size: '',
     badge: 'ONLINE',
-    grades: '10 — 12',
-    schedule: 'שלישי · חמישי',
-    since: '2011',
-    desc: 'תיאוריה מקוונת בשילוב מפגשים מעשיים בקמפוס.',
-    lede: 'תיאורית כימיה מועברת מקוון, עם מפגשים מעשיים בקמפוס במעבדה המאובזרת במלואה — הטוב משני המודלים.',
-    aboutWatermark: 'חומר ו',
-    aboutGoldTitle: 'שינוייו.',
+    desc:
+      'למידה מקוונת, חקר מדעי, ניסויים בבית ומפגשים מעשיים במכון דוידסון לחינוך מדעי.',
+    lede:
+      'מגמת הכימיה באולפנת צביה כוכב יעקב משלבת למידה מקוונת נגישה עם ניסויים והתנסויות מעשיות ההופכים רעיונות מדעיים למוחשיים.',
+    aboutWatermark: 'חומר',
+    aboutGoldTitle: 'ושינוי.',
     aboutBody: [
-      'תכנית הכימיה משלבת קורס תיאוריה מקוון סינכרוני עם מפגשים מעשיים דו-שבועיים במעבדת הכימיה של צביה. התלמידות עוקבות אחר תכנית הלימודים המלאה של 5 יחידות.',
-      'התכנית מכינה תלמידות לבגרות הלאומית ולהמשך לימודים בכימיה, פרמקולוגיה ומדעי החיים.',
+      'הכימיה מאפשרת לתלמידות להכיר חומרים, תגובות ותהליכים מדעיים המתרחשים סביבנו בכל יום. המגמה משלבת למידה מקוונת מונחית עם התנסות מעשית.',
+      'בכל שבוע מתקיים שיעור מקוון עם מורה וקבוצת תלמידות ותלמידים מרחבי הארץ. השיעורים כוללים מצגות, סרטונים, משימות וניסויים שניתן לבצע בבית. השילוב הזה מסייע להפוך רעיונות מדעיים מורכבים לברורים ומוחשיים יותר.',
+      'מספר פעמים במהלך השנה התלמידות מוזמנות למכון דוידסון לחינוך מדעי. המפגשים מאפשרים לבצע ניסויים במעבדות אמיתיות ולהכיר מקרוב סביבה מדעית מקצועית.',
     ],
     glance: [
-      { label: 'שעות / שבוע', value: '5' },
-      { label: 'יחידות בגרות', value: '5' },
-      { label: 'מפגשי מעבדה / שבועיים', value: '1' },
-      { label: 'פורמט', value: 'מקוון + מעבדה' },
+      { label: 'מתכונת', value: 'מקוון' },
+      { label: 'מפגש מקוון', value: 'אחת לשבוע' },
+      { label: 'ניסויים בבית', value: 'כלולים במסלול' },
+      { label: 'ביקורים במכון', value: 'מספר פעמים בשנה' },
     ],
-    faculty: [
-      { initials: 'SM', name: 'שרה מזרחי', role: 'מורה לכימיה' },
-      { initials: 'AL', name: 'אביטל לוריא', role: 'מדריכת מעבדה' },
-    ],
-    timelineTitle: 'השנה.',
+    timelineTitle: 'ללמוד, להתנסות ולגלות.',
     timeline: [
-      { period: 'תשרי · כסלו', title: 'מבנה אטומי', desc: 'טבלה מחזורית, קשרים וגיאומטריה מולקולרית.' },
-      { period: 'טבת · אדר', title: 'תגובות שיווי משקל', desc: 'קינטיקה, תרמודינמיקה וכימיה חומצה-בסיס.' },
-      { period: 'ניסן · סיוון', title: 'בחינות מעשיות', desc: 'רכיב מעבדה של הבגרות וחזרה מלאה.' },
+      {
+        period: 'מוקד 01',
+        title: 'למידה מקוונת מונחית',
+        desc:
+          'מפגש שבועי הכולל הסברים, מצגות, סרטונים ואינטראקציה קבוצתית.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'ניסויים בבית',
+        desc:
+          'פעילויות מעשיות ההופכות מושגים מדעיים למוחשיים וברורים יותר.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'ביקורים במכון דוידסון',
+        desc:
+          'התנסות בסביבת מעבדה והיכרות עם עולם המדע מעבר למסך.',
+      },
     ],
     milestones: [
-      { num: '13', label: 'שנות פעילות' },
-      { num: '92%', label: 'אחוז מעבר (5 יחידות)' },
-      { num: '5', label: 'אולימפיאדת כימיה' },
-      { num: '30+', label: 'בוגרות בפרמקולוגיה' },
+      { num: '1', label: 'מפגש מקוון בשבוע' },
+      { num: 'HOME', label: 'ניסויים בבית' },
+      { num: 'LAB', label: 'התנסות מעשית' },
+      { num: '∞', label: 'שאלות לחקור' },
     ],
-    testimonial: {
-      quote: 'שילוב התיאוריה המקוונת עם זמן מעבדה מעשי נתן לי בדיוק את ההכנה שהייתי צריכה לכימיה באוניברסיטה.',
-      name: 'בתיה רוזנברג',
-      sub: 'בוגרת · מחזור 2019',
-      initials: 'BR',
-    },
     relatedSlugs: ['biology', 'physics'],
   },
 
   // ── ספורט ─────────────────────────────────────────────────────────────
+
   {
-    slug: 'volleyball',
-    name: 'כדורעף',
+    slug: 'basketball',
+    name: 'כדורסל',
     cat: 'ספורט',
     catSlug: 'sports',
     catIdx: 3,
     img: '/humanities.png',
     size: 'wide',
     badge: 'IN-PERSON',
-    grades: '9 — 12',
-    schedule: 'ראשון · שלישי',
-    since: '2001',
-    desc: 'ליגה בין-בית ספרית בשתי חטיבות גיל.',
-    lede: 'כדורעף תחרותי בשתי חטיבות גיל, עם משחקי ליגה בין-בית ספריים ברחבי מטה בנימין ומסדרון ירושלים.',
-    aboutWatermark: 'גוף חזק',
-    aboutGoldTitle: 'מוח חזק.',
+    desc:
+      'תנועה, עבודת צוות, קואורדינציה וביטחון עצמי המתפתחים באמצעות פעילות ספורטיבית משותפת.',
+    lede:
+      'פעילות הכדורסל באולפנת צביה כוכב יעקב יוצרת מרחב לתנועה, שיתוף פעולה, חיזוק הביטחון העצמי והתנסות בערך של עבודה למען מטרה משותפת.',
+    aboutWatermark: 'לנוע',
+    aboutGoldTitle: 'כקבוצה.',
     aboutBody: [
-      'תכנית הכדורעף מנהלת שתי קבוצות תחרותיות — צעירות (כיתות ט-י) ובכירות (כיתות י"א-י"ב) — כל אחת משחקת בליגה האזורית מתשרי עד אדר.',
-      'האימון מדגיש טכניקה, תקשורת צוותית וכושר. קבוצת הבכירות הגיעה לגמר-חצי האזורי בשלוש מתוך חמש השנים האחרונות.',
+      'כדורסל הוא הרבה מעבר לפעילות גופנית. הוא מעניק לתלמידות הזדמנות לפתח קואורדינציה, ריכוז, התמדה ויכולת לקבל החלטות תוך שיתוף פעולה עם אחרות.',
+      'המשחק מעודד תקשורת, תמיכה הדדית והבנת החשיבות של מאמץ אישי לצד אחריות קבוצתית. כל אימון הוא הזדמנות להתחזק, להתמקד ולבנות ביטחון.',
+      'בתוך סביבה חינוכית תומכת, הכדורסל מסייע לתלמידות לגלות את הערך של משמעת, עבודת צוות, חוסן אישי והנאה מתהליך ההתקדמות.',
     ],
     glance: [
-      { label: 'אימונים / שבוע', value: '3' },
-      { label: 'אורך העונה', value: '6 חודשים' },
-      { label: 'חטיבות גיל', value: '2' },
-      { label: 'ליגה', value: 'אזורית' },
+      { label: 'מתכונת', value: 'פעילות פרונטלית' },
+      { label: 'מוקד', value: 'תנועה + עבודת צוות' },
+      { label: 'מיומנויות', value: 'קואורדינציה · חוסן אישי' },
+      { label: 'גישה', value: 'תרגול + משחק משותף' },
     ],
-    faculty: [
-      { initials: 'OA', name: 'אורלי אזולאי', role: 'מאמנת ראשית' },
-      { initials: 'MN', name: 'מיכל נבו', role: 'מאמנת צעירות' },
-    ],
-    timelineTitle: 'העונה.',
+    timelineTitle: 'צומחות דרך הספורט.',
     timeline: [
-      { period: 'תשרי · חשון', title: 'טרום עונה', desc: 'כושר, תרגילי טכניקה וגיבוש צוות.' },
-      { period: 'כסלו · אדר', title: 'עונת ליגה', desc: 'משחקי ליגה אזורית — בית ואורח.' },
-      { period: 'ניסן · אייר', title: 'פלייאוף', desc: 'ארבע הקבוצות המובילות מתקדמות לגמר-חצי אזורי.' },
+      {
+        period: 'מוקד 01',
+        title: 'יסודות התנועה',
+        desc:
+          'פיתוח קואורדינציה, ריכוז וביטחון באמצעות השתתפות פעילה.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'עבודת צוות',
+        desc:
+          'למידה של תקשורת, שיתוף פעולה ואחריות בתוך קבוצה.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'התמדה וצמיחה',
+        desc:
+          'חיזוק החוסן האישי והיכרות עם הערך של מאמץ עקבי לאורך זמן.',
+      },
     ],
-    milestones: [
-      { num: '23', label: 'שנות פעילות' },
-      { num: '3', label: 'הופעות בגמר-חצי' },
-      { num: '2', label: 'חטיבות גיל' },
-      { num: '400+', label: 'שחקניות שאומנו' },
-    ],
-    testimonial: {
-      quote: 'הצוות לימד אותי מה שיכולתי ללמוד רק לצד אחרות — אחריות, חוסן ומשמעת של להגיע.',
-      name: 'עדינה וייס',
-      sub: 'בוגרת · מחזור 2020',
-      initials: 'AW',
-    },
-    relatedSlugs: ['running'],
-  },
-  {
-    slug: 'running',
-    name: 'ריצה',
-    cat: 'ספורט',
-    catSlug: 'sports',
-    catIdx: 3,
-    img: '/humanities.png',
-    size: 'wide',
-    badge: 'IN-PERSON',
-    grades: '9 — 12',
-    schedule: 'שני · חמישי',
-    since: '2005',
-    desc: 'אימוני קרוס קאנטרי עם תחרויות אזוריות עונתיות.',
-    lede: 'ריצת קרוס קאנטרי ושטח — משמעת אישית, רוח צוות וגבעות מטה בנימין כשטח אימון.',
-    aboutWatermark: 'צעד אחד',
-    aboutGoldTitle: 'בכל פעם.',
-    aboutBody: [
-      'תכנית הריצה מציעה אימון מובנה לכל הרמות, ממתחילות ועד ספורטאיות תחרותיות. מפגשים שבועיים מכסים מרחק, אינטרוולים וחיזוק כוח.',
-      'בית הספר מכניס קבוצות לסדרת קרוס קאנטרי האזורית בכל אביב, ורצות בודדות מתאגדות בקביעות לאליפויות המחוז.',
-    ],
-    glance: [
-      { label: 'אימונים / שבוע', value: '2' },
-      { label: 'עונה', value: 'כל השנה' },
-      { label: 'תחרויות / שנה', value: '4' },
-      { label: 'לכל הרמות?', value: 'כן' },
-    ],
-    faculty: [
-      { initials: 'RP', name: 'רות פרלמן', role: 'מאמנת ריצה' },
-    ],
-    timelineTitle: 'העונה.',
-    timeline: [
-      { period: 'תשרי · חשון', title: 'אימון בסיס', desc: 'בסיס אירובי, טכניקה וריצות מרחק שבועיות.' },
-      { period: 'כסלו · אדר', title: 'עבודת אינטרוולים', desc: 'אימוני מהירות ועליות; תחרות אזורית ראשונה.' },
-      { period: 'ניסן · סיוון', title: 'עונת תחרויות', desc: 'שלוש תחרויות אזוריות; אליפות מחוז למתאגדות.' },
-    ],
-    milestones: [
-      { num: '19', label: 'שנות פעילות' },
-      { num: '4', label: 'תחרויות / שנה' },
-      { num: '8', label: 'מדליסטיות מחוז' },
-      { num: '300+', label: 'רצות שאומנו' },
-    ],
-    testimonial: {
-      quote: 'הריצה לימדה אותי סבלנות עם עצמי — שכל שיפור נבנה מפגש אחד בכל פעם.',
-      name: 'תמר אלול',
-      sub: 'בוגרת · מחזור 2018',
-      initials: 'TE',
-    },
-    relatedSlugs: ['volleyball'],
+    relatedSlugs: ['dance', 'theatre'],
   },
 
   // ── מדעי הרוח ─────────────────────────────────────────────────────────
-  {
-    slug: 'israeli-thought',
-    name: 'הגות ישראלית',
-    cat: 'מדעי הרוח',
-    catSlug: 'humanities',
-    catIdx: 4,
-    img: '/beit-midrash.png',
-    size: '',
-    badge: undefined,
-    grades: '10 — 12',
-    schedule: 'ראשון · רביעי',
-    since: '2003',
-    desc: 'פילוסופיה ציונית, זהות יהודית והחברה הישראלית העכשווית.',
-    lede: 'עיון קפדני במחשבה הציונית מהרצל ועד ימינו — מקורות ראשוניים, חזיונות מתחרים והשאלות שעדיין מגדירות את החברה הישראלית.',
-    aboutWatermark: 'מי אנחנו',
-    aboutGoldTitle: 'הופכות להיות.',
-    aboutBody: [
-      'התכנית משתרעת על פני טקסטים ציוניים קלאסיים (הרצל, אחד העם, ז\'בוטינסקי, הרב קוק), תקופת המדינה הראשונה ועל ויכוחים עכשוויים סביב זהות, דת ודמוקרטיה.',
-      'התלמידות עוסקות במקורות ראשוניים וצפויות לבנות ולהגן על טיעונים מקוריים. הקורס מסתיים בחיבור מחקר מהותי.',
-    ],
-    glance: [
-      { label: 'שעות / שבוע', value: '3' },
-      { label: 'טקסטים ראשוניים', value: '20+' },
-      { label: 'עבודת מחקר?', value: 'כן' },
-      { label: 'בחירה לבגרות?', value: 'כן' },
-    ],
-    faculty: [
-      { initials: 'YM', name: 'יוסף מלמד', role: 'ראש מדעי הרוח' },
-      { initials: 'ES', name: 'אסתר סלע', role: 'מנחת מחקר' },
-    ],
-    timelineTitle: 'השנה.',
-    timeline: [
-      { period: 'תשרי · כסלו', title: 'טקסטים קלאסיים', desc: 'הרצל, אחד העם והוויכוח הציוני הקדום.' },
-      { period: 'טבת · אדר', title: 'מדינה וחברה', desc: 'דור המייסדים ואתגרים עכשוויים.' },
-      { period: 'ניסן · סיוון', title: 'פרויקט מחקר', desc: 'חיבור עצמאי המוגן בפני ועדת סגל.' },
-    ],
-    milestones: [
-      { num: '21', label: 'שנות פעילות' },
-      { num: '20+', label: 'טקסטים ראשוניים' },
-      { num: '95%', label: 'אחוז מעבר בגרות' },
-      { num: '500+', label: 'בוגרות שאומנו' },
-    ],
-    testimonial: {
-      quote: 'הקורס הזה נתן לי שפה לשאלות שנשאתי מאז הילדות — ואת הקפדנות לענות עליהן ממש.',
-      name: 'דבורה טל',
-      sub: 'בוגרת · מחזור 2022',
-      initials: 'DT',
-    },
-    relatedSlugs: ['national-excursions', 'social-sciences', 'jewish-history'],
-  },
-  {
-    slug: 'national-excursions',
-    name: 'טיולים ארציים',
-    cat: 'מדעי הרוח',
-    catSlug: 'humanities',
-    catIdx: 4,
-    img: '/humanities.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'חודשי',
-    since: '1998',
-    desc: 'מסעות ברחבי ישראל — מהגליל עד הנגב.',
-    lede: 'כל כיתה נוסעת. ארץ ישראל כאולפן — גיאוגרפיה, היסטוריה וזיכרון שחיים באמצעות פגישה.',
-    aboutWatermark: 'הארץ היא',
-    aboutGoldTitle: 'המורה.',
-    aboutBody: [
-      'הטיולים הארציים משובצים בלוח השנה של בית הספר מכיתה ט\' עד י"ב. כל טיול מתוכנן להשלים את הלמידה בכיתה — ארכיאולוגיה מקראית, היסטוריה צבאית מודרנית, אקולוגיה וגיאוגרפיה חברתית.',
-      'כיתה י"ב יוצאת למסע סיום בן שלושה ימים בדרום — מרמת הנגב לאילת — המביא יחד ארבע שנות לימוד.',
-    ],
-    glance: [
-      { label: 'טיולים / שנה', value: '4' },
-      { label: 'ימים בשטח', value: '8' },
-      { label: 'כיתות', value: '9 — 12' },
-      { label: 'טיול סיום?', value: 'כן (כיתה י"ב)' },
-    ],
-    faculty: [
-      { initials: 'AM', name: 'אבי מנשה', role: 'ראש לימודי שטח' },
-      { initials: 'DH', name: 'דפנה הירש', role: 'מדריכת ארכיאולוגיה' },
-    ],
-    timelineTitle: 'השנה.',
-    timeline: [
-      { period: 'חשון', title: 'גבעות הבנימין', desc: 'ארכיאולוגיה מקומית ונוף — מתחילים קרוב לבית.' },
-      { period: 'אדר', title: 'גליל וגולן', desc: 'אתרי בית שני, מערכות מים והצפון.' },
-      { period: 'אייר', title: 'מסע נגב (כיתה י"ב)', desc: 'מסע שלושה ימים דרך נוף הדרום.' },
-    ],
-    milestones: [
-      { num: '26', label: 'שנות פעילות' },
-      { num: '4', label: 'טיולים / שנה' },
-      { num: '100+', label: 'אתרים שביקרו' },
-      { num: '1,500+', label: 'תלמידות שנסעו' },
-    ],
-    testimonial: {
-      quote: 'הארץ הפסיקה להיות מפה והפכה לבית. המעבר הזה קרה בטיולים האלה.',
-      name: 'ליאור טל',
-      sub: 'בוגרת · מחזור 2023',
-      initials: 'LT',
-    },
-    relatedSlugs: ['israeli-thought', 'jewish-history'],
-  },
+
   {
     slug: 'social-sciences',
     name: 'מדעי החברה',
@@ -1175,102 +963,201 @@ const ACTIVITIES_HE: ActivityDetail[] = [
     catIdx: 4,
     img: '/humanities.png',
     size: '',
-    badge: undefined,
-    grades: '10 — 12',
-    schedule: 'ראשון · שלישי',
-    since: '2006',
-    desc: 'סוציולוגיה, פסיכולוגיה ולימודים אזרחיים.',
-    lede: 'סוציולוגיה, פסיכולוגיה וחינוך אזרחי — ללמוד לקרוא את החברה בקפידה כמו שקוראים טקסט.',
-    aboutWatermark: 'החברה כ',
-    aboutGoldTitle: 'טקסט.',
+    desc:
+      'פסיכולוגיה, סוציולוגיה וכלי מחקר המסייעים להבין אנשים, קבוצות ותהליכים חברתיים.',
+    lede:
+      'מגמת מדעי החברה באולפנת צביה כוכב יעקב מעניקה לתלמידות נקודת מבט חדשה על אנשים, קהילות והכוחות המעצבים את חיי היום־יום.',
+    aboutWatermark: 'החברה',
+    aboutGoldTitle: 'כשאלה.',
     aboutBody: [
-      'מסלול מדעי החברה משלב סוציולוגיה, פסיכולוגיה חברתית ולימודים אזרחיים. התלמידות מנתחות את החברה הישראלית הן דרך נתונים כמותיים והן דרך מקרי בוחן איכותיים.',
-      'התכנית כוללת פרויקט מחקר קהילתי שבו התלמידות סוקרות, מראיינות ומציגות ממצאים על סוגיה חברתית לבחירתן.',
+      'מגמת מדעי החברה מאפשרת לתלמידות להתבונן בחוויות מוכרות מנקודת מבט חדשה. מדוע אנשים מתנהגים כפי שהם מתנהגים? כיצד קבוצות משפיעות על היחיד? מה הקשר בין עמדות להתנהגות? וכיצד ערכים ונורמות מעצבים את חיי היום־יום?',
+      'המסלול בן חמש יחידות הלימוד משלב פסיכולוגיה, סוציולוגיה ועבודת חקר. התלמידות עוסקות בתרבויות, ערכים, נורמות, מגדר, תפקידים חברתיים, סוגים שונים של קבוצות והדרכים שבהן החברה משפיעה על האדם.',
+      'בלימודי הפסיכולוגיה הן מכירות נושאים כגון רגשות, קוגניציה, תפיסה, קשב, עמדות, התנהגות והשפעה חברתית. עבודת החקר מעניקה להן הזדמנות לשאול שאלות, לבחון מידע ולהסיק מסקנות מבוססות.',
     ],
     glance: [
-      { label: 'שעות / שבוע', value: '4' },
-      { label: 'פרויקט מחקר?', value: 'כן' },
-      { label: 'מסלול בגרות?', value: 'כן' },
-      { label: 'ממוצע קבוצה', value: '22' },
+      { label: 'יחידות לימוד', value: '5' },
+      { label: 'פסיכולוגיה', value: '2 יחידות' },
+      { label: 'סוציולוגיה', value: '2 יחידות' },
+      { label: 'עבודת חקר', value: 'יחידה אחת' },
     ],
-    faculty: [
-      { initials: 'LB', name: 'לאה ברק', role: 'סוציולוגיה' },
-      { initials: 'HR', name: 'חנה רוזן', role: 'פסיכולוגיה' },
-    ],
-    timelineTitle: 'השנה.',
+    timelineTitle: 'דרך חדשה להתבונן בעולם.',
     timeline: [
-      { period: 'תשרי · טבת', title: 'יסודות', desc: 'מושגי מפתח בסוציולוגיה ופסיכולוגיה חברתית.' },
-      { period: 'שבט · ניסן', title: 'מחקר שדה', desc: 'עיצוב סקר קהילתי, איסוף נתונים וניתוח.' },
-      { period: 'אייר · סיוון', title: 'מצגות', desc: 'התלמידות מציגות ממצאי מחקר בפני עמיתות וסגל.' },
+      {
+        period: 'מוקד 01',
+        title: 'פסיכולוגיה',
+        desc:
+          'רגשות, קוגניציה, תפיסה, עמדות, התנהגות והשפעה חברתית.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'סוציולוגיה',
+        desc:
+          'תרבויות, ערכים, נורמות, תפקידים חברתיים וקשרים בין החברה לבין היחיד.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'מחקר',
+        desc:
+          'שאילת שאלות משמעותיות, בחינת ממצאים ופיתוח מסקנות מבוססות.',
+      },
     ],
     milestones: [
-      { num: '18', label: 'שנות פעילות' },
-      { num: '22', label: 'ממוצע קבוצה' },
-      { num: '96%', label: 'אחוז מעבר בגרות' },
-      { num: '400+', label: 'בוגרות שאומנו' },
+      { num: '5', label: 'יחידות לימוד' },
+      { num: '2', label: 'יחידות פסיכולוגיה' },
+      { num: '2', label: 'יחידות סוציולוגיה' },
+      { num: '1', label: 'עבודת חקר' },
     ],
-    testimonial: {
-      quote: 'פרויקט המחקר שינה את האופן שבו אני נעה בעולם — אני שואלת שאלות טובות יותר עכשיו, ומקשיבה אחרת.',
-      name: 'רונית כץ',
-      sub: 'בוגרת · מחזור 2021',
-      initials: 'RK',
-    },
-    relatedSlugs: ['israeli-thought', 'jewish-history'],
+    relatedSlugs: ['jewish-thought', 'land-of-israel'],
   },
+
   {
-    slug: 'jewish-history',
-    name: 'היסטוריה יהודית',
+    slug: 'land-of-israel',
+    name: 'ארץ ישראל',
+    cat: 'מדעי הרוח',
+    catSlug: 'humanities',
+    catIdx: 4,
+    img: '/humanities.png',
+    size: 'big',
+    desc:
+      'ירושלים, הנגב ואזור ההר נלמדים דרך היסטוריה, גאוגרפיה, טבע ועבודת חקר.',
+    lede:
+      'מגמת ארץ ישראל באולפנת צביה כוכב יעקב מציעה היכרות רב־תחומית עם הנופים, הסיפורים והמאפיינים הטבעיים המעצבים את הארץ.',
+    aboutWatermark: 'הארץ כ',
+    aboutGoldTitle: 'טקסט חי.',
+    aboutBody: [
+      'מגמת ארץ ישראל מעניקה לתלמידות הזדמנות להכיר את הארץ לעומק. המסלול מתמקד בשלושה אזורים מרכזיים: ירושלים, הנגב ואזור ההר.',
+      'היכרות עם הארץ אינה מסתכמת בלימוד אירועים היסטוריים. התלמידות בוחנות גם את המרכיבים המעצבים כל אזור: גאוגרפיה, צומח, בעלי חיים, קרקע, סיפורים אנושיים והקשר שבין טבע לתרבות.',
+      'המסלול כולל שתי יחידות לימוד העוסקות בירושלים, יחידה המוקדשת לנגב, יחידה העוסקת באזור ההר ויחידה נוספת של עבודת חקר. הגישה הרב־תחומית מאפשרת לתלמידות לראות בארץ לא רק מפה, אלא מרחב חי, מורכב ובעל משמעות.',
+    ],
+    glance: [
+      { label: 'יחידות לימוד', value: '5' },
+      { label: 'ירושלים', value: '2 יחידות' },
+      { label: 'הנגב + אזור ההר', value: '2 יחידות' },
+      { label: 'עבודת חקר', value: 'יחידה אחת' },
+    ],
+    timelineTitle: 'לקרוא את הארץ.',
+    timeline: [
+      {
+        period: 'מוקד 01',
+        title: 'ירושלים',
+        desc:
+          'היכרות מעמיקה עם ההיסטוריה, הגאוגרפיה והאופי הייחודי של העיר.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'הנגב ואזור ההר',
+        desc:
+          'חקר נופים שונים והסיפורים הטבעיים והאנושיים המעצבים אותם.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'עבודת חקר עצמאית',
+        desc:
+          'בחירת נושא, העמקה בו ופיתוח יכולת למידה עצמאית ומסודרת.',
+      },
+    ],
+    milestones: [
+      { num: '5', label: 'יחידות לימוד' },
+      { num: '2', label: 'יחידות ירושלים' },
+      { num: '1', label: 'יחידת הנגב' },
+      { num: '1+1', label: 'אזור ההר + מחקר' },
+    ],
+    relatedSlugs: ['jewish-thought', 'social-sciences'],
+  },
+
+  {
+    slug: 'jewish-thought',
+    name: 'מחשבת ישראל',
     cat: 'מדעי הרוח',
     catSlug: 'humanities',
     catIdx: 4,
     img: '/beit-midrash.png',
-    size: '',
-    badge: undefined,
-    grades: '9 — 12',
-    schedule: 'שני · רביעי',
-    since: '1998',
-    desc: 'מהתקופה המקראית ועד המדינה המודרנית — היסטוריה כזיכרון חי.',
-    lede: 'ארבעת אלפים שנה בארבע שנים — עיסוק קפדני וחי בהיסטוריה היהודית מסיני ועד המדינה.',
-    aboutWatermark: 'זיכרון כ',
-    aboutGoldTitle: 'זהות.',
+    size: 'tall',
+    desc:
+      'מסורת, זהות, ערכים ושאלות משמעותיות הנלמדים מתוך עולם המחשבה היהודית.',
+    lede:
+      'מגמת מחשבת ישראל באולפנת צביה כוכב יעקב מזמינה את התלמידות לפגוש רעיונות שעיצבו את המסורת היהודית ולהעמיק בשאלות של זהות, אמונה, ערכים ומשמעות.',
+    aboutWatermark: 'שאלות עם',
+    aboutGoldTitle: 'עומק.',
     aboutBody: [
-      'ההיסטוריה היהודית נלמדת על פני ארבע השנים, מהתקופה הקדומה ועד המודרנית. תכנית הלימודים עוקבת אחר סילבוס הבגרות הלאומי אבל מרחיבה אותו במקורות ראשוניים, ויכוחים היסטוריוגרפיים ופרויקטי היסטוריה בעל פה.',
-      'תלמידות בכיתה י"ב בוחרות התמחות: תקופה קדומה, שואה ותקומה, או ישראל המודרנית — ומשלימות חיבור מחקר מורחב.',
+      'מחשבת ישראל היא תוצאה של מאמץ מתמשך מצד הוגים יהודים לאורך הדורות לפרש מחדש את היסודות העיוניים של המסורת והתרבות היהודית ולהתמודד עם האתגרים שהן מעלות.',
+      'המגמה מזמינה את התלמידות להיכנס לעולם עשיר של רעיונות, שאלות ודיונים. היא יוצרת מרחב לעיסוק בזהות, אמונה, ערכים, אחריות ומשמעות, תוך בחינת הדרך שבה רעיונות מן העבר ממשיכים לפגוש את החיים בהווה.',
+      'תהליך הלמידה מעודד את התלמידות לשאול שאלות, להקשיב לעמדות שונות, לבטא רעיונות בצורה בהירה ולהתמודד עם סוגיות מורכבות מתוך עומק, רגישות ואחריות.',
     ],
     glance: [
-      { label: 'שעות / שבוע', value: '4' },
-      { label: 'יחידות בגרות', value: '5' },
-      { label: 'התמחויות', value: '3' },
-      { label: 'עבודת מחקר?', value: 'כן (כיתה י"ב)' },
+      { label: 'מוקד', value: 'מחשבה יהודית' },
+      { label: 'נושאים', value: 'זהות · ערכים · משמעות' },
+      { label: 'גישה', value: 'לימוד + התבוננות' },
+      { label: 'מיומנות מרכזית', value: 'חשיבה עצמאית' },
     ],
-    faculty: [
-      { initials: 'YM', name: 'יוסף מלמד', role: 'ראש מדעי הרוח' },
-      { initials: 'NF', name: 'נעמי פרידמן', role: 'היסטוריה מודרנית' },
-    ],
-    timelineTitle: 'השנה.',
+    timelineTitle: 'רעיונות שממשיכים לדבר.',
     timeline: [
-      { period: 'תשרי · כסלו', title: 'קדמון ומימי הביניים', desc: 'מקרא, בית שני, גלות — יסודות הזיכרון.' },
-      { period: 'טבת · ניסן', title: 'תקופה מודרנית', desc: 'אמנציפציה, שואה, ציונות וקום המדינה.' },
-      { period: 'אייר · סיוון', title: 'עבודת מחקר', desc: 'חיבור מורחב בהתמחות שנבחרה; סקירת סגל.' },
+      {
+        period: 'מוקד 01',
+        title: 'מסורת ופרשנות',
+        desc:
+          'היכרות עם היסודות העיוניים של המסורת והתרבות היהודית.',
+      },
+      {
+        period: 'מוקד 02',
+        title: 'זהות וערכים',
+        desc:
+          'עיסוק בשאלות של אמונה, אחריות והרעיונות המעצבים את החיים האישיים והקהילתיים.',
+      },
+      {
+        period: 'מוקד 03',
+        title: 'שיח מעמיק',
+        desc:
+          'פיתוח היכולת לשאול, להקשיב ולהתמודד בצורה משמעותית עם סוגיות מורכבות.',
+      },
     ],
-    milestones: [
-      { num: '26', label: 'שנות פעילות' },
-      { num: '97%', label: 'אחוז מעבר בגרות' },
-      { num: '3', label: 'התמחויות' },
-      { num: '600+', label: 'בוגרות שאומנו' },
-    ],
-    testimonial: {
-      quote: 'שיעורי ההיסטוריה בצביה הרגישו דחופים — כאילו העבר הוא משהו שאנחנו אחראיות לו, לא רק נדרשות לשנן.',
-      name: 'נעמי גרוס',
-      sub: 'בוגרת · מחזור 2020',
-      initials: 'NG',
-    },
-    relatedSlugs: ['israeli-thought', 'national-excursions', 'social-sciences'],
+    relatedSlugs: ['land-of-israel', 'social-sciences', 'theatre'],
   },
 ];
 
+
+// ── Cloudinary academy imagery (folder academy/<activity>, shared per locale) ──
+const CLD = 'https://res.cloudinary.com/dcpeggch3/image/upload';
+
+const BIOLOGY_IMGS = [
+  `${CLD}/v1780433199/%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94-1-1-1536x1152_vopc1v.jpg`,
+  `${CLD}/v1780433197/%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94-2-1-1536x1152_hsmvc9.jpg`,
+  `${CLD}/v1780433200/%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94-3-1-1536x1152_rkevf6.jpg`,
+  `${CLD}/v1780433202/%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94-4-1-1536x1152_lkc0x0.jpg`,
+];
+const COUNTRY_IMGS = [
+  `${CLD}/v1780433152/%D7%90%D7%A8%D7%A5-1-1-1536x1152_siosyg.jpg`,
+  `${CLD}/v1780433154/WhatsApp-Image-2025-11-10-at-11.03.49-1536x1152_k4bccn.jpg`,
+  `${CLD}/v1780433153/%D7%90%D7%A8%D7%A5-2-1-1152x1536_h1599j.jpg`,
+  `${CLD}/v1780433155/%D7%90%D7%A8%D7%A5-3-1-1152x1536_k2qnlz.jpg`,
+];
+const SOCIAL_SCIENCE_IMGS = [
+  `${CLD}/v1780433241/%D7%9E%D7%93%D7%A2%D7%99-%D7%94%D7%97%D7%91%D7%A8%D7%94-1-1-1536x1152_yzrx4s.jpg`,
+  `${CLD}/v1780433239/%D7%9E%D7%93%D7%A2%D7%99-%D7%94%D7%97%D7%91%D7%A8%D7%94-2-1-1536x1152_gpi3ev.jpg`,
+];
+const THEATER_IMGS = [
+  `${CLD}/v1780433179/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-1-1-1536x1152_mj72gy.jpg`,
+  `${CLD}/v1780433183/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-2-1-1536x1074_frzbys.jpg`,
+  `${CLD}/v1780433181/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-3-1-1536x1152_aujjhv.jpg`,
+];
+
+/** Per-slug media: cover image (first) + full gallery. Applied across locales. */
+const ACADEMY_MEDIA: Record<string, {img: string; gallery: string[]}> = {
+  biology: {img: BIOLOGY_IMGS[0], gallery: BIOLOGY_IMGS},
+  'land-of-israel': {img: COUNTRY_IMGS[0], gallery: COUNTRY_IMGS},
+  'social-sciences': {img: SOCIAL_SCIENCE_IMGS[0], gallery: SOCIAL_SCIENCE_IMGS},
+  theatre: {img: THEATER_IMGS[0], gallery: THEATER_IMGS},
+};
+
+function withMedia(list: ActivityDetail[]): ActivityDetail[] {
+  return list.map((a) => {
+    const media = ACADEMY_MEDIA[a.slug];
+    return media ? {...a, img: media.img, gallery: media.gallery} : a;
+  });
+}
+
 function getStore(locale: string): ActivityDetail[] {
-  return locale === 'he' ? ACTIVITIES_HE : ACTIVITIES_EN;
+  return withMedia(locale === 'he' ? ACTIVITIES_HE : ACTIVITIES_EN);
 }
 
 export function getActivities(locale: string): ActivityMeta[] {

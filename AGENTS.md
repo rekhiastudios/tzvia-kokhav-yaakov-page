@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Project context — read this first, every session
 
@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Bilingual, Hebrew-default.** The site supports Hebrew and English natively. Hebrew is the default; the URL scheme is `/[locale]/...` with `he` as the canonical default and `en` as a parallel locale. Hebrew renders RTL.
 
-**Persistent reminder for Claude Code:** at the start of every session, re-read this file and keep this context in mind for the entire conversation. When a request is ambiguous, default to choices that (a) prioritize visual polish, (b) respect the Hebrew-first / RTL nature of the site, (c) keep the door open for the 3D Hero and don't break it, and (d) don't introduce backend dependencies the project doesn't have.
+**Persistent reminder for Codex:** at the start of every session, re-read this file and keep this context in mind for the entire conversation. When a request is ambiguous, default to choices that (a) prioritize visual polish, (b) respect the Hebrew-first / RTL nature of the site, (c) keep the door open for the 3D Hero and don't break it, and (d) don't introduce backend dependencies the project doesn't have.
 
 ## Commands
 
@@ -161,10 +161,3 @@ These are explicitly *not* part of the current phase. If a request implies any o
 - 3D Hero: integrate the MVP model into `HeroSection`, and decide real-time WebGL (three.js / R3F) vs. pre-rendered video loop with a static fallback. Affects bundle size and mobile behavior.
 - Contact form submission target (no backend wired yet).
 - Article/activity content source long-term: keep typed in-repo modules (`lib/`) vs. future CMS. Currently in-repo.
-
-
-## Cloudinary credentials for assets
-Cloud Name: dcpeggch3
-API Key: 428442649449982
-API Secret: lDLI1LLsY_mPtyJKBz-tzslhUqY
-

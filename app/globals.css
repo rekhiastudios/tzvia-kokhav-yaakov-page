@@ -371,11 +371,13 @@
   border-radius: 9999px;
   padding: 0.25rem;
   background: transparent;
+  position: relative;
   transition: background 0.38s var(--nav-ease);
 }
 
 .navbar-search-wrap:hover,
-.navbar-search-wrap:focus-within {
+.navbar-search-wrap:focus-within,
+.navbar-search-wrap.is-active {
   background: rgba(255, 255, 255, 0.92);
 }
 
@@ -402,7 +404,8 @@
 }
 
 .navbar-search-wrap:hover .navbar-search-input,
-.navbar-search-wrap:focus-within .navbar-search-input {
+.navbar-search-wrap:focus-within .navbar-search-input,
+.navbar-search-wrap.is-active .navbar-search-input {
   max-width: 13rem;
   padding-inline: 0.75rem;
   opacity: 1;
@@ -410,10 +413,138 @@
 
 /* Keep the icon dark when overlaid on the white pill */
 .navbar-search-wrap:hover .navbar-search-btn,
-.navbar-search-wrap:focus-within .navbar-search-btn {
+.navbar-search-wrap:focus-within .navbar-search-btn,
+.navbar-search-wrap.is-active .navbar-search-btn {
   color: #000b21;
   opacity: 1;
   transform: none;
+}
+
+/* ── Search results dropdown ────────────────────────────────────────────────
+ * Anchored under the search pill. Each row animates in with a short stagger
+ * driven by the inline `--i` custom property set per item.
+ * ─────────────────────────────────────────────────────────────────────────── */
+.navbar-search-results {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  /* Anchor the panel's start edge to the search icon (the button sits at the
+     wrap's inline-start) so the rest extends inward — under the menu + language
+     toggle — instead of overflowing toward the viewport edge. */
+  inset-inline-start: 0;
+  width: min(24rem, calc(100vw - 2rem));
+  max-height: min(70vh, 30rem);
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: #fffdf9;
+  border: 1px solid rgba(0, 11, 33, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 18px 50px -16px rgba(0, 11, 33, 0.4);
+  z-index: 60;
+  transform-origin: top;
+  animation: navbar-search-pop 0.22s var(--nav-ease, ease) both;
+}
+
+@keyframes navbar-search-pop {
+  from { opacity: 0; transform: translateY(-0.5rem) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.navbar-search-empty {
+  margin: 0;
+  padding: 1rem 0.75rem;
+  font-size: 0.8125rem;
+  color: rgba(0, 11, 33, 0.5);
+  text-align: center;
+}
+
+.navbar-search-result {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.625rem;
+  text-decoration: none;
+  color: #000b21;
+  opacity: 0;
+  transform: translateY(0.4rem);
+  animation: navbar-search-row 0.34s var(--nav-ease, ease) forwards;
+  animation-delay: calc(var(--i, 0) * 0.045s + 0.06s);
+  transition: background 0.15s ease;
+}
+
+.navbar-search-result:hover,
+.navbar-search-result:focus-visible {
+  background: rgba(0, 11, 33, 0.05);
+  outline: none;
+}
+
+@keyframes navbar-search-row {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.navbar-search-result-type {
+  flex-shrink: 0;
+  min-width: 4.5rem;
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tz-gold-deep, #c98f2c);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(201, 143, 44, 0.35);
+  border-radius: 9999px;
+  text-align: center;
+}
+
+.navbar-search-result-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.navbar-search-result-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-search-result-sub {
+  font-size: 0.6875rem;
+  color: rgba(0, 11, 33, 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-search-result-arr {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: rgba(0, 11, 33, 0.3);
+  transition: transform 0.16s ease, color 0.16s ease;
+}
+
+.navbar-search-result:hover .navbar-search-result-arr {
+  color: var(--tz-gold-deep, #c98f2c);
+  transform: translateX(0.2rem);
+}
+
+[dir="rtl"] .navbar-search-result-arr {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .navbar-search-result:hover .navbar-search-result-arr {
+  transform: scaleX(-1) translateX(0.2rem);
+}
+
+:lang(he) .navbar-search-result-type {
+  font-family: var(--font-display), 'Secular One', sans-serif;
+  letter-spacing: 0.04em;
 }
 
 /* ── Menu pill button ──────────────────────────────────────────────────────
@@ -920,7 +1051,7 @@
   background: var(--tz-bg-2); border: 1px solid var(--tz-line);
   box-shadow: var(--tz-shadow-sm);
   display: flex; flex-direction: column;
-  cursor: pointer;
+  cursor: pointer; text-decoration: none;
   transition: transform .2s ease, border-color .18s, box-shadow .2s;
 }
 .tz-news-card:hover { transform: translateY(-3px); border-color: var(--tz-gold); box-shadow: var(--tz-shadow-md); }
@@ -1543,6 +1674,19 @@
   border-radius: 4px;
 }
 .tz-act-gallery-item.tz-ph { position: relative; }
+
+/* Real photo gallery — adapts to any count (auto-fit fills the row evenly). */
+.tz-act-gallery-grid.is-photos {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-rows: none;
+  grid-auto-rows: 240px;
+}
+.tz-act-gallery-photo {
+  position: relative; overflow: hidden;
+  background: var(--tz-bg-3);
+}
+.tz-act-gallery-photo img { transition: transform .5s cubic-bezier(0.4, 0, 0.2, 1); }
+.tz-act-gallery-photo:hover img { transform: scale(1.05); }
 
 /* Milestones */
 .tz-act-milestones { padding-block: 72px; }
@@ -2178,6 +2322,11 @@
   border-radius: 4px; background: var(--tz-bg-3);
 }
 .tz-art-figure.wide .tz-art-figure-img { aspect-ratio: 21 / 9; }
+.tz-art-figure-video {
+  position: relative; overflow: hidden;
+  border-radius: 4px; background: #000;
+}
+.tz-art-figure-video video { width: 100%; max-height: 70vh; display: block; }
 .tz-art-figure-cap { font-size: 12px; color: var(--tz-ink-mute); font-style: italic; margin-top: 8px; }
 .tz-art-h2 {
   font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
@@ -3264,6 +3413,7 @@
   padding: .2rem .55rem; border-radius: 2px;
 }
 .tz-rent-gallery-label {
+  position: relative; z-index: 2;
   font-family: var(--font-inst), sans-serif;
   font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--tz-ink-mute);
@@ -3273,7 +3423,15 @@
 .tz-rent-gallery-item-more .tz-rent-gallery-label {
   background: none;
   font-size: .9rem; font-weight: 600; letter-spacing: .06em;
-  color: var(--tz-ink-soft);
+  color: #fff;
+}
+
+/* Real photos sit behind the badge/label; the "+more" tile gets a dark scrim. */
+.tz-rent-gallery-img { z-index: 0; }
+.tz-rent-gallery-badge { z-index: 2; }
+.tz-rent-gallery-item-more::after {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: rgba(0, 11, 33, .55);
 }
 
 /* ── 4. Amenities ── */
@@ -4251,3 +4409,80 @@
 :lang(he) .tz-cnt-actions-title { font-family: var(--font-display), 'Secular One', sans-serif; letter-spacing: 0; }
 :lang(he) .tz-cnt-visit-title  { font-family: var(--font-display), 'Secular One', sans-serif; }
 :lang(he) .tz-res-section-title { font-family: var(--font-display), 'Secular One', sans-serif; line-height: 1.1; letter-spacing: 0; }
+
+/* ═══ 404 — Not Found ═══════════════════════════════════════════════════════
+   Light-zone page shown for any unmatched route. Mirrors the About hero
+   language (gold eyebrow, oversized Bebas display, gold/cream split headline). */
+.tz-404 { background: var(--tz-bg); min-height: 70vh; display: flex; }
+.tz-404-inner {
+  width: 100%; max-width: 1280px; margin-inline: auto;
+  padding-top: 120px; padding-bottom: 96px;
+}
+.tz-404-eyebrow {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 13px; letter-spacing: .32em; color: var(--tz-gold);
+  text-transform: uppercase; margin: 0 0 28px;
+}
+.tz-404-code {
+  display: flex; align-items: flex-end; gap: 18px; margin-bottom: 8px;
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(120px, 24vw, 300px); line-height: .82;
+  letter-spacing: -.03em; color: var(--tz-gold);
+}
+/* Coming-soon: construction icon occupies the oversized code slot. */
+.tz-cs-icon {
+  width: clamp(96px, 20vw, 240px);
+  height: auto;
+  color: var(--tz-gold);
+}
+.tz-404-square {
+  width: clamp(36px, 7vw, 78px); height: clamp(36px, 7vw, 78px);
+  background: var(--tz-ink); flex-shrink: 0; margin-bottom: clamp(8px, 1.5vw, 18px);
+}
+.tz-404-title {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 7.5vw, 110px); line-height: .92; letter-spacing: -.02em;
+  text-transform: uppercase; margin: 36px 0 0; max-width: 16ch;
+  padding-top: 36px; border-top: 1px solid var(--tz-line-2);
+}
+.tz-404-title-cream { color: var(--tz-ink-soft); }
+.tz-404-title-gold { color: var(--tz-gold); }
+.tz-404-desc {
+  font-size: 17px; color: var(--tz-ink-soft); line-height: 1.7;
+  max-width: 540px; margin: 28px 0 0;
+}
+.tz-404-btns { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+.tz-404-btn-primary, .tz-404-btn-outline {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 13px; letter-spacing: .24em; text-transform: uppercase;
+  padding: 16px 32px; border-radius: 99px; text-decoration: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 12px; border: 1px solid transparent;
+  transition: background .16s, color .16s, border-color .16s;
+}
+.tz-404-btn-primary { background: var(--tz-gold); color: var(--tz-ink); }
+.tz-404-btn-primary:hover { background: var(--tz-gold-deep); }
+.tz-404-btn-outline { background: transparent; color: var(--tz-ink); border-color: var(--tz-line-2); }
+.tz-404-btn-outline:hover { border-color: var(--tz-ink); }
+.tz-404-btn-primary svg, .tz-404-btn-outline svg { width: 16px; height: 16px; }
+.tz-404-rule { height: 1px; background: var(--tz-line-2); margin: 56px 0 28px; }
+.tz-404-try-label {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--tz-ink-mute); margin: 0 0 20px;
+}
+.tz-404-links { display: flex; flex-wrap: wrap; gap: 28px 40px; }
+.tz-404-link {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  font-family: var(--font-display), 'Secular One', sans-serif;
+  font-size: 18px; color: var(--tz-ink); transition: color .14s;
+}
+.tz-404-link:hover { color: var(--tz-gold-deep); }
+.tz-404-link-arr { width: 15px; height: 15px; color: var(--tz-gold); }
+[dir="rtl"] .tz-404-link-arr { transform: scaleX(-1); }
+
+@media (max-width: 640px) {
+  .tz-404-inner { padding-top: 96px; padding-bottom: 72px; }
+  .tz-404-btns { flex-direction: column; align-items: stretch; }
+  .tz-404-btn-primary, .tz-404-btn-outline { justify-content: center; }
+  .tz-404-links { gap: 20px 28px; }
+}

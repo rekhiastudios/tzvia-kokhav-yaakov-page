@@ -18,6 +18,33 @@
     "resources": "משאבים",
     "rent": "השכרת הקמפוס"
   },
+  "search": {
+    "placeholder": "חיפוש באתר…",
+    "noResults": "לא נמצאו תוצאות",
+    "hint": "חיפוש דפים, חדשות, פעילויות ואירועים",
+    "typePage": "דף",
+    "typeArticle": "כתבה",
+    "typeActivity": "פעילות",
+    "typeEvent": "אירוע"
+  },
+  "notFound": {
+    "eyebrow": "שגיאה · 404",
+    "titleCream": "העמוד שאתם מחפשים",
+    "titleGold": "לא נמצא כאן.",
+    "desc": "ייתכן שהקישור אינו מעודכן, או שהעמוד עבר למקום אחר. כך או כך, נשמח לעזור לכם למצוא את הדרך חזרה.",
+    "homeCta": "חזרה לדף הבית",
+    "backCta": "חזרה אחורה",
+    "tryLabel": "או נסו אחד מאלה"
+  },
+  "comingSoon": {
+    "eyebrow": "בבנייה · בקרוב",
+    "titleCream": "העמוד הזה עדיין",
+    "titleGold": "בבנייה.",
+    "desc": "אנחנו עדיין בונים את החלק הזה של האתר. חזרו בקרוב — ובינתיים, הנה לאן אפשר להמשיך.",
+    "homeCta": "חזרה לדף הבית",
+    "backCta": "חזרה אחורה",
+    "tryLabel": "או נסו אחד מאלה"
+  },
   "hero": {
     "admissionsOpen": "ההרשמות פתוחות",
     "admissionsYear": "ה'תשפ\"ו / 2026–27",
@@ -106,14 +133,14 @@
     ],
     "activities": [
       {
-        "name": "הגות ישראלית",
+        "name": "ארץ ישראל",
         "cat": "מדעי הרוח",
         "catIdx": 4,
         "catSlug": "humanities",
-        "slug": "israeli-thought",
-        "img": "beit-midrash.png",
+        "slug": "land-of-israel",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433152/%D7%90%D7%A8%D7%A5-1-1-1536x1152_siosyg.jpg",
         "size": "big",
-        "desc": "חקירת הפילוסופיה הציונית, הזהות היהודית והחברה הישראלית העכשווית דרך טקסט, דיאלוג ועיון."
+        "desc": "ירושלים, הנגב והאזור ההררי — נחקרים דרך היסטוריה, גאוגרפיה, טבע ומחקר."
       },
       {
         "name": "תיאטרון",
@@ -121,29 +148,9 @@
         "catIdx": 1,
         "catSlug": "arts",
         "slug": "theatre",
-        "img": "arts.png",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433179/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-1-1-1536x1152_mj72gy.jpg",
         "size": "wide",
-        "desc": "משחק, בימוי ובמאות — המסתיים בהפקה שנתית שמאגדת את כל בית הספר יחד."
-      },
-      {
-        "name": "טיולים ארציים",
-        "cat": "מדעי הרוח",
-        "catIdx": 4,
-        "catSlug": "humanities",
-        "slug": "national-excursions",
-        "img": "humanities.png",
-        "size": "",
-        "desc": "מסעות ברחבי ישראל — מהגליל עד הנגב — המחברים את הלמידה בכיתה אל הנוף החי."
-      },
-      {
-        "name": "מדעי החברה",
-        "cat": "מדעי הרוח",
-        "catIdx": 4,
-        "catSlug": "humanities",
-        "slug": "social-sciences",
-        "img": "humanities.png",
-        "size": "",
-        "desc": "סוציולוגיה, פסיכולוגיה ולימודים אזרחיים המלמדים תלמידות לקרוא את החברה בבהירות."
+        "desc": "מסלול תלת-שנתי המשלב ספרות דרמטית, משחק, בימוי ועבודת במה."
       },
       {
         "name": "מדע וטכנולוגיה",
@@ -151,19 +158,39 @@
         "catIdx": 2,
         "catSlug": "science",
         "slug": "",
-        "img": "science.png",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433199/%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94-1-1-1536x1152_vopc1v.jpg",
         "size": "",
-        "desc": "ביולוגיה, כימיה, פיזיקה ומסלול רובוטיקה ייעודי — לבניית המדעניות של מחר."
+        "desc": "ביולוגיה, פיזיקה וכימיה — מסלולי מעבדה ומקוונים שמפתחים חשיבה מדעית."
       },
       {
-        "name": "ספורט",
+        "name": "כדורסל",
         "cat": "ספורט",
         "catIdx": 3,
         "catSlug": "sports",
-        "slug": "",
-        "img": "science.png",
+        "slug": "basketball",
+        "img": "humanities.png",
         "size": "",
-        "desc": "ספורט קבוצתי, כושר גופני ותחרויות בין-שכבתיות — כי מוח חזק זקוק לגוף חזק."
+        "desc": "תנועה, עבודת צוות וביטחון על המגרש הגדול שבמרכז הקמפוס."
+      },
+      {
+        "name": "מדעי החברה",
+        "cat": "מדעי הרוח",
+        "catIdx": 4,
+        "catSlug": "humanities",
+        "slug": "social-sciences",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433241/%D7%9E%D7%93%D7%A2%D7%99-%D7%94%D7%97%D7%91%D7%A8%D7%94-1-1-1536x1152_yzrx4s.jpg",
+        "size": "",
+        "desc": "פסיכולוגיה, סוציולוגיה וכלי מחקר להבנת האדם והחברה."
+      },
+      {
+        "name": "מחשבת ישראל",
+        "cat": "מדעי הרוח",
+        "catIdx": 4,
+        "catSlug": "humanities",
+        "slug": "jewish-thought",
+        "img": "beit-midrash.png",
+        "size": "",
+        "desc": "מסורת, זהות, ערכים ושאלות משמעותיות הנבחנים לעומק."
       },
       {
         "name": "אמנות חזותית",
@@ -173,7 +200,7 @@
         "slug": "visual-arts",
         "img": "arts.png",
         "size": "wide",
-        "desc": "ציור, פיסול, צילום ועיצוב — סטודיו שבו כל תלמידה מוצאת את קולה החזותי."
+        "desc": "יצירתיות בפעולה — ציור, רישום ועיצוב שמעשירים את חיי האולפנה."
       }
     ]
   },
@@ -191,7 +218,7 @@
     "days": ["א", "ב", "ג", "ד", "ה", "ו", "ש"],
     "legendPublic": "ציבורי · פתוח למשפחות",
     "legendCommunity": "קהילה · תלמידות וצוות",
-    "eventsCount": "4 אירועים החודש",
+    "eventsCount": "אירוע אחד החודש",
     "labelPublic": "פתוח לציבור",
     "labelCommunity": "קהילה",
     "rsvp": "הרשמה",
@@ -203,52 +230,12 @@
     "allEventsLink": "לוח מלא",
     "events": [
       {
-        "day": 4,
-        "time": "17:00",
-        "title": "יום שערים פתוחים",
-        "alt": false,
-        "when": "4 יוני · 17:00 · קמפוס ראשי",
-        "desc": "תלמידות עתידיות ומשפחות מוזמנות לסייר בקמפוס ולפגוש את הצוות שלנו."
-      },
-      {
-        "day": 7,
-        "time": "09:00",
-        "title": "תחרות תנ\"ך — גמר",
-        "alt": true,
-        "when": "7 יוני · 09:00 · בית המדרש",
-        "desc": "תחרות התנ\"ך הבין-שכבתית השנתית. תלמידות וצוות מוזמנים לצפות."
-      },
-      {
-        "day": 12,
+        "day": 20,
         "time": "כל היום",
-        "title": "יום השבוע · למידה קהילתית",
+        "title": "יום הלימודים האחרון",
         "alt": false,
-        "when": "12 יוני · כל היום · קמפוס",
-        "desc": "יום הלימוד השבועי של כל בית הספר — תורה, אמנות יצירתית ובנייה קהילתית."
-      },
-      {
-        "day": 15,
-        "time": "19:30",
-        "title": "קונצרט אביב",
-        "alt": true,
-        "when": "15 יוני · 19:30 · אודיטוריום",
-        "desc": "ערב מוזיקה מהאנסמבל הווקאלי, התזמורת וקבוצות הצ'מבר של בית הספר."
-      },
-      {
-        "day": 21,
-        "time": "10:00",
-        "title": "טקס בגרות כיתה י\"ב",
-        "alt": false,
-        "when": "21 יוני · 10:00 · אולם ראשי",
-        "desc": "טקס הסיום לכיתה ה'תשפ\"ו. משפחות ובוגרות מוזמנות בחום."
-      },
-      {
-        "day": 28,
-        "time": "18:00",
-        "title": "אסיפת סיום",
-        "alt": true,
-        "when": "28 יוני · 18:00 · חצר",
-        "desc": "הכינוס שנת-הסיום המסמן את סוף ה'תשפ\"ו — עם פרסים ורפלקציות."
+        "when": "20 יוני · כל היום · קמפוס",
+        "desc": "יום הלימודים האחרון של שנת הלימודים ה'תשפ\"ו."
       }
     ]
   },
@@ -295,25 +282,23 @@
     "brandDesc": "אולפנה ציונית-דתית לבנות בלב מטה בנימין. עשרים ושמונה שנות לימוד, קהילה ומצוינות.",
     "colSchool": "בית הספר",
     "colSchoolLinks": [
-      {"label": "אודות", "href": "#about"},
-      {"label": "צוות הוראה", "href": "#"},
-      {"label": "בית מדרש", "href": "#"},
-      {"label": "קמפוס", "href": "#"},
-      {"label": "בוגרות", "href": "#"}
+      {"label": "אודות", "href": "/about-us"},
+      {"label": "אקדמיה", "href": "/academy"},
+      {"label": "חדשות", "href": "/news"},
+      {"label": "קמפוס", "href": "/coming-soon"}
     ],
     "colAdmissions": "הרשמה",
     "colAdmissionsLinks": [
-      {"label": "הגשה 2026–27", "href": "#"},
-      {"label": "שכר לימוד", "href": "#"},
-      {"label": "יום שערים פתוחים", "href": "#"},
-      {"label": "שאלות נפוצות", "href": "#"}
+      {"label": "הרשמה", "href": "/admissions"},
+      {"label": "יצירת קשר", "href": "/contact"},
+      {"label": "שאלות נפוצות", "href": "/coming-soon"}
     ],
     "colResources": "משאבים",
     "colResourcesLinks": [
-      {"label": "פורטל הורים", "href": "#"},
-      {"label": "יומן", "href": "#calendar"},
-      {"label": "פרסומים", "href": "#"},
-      {"label": "עיתונות", "href": "#"}
+      {"label": "משאבים", "href": "/resources"},
+      {"label": "השכרת הקמפוס", "href": "/facilities/rent"},
+      {"label": "יומן", "href": "/#calendar"},
+      {"label": "פורטל הורים", "href": "/coming-soon"}
     ],
     "newsletter": "ניוזלטר",
     "newsletterHint": "הערה רבעונית מראש בית הספר — קהילה, לימוד ומה שמחכה.",
@@ -625,11 +610,11 @@
     "galleryTitleLine1": "גלי את",
     "galleryTitleBrand": "הקמפוס.",
     "galleryItems": [
-      { "label": "חדר האוכל · מסודר לאירוע", "featured": true, "isMore": false },
-      { "label": "חצר הגן", "featured": false, "isMore": false },
-      { "label": "שורת המעונות", "featured": false, "isMore": false },
-      { "label": "חדר שינה · A/C", "featured": false, "isMore": false },
-      { "label": "+8 נוספים", "featured": false, "isMore": true }
+      { "label": "חדר האוכל · מסודר לאירוע", "featured": true, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780476639/jeder-ojel_j8xjav.jpg" },
+      { "label": "חצר הגן", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780480480/caravans-2_nasvub.jpg" },
+      { "label": "שורת המעונות", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780476636/caravans_suy4px.jpg" },
+      { "label": "חדר שינה · A/C", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780476646/inside-caravan_ke10kc.jpg" },
+      { "label": "", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780474679/campus-5_e3xjsv.jpg" }
     ],
     "featuredBadge": "מוצג",
     "amenitiesEyebrow": "שירותים",
@@ -683,7 +668,7 @@
     "allListsTitle": "כל הרשימות יחד",
     "allListsMeta": "ZIP · 5 קבצים",
     "downloadAllBtn": "הורד הכל",
-    "allListsHref": null,
+    "allListsHref": "",
     "bookLists": [
       { "grade": "ט׳", "title": "כיתה ט׳ — רשימת ספרים", "meta": "PDF · רשימת ספרים ט תשפ״ו", "href": null },
       { "grade": "2ט", "title": "כיתה ט׳ (קטנה) — רשימת ספרים", "meta": "PDF · כיתה קטנה תשפ״ו", "href": null },

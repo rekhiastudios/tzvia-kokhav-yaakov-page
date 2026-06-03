@@ -1,4 +1,12 @@
 import {useTranslations} from 'next-intl';
+import Image from 'next/image';
+
+// Campus imagery (Cloudinary). "main-campus" lives in the Campus Images folder;
+// the other two are reused from the academy activity galleries (country + theatre).
+const CLD = 'https://res.cloudinary.com/dcpeggch3/image/upload';
+const ABOUT_IMG_MAIN = `${CLD}/v1780474430/%D7%90%D7%A8%D7%A5-1-1_bvzsnj.png`;
+const ABOUT_IMG_LAND = `${CLD}/v1780433153/%D7%90%D7%A8%D7%A5-2-1-1152x1536_h1599j.jpg`;
+const ABOUT_IMG_THEATRE = `${CLD}/v1780433179/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-1-1-1536x1152_mj72gy.jpg`;
 
 export function AboutSection() {
   const t = useTranslations('about');
@@ -54,23 +62,34 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Right column — image placeholders */}
+        {/* Right column — campus imagery */}
         <div className="tz-about-imgs">
           <div className="tz-ph tz-ph-big">
-            <div className="tz-ph-inner">
-              <div>{t('img1Label')}</div>
-              <div className="tz-ph-sub">{t('img1Sub')}</div>
-            </div>
+            <Image
+              src={ABOUT_IMG_MAIN}
+              alt={t('img1Label')}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
           <div className="tz-ph">
-            <div className="tz-ph-inner">
-              <div>{t('img2Label')}</div>
-            </div>
+            <Image
+              src={ABOUT_IMG_LAND}
+              alt={t('img2Label')}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 50vw, 25vw"
+            />
           </div>
           <div className="tz-ph">
-            <div className="tz-ph-inner">
-              <div>{t('img3Label')}</div>
-            </div>
+            <Image
+              src={ABOUT_IMG_THEATRE}
+              alt={t('img3Label')}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 50vw, 25vw"
+            />
           </div>
         </div>
       </div>

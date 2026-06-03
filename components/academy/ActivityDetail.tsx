@@ -107,7 +107,7 @@ export async function ActivityDetailPage({locale, activity: act, related}: Props
       </section>
 
       {/* ── Faculty ── */}
-      {act.faculty.length > 0 && (
+      {act.faculty && act.faculty.length > 0 && (
         <section className="tz-act-faculty tz-page">
           <p className="tz-act-section-eyebrow">{'// '}{t('facultyLabel')}</p>
           <div className="tz-act-faculty-hd">
@@ -148,25 +148,41 @@ export async function ActivityDetailPage({locale, activity: act, related}: Props
         </section>
       )}
 
-      {/* ── Gallery placeholder ── */}
+      {/* ── Gallery ── */}
       <section id="act-gallery" className="tz-act-gallery tz-page">
         <p className="tz-act-section-eyebrow">{'// '}{t('stageLabel')}</p>
-        <div className="tz-act-gallery-grid">
-          {[0,1,2,3,4,5].map((i) => (
-            <div key={i} className={`tz-act-gallery-item tz-ph${i === 0 ? ' tz-act-gallery-featured' : ''}`}>
-              <div className="tz-ph-inner">
-                <span className="tz-ph-label">IMAGE</span>
+        {act.gallery && act.gallery.length > 0 ? (
+          <div className="tz-act-gallery-grid is-photos">
+            {act.gallery.map((src, i) => (
+              <div key={i} className="tz-act-gallery-item tz-act-gallery-photo">
+                <Image
+                  src={src}
+                  alt={`${act.name} — ${i + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
-              {i === 5 && (
-                <div className="tz-act-gallery-more">+12 MORE</div>
-              )}
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="tz-act-gallery-grid">
+            {[0,1,2,3,4,5].map((i) => (
+              <div key={i} className={`tz-act-gallery-item tz-ph${i === 0 ? ' tz-act-gallery-featured' : ''}`}>
+                <div className="tz-ph-inner">
+                  <span className="tz-ph-label">IMAGE</span>
+                </div>
+                {i === 5 && (
+                  <div className="tz-act-gallery-more">+12 MORE</div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ── Milestones ── */}
-      {act.milestones.length > 0 && (
+      {act.milestones && act.milestones.length > 0 && (
         <section className="tz-act-milestones tz-page">
           <p className="tz-act-section-eyebrow">{'// '}{t('milestonesLabel')}</p>
           <div className="tz-act-ms-grid">
@@ -181,18 +197,20 @@ export async function ActivityDetailPage({locale, activity: act, related}: Props
       )}
 
       {/* ── Testimonial ── */}
-      <section className="tz-act-testimonial tz-page">
-        <div className="tz-act-test-inner">
-          <p className="tz-act-test-quote">{act.testimonial.quote}</p>
-          <div className="tz-act-test-attr">
-            <div className="tz-act-test-av">{act.testimonial.initials}</div>
-            <div>
-              <div className="tz-act-test-name">{act.testimonial.name}</div>
-              <div className="tz-act-test-sub">{act.testimonial.sub.toUpperCase()}</div>
+      {act.testimonial && (
+        <section className="tz-act-testimonial tz-page">
+          <div className="tz-act-test-inner">
+            <p className="tz-act-test-quote">{act.testimonial.quote}</p>
+            <div className="tz-act-test-attr">
+              <div className="tz-act-test-av">{act.testimonial.initials}</div>
+              <div>
+                <div className="tz-act-test-name">{act.testimonial.name}</div>
+                <div className="tz-act-test-sub">{act.testimonial.sub.toUpperCase()}</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── Related ── */}
       {related.length > 0 && (

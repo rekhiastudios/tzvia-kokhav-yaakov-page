@@ -22,6 +22,7 @@ interface Cat {
 
 export function AcademySection() {
   const t = useTranslations('academy');
+  // Curated showcase tiles (≤7) — some group a whole category (e.g. Science).
   const activities = t.raw('activities') as Activity[];
   const cats = t.raw('cats') as Cat[];
   const [active, setActive] = useState(0);
@@ -58,6 +59,7 @@ export function AcademySection() {
           const href = act.slug
             ? `/academy/${act.catSlug}/${act.slug}`
             : `/academy/${act.catSlug}`;
+          const imgSrc = act.img.startsWith('http') ? act.img : `/${act.img}`;
           return (
             <Link
               key={i}
@@ -65,7 +67,7 @@ export function AcademySection() {
               className={`tz-tile${act.size ? ` ${act.size}` : ''}`}
             >
               <Image
-                src={`/${act.img}`}
+                src={imgSrc}
                 alt={act.name}
                 fill
                 className="tz-tile-img"

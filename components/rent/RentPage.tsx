@@ -1,4 +1,5 @@
 import {useTranslations} from 'next-intl';
+import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {Home, Users, BookOpen, Heart, Star, Phone, User, ArrowUpRight, MapPin} from 'lucide-react';
 
@@ -15,7 +16,7 @@ export function RentPage() {
 
   const heroStats  = t.raw('heroStats')   as Array<{value: string; label: string}>;
   const events     = t.raw('events')      as Array<{icon: string; title: string}>;
-  const galleryItems = t.raw('galleryItems') as Array<{label: string; featured: boolean; isMore: boolean}>;
+  const galleryItems = t.raw('galleryItems') as Array<{label: string; featured: boolean; isMore: boolean; src?: string}>;
   const amenities  = t.raw('amenities')   as string[];
   const contact    = t.raw('contact')     as {name: string; phone: string; phoneHref: string; whatsappHref: string};
 
@@ -105,10 +106,21 @@ export function RentPage() {
                   item.isMore ? 'tz-rent-gallery-item-more' : '',
                 ].filter(Boolean).join(' ')}
               >
+                {item.src && (
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    className="tz-rent-gallery-img object-cover"
+                    sizes={i === 0 ? '(max-width: 768px) 100vw, 45vw' : '(max-width: 768px) 50vw, 25vw'}
+                  />
+                )}
                 {item.featured && (
                   <span className="tz-rent-gallery-badge">{t('featuredBadge')}</span>
                 )}
-                <span className="tz-rent-gallery-label">{item.label}</span>
+                {item.label && (
+                  <span className="tz-rent-gallery-label">{item.label}</span>
+                )}
               </div>
             ))}
           </div>
@@ -170,7 +182,12 @@ export function RentPage() {
               <span>{t('ctaBtn2')}</span>
               <ArrowUpRight size={15} aria-hidden="true" />
             </a>
-            <a href="https://maps.google.com" className="tz-rent-cta-btn-dark" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=31.882419,35.240107"
+              className="tz-rent-cta-btn-dark"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span>{t('ctaBtn3')}</span>
               <MapPin size={15} aria-hidden="true" />
             </a>

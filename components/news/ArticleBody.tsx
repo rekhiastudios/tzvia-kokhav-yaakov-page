@@ -54,6 +54,24 @@ export function ArticleBody({blocks}: {blocks: BodyBlock[]}) {
               </figure>
             );
 
+          case 'video':
+            return (
+              <figure key={i} className={`tz-art-figure${block.wide ? ' wide' : ''}`}>
+                <div className="tz-art-figure-video">
+                  <video
+                    src={block.src}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="object-cover"
+                  />
+                </div>
+                {block.caption && (
+                  <figcaption className="tz-art-figure-cap">{block.caption}</figcaption>
+                )}
+              </figure>
+            );
+
           case 'heading': {
             const id = slugify(block.text);
             if (block.level === 3) {

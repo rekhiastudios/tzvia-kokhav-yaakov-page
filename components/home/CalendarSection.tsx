@@ -59,8 +59,11 @@ interface CalEvent {
 const DATA_YEAR = 2026;
 const DATA_MONTH = 5; // 0-indexed → June
 
-/** "Today" in the prototype — June 12, 2026. */
-const TODAY_DAY = 12;
+/** "Today" marker — June 2, 2026. */
+const TODAY_DAY = 2;
+
+/** Day the Upcoming view opens on: the month's single confirmed event (last day of classes). */
+const FOCUS_DAY = 20;
 
 /** Returns the Sunday that begins the calendar week containing `date`. */
 function getWeekStart(date: Date): Date {
@@ -99,7 +102,7 @@ export function CalendarSection() {
 
   /** Sunday starting the displayed week — drives the Upcoming list. */
   const [weekStart, setWeekStart] = useState<Date>(
-    () => getWeekStart(new Date(DATA_YEAR, DATA_MONTH, TODAY_DAY)),
+    () => getWeekStart(new Date(DATA_YEAR, DATA_MONTH, FOCUS_DAY)),
   );
 
   /* ── Force Upcoming view on mobile ──────────────────────────────────────── */
@@ -129,8 +132,8 @@ export function CalendarSection() {
   function switchView(view: View) {
     if (view === 'month' && window.matchMedia('(max-width: 767px)').matches) return;
     if (view === 'upcoming' && activeView !== 'upcoming') {
-      // Reset to the week of "today" whenever Upcoming is first opened.
-      setWeekStart(getWeekStart(new Date(DATA_YEAR, DATA_MONTH, TODAY_DAY)));
+      // Open Upcoming on the week of the confirmed event.
+      setWeekStart(getWeekStart(new Date(DATA_YEAR, DATA_MONTH, FOCUS_DAY)));
     }
     setActiveView(view);
   }

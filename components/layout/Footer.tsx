@@ -1,5 +1,6 @@
 import {useTranslations} from 'next-intl';
 import Image from 'next/image';
+import {Link} from '@/i18n/navigation';
 
 interface FooterLink {
   label: string;
@@ -41,9 +42,9 @@ export function Footer() {
             <ul>
               {schoolLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href}>
+                  <Link href={link.href}>
                     {link.label} <span className="arr">→</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -54,9 +55,9 @@ export function Footer() {
             <ul>
               {admissionsLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href}>
+                  <Link href={link.href}>
                     {link.label} <span className="arr">→</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -67,9 +68,9 @@ export function Footer() {
             <ul>
               {resourcesLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href}>
+                  <Link href={link.href}>
                     {link.label} <span className="arr">→</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -104,9 +105,9 @@ export function Footer() {
             <span>{t('build')}</span>
           </div>
           <div className="right">
-            <a href="#">{t('privacy')}</a>
-            <a href="#">{t('accessibility')}</a>
-            <a href="#">{t('sitemap')}</a>
+            <Link href="/coming-soon">{t('privacy')}</Link>
+            <Link href="/coming-soon">{t('accessibility')}</Link>
+            <Link href="/coming-soon">{t('sitemap')}</Link>
           </div>
         </div>
     </footer>

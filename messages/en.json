@@ -18,6 +18,33 @@
     "resources": "Resources",
     "rent": "Rent the Campus"
   },
+  "search": {
+    "placeholder": "Search the site…",
+    "noResults": "No matches found",
+    "hint": "Search pages, news, activities & events",
+    "typePage": "Page",
+    "typeArticle": "Article",
+    "typeActivity": "Activity",
+    "typeEvent": "Event"
+  },
+  "notFound": {
+    "eyebrow": "ERROR · 404",
+    "titleCream": "THE PAGE YOU'RE LOOKING FOR",
+    "titleGold": "ISN'T HERE.",
+    "desc": "The link may be outdated, or the page may have moved. Either way, we can help you find your way back.",
+    "homeCta": "BACK TO HOMEPAGE",
+    "backCta": "GO BACK",
+    "tryLabel": "OR TRY ONE OF THESE"
+  },
+  "comingSoon": {
+    "eyebrow": "IN PROGRESS · COMING SOON",
+    "titleCream": "THIS PAGE IS STILL",
+    "titleGold": "UNDER CONSTRUCTION.",
+    "desc": "We're still building this part of the site. Check back soon — in the meantime, here's where you can go.",
+    "homeCta": "BACK TO HOMEPAGE",
+    "backCta": "GO BACK",
+    "tryLabel": "OR TRY ONE OF THESE"
+  },
   "hero": {
     "admissionsOpen": "Admissions open",
     "admissionsYear": "5786 / 2026–27",
@@ -106,14 +133,14 @@
     ],
     "activities": [
       {
-        "name": "Israeli Thought",
+        "name": "Land of Israel",
         "cat": "HUMANITIES",
         "catIdx": 4,
         "catSlug": "humanities",
-        "slug": "israeli-thought",
-        "img": "beit-midrash.png",
+        "slug": "land-of-israel",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433152/%D7%90%D7%A8%D7%A5-1-1-1536x1152_siosyg.jpg",
         "size": "big",
-        "desc": "Exploring Zionist philosophy, Jewish identity, and contemporary Israeli society through text, dialogue, and debate."
+        "desc": "Jerusalem, the Negev, and the mountain region explored through history, geography, nature, and research."
       },
       {
         "name": "Theatre",
@@ -121,29 +148,9 @@
         "catIdx": 1,
         "catSlug": "arts",
         "slug": "theatre",
-        "img": "arts.png",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433179/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-1-1-1536x1152_mj72gy.jpg",
         "size": "wide",
-        "desc": "Acting, directing, and stagecraft — culminating in an annual production that brings the whole school together."
-      },
-      {
-        "name": "National Excursions",
-        "cat": "HUMANITIES",
-        "catIdx": 4,
-        "catSlug": "humanities",
-        "slug": "national-excursions",
-        "img": "humanities.png",
-        "size": "",
-        "desc": "Journeys across Israel — from the Galilee to the Negev — connecting classroom learning to the living landscape."
-      },
-      {
-        "name": "Social Sciences",
-        "cat": "HUMANITIES",
-        "catIdx": 4,
-        "catSlug": "humanities",
-        "slug": "social-sciences",
-        "img": "humanities.png",
-        "size": "",
-        "desc": "Sociology, psychology, and civic studies that teach students to read society as clearly as they read a text."
+        "desc": "A three-year track combining dramatic literature, acting, directing, and stagecraft."
       },
       {
         "name": "Science & Technology",
@@ -151,19 +158,39 @@
         "catIdx": 2,
         "catSlug": "science",
         "slug": "",
-        "img": "science.png",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433199/%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%94-1-1-1536x1152_vopc1v.jpg",
         "size": "",
-        "desc": "Lab-based biology, chemistry, physics, and a dedicated robotics track — building the scientists of tomorrow."
+        "desc": "Biology, physics, and chemistry — lab-based and online tracks that build scientific thinking."
       },
       {
-        "name": "Sports",
+        "name": "Basketball",
         "cat": "SPORTS",
         "catIdx": 3,
         "catSlug": "sports",
-        "slug": "",
-        "img": "science.png",
+        "slug": "basketball",
+        "img": "humanities.png",
         "size": "",
-        "desc": "Team sports, fitness, and inter-grade competitions in our full-court hall — because a strong mind needs a strong body."
+        "desc": "Movement, teamwork, and confidence on the large court at the center of campus."
+      },
+      {
+        "name": "Social Sciences",
+        "cat": "HUMANITIES",
+        "catIdx": 4,
+        "catSlug": "humanities",
+        "slug": "social-sciences",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433241/%D7%9E%D7%93%D7%A2%D7%99-%D7%94%D7%97%D7%91%D7%A8%D7%94-1-1-1536x1152_yzrx4s.jpg",
+        "size": "",
+        "desc": "Psychology, sociology, and research tools for understanding people and society."
+      },
+      {
+        "name": "Jewish Thought",
+        "cat": "HUMANITIES",
+        "catIdx": 4,
+        "catSlug": "humanities",
+        "slug": "jewish-thought",
+        "img": "beit-midrash.png",
+        "size": "",
+        "desc": "Tradition, identity, values, and meaningful questions explored in depth."
       },
       {
         "name": "Visual Arts",
@@ -173,7 +200,7 @@
         "slug": "visual-arts",
         "img": "arts.png",
         "size": "wide",
-        "desc": "Painting, sculpture, photography, and design — a studio where every student finds her visual voice."
+        "desc": "Creativity in action — painting, drawing, and design that enrich school life."
       }
     ]
   },
@@ -191,7 +218,7 @@
     "days": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     "legendPublic": "Public · open to families",
     "legendCommunity": "Community · students & staff",
-    "eventsCount": "4 events this month",
+    "eventsCount": "1 event this month",
     "labelPublic": "OPEN TO PUBLIC",
     "labelCommunity": "COMMUNITY",
     "rsvp": "RSVP",
@@ -203,52 +230,12 @@
     "allEventsLink": "Full Calendar",
     "events": [
       {
-        "day": 4,
-        "time": "17:00",
-        "title": "Open House — Campus tour",
-        "alt": false,
-        "when": "June 04 · 17:00 · Main campus",
-        "desc": "Prospective students and families are welcome to tour the campus and meet our faculty."
-      },
-      {
-        "day": 7,
-        "time": "09:00",
-        "title": "Tanakh Bowl — Final round",
-        "alt": true,
-        "when": "June 07 · 09:00 · Beit Midrash",
-        "desc": "The annual inter-grade Tanakh competition. Students and staff welcome to attend."
-      },
-      {
-        "day": 12,
+        "day": 20,
         "time": "ALL DAY",
-        "title": "Yom HaShavua · Communal learning",
+        "title": "Last Day of Classes",
         "alt": false,
-        "when": "June 12 · All day · Campus",
-        "desc": "Our weekly day of whole-school study — Torah, creative arts, and community building."
-      },
-      {
-        "day": 15,
-        "time": "19:30",
-        "title": "Spring concert",
-        "alt": true,
-        "when": "June 15 · 19:30 · Auditorium",
-        "desc": "An evening of music from the school's vocal ensemble, orchestra, and chamber groups."
-      },
-      {
-        "day": 21,
-        "time": "10:00",
-        "title": "12th grade matriculation",
-        "alt": false,
-        "when": "June 21 · 10:00 · Main hall",
-        "desc": "Graduation ceremony for the class of 5786. Families and alumnae warmly invited."
-      },
-      {
-        "day": 28,
-        "time": "18:00",
-        "title": "Closing assembly",
-        "alt": true,
-        "when": "June 28 · 18:00 · Courtyard",
-        "desc": "The year-end gathering marking the close of 5786 — with awards and reflections."
+        "when": "June 20 · All day · Campus",
+        "desc": "The final day of classes for the 5786 school year."
       }
     ]
   },
@@ -295,25 +282,23 @@
     "brandDesc": "A religious-Zionist ulpana for young women at the heart of Mateh Binyamin. Twenty-eight years of scholarship, community, and quiet excellence.",
     "colSchool": "The School",
     "colSchoolLinks": [
-      {"label": "About", "href": "#about"},
-      {"label": "Faculty", "href": "#"},
-      {"label": "Beit Midrash", "href": "#"},
-      {"label": "Campus", "href": "#"},
-      {"label": "Alumnae", "href": "#"}
+      {"label": "About Us", "href": "/about-us"},
+      {"label": "Academy", "href": "/academy"},
+      {"label": "News", "href": "/news"},
+      {"label": "Campus", "href": "/coming-soon"}
     ],
     "colAdmissions": "Admissions",
     "colAdmissionsLinks": [
-      {"label": "Apply 2026–27", "href": "#"},
-      {"label": "Tuition", "href": "#"},
-      {"label": "Open House", "href": "#"},
-      {"label": "FAQ", "href": "#"}
+      {"label": "Admissions", "href": "/admissions"},
+      {"label": "Contact", "href": "/contact"},
+      {"label": "FAQ", "href": "/coming-soon"}
     ],
     "colResources": "Resources",
     "colResourcesLinks": [
-      {"label": "Parent Portal", "href": "#"},
-      {"label": "Calendar", "href": "#calendar"},
-      {"label": "Publications", "href": "#"},
-      {"label": "Press", "href": "#"}
+      {"label": "Resources", "href": "/resources"},
+      {"label": "Rent the Campus", "href": "/facilities/rent"},
+      {"label": "Calendar", "href": "/#calendar"},
+      {"label": "Parent Portal", "href": "/coming-soon"}
     ],
     "newsletter": "Newsletter",
     "newsletterHint": "A quarterly note from the head of school — community, scholarship, and what's next.",
@@ -625,11 +610,11 @@
     "galleryTitleLine1": "EXPLORE THE",
     "galleryTitleBrand": "CAMPUS.",
     "galleryItems": [
-      { "label": "DINING HALL · SET FOR EVENT", "featured": true, "isMore": false },
-      { "label": "GARDEN COURTYARD", "featured": false, "isMore": false },
-      { "label": "DORMITORY ROW", "featured": false, "isMore": false },
-      { "label": "BEDROOM · A/C", "featured": false, "isMore": false },
-      { "label": "+8 MORE", "featured": false, "isMore": true }
+      { "label": "DINING HALL · SET FOR EVENT", "featured": true, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780476639/jeder-ojel_j8xjav.jpg" },
+      { "label": "GARDEN COURTYARD", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780480480/caravans-2_nasvub.jpg" },
+      { "label": "DORMITORY ROW", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780476636/caravans_suy4px.jpg" },
+      { "label": "BEDROOM · A/C", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780476646/inside-caravan_ke10kc.jpg" },
+      { "label": "", "featured": false, "isMore": false, "src": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780474679/campus-5_e3xjsv.jpg" }
     ],
     "featuredBadge": "FEATURED",
     "amenitiesEyebrow": "AMENITIES",
@@ -683,7 +668,7 @@
     "allListsTitle": "All lists at once",
     "allListsMeta": "ZIP · 5 files",
     "downloadAllBtn": "DOWNLOAD ALL",
-    "allListsHref": null,
+    "allListsHref": "",
     "bookLists": [
       { "grade": "9", "title": "Grade 9 — Book list", "meta": "PDF · Grade 9 Book List 5786", "href": null },
       { "grade": "9B", "title": "Grade 9 (Small class) — Book list", "meta": "PDF · Small Class Book List 5786", "href": null },
