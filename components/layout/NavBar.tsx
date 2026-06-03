@@ -236,7 +236,7 @@ export function NavBar() {
               </span>
             </span>
             <Image
-              src="/NoamTzviaLogo.png"
+              src="/NoamTzviaLogo.PNG"
               alt="Ulpenat Tzvia Kochav Yaakov"
               width={1304}
               height={1093}
@@ -289,7 +289,7 @@ export function NavBar() {
         {/* Bottom branding watermark */}
         <div className="menu-overlay-bottom">
           <Image
-            src="/NoamTzviaLogo.png"
+            src="/NoamTzviaLogo.PNG"
             alt=""
             aria-hidden="true"
             width={1304}

@@ -22,7 +22,7 @@ export function Footer() {
             <div className="tz-footer-logo">
               {/* <div className="tz-footer-mark">צ</div> */}
               <Image
-                src="/NoamTzviaLogo.png"
+                src="/NoamTzviaLogo.PNG"
                 alt="Ulpenat Tzvia Kochav Yaakov"
                 width={1024}
                 height={794}
