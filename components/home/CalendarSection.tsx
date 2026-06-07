@@ -59,9 +59,6 @@ interface CalEvent {
 const DATA_YEAR = 2026;
 const DATA_MONTH = 5; // 0-indexed → June
 
-/** "Today" marker — June 2, 2026. */
-const TODAY_DAY = 2;
-
 /** Day the Upcoming view opens on: the month's single confirmed event (last day of classes). */
 const FOCUS_DAY = 20;
 
@@ -104,6 +101,16 @@ export function CalendarSection() {
   const [weekStart, setWeekStart] = useState<Date>(
     () => getWeekStart(new Date(DATA_YEAR, DATA_MONTH, FOCUS_DAY)),
   );
+
+  /**
+   * The user's real "today", resolved after mount so server and client render
+   * the same initial HTML (avoids a hydration mismatch). The grid highlights
+   * this cell only when the displayed month/year matches it.
+   */
+  const [today, setToday] = useState<Date | null>(null);
+  useEffect(() => {
+    setToday(new Date());
+  }, []);
 
   /* ── Force Upcoming view on mobile ──────────────────────────────────────── */
   useEffect(() => {
@@ -266,7 +273,11 @@ export function CalendarSection() {
               {cells.map((day, i) => {
                 if (day === null) return <div key={i} className="tz-day empty" />;
                 const ev = eventMap.get(day);
-                const isToday = isDataMonth && day === TODAY_DAY;
+                const isToday =
+                  today !== null &&
+                  day === today.getDate() &&
+                  month === today.getMonth() &&
+                  year === today.getFullYear();
                 return (
                   <div
                     key={i}

@@ -936,7 +936,7 @@
   font-size: 15px; font-weight: 400;
   color: rgba(255,255,255,.6);
   margin: 0 0 36px; letter-spacing: .01em;
-  direction: ltr; text-align: start;
+  text-align: start;
 }
 .tz-hero-cta { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
 
@@ -995,55 +995,120 @@
   text-transform: none; opacity: .7;
 }
 
-/* ── About ──────────────────────────────────────────────────────── */
-.tz-about-grid {
-  display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; align-items: start;
+/* ── About — bleed hero + gallery strip (dark band) ───────────────── */
+/* Editorial layout: a full-width masthead, then a bleed-hero row whose
+   image runs flush to the inline-end viewport edge, then a quote +
+   thumbnail-strip row. `.tz-dark` on the section flips the tokens so
+   --tz-ink/--tz-gold read as light-on-navy. RTL mirrors via logical
+   properties (the image bleeds to the left edge in Hebrew). */
+.tz-about {
+  background: var(--tz-bg); color: var(--tz-ink);
+  padding-block: 120px; overflow: hidden;
 }
-.tz-about-h3 {
+
+.tz-about-masthead { padding-inline: var(--tz-page-px); }
+.tz-about-eyebrow {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 12px; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--tz-gold); margin: 0 0 22px;
+}
+.tz-about-title {
   font-family: var(--font-display), 'Secular One', sans-serif; font-weight: 400;
-  font-size: clamp(36px, 3.4vw, 52px); line-height: 1.0; letter-spacing: -.018em;
-  text-transform: uppercase; color: var(--tz-ink); margin: 0 0 30px; max-width: 580px;
+  font-size: clamp(48px, 7vw, 110px); line-height: .92; letter-spacing: -.02em;
+  text-transform: uppercase; color: var(--tz-ink); margin: 0;
 }
-.tz-about-lede { font-size: 18px; line-height: 1.55; color: var(--tz-ink); max-width: 560px; margin: 0 0 24px; }
-.tz-about-body { color: var(--tz-ink-soft); font-size: 14px; line-height: 1.7; max-width: 540px; }
-.tz-about-body p { margin: 0 0 14px; }
+.tz-about-rule { height: 1px; background: var(--tz-line-2); margin-top: 36px; }
+
+/* Row 1 — bleed hero: start padding only so col 2 reaches the end edge. */
+.tz-about-bleed {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  align-items: start; margin-top: 72px;
+  padding-inline-start: var(--tz-page-px);
+}
+.tz-about-bleed-text { max-width: 520px; }
+.tz-about-lead {
+  font-family: var(--font-display), 'Secular One', sans-serif; font-weight: 400;
+  font-size: clamp(26px, 2.8vw, 42px); line-height: 1.04; letter-spacing: -.018em;
+  text-transform: uppercase; color: var(--tz-ink); margin: 0 0 28px;
+}
+.tz-about-lede {
+  font-size: 17px; line-height: 1.65; color: var(--tz-ink-soft); margin: 0 0 18px;
+}
+.tz-about-p {
+  font-size: 15px; line-height: 1.8; color: var(--tz-ink-soft); margin: 0 0 16px;
+}
+.tz-about-p:last-child { margin-bottom: 0; }
+
+.tz-about-bleed-media {
+  position: relative; min-height: clamp(420px, 60vh, 640px);
+  margin: 0; align-self: stretch;
+}
+.tz-about-badge {
+  position: absolute; inset-block-start: 20px; inset-inline-end: 20px; z-index: 2;
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 99px;
+  background: rgba(250,250,246,.92); color: #000b21;
+}
+.tz-about-caption {
+  position: absolute; inset-inline: 0; inset-block-end: 0; z-index: 2;
+  padding: 56px 28px 24px;
+  background: linear-gradient(to top, rgba(0,11,33,.82), transparent);
+}
+.tz-about-caption-kicker {
+  display: block; font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--tz-gold); margin-bottom: 8px;
+}
+.tz-about-caption-text {
+  display: block; font-family: var(--font-display), 'Secular One', sans-serif;
+  font-size: clamp(20px, 2vw, 28px); line-height: 1.1; color: #fff;
+}
+
+/* Row 2 — quote + thumbnail strip. */
+.tz-about-strip {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+  align-items: start; margin-top: 96px; padding-inline: var(--tz-page-px);
+}
+.tz-about-strip-text { max-width: 560px; }
+
 .tz-pull-quote {
-  margin: 28px 0; padding: 18px 0 18px 24px;
-  border-inline-start: 2px solid var(--tz-gold);
+  margin: 0 0 32px; padding-block: 6px; padding-inline-start: 24px;
+  border-inline-start: 3px solid var(--tz-gold);
   color: var(--tz-ink);
   font-family: var(--font-display), 'Secular One', sans-serif;
-  font-size: 22px; line-height: 1.3; font-weight: 400; letter-spacing: -.008em;
-  max-width: 480px;
+  font-size: clamp(24px, 2.6vw, 34px); line-height: 1.22; font-weight: 400; letter-spacing: -.01em;
 }
 .tz-pull-who {
   display: block; font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
   font-size: 12px; color: var(--tz-ink-mute); letter-spacing: .26em;
-  text-transform: uppercase; margin-top: 12px;
+  text-transform: uppercase; margin-top: 16px;
 }
-.tz-stats-row {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  margin-top: 44px;
-  border-top: 1px solid var(--tz-line-2); border-bottom: 1px solid var(--tz-line-2);
+
+.tz-about-frames { display: flex; flex-direction: column; gap: 24px; }
+.tz-about-frame {
+  display: grid; grid-template-columns: 96px 1fr; gap: 22px; align-items: center; margin: 0;
 }
-.tz-stat {
-  padding: 24px 24px 22px 0;
-  border-inline-end: 1px solid var(--tz-line);
+.tz-about-frame-thumb { aspect-ratio: 1; width: 100%; }
+.tz-about-frame-info { display: flex; flex-direction: column; gap: 4px; }
+.tz-about-frame-text { display: flex; flex-direction: column; gap: 4px; }
+.tz-about-frame-label {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--tz-gold);
 }
-.tz-stat:last-child { border-inline-end: none; }
-.tz-stat-num {
-  font-family: var(--font-display), 'Secular One', sans-serif; font-weight: 400;
-  font-size: 52px; line-height: 1; color: var(--tz-ink); letter-spacing: -.02em;
+.tz-about-frame-title {
+  font-family: var(--font-display), 'Secular One', sans-serif;
+  font-size: 18px; line-height: 1.2; color: var(--tz-ink);
 }
-.tz-stat-unit { font-size: 18px; color: var(--tz-gold); margin-inline-start: 4px; }
-.tz-stat-label {
-  font-family: var(--font-bebas), 'Bebas Neue', sans-serif; font-size: 12px;
-  color: var(--tz-ink-mute); letter-spacing: .26em; text-transform: uppercase; margin-top: 12px;
+.tz-about-frame-caption { font-size: 14px; color: var(--tz-ink-mute); line-height: 1.5; }
+
+/* Rotating gallery crossfade — the outgoing layer holds beneath while the
+   incoming one fades in on top (see GallerySlot in AboutSection). */
+.tz-about-slot-enter { animation: tz-about-fade .6s ease both; }
+@keyframes tz-about-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .tz-about-slot-enter { animation: none; }
 }
-.tz-about-imgs {
-  display: grid; grid-template-columns: 1fr 1fr;
-  grid-template-rows: 300px 220px; gap: 14px;
-}
-.tz-ph-big { grid-column: 1 / 3; }
 
 /* ── News grid ──────────────────────────────────────────────────── */
 .tz-news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -2095,7 +2160,8 @@
 .tz-nl-form { display: flex; border-bottom: 1px solid rgba(255,255,255,.2); }
 .tz-nl-form input { flex: 1; background: transparent; border: none; color: #fff; padding: 10px 0; font-family: var(--font-sans), sans-serif; font-size: 14px; outline: none; }
 .tz-nl-form input::placeholder { color: rgba(255,255,255,.4); }
-.tz-nl-form button { background: transparent; border: none; color: var(--tz-gold); padding: 0 6px; font-size: 14px; cursor: pointer; }
+.tz-nl-form button,
+.tz-nl-form a { background: transparent; border: none; color: var(--tz-gold); padding: 0 6px; font-size: 14px; cursor: pointer; text-decoration: none; }
 .tz-socials { display: flex; gap: 8px; margin-top: 22px; }
 .tz-social { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-bebas), 'Bebas Neue', sans-serif; font-size: 11px; color: rgba(255,255,255,.7); letter-spacing: .14em; cursor: pointer; transition: border-color .14s, color .14s, background .14s; }
 .tz-social:hover { border-color: var(--tz-gold); color: var(--tz-gold); background: rgba(236,169,72,.06); }
@@ -2379,13 +2445,16 @@
 .tz-art-nl-form { display: flex; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; overflow: hidden; }
 .tz-art-nl-form input { flex: 1; background: transparent; border: none; padding: 9px 12px; color: #fff; font-size: 13px; outline: none; min-width: 0; }
 .tz-art-nl-form input::placeholder { color: rgba(255,255,255,.38); }
-.tz-art-nl-form button {
+.tz-art-nl-form button,
+.tz-art-nl-form a {
   background: var(--tz-gold); color: var(--tz-ink); border: none;
   padding: 9px 12px; font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
   font-size: 11px; letter-spacing: .16em; cursor: pointer; white-space: nowrap;
   transition: background .14s;
+  text-decoration: none;
 }
-.tz-art-nl-form button:hover { background: var(--tz-gold-deep); }
+.tz-art-nl-form button:hover,
+.tz-art-nl-form a:hover { background: var(--tz-gold-deep); }
 
 /* Related articles section */
 .tz-art-related { border-top: 1px solid var(--tz-line-2); padding-top: 40px; }
@@ -2409,11 +2478,18 @@
 }
 @media (max-width: 768px) {
   :root { --tz-page-px: 20px; }
-  .tz-about-grid,
   .tz-acad-grid,
   .tz-contact-grid { grid-template-columns: 1fr; }
   .tz-news-grid { grid-template-columns: 1fr; }
-  .tz-stats-row { grid-template-columns: 1fr; }
+  .tz-about { padding-block: 80px; }
+  .tz-about-bleed {
+    grid-template-columns: 1fr; gap: 32px; margin-top: 48px;
+    padding-inline: var(--tz-page-px);
+  }
+  .tz-about-bleed-text { order: 1; max-width: none; }
+  .tz-about-bleed-media { order: 2; min-height: 0; aspect-ratio: 4 / 3; }
+  .tz-about-strip { grid-template-columns: 1fr; gap: 48px; margin-top: 64px; }
+  .tz-about-frame { grid-template-columns: 80px 1fr; gap: 18px; }
   .tz-acad-row { grid-template-columns: 60px 1fr; }
   .tz-acad-arr { display: none; }
   .tz-footer-top { grid-template-columns: 1fr; gap: 36px; }
@@ -2831,6 +2907,7 @@
 :lang(he) .tz-art-fact-value,
 :lang(he) .tz-art-tagtag,
 :lang(he) .tz-art-nl-form button,
+:lang(he) .tz-art-nl-form a,
 :lang(he) .tz-art-related-label { font-family: var(--font-display), 'Secular One', sans-serif; }
 
 /* Large headings — font swap + relaxed line-height / letter-spacing

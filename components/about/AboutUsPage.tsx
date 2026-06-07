@@ -154,8 +154,8 @@ export function AboutUsPage() {
             <span className="tz-abt-cta-year">{t('ctaYear')}</span>
           </h2>
           <div className="tz-abt-cta-btns">
-            <a href="#" className="tz-abt-btn-primary">{t('ctaPrimary')}</a>
-            <a href="#" className="tz-abt-btn-outline">{t('ctaSecondary')}</a>
+            <Link href="/admissions" className="tz-abt-btn-primary">{t('ctaPrimary')}</Link>
+            <Link href="/resources" className="tz-abt-btn-outline">{t('ctaSecondary')}</Link>
           </div>
         </div>
       </section>

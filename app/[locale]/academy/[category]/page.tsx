@@ -4,6 +4,7 @@ import type {Metadata} from 'next';
 import {getActivities, VALID_CATEGORY_SLUGS} from '@/lib/activities';
 import type {CategorySlug} from '@/lib/activities';
 import {AcademyIndexClient} from '@/components/academy/AcademyIndexClient';
+import {buildPageMetadata, SITE_NAME} from '@/lib/seo';
 
 export function generateStaticParams({
   params,
@@ -24,10 +25,12 @@ export async function generateMetadata({
   const t = await getTranslations({locale, namespace: 'academyPage'});
   const cats = t.raw('categories') as Array<{slug: string; label: string}>;
   const cat = cats.find((c) => c.slug === category);
-  return {
-    title: `${cat?.label ?? category.toUpperCase()} — Ulpenat Tzvia`,
+  return buildPageMetadata({
+    locale,
+    path: `/academy/${category}`,
+    title: `${cat?.label ?? category.toUpperCase()} — ${SITE_NAME[locale as 'he' | 'en']}`,
     description: t('intro'),
-  };
+  });
 }
 
 export default async function AcademyCategoryPage({

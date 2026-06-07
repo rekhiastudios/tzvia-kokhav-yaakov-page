@@ -185,12 +185,12 @@ export function AcademyIndexClient({activities, initialCategorySlug}: Props) {
             <h2 className="tz-acp-advisor-title">{t('advisorTitle')}</h2>
             <p className="tz-acp-advisor-desc">{t('advisorDesc')}</p>
             <div className="tz-acp-advisor-btns">
-              <a href="#contact" className="tz-btn-pill">
+              <Link href="/contact" className="tz-btn-pill">
                 {t('advisorCta')} <span>→</span>
-              </a>
-              <button type="button" className="tz-acp-advisor-ghost">
+              </Link>
+              <Link href="/resources" className="tz-acp-advisor-ghost">
                 {t('advisorGuide')}
-              </button>
+              </Link>
             </div>
           </div>
         </div>

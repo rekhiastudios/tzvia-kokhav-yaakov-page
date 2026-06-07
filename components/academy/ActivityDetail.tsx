@@ -96,12 +96,12 @@ export async function ActivityDetailPage({locale, activity: act, related}: Props
                 ))}
               </tbody>
             </table>
-            <a href="#contact" className="tz-btn-pill tz-act-apply-btn">
+            <Link href="/admissions" className="tz-btn-pill tz-act-apply-btn">
               {t('applyBtn')} <span>→</span>
-            </a>
-            <button type="button" className="tz-act-brochure-btn">
+            </Link>
+            <Link href="/resources" className="tz-act-brochure-btn">
               {t('brochureBtn')}
-            </button>
+            </Link>
           </aside>
         </div>
       </section>

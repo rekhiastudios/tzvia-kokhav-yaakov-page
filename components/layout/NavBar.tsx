@@ -3,7 +3,7 @@
 /**
  * NavBar
  * ------
- * Top-of-page navigation for the Ulpenat Tzvia site.
+ * Top-of-page navigation for the Ulpanat Tzvia site.
  *
  * Visual behavior — two states driven by scroll position:
  *   1. "rest"     — floats inset from the viewport edges as a transparent
@@ -237,7 +237,7 @@ export function NavBar() {
             </span>
             <Image
               src="/NoamTzviaLogo.PNG"
-              alt="Ulpenat Tzvia Kochav Yaakov"
+              alt="Ulpanat Tzvia Kochav Yaakov"
               width={1304}
               height={1093}
               className="h-14 w-auto object-contain"

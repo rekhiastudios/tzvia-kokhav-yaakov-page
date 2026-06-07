@@ -32,10 +32,10 @@ export function AdmissionsPage() {
                 <span className="tz-adm-h1-line tz-adm-h1-gold">{t('heroTitleLine3')}</span>
               </h1>
               <p className="tz-adm-hero-desc">{t('heroDesc')}</p>
-              <div className="tz-adm-hero-btns">
+              {/* <div className="tz-adm-hero-btns">
                 <a href="#steps" className="tz-adm-btn-primary">{t('heroCta1')} →</a>
                 <a href="#key-dates" className="tz-adm-btn-outline">{t('heroCta2')}</a>
-              </div>
+              </div> */}
             </div>
 
             <div className="tz-adm-quick-facts" id="key-dates">
@@ -141,8 +141,8 @@ export function AdmissionsPage() {
           <h2 className="tz-adm-cta-title">{t('ctaTitle')}</h2>
           <p className="tz-adm-cta-who">{t('ctaWho')}</p>
           <div className="tz-adm-cta-btns">
-            <a href="#" className="tz-adm-btn-primary">{t('ctaPrimary')} →</a>
-            <a href="#" className="tz-adm-btn-outline-light">{t('ctaSecondary')}</a>
+            <Link href="/contact" className="tz-adm-btn-primary">{t('ctaPrimary')} →</Link>
+            <Link href="/resources" className="tz-adm-btn-outline-light">{t('ctaSecondary')}</Link>
           </div>
         </div>
       </section>

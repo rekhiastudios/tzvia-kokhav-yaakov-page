@@ -37,6 +37,12 @@ npm run lint     # ESLint (next/core-web-vitals + next/typescript)
 
 > No test framework is configured.
 
+## Environment
+
+- `NEXT_PUBLIC_SITE_URL` — canonical production origin used for canonical links, Open Graph URLs,
+  `robots.txt`, and `sitemap.xml` (for example: `https://example.org`). When unset, local development
+  falls back to `http://localhost:3000`.
+
 ## Internationalization
 
 - Locales: `['en', 'he']`, default **`he`** (Hebrew-first). Hebrew renders **RTL**.
@@ -87,7 +93,7 @@ Two not-found surfaces: `app/[locale]/not-found.tsx` (locale-aware, rendered ins
   "View location" / "Open in Maps" buttons across Home, Contact, and the rental page all point to the
   same Google Maps coordinates.
 - **Footer** — links resolve to real routes; pages not yet built (Campus, FAQ, Parent Portal, Privacy,
-  Accessibility, Sitemap) point to `/coming-soon`. The newsletter sign-up remains.
+  Accessibility, Sitemap) point to `/coming-soon`. The updates box links to the News archive.
 
 ## Project structure
 

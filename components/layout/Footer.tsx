@@ -22,11 +22,11 @@ export function Footer() {
             <div className="tz-footer-logo">
               {/* <div className="tz-footer-mark">צ</div> */}
               <Image
-                src="/NoamTzviaLogo.PNG"
-                alt="Ulpenat Tzvia Kochav Yaakov"
+                src="/tzvialogo.PNG"
+                alt="Ulpanat Tzvia Kochav Yaakov"
                 width={1024}
                 height={794}
-                className="h-20 w-auto object-contain"
+                className="h-24 w-auto object-contain"
               />
               <div className="tz-footer-name">
                 {t('brandName1')} <br/> {t('brandName2')}
@@ -81,8 +81,10 @@ export function Footer() {
             <h5>{t('newsletter')}</h5>
             <p className="tz-nl-hint">{t('newsletterHint')}</p>
             <div className="tz-nl-form">
-              <input placeholder={t('newsletterPlaceholder')} type="email" />
-              <button type="button">→</button>
+              <input placeholder={t('newsletterPlaceholder')} type="text" readOnly />
+              <Link href="/news" aria-label={t('newsletter')}>
+                →
+              </Link>
             </div>
             <div className="tz-socials">
               {socials.map((s) => (

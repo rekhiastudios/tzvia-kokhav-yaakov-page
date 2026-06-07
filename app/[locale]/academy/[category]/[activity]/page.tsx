@@ -9,6 +9,7 @@ import {
 } from '@/lib/activities';
 import type {CategorySlug} from '@/lib/activities';
 import {ActivityDetailPage} from '@/components/academy/ActivityDetail';
+import {buildPageMetadata, SITE_NAME} from '@/lib/seo';
 
 export function generateStaticParams({
   params,
@@ -30,10 +31,12 @@ export async function generateMetadata({
   const {locale, category, activity} = await params;
   const act = getActivity(locale, category, activity);
   if (!act) return {};
-  return {
-    title: `${act.name} — Ulpenat Tzvia`,
+  return buildPageMetadata({
+    locale,
+    path: `/academy/${category}/${activity}`,
+    title: `${act.name} — ${SITE_NAME[locale as 'he' | 'en']}`,
     description: act.lede,
-  };
+  });
 }
 
 export default async function ActivityPage({

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {getArticle, getArticles, getRelatedArticles} from '@/lib/articles';
 import {ArticleBody} from '@/components/news/ArticleBody';
+import {buildPageMetadata, SITE_NAME} from '@/lib/seo';
 
 export async function generateStaticParams({
   params,
@@ -23,10 +24,13 @@ export async function generateMetadata({
   const {locale, slug} = await params;
   const article = getArticle(locale, slug);
   if (!article) return {};
-  return {
-    title: `${article.title} — Ulpenat Tzvia`,
+  return buildPageMetadata({
+    locale,
+    path: `/news/${slug}`,
+    title: `${article.title} — ${SITE_NAME[locale as 'he' | 'en']}`,
     description: article.lede,
-  };
+    image: article.coverImage,
+  });
 }
 
 export default async function ArticlePage({
@@ -143,8 +147,8 @@ export default async function ArticlePage({
             <div className="tz-art-sb-eyebrow">{'// '}{t('newsletter')}</div>
             <p>{t('nlDesc')}</p>
             <div className="tz-art-nl-form">
-              <input type="email" placeholder={t('nlPlaceholder')} />
-              <button type="button">{t('subscribe')} →</button>
+              <input type="text" placeholder={t('nlPlaceholder')} readOnly />
+              <Link href="/news">{t('subscribe')} →</Link>
             </div>
           </div>
         </aside>

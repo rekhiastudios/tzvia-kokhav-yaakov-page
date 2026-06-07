@@ -1,4 +1,5 @@
 import {useTranslations} from 'next-intl';
+import {Link} from '@/i18n/navigation';
 
 export function HeroSection() {
   const t = useTranslations('hero');
@@ -11,9 +12,9 @@ export function HeroSection() {
       <div className="tz-announce">
         <span>{t('admissionsOpen')} · {t('admissionsYear')}</span>
         <span style={{opacity: 0.4}}>·</span>
-        <a href="#contact">
+        <Link href="/admissions">
           {t('beginApplication')} <span className="arr">→</span>
-        </a>
+        </Link>
       </div>
 
       {/* Bottom-start content stack — CITYPUNKS layout */}
@@ -27,9 +28,9 @@ export function HeroSection() {
           </h1>
           <p className="tz-hero-motto">{t('motto')}</p>
           <div className="tz-hero-cta">
-            <a href="#contact" className="tz-btn-pill">
+            <Link href="/admissions" className="tz-btn-pill">
               {t('ctaPrimary')} <span>→</span>
-            </a>
+            </Link>
             <button className="tz-btn-ghost" type="button">
               <span className="tz-play-circle">▶</span>
               {t('ctaSecondary')}

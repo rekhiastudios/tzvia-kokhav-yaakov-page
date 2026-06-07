@@ -8,6 +8,7 @@ import {NavBar} from '@/components/layout/NavBar';
 import {CreditsStrip} from '@/components/layout/CreditsStrip';
 import {Footer} from '@/components/layout/Footer';
 import {cn} from '@/lib/utils';
+import {buildPageMetadata, buildSchoolJsonLd} from '@/lib/seo';
 import '../globals.css';
 
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
@@ -38,10 +39,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'seo'});
-  return {
+  return buildPageMetadata({
+    locale,
     title: t('title'),
     description: t('description'),
-  };
+  });
 }
 
 export default async function LocaleLayout({
@@ -57,6 +59,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const dir = locale === 'he' ? 'rtl' : 'ltr';
+  const schoolJsonLd = JSON.stringify(buildSchoolJsonLd(locale)).replace(/</g, '\\u003c');
 
   return (
     <html
@@ -71,6 +74,11 @@ export default async function LocaleLayout({
       )}
     >
       <body className="antialiased" style={{background: '#fafaf6', color: '#000b21'}}>
+        <script
+          id="school-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: schoolJsonLd}}
+        />
         <NextIntlClientProvider messages={messages}>
           <NavBar />
           <main>{children}</main>

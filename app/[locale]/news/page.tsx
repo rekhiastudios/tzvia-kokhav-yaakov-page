@@ -3,6 +3,7 @@ import {getTranslations} from 'next-intl/server';
 import type {Metadata} from 'next';
 import {getArticles} from '@/lib/articles';
 import {NewsArchiveClient} from '@/components/news/NewsArchiveClient';
+import {buildPageMetadata, SITE_NAME} from '@/lib/seo';
 
 export async function generateMetadata({
   params,
@@ -11,10 +12,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'newsArchive'});
-  return {
-    title: `${t('eyebrow')} — Ulpenat Tzvia`,
+  return buildPageMetadata({
+    locale,
+    path: '/news',
+    title: `${t('eyebrow')} — ${SITE_NAME[locale as 'he' | 'en']}`,
     description: t('desc'),
-  };
+  });
 }
 
 export default async function NewsPage({
