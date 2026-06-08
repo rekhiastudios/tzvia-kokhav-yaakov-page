@@ -1,8 +1,8 @@
 {
   "navbar": {
-    "brand": "Tzvia",
-    "logoHe": "אולפנת צביה",
-    "logoEn": "ULPENAT TZVIA KOCHAV YA'AKOV",
+    "brand": "Ulpenat Tzvia Kochav Ya'akov",
+    "logoLine1": "Ulpenat Tzvia",
+    "logoLine2": "Kochav Ya'akov",
     "about": "About",
     "academy": "Academy",
     "calendar": "Calendar",
@@ -49,7 +49,7 @@
     "admissionsOpen": "Admissions open",
     "admissionsYear": "for the upcoming school year",
     "beginApplication": "Admissions information",
-    "kicker": "ULPANAT TZVIA KOCHAV YA'AKOV",
+    "kicker": "ULPENAT TZVIA KOCHAV YA'AKOV",
     "h1Line1": "A SCHOOL OF",
     "h1Line2": "TORAH AND EXCELLENCE",
     "h1Line3": "WITH HEART.",
@@ -66,9 +66,9 @@
     "leadB": " sharpened by ",
     "leadGold2": "inquiry.",
     "intro": [
-      "Ulpanat Tzvia Kochav Ya'akov aspires to raise young women of yirat shamayim and good character — leaders in halakha, rooted in Torah and faith, conscious of their role in a generation of redemption.",
-      "Our students are partners in building the people and the land. Precision in the observance of mitzvot, paired with the living spirit of halakha, is one of the foundational characteristics of the ulpana.",
-      "The ulpana is a warm home — accepting and supportive — for our students through the years of adolescence, with a deep emphasis on personal relationships between staff and students.",
+      "Ulpenat Tzvia Kochav Ya'akov aspires to raise young women of yirat shamayim and good character — leaders in halakha, rooted in Torah and faith, conscious of their role in a generation of redemption.",
+      "Our students are partners in building the people and the land. Precision in the observance of mitzvot, paired with the living spirit of halakha, is one of the foundational characteristics of the ulpenat.",
+      "The ulpenat is a warm home — accepting and supportive — for our students through the years of adolescence, with a deep emphasis on personal relationships between staff and students.",
       "It is designed for young women who aspire to excellence. We accept those who distinguish themselves academically and prepare themselves to become the intellectual vanguard of the next generation — in science and technology, alongside the creative development of mind and soul through dance, theatre, and the arts."
     ],
     "ch1Num": "01",
@@ -114,19 +114,19 @@
       {
         "tag": "ANNOUNCEMENT",
         "date": "2025 · 12 · 23",
-        "title": "Registration for Ulpanat Tzvia Kochav Yaakov is open",
+        "title": "Registration for Ulpenat Tzvia Kochav Yaakov is open",
         "excerpt": "Prospective students and families are invited to learn about the school's educational path and admissions process."
       },
       {
         "tag": "EVENT",
         "date": "2025 · 11 · 13",
-        "title": "Alumni Beit Midrash at Ulpanat Tzvia",
+        "title": "Alumni Beit Midrash at Ulpenat Tzvia",
         "excerpt": "Graduates returned to the beit midrash for learning, connection and a renewed meeting with the school community."
       },
       {
         "tag": "ANNOUNCEMENT",
         "date": "2025 · 05 · 12",
-        "title": "Social Leadership at Ulpanat Tzvia Kochav Yaakov",
+        "title": "Social Leadership at Ulpenat Tzvia Kochav Yaakov",
         "excerpt": "A student leadership program that develops listening, initiative, cooperation and responsibility within the school community."
       },
       {
@@ -295,11 +295,11 @@
     "submitBtn": "Send Message"
   },
   "footer": {
-    "fullBrandName": "Ulpanat Tzvia",
-    "brandName1": "Ulpanat Tzvia",
+    "fullBrandName": "Ulpenat Tzvia",
+    "brandName1": "Ulpenat Tzvia",
     "brandName2": "Kokhav Yaakov",
     "brandSub": "SINCE · 2004",
-    "brandDesc": "A religious-Zionist ulpana for young women at the heart of Mateh Binyamin. Twenty-eight years of scholarship, community, and quiet excellence.",
+    "brandDesc": "A religious-Zionist ulpenat for young women at the heart of Mateh Binyamin. Twenty-eight years of scholarship, community, and quiet excellence.",
     "colSchool": "The School",
     "colSchoolLinks": [
       {"label": "About Us", "href": "/about-us"},
@@ -321,7 +321,7 @@
       {"label": "Parent Portal", "href": "/coming-soon"}
     ],
     "newsletter": "Updates",
-    "newsletterHint": "All updates and stories from the ulpana are available in the news archive.",
+    "newsletterHint": "All updates and stories from the ulpenat are available in the news archive.",
     "newsletterPlaceholder": "Go to news",
     "socials": ["IG", "FB", "YT", "TG"],
     "megaLine1": "ULPENAT",
@@ -342,7 +342,7 @@
     "for": "For",
     "govLabel": "Ministry of Education",
     "govSub": "State of Israel",
-    "tzviaLabel": "Ulpanat Tzvia",
+    "tzviaLabel": "Ulpenat Tzvia",
     "tziaSub": "Kokhav Ya'akov"
   },
   "academyPage": {
@@ -386,7 +386,7 @@
   "aboutPage": {
     "breadcrumbHome": "Home",
     "breadcrumbAbout": "About",
-    "heroEyebrow": "About the Ulpana",
+    "heroEyebrow": "About the Ulpenat",
     "heroWatermark": "THE INSTITUTION.",
     "heroH1": "BUILT ON TORAH,",
     "heroH2": "INQUIRY.",
@@ -418,12 +418,12 @@
     "philosophyTitleLine1": "PARTNERS IN THE",
     "philosophyTitleLine2": "BUILDING OF THE LAND.",
     "philosophyBody": [
-      "Ulpanat Tzvia Kochav Ya'akov aspires to educate young women of yirat shamayim — God-fearing women of good character, leaders of halakha guided by Torah and faith, conscious of their role in the generation of redemption.",
-      "Students participate in shaping the people and the land. A meticulous emphasis on the precise observance of mitzvot, alongside the spirit of halakha, is one of the foundational characteristics of the ulpana.",
-      "The ulpana is a warm home — supportive and embracing — for students navigating the years of adolescence, with an emphasis on building personal relationships between staff and students."
+      "Ulpenat Tzvia Kochav Ya'akov aspires to educate young women of yirat shamayim — God-fearing women of good character, leaders of halakha guided by Torah and faith, conscious of their role in the generation of redemption.",
+      "Students participate in shaping the people and the land. A meticulous emphasis on the precise observance of mitzvot, alongside the spirit of halakha, is one of the foundational characteristics of the ulpenat.",
+      "The ulpenat is a warm home — supportive and embracing — for students navigating the years of adolescence, with an emphasis on building personal relationships between staff and students."
     ],
     "philosophyQuote": "We don't teach our students to choose between Torah and the world — we teach them that the world is where Torah is studied most honestly.",
-    "philosophyQuoteWho": "Ulpanat Tzvia Kochav Yaakov",
+    "philosophyQuoteWho": "Ulpenat Tzvia Kochav Yaakov",
     "leadershipEyebrow": "LEADERSHIP",
     "leadershipTitle": "TZVIA KOCHAV YA'AKOV.",
     "leaders": [
@@ -445,7 +445,7 @@
     "timelineEyebrow": "HISTORY",
     "timelineTitle": "OUR STORY.",
     "milestones": [
-      { "year": "2005", "title": "Founding", "desc": "Ulpanat Tzvia Kochav Ya'akov opens its doors for the first time." },
+      { "year": "2005", "title": "Founding", "desc": "Ulpenat Tzvia Kochav Ya'akov opens its doors for the first time." },
       { "year": "2012", "title": "First Decade", "desc": "The school reaches full enrollment across all four grade levels and adds its first specialisation track." },
       { "year": "2020", "title": "New Campus Wing", "desc": "A major expansion adds new classrooms, a science laboratory, and beit midrash facilities." },
       { "year": "2026", "title": "Today", "desc": "233 students across grades 9–12, five academic tracks, and a vibrant community rooted in Torah and Zionism." }
@@ -493,13 +493,13 @@
     "heroTitleLine1": "DEAR PARENTS",
     "heroTitleLine2": "AND BELOVED",
     "heroTitleLine3": "DAUGHTERS.",
-    "heroDesc": "We warmly invite eighth-grade students and their families to explore what Ulpanat Tzvia has to offer. Our admissions process is designed to be clear, respectful, and welcoming.",
+    "heroDesc": "We warmly invite eighth-grade students and their families to explore what Ulpenat Tzvia has to offer. Our admissions process is designed to be clear, respectful, and welcoming.",
     "heroCta1": "ADMISSIONS INFORMATION",
     "heroCta2": "PROCESS STEPS",
     "quickFactsTitle": "PROCESS MILESTONES",
     "quickFacts": [
       { "label": "REGISTRATION OPENS", "date": "TBA", "time": null, "dow": "According to Chemed guidance" },
-      { "label": "OPEN DAYS & INTERVIEWS", "date": "TBA", "time": null, "dow": "Coordinated by the ulpana" },
+      { "label": "OPEN DAYS & INTERVIEWS", "date": "TBA", "time": null, "dow": "Coordinated by the ulpenat" },
       { "label": "REGISTRATION CONFIRMATION", "date": "TBA", "time": null, "dow": "After receiving a response" }
     ],
     "stepsEyebrow": "HOW IT WORKS",
@@ -520,7 +520,7 @@
         "badge": "EXTERNAL",
         "meta": "Official schedule",
         "title": "Submit via the Chemed Portal.",
-        "desc": "All applications are processed through the Ministry of Education's Chemed registration system. Families choose Ulpanat Tzvia Kochav Yaakov and upload the required documents according to the instructions.",
+        "desc": "All applications are processed through the Ministry of Education's Chemed registration system. Families choose Ulpenat Tzvia Kochav Yaakov and upload the required documents according to the instructions.",
         "link": "https://rishum.app/hemed",
         "linkLabel": "RISHUM.APP/HEMED"
       },
@@ -529,7 +529,7 @@
         "badge": "IN-PERSON",
         "meta": "BY INVITATION",
         "title": "Campus Assessment Day.",
-        "desc": "Invited students spend a day at the ulpana — attending classes, meeting staff and students, and participating in a short structured assessment.",
+        "desc": "Invited students spend a day at the ulpenat — attending classes, meeting staff and students, and participating in a short structured assessment.",
         "link": null,
         "linkLabel": null
       },
@@ -590,7 +590,7 @@
     ],
     "ctaEyebrow": "WE LOOK FORWARD TO MEETING YOU",
     "ctaTitle": "Ready to begin?",
-    "ctaWho": "— Ulpanat Tzvia Kochav Ya'akov",
+    "ctaWho": "— Ulpenat Tzvia Kochav Ya'akov",
     "ctaPrimary": "CONTACT US",
     "ctaSecondary": "RESOURCES"
   },
@@ -606,7 +606,7 @@
     "heroTitleLine2": "AFTER",
     "heroTitleLine3": "HOURS.",
     "heroDesc1": "Family Shabbat? Family celebration? Seminar? Sheva Berachot? Bar Mitzvah?",
-    "heroDesc2": "The Ulpanat Tzvia Kochav Ya'akov campus offers a quiet corner in Binyamin, a short drive from Jerusalem. Green open spaces, new and air-conditioned dormitory rooms, and a full dining hall.",
+    "heroDesc2": "The Ulpenat Tzvia Kochav Ya'akov campus offers a quiet corner in Binyamin, a short drive from Jerusalem. Green open spaces, new and air-conditioned dormitory rooms, and a full dining hall.",
     "heroDesc3Pre": "The campus can host between ",
     "heroDesc3Bold": "50 and 250 guests",
     "heroDesc3Post": " (50 guest minimum).",
@@ -804,7 +804,7 @@
     "successMsg": "Thank you — we'll be in touch within two business days.",
     "visitEyebrow": "VISIT US",
     "visitTitle": "Our campus.",
-    "visitLine1": "Ulpanat Tzvia Kochav Ya'akov",
+    "visitLine1": "Ulpenat Tzvia Kochav Ya'akov",
     "visitLine2": "Kochav Ya'akov · Mateh Binyamin",
     "visitLine3": "~25 minutes from Jerusalem",
     "openInMapsBtn": "OPEN IN MAPS",

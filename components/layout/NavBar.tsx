@@ -3,7 +3,7 @@
 /**
  * NavBar
  * ------
- * Top-of-page navigation for the Ulpanat Tzvia site.
+ * Top-of-page navigation for the Ulpenat Tzvia site.
  *
  * Visual behavior — two states driven by scroll position:
  *   1. "rest"     — floats inset from the viewport edges as a transparent
@@ -136,10 +136,51 @@ export function NavBar() {
     <>
       <div className={cn('navbar-frame', scrolled && 'is-scrolled')}>
         <nav className="navbar" aria-label={t('brand')}>
-          {/* Action cluster — search, menu, language toggle */}
+          {/* Logo group — links home */}
+          <Link href="/" className="navbar-logo" aria-label={t('home')}>
+            <Image
+              src="/tinytzvialogo.PNG"
+              alt={t('brand')}
+              width={1304}
+              height={1093}
+              className="h-14 w-auto object-contain"
+            />
+            <span className="navbar-logo-text mt-4" lang={locale}>
+              <span className="navbar-logo-text-main">
+                {t('logoLine1')}
+              </span>
+              <span className="navbar-logo-text-sub">
+                {t('logoLine2')}
+              </span>
+            </span>
+          </Link>
+
+          {/* Action cluster — language toggle, menu, search */}
           <div className="navbar-cluster">
-            {/* Search: button first so in RTL it anchors at inline-start (right),
-                input slides out toward the end (left), displacing menu + lang. */}
+            {/* Language toggle — preserves current path across locale swap */}
+            <Link
+              href={pathname}
+              locale={otherLocale}
+              className="navbar-lang"
+              aria-label={t('language')}
+              lang={otherLocale}
+            >
+              {otherLocale === 'he' ? 'עב' : 'EN'}
+            </Link>
+
+            <button
+              type="button"
+              className="navbar-menu-btn"
+              aria-label={t('menu')}
+              aria-expanded={menuOpen}
+              aria-controls="main-menu-overlay"
+              onClick={() => setMenuOpen(true)}
+            >
+              <span>{t('menuLabel')}</span>
+              <Menu aria-hidden="true" strokeWidth={2.2} />
+            </button>
+
+            {/* Search sits on the outer edge; the input opens inward. */}
             <div
               className={cn('navbar-search-wrap', searchOpen && 'is-active')}
               role="search"
@@ -200,49 +241,7 @@ export function NavBar() {
                 </div>
               )}
             </div>
-
-            <button
-              type="button"
-              className="navbar-menu-btn"
-              aria-label={t('menu')}
-              aria-expanded={menuOpen}
-              aria-controls="main-menu-overlay"
-              onClick={() => setMenuOpen(true)}
-            >
-              <span>{t('menuLabel')}</span>
-              <Menu aria-hidden="true" strokeWidth={2.2} />
-            </button>
-
-            {/* Language toggle — preserves current path across locale swap */}
-            <Link
-              href={pathname}
-              locale={otherLocale}
-              className="navbar-lang"
-              aria-label={t('language')}
-              lang={otherLocale}
-            >
-              {otherLocale === 'he' ? 'עב' : 'EN'}
-            </Link>
           </div>
-
-          {/* Logo group — links home */}
-          <Link href="/" className="navbar-logo" aria-label={t('home')}>
-            <span className="navbar-logo-text mt-2">
-              <span className="navbar-logo-text-he" lang="he">
-                {t('logoHe')}
-              </span>
-              <span className="navbar-logo-text-en" lang="en">
-                {t('logoEn')}
-              </span>
-            </span>
-            <Image
-              src="/NoamTzviaLogo.PNG"
-              alt="Ulpanat Tzvia Kochav Yaakov"
-              width={1304}
-              height={1093}
-              className="h-14 w-auto object-contain"
-            />
-          </Link>
         </nav>
       </div>
 
@@ -296,7 +295,9 @@ export function NavBar() {
             height={1093}
             className="h-10 w-auto opacity-30"
           />
-          <span className="menu-overlay-bottom-name">{t('logoHe')}</span>
+          <span className="menu-overlay-bottom-name">
+            {t('logoLine1')} · {t('logoLine2')}
+          </span>
         </div>
       </div>
     </>

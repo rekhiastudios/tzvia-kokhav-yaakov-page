@@ -22,13 +22,13 @@ export function Footer() {
             <div className="tz-footer-logo">
               {/* <div className="tz-footer-mark">צ</div> */}
               <Image
-                src="/tzvialogo.PNG"
-                alt="Ulpanat Tzvia Kochav Yaakov"
+                src="/tinytzvialogo.PNG"
+                alt="Ulpenat Tzvia Kochav Yaakov"
                 width={1024}
                 height={794}
                 className="h-24 w-auto object-contain"
               />
-              <div className="tz-footer-name">
+              <div className="tz-footer-name mt-8">
                 {t('brandName1')} <br/> {t('brandName2')}
                 <small>{t('brandSub')}</small>
               </div>

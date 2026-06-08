@@ -1,6 +1,6 @@
-# Ulpanat Tzvia Kokhav Yaakov — Website
+# ULPENAT Tzvia Kokhav Yaakov — Website
 
-A full ground-up redesign of the public website for **Ulpanat Tzvia (Kochav Yaakov)**, an Israeli
+A full ground-up redesign of the public website for **ULPENAT Tzvia (Kochav Yaakov)**, an Israeli
 religious-Zionist girls' high school (אולפנת צביה כוכב יעקב). The site is Hebrew-first, bilingual
 (Hebrew / English), and built to feel modern and visually striking — closer to a contemporary product
 landing page than a typical school site.

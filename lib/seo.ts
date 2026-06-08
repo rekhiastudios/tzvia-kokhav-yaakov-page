@@ -10,7 +10,7 @@ export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const SITE_NAME: Record<Locale, string> = {
   he: 'אולפנת צביה כוכב יעקב',
-  en: 'Ulpanat Tzvia Kochav Yaakov',
+  en: 'Ulpenat Tzvia Kochav Yaakov',
 };
 
 const OG_LOCALES: Record<Locale, string> = {
@@ -76,6 +76,11 @@ export function buildPageMetadata({
     metadataBase: new URL(SITE_URL),
     title,
     description,
+    icons: {
+      icon: '/tinytzvialogo.PNG',
+      shortcut: '/tinytzvialogo.PNG',
+      apple: '/tinytzvialogo.PNG',
+    },
     alternates: {
       canonical: url,
       languages: localizedAlternates(path),
@@ -124,7 +129,7 @@ export function buildSchoolJsonLd(locale: string) {
     name: SITE_NAME[safeLocale],
     alternateName:
       safeLocale === 'he'
-        ? 'Ulpanat Tzvia Kochav Yaakov'
+        ? 'Ulpenat Tzvia Kochav Yaakov'
         : 'אולפנת צביה כוכב יעקב',
     url: absoluteUrl(localizedPath(safeLocale)),
     inLanguage: safeLocale,

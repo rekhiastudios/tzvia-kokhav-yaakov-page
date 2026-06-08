@@ -71,7 +71,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'A three-year, five-unit track combining dramatic literature, acting, directing, stage work, and creative collaboration.',
     lede:
-      'Theatre at Ulpanat Tzvia Kokhav Yaakov is a three-year academic track where students study dramatic texts, develop practical performance skills, and bring ideas to life on stage.',
+      'Theatre at Ulpenat Tzvia Kokhav Yaakov is a three-year academic track where students study dramatic texts, develop practical performance skills, and bring ideas to life on stage.',
     aboutWatermark: 'FROM TEXT',
     aboutGoldTitle: 'TO STAGE.',
     aboutBody: [
@@ -126,7 +126,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'Movement, creativity, discipline, and personal expression within a supportive learning environment.',
     lede:
-      'Dance at Ulpanat Tzvia Kokhav Yaakov offers students a creative space to explore movement, develop confidence, and discover a powerful form of personal expression.',
+      'Dance at Ulpenat Tzvia Kokhav Yaakov offers students a creative space to explore movement, develop confidence, and discover a powerful form of personal expression.',
     aboutWatermark: 'MOVEMENT AS',
     aboutGoldTitle: 'EXPRESSION.',
     aboutBody: [
@@ -177,7 +177,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'An exploration of living organisms, the human body, and the biological processes that shape life.',
     lede:
-      'Biology at Ulpanat Tzvia Kokhav Yaakov invites curious students to explore the living world, understand the human body, and examine the processes taking place within us and around us.',
+      'Biology at Ulpenat Tzvia Kokhav Yaakov invites curious students to explore the living world, understand the human body, and examine the processes taking place within us and around us.',
     aboutWatermark: 'LIFE FROM',
     aboutGoldTitle: 'WITHIN.',
     aboutBody: [
@@ -227,7 +227,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'Scientific questions, analytical thinking, and a deeper understanding of the technologies that surround us.',
     lede:
-      'Physics at Ulpanat Tzvia Kokhav Yaakov helps students understand the principles behind everyday phenomena and modern technology while developing precise and analytical thinking.',
+      'Physics at Ulpenat Tzvia Kokhav Yaakov helps students understand the principles behind everyday phenomena and modern technology while developing precise and analytical thinking.',
     aboutWatermark: 'UNDERSTAND',
     aboutGoldTitle: 'THE WORLD.',
     aboutBody: [
@@ -277,7 +277,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'Online learning, scientific exploration, home experiments, and practical visits to the Davidson Institute.',
     lede:
-      'Chemistry at Ulpanat Tzvia Kokhav Yaakov combines accessible online learning with experiments and practical encounters that make scientific ideas tangible.',
+      'Chemistry at Ulpenat Tzvia Kokhav Yaakov combines accessible online learning with experiments and practical encounters that make scientific ideas tangible.',
     aboutWatermark: 'MATTER AND',
     aboutGoldTitle: 'CHANGE.',
     aboutBody: [
@@ -337,7 +337,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'Movement, teamwork, coordination, and confidence developed through a shared sporting experience.',
     lede:
-      'Basketball at Ulpanat Tzvia Kokhav Yaakov creates a space for students to move, cooperate, build confidence, and experience the value of working toward a shared goal.',
+      'Basketball at Ulpenat Tzvia Kokhav Yaakov creates a space for students to move, cooperate, build confidence, and experience the value of working toward a shared goal.',
     aboutWatermark: 'MOVE AS',
     aboutGoldTitle: 'A TEAM.',
     aboutBody: [
@@ -388,7 +388,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'Psychology, sociology, and research tools for understanding individuals, groups, and society.',
     lede:
-      'Social Sciences at Ulpanat Tzvia Kokhav Yaakov gives students a new lens for understanding people, communities, and the forces that shape everyday life.',
+      'Social Sciences at Ulpenat Tzvia Kokhav Yaakov gives students a new lens for understanding people, communities, and the forces that shape everyday life.',
     aboutWatermark: 'SOCIETY AS',
     aboutGoldTitle: 'A QUESTION.',
     aboutBody: [
@@ -443,7 +443,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'Jerusalem, the Negev, and the mountain region explored through history, geography, nature, and research.',
     lede:
-      'Land of Israel studies at Ulpanat Tzvia Kokhav Yaakov offers a multidisciplinary encounter with the landscapes, stories, and natural features that shape the country.',
+      'Land of Israel studies at Ulpenat Tzvia Kokhav Yaakov offers a multidisciplinary encounter with the landscapes, stories, and natural features that shape the country.',
     aboutWatermark: 'THE LAND AS',
     aboutGoldTitle: 'A LIVING TEXT.',
     aboutBody: [
@@ -498,7 +498,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     desc:
       'Tradition, identity, values, and meaningful questions explored through Jewish intellectual thought.',
     lede:
-      'Jewish Thought at Ulpanat Tzvia Kokhav Yaakov invites students to encounter ideas that have shaped Jewish tradition and to explore questions of identity, faith, values, and meaning.',
+      'Jewish Thought at Ulpenat Tzvia Kokhav Yaakov invites students to encounter ideas that have shaped Jewish tradition and to explore questions of identity, faith, values, and meaning.',
     aboutWatermark: 'QUESTIONS WITH',
     aboutGoldTitle: 'DEPTH.',
     aboutBody: [
@@ -544,15 +544,15 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     img: '/arts.png',
     size: 'wide',
     desc:
-      'A flexible creative activity where student volunteers paint, draw, design decorations, and contribute to special events across the Ulpana.',
+      'A flexible creative activity where student volunteers paint, draw, design decorations, and contribute to special events across the Ulpenat.',
     lede:
-      'Visual Arts at Ulpanat Tzvia Kokhav Yaakov gives students opportunities to bring creativity into school life through collaborative projects, decorations, and artistic contributions for meaningful events.',
+      'Visual Arts at Ulpenat Tzvia Kokhav Yaakov gives students opportunities to bring creativity into school life through collaborative projects, decorations, and artistic contributions for meaningful events.',
     aboutWatermark: 'CREATIVITY IN',
     aboutGoldTitle: 'ACTION.',
     aboutBody: [
-      'Visual Arts is a flexible creative activity that takes shape throughout the school year according to the needs of the Ulpana. Rather than following a fixed weekly programme, it invites students to participate voluntarily in artistic projects connected to special occasions, school events, and shared spaces.',
+      'Visual Arts is a flexible creative activity that takes shape throughout the school year according to the needs of the Ulpenat. Rather than following a fixed weekly programme, it invites students to participate voluntarily in artistic projects connected to special occasions, school events, and shared spaces.',
       'Students may paint, draw, create decorations, prepare visual elements, and help transform an idea into something tangible. Each project offers a different opportunity to experiment with colour, composition, materials, and collaborative work.',
-      'The activity allows students to contribute their talents in a practical and visible way. Their creativity becomes part of the atmosphere of the Ulpana, enriching events and helping create spaces that feel thoughtful, welcoming, and connected to the school community.',
+      'The activity allows students to contribute their talents in a practical and visible way. Their creativity becomes part of the atmosphere of the Ulpenat, enriching events and helping create spaces that feel thoughtful, welcoming, and connected to the school community.',
     ],
     glance: [
       { label: 'Format', value: 'Voluntary activity' },
@@ -578,7 +578,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
         period: 'STEP 03',
         title: 'A visible result',
         desc:
-          'The completed work becomes part of the Ulpana environment and contributes to the atmosphere of the event.',
+          'The completed work becomes part of the Ulpenat environment and contributes to the atmosphere of the event.',
       },
     ],
     relatedSlugs: ['theatre', 'dance'],

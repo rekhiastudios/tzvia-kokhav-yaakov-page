@@ -169,7 +169,7 @@ export interface Article {
 //       { type: 'heading', level: 2, text: 'What comes next' },
 //       {
 //         type: 'paragraph',
-//         text: 'The team will travel to Houston in April to represent Israel at the FIRST Championship — the first time an ulpana from Mateh Binyamin has qualified. Fundraising for travel costs begins this week, with a community event planned for the new STEM wing groundbreaking on June 12th.',
+//         text: 'The team will travel to Houston in April to represent Israel at the FIRST Championship — the first time an ulpenat from Mateh Binyamin has qualified. Fundraising for travel costs begins this week, with a community event planned for the new STEM wing groundbreaking on June 12th.',
 //       },
 //       { type: 'divider' },
 //     ],
@@ -685,12 +685,12 @@ const articles: Article[] = [
     year: 2025,
     title: 'Registration for the 5787 School Year Is Open',
     lede:
-      'Prospective students and their families are invited to discover Ulpanat Tzvia Kokhav Yaakov, explore the introductory-day schedule, and begin the registration process.',
+      'Prospective students and their families are invited to discover Ulpenat Tzvia Kokhav Yaakov, explore the introductory-day schedule, and begin the registration process.',
     readTime: 2,
     featured: true,
     author: {
       name: 'Admissions Office',
-      role: 'Ulpanat Tzvia Kokhav Yaakov',
+      role: 'Ulpenat Tzvia Kokhav Yaakov',
       initials: 'AO',
     },
     coverImage: '/humanities.png',
@@ -700,12 +700,12 @@ const articles: Article[] = [
         type: 'paragraph',
         dropCap: true,
         text:
-          'Ulpanat Tzvia Kokhav Yaakov invites prospective students and their families to learn more about the school and begin the registration process for the 5787 academic year.',
+          'Ulpenat Tzvia Kokhav Yaakov invites prospective students and their families to learn more about the school and begin the registration process for the 5787 academic year.',
       },
       {
         type: 'paragraph',
         text:
-          'The registration period is an opportunity to discover the educational approach of the Ulpana: a meaningful combination of academic learning, personal growth, values-based education, social involvement, and a strong sense of community.',
+          'The registration period is an opportunity to discover the educational approach of the Ulpenat: a meaningful combination of academic learning, personal growth, values-based education, social involvement, and a strong sense of community.',
       },
       {
         type: 'paragraph',
@@ -715,7 +715,7 @@ const articles: Article[] = [
       {
         type: 'pullQuote',
         text:
-          '"We look forward to meeting new students and introducing families to the values, learning environment, and community of our Ulpana."',
+          '"We look forward to meeting new students and introducing families to the values, learning environment, and community of our Ulpenat."',
         attribution: '— ADMISSIONS OFFICE',
       },
       {
@@ -737,12 +737,12 @@ const articles: Article[] = [
     year: 2025,
     title: 'Alumni Beit Midrash: The Tzama Nafshi Gathering',
     lede:
-      'Graduates were invited to return to the Ulpana, reconnect, and learn together during a special alumni Beit Midrash gathering.',
+      'Graduates were invited to return to the Ulpenat, reconnect, and learn together during a special alumni Beit Midrash gathering.',
     readTime: 2,
     featured: false,
     author: {
       name: 'School Office',
-      role: 'Ulpanat Tzvia Kokhav Yaakov',
+      role: 'Ulpenat Tzvia Kokhav Yaakov',
       initials: 'SO',
     },
     coverImage: ALUMNI_COVER,
@@ -752,23 +752,23 @@ const articles: Article[] = [
         type: 'paragraph',
         dropCap: true,
         text:
-          'On Thursday, November 13, 2025, Ulpanat Tzvia Kokhav Yaakov invited its graduates to return to the school for the Tzama Nafshi alumni Beit Midrash gathering.',
+          'On Thursday, November 13, 2025, Ulpenat Tzvia Kokhav Yaakov invited its graduates to return to the school for the Tzama Nafshi alumni Beit Midrash gathering.',
       },
       {
         type: 'paragraph',
         text:
-          'The event offered an opportunity to return to a familiar place, reconnect with the school community, and strengthen the lasting relationship between the Ulpana and its alumnae.',
+          'The event offered an opportunity to return to a familiar place, reconnect with the school community, and strengthen the lasting relationship between the Ulpenat and its alumnae.',
       },
       {
         type: 'pullQuote',
         text:
-          '"Graduation does not mark the end of the connection. Our alumnae remain an important part of the Ulpana community."',
-        attribution: '— ULPANAT TZVIA KOKHAV YAAKOV',
+          '"Graduation does not mark the end of the connection. Our alumnae remain an important part of the Ulpenat community."',
+        attribution: '— ULPENAT TZVIA KOKHAV YAAKOV',
       },
       {
         type: 'paragraph',
         text:
-          'Even after completing their studies, graduates are invited to remain connected with the Ulpana through opportunities for learning, meaningful encounters, and shared experiences.',
+          'Even after completing their studies, graduates are invited to remain connected with the Ulpenat through opportunities for learning, meaningful encounters, and shared experiences.',
       },
       {
         type: 'paragraph',
@@ -788,14 +788,14 @@ const articles: Article[] = [
     dateSort: '2025-05-12',
     id: "2",
     year: 2025,
-    title: 'Social Leadership at Ulpanat Tzvia Kokhav Yaakov',
+    title: 'Social Leadership at Ulpenat Tzvia Kokhav Yaakov',
     lede:
       'A student leadership program that develops empathy, active listening, initiative, cooperation, and responsibility within the school community.',
     readTime: 4,
     featured: false,
     author: {
       name: 'School Office',
-      role: 'Ulpanat Tzvia Kokhav Yaakov',
+      role: 'Ulpenat Tzvia Kokhav Yaakov',
       initials: 'SO',
     },
     coverImage: LEADERSHIP_COVER,
@@ -815,7 +815,7 @@ const articles: Article[] = [
         type: 'paragraph',
         dropCap: true,
         text:
-          'At Ulpanat Tzvia Kokhav Yaakov, we believe that meaningful leadership is not measured only by the ability to guide others. It also requires the ability to listen carefully, recognize the needs of the people around us, and act with a genuine sense of responsibility.',
+          'At Ulpenat Tzvia Kokhav Yaakov, we believe that meaningful leadership is not measured only by the ability to guide others. It also requires the ability to listen carefully, recognize the needs of the people around us, and act with a genuine sense of responsibility.',
       },
       {
         type: 'paragraph',
@@ -841,7 +841,7 @@ const articles: Article[] = [
         type: 'pullQuote',
         text:
           '"True leadership begins with the ability to listen, identify a need, and take responsibility for the people around us."',
-        attribution: '— ULPANAT TZVIA KOKHAV YAAKOV',
+        attribution: '— ULPENAT TZVIA KOKHAV YAAKOV',
       },
       {
         type: 'heading',
@@ -882,7 +882,7 @@ const articles: Article[] = [
     featured: false,
     author: {
       name: 'School Office',
-      role: 'Ulpanat Tzvia Kokhav Yaakov',
+      role: 'Ulpenat Tzvia Kokhav Yaakov',
       initials: 'SO',
     },
     coverImage: ZECHUT_COVER,
@@ -902,7 +902,7 @@ const articles: Article[] = [
         type: 'paragraph',
         dropCap: true,
         text:
-          'Values-based education extends far beyond the classroom. At Ulpanat Tzvia Kokhav Yaakov, volunteering, mutual responsibility, and a commitment to the community are an important part of each student’s personal development.',
+          'Values-based education extends far beyond the classroom. At Ulpenat Tzvia Kokhav Yaakov, volunteering, mutual responsibility, and a commitment to the community are an important part of each student’s personal development.',
       },
       {
         type: 'heading',
@@ -928,7 +928,7 @@ const articles: Article[] = [
         type: 'pullQuote',
         text:
           '"Community involvement teaches students that values become meaningful when they are transformed into consistent action."',
-        attribution: '— ULPANAT TZVIA KOKHAV YAAKOV',
+        attribution: '— ULPENAT TZVIA KOKHAV YAAKOV',
       },
       {
         type: 'heading',

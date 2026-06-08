@@ -4,7 +4,7 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 ## Project context — read this first, every session
 
-**What we're building:** `tzvia-page` is a full ground-up redesign of the public website for **Ulpanat Tzvia (Kochav Yaakov)**, an Israeli religious-Zionist girls' high school (אולפנת צביה כוכב יעקב). The previous site is being replaced — this is not an incremental update. The institutional voice is Hebrew-first; the site exists primarily for prospective students and families, current parents, and the wider community.
+**What we're building:** `tzvia-page` is a full ground-up redesign of the public website for **ULPENAT Tzvia (Kochav Yaakov)**, an Israeli religious-Zionist girls' high school (אולפנת צביה כוכב יעקב). The previous site is being replaced — this is not an incremental update. The institutional voice is Hebrew-first; the site exists primarily for prospective students and families, current parents, and the wider community.
 
 **Design intent:** modern, technological, visually striking. The site is meant to *feel* contemporary and high-quality — closer to a tech product landing page than a typical school site. Visual impact is the primary objective, not data depth.
 

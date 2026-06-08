@@ -51,7 +51,7 @@ export default function CampusMap({showCard = true, className}: CampusMapProps) 
         <div className="tz-map-card">
           <div className="tz-map-card-body">
             <p className="tz-map-card-name">
-              {isHe ? 'אולפנת צביה כוכב יעקב' : "Ulpanat Tzvia Kokhav Ya'akov"}
+              {isHe ? 'אולפנת צביה כוכב יעקב' : "Ulpenat Tzvia Kokhav Ya'akov"}
             </p>
             <p className="tz-map-card-coords">31.8824° N · 35.2401° E</p>
           </div>
