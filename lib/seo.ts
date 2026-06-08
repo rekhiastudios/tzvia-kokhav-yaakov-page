@@ -4,9 +4,13 @@ import {routing} from '@/i18n/routing';
 export type Locale = (typeof routing.locales)[number];
 
 const FALLBACK_SITE_URL = 'http://localhost:3000';
-const OG_IMAGE = '/tzvialogo.PNG';
+const OG_IMAGE = '/og-image.png';
 
-export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
+export const SITE_URL = normalizeSiteUrl(
+  process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+    process.env.VERCEL_URL,
+);
 
 export const SITE_NAME: Record<Locale, string> = {
   he: 'אולפנת צביה כוכב יעקב',
@@ -20,7 +24,8 @@ const OG_LOCALES: Record<Locale, string> = {
 
 function normalizeSiteUrl(value?: string): string {
   const raw = value?.trim() || FALLBACK_SITE_URL;
-  return raw.endsWith('/') ? raw.slice(0, -1) : raw;
+  const withProtocol = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+  return withProtocol.endsWith('/') ? withProtocol.slice(0, -1) : withProtocol;
 }
 
 function normalizePath(path = '/'): string {
@@ -71,6 +76,7 @@ export function buildPageMetadata({
   const alternateLocale = routing.locales
     .filter((candidate) => candidate !== safeLocale)
     .map((candidate) => OG_LOCALES[candidate]);
+  const socialImage = absoluteUrl(image);
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -95,8 +101,11 @@ export function buildPageMetadata({
       type: 'website',
       images: [
         {
-          url: image,
+          url: socialImage,
+          width: 1200,
+          height: 630,
           alt: title,
+          type: 'image/png',
         },
       ],
     },
@@ -104,7 +113,7 @@ export function buildPageMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [image],
+      images: [socialImage],
     },
     robots: noIndex
       ? {
