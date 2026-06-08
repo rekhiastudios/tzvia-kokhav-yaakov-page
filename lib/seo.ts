@@ -102,8 +102,8 @@ export function buildPageMetadata({
       images: [
         {
           url: socialImage,
-          width: 1200,
-          height: 630,
+          width: 800,
+          height: 800,
           alt: title,
           type: 'image/png',
         },
