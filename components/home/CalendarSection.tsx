@@ -29,16 +29,10 @@ export interface CalEventRecord {
   locationHe: string;
   /** Venue / location string — English. */
   locationEn: string;
-  /**
-   * Determines color treatment and RSVP button style:
-   *   "public"    → gold accent, filled dark RSVP button; open to all families.
-   *   "community" → navy-soft accent, outlined RSVP; students & staff only.
-   */
+  /** Determines color treatment and access label. */
   category: 'public' | 'community';
   /** Absolute URL for a cover photo / media thumbnail. */
   mediaUrl?: string;
-  /** External RSVP or ticketing URL. Absent = no RSVP link rendered. */
-  rsvpUrl?: string;
   /** Only published events appear on the public site. */
   published: boolean;
   /** ISO timestamp used to invalidate CDN/ISR caches after edits. */
@@ -50,7 +44,7 @@ interface CalEvent {
   day: number;   // Day-of-month within the prototype month (June 2026)
   time: string;  // Display start time, e.g. "17:00" or "ALL DAY" / "כל היום"
   title: string; // Localized event title
-  alt: boolean;  // true → community event (navy-soft accent + outlined RSVP)
+  alt: boolean;  // true → community event (navy-soft accent)
   when: string;  // Pre-formatted "DATE · TIME · LOCATION" display string
   desc: string;  // Short description
 }
@@ -304,9 +298,6 @@ export function CalendarSection() {
                           <div className="tz-hc-title">{ev.title}</div>
                           <div className="tz-hc-when">{ev.when}</div>
                           <div className="tz-hc-desc">{ev.desc}</div>
-                          <a className="tz-hc-cta" href="#">
-                            {t('rsvp')} <span>→</span>
-                          </a>
                         </div>
                       </div>
                     )}
@@ -390,10 +381,6 @@ export function CalendarSection() {
                       )}
                     </div>
 
-                    {/* Col 4 — RSVP button (filled for public, outlined for community) */}
-                    <button type="button" className="tz-ev-rsvp">
-                      {t('rsvp')} <span aria-hidden="true">→</span>
-                    </button>
                   </li>
                 );
               })}
@@ -405,9 +392,6 @@ export function CalendarSection() {
             <span>
               {weekEvents.length} {t('eventsUnit').toUpperCase()} · {weekFooterLabel.toUpperCase()}
             </span>
-            <a className="tz-ev-all-link" href="#">
-              {t('allEventsLink')} <span className="tz-ev-arr" aria-hidden="true">→</span>
-            </a>
           </div>
 
           {/* Legend (consistent with Month view) */}

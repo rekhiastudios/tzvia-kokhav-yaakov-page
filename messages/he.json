@@ -241,13 +241,11 @@
     "eventsCount": "אירוע אחד החודש",
     "labelPublic": "פתוח לציבור",
     "labelCommunity": "קהילה",
-    "rsvp": "הרשמה",
     "eventsUnit": "אירועים",
     "noEventsTitle": "שקט בשבוע זה",
     "noEventsMsg": "אין אירועים מתוכננים לשבוע זה.",
     "metaTime": "שעה",
     "metaWhere": "מיקום",
-    "allEventsLink": "לוח מלא",
     "events": [
       {
         "day": 20,

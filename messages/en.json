@@ -241,13 +241,11 @@
     "eventsCount": "1 event this month",
     "labelPublic": "OPEN TO PUBLIC",
     "labelCommunity": "COMMUNITY",
-    "rsvp": "RSVP",
     "eventsUnit": "events",
     "noEventsTitle": "Nothing this week",
     "noEventsMsg": "No upcoming events scheduled for this week.",
     "metaTime": "Time",
     "metaWhere": "Where",
-    "allEventsLink": "Full Calendar",
     "events": [
       {
         "day": 20,

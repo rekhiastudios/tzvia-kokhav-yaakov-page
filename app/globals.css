@@ -1910,7 +1910,6 @@
 .tz-hc-title { font-family: var(--font-display), 'Secular One', sans-serif; font-weight: 400; font-size: 17px; line-height: 1.15; text-transform: uppercase; margin: 0 0 5px; color: var(--tz-ink); }
 .tz-hc-when { font-family: var(--font-bebas), 'Bebas Neue', sans-serif; font-size: 11px; color: var(--tz-ink-mute); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 8px; }
 .tz-hc-desc { font-size: 12px; color: var(--tz-ink-soft); line-height: 1.55; }
-.tz-hc-cta { margin-top: 10px; font-family: var(--font-bebas), 'Bebas Neue', sans-serif; font-size: 12px; color: var(--tz-gold-deep); letter-spacing: .24em; text-transform: uppercase; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
 .tz-cal-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 22px; font-family: var(--font-bebas), 'Bebas Neue', sans-serif; font-size: 12px; color: var(--tz-ink-mute); letter-spacing: .24em; text-transform: uppercase; }
 .tz-cal-legend { display: flex; gap: 24px; }
 .tz-legend-item { display: flex; align-items: center; gap: 8px; }
@@ -1918,10 +1917,8 @@
 .tz-legend-sw.alt { background: var(--tz-ink-soft); }
 
 /* ── Upcoming / ev-list view ──────────────────────────────────────────────
- * Layout faithful to the Hi-Fi v2 design: 4-column grid per event row.
- * Columns (LTR): date-box | body | meta | rsvp
- * In RTL (Hebrew) the grid naturally reverses: date-box lands inline-start
- * (right edge), rsvp lands inline-end (left edge).
+ * Layout faithful to the Hi-Fi v2 design: date box, event body, and meta.
+ * In RTL (Hebrew) the grid naturally reverses.
  * ─────────────────────────────────────────────────────────────────────────── */
 .tz-ev-wrap { display: flex; flex-direction: column; }
 .tz-ev-list { display: flex; flex-direction: column; gap: 14px; list-style: none; padding: 0; margin: 0; }
@@ -1931,7 +1928,7 @@
   border: 1px solid var(--tz-line);
   box-shadow: var(--tz-shadow-sm);
   display: grid;
-  grid-template-columns: 130px 1.4fr 1fr auto;
+  grid-template-columns: 130px minmax(0, 1.4fr) minmax(180px, 0.8fr);
   gap: 32px;
   align-items: center;
   padding: 24px 28px;
@@ -1979,30 +1976,13 @@
   width: 60px; flex-shrink: 0;
 }
 
-/* RSVP button */
-.tz-ev-rsvp {
-  background: var(--tz-ink); color: #fff; border: none;
-  padding: 13px 24px; border-radius: 99px;
-  font-family: var(--font-inst), 'Instrument Sans', sans-serif;
-  font-weight: 700; font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
-  cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
-  white-space: nowrap; transition: background .14s ease, color .14s ease;
-}
-.tz-ev-rsvp:hover { background: var(--tz-gold); color: var(--tz-ink); }
-.tz-ev-row.community .tz-ev-rsvp { background: transparent; color: var(--tz-ink); border: 1px solid var(--tz-line-2); }
-.tz-ev-row.community .tz-ev-rsvp:hover { background: var(--tz-ink); color: #fff; border-color: var(--tz-ink); }
-
 /* Footer bar */
 .tz-ev-foot {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: flex-start; align-items: center;
   margin-top: 32px; padding-bottom: 4px;
   font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
   font-size: 12px; color: var(--tz-ink-mute); letter-spacing: .24em; text-transform: uppercase;
 }
-.tz-ev-all-link { color: var(--tz-ink); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: color .14s; }
-.tz-ev-all-link:hover { color: var(--tz-gold); }
-.tz-ev-arr { display: inline-block; transition: transform .14s; }
-.tz-ev-all-link:hover .tz-ev-arr { transform: translateX(4px); }
 
 /* Empty state */
 .tz-ev-empty { text-align: center; padding: 4rem 2rem; border: 1px dashed var(--tz-line-2); }
@@ -2020,7 +2000,6 @@
   }
   .tz-ev-day { font-size: 40px; }
   .tz-ev-mo, .tz-ev-dow { margin-top: 0; }
-  .tz-ev-rsvp { align-self: start; }
 }
 
 /* ── Contact ────────────────────────────────────────────────────── */
@@ -2545,7 +2524,7 @@
   .tz-acp-cards[data-cat="science"],
   .tz-acp-cards[data-cat="sports"],
   .tz-acp-cards[data-cat="humanities"] {
-    grid-template-columns: 1fr; grid-template-rows: auto; grid-auto-rows: 240px;
+    grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: 240px;
   }
   .tz-acp-cards[data-cat="arts"] .tz-acp-card:first-child { grid-row: span 1; }
   .tz-acp-advisor { padding: 36px 28px; }
@@ -2894,11 +2873,8 @@
    (which is visually left when dir=rtl). */
 [dir="rtl"] .arr,
 [dir="rtl"] .tz-acad-arr,
-[dir="rtl"] .tz-ev-arr,
 [dir="rtl"] .tz-btn-pill > span,
-[dir="rtl"] .tz-news-more > span,
-[dir="rtl"] .tz-hc-cta > span,
-[dir="rtl"] .tz-ev-rsvp > span { display: inline-block; transform: scaleX(-1); }
+[dir="rtl"] .tz-news-more > span { display: inline-block; transform: scaleX(-1); }
 
 [dir="rtl"] .tz-play-circle { transform: scaleX(-1); }
 
