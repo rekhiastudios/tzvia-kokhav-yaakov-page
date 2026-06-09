@@ -1149,14 +1149,15 @@ const NEW_DANCE_IMG = `${CLD}/v1780998968/ChatGPT_Image_Jun_9_2026_12_55_33_PM_p
 const NEW_COUNTRY_IMG = `${CLD}/v1780997955/ChatGPT_Image_Jun_9_2026_12_38_54_PM_jbi9uy.png`;
 const NEW_BASKETBALL_IMG = `${CLD}/v1780998370/ChatGPT_Image_Jun_9_2026_12_22_23_PM_xq4t94.png`;
 
-/** Per-slug media: cover image (first) + full gallery. Applied across locales. */
-const ACADEMY_MEDIA: Record<string, {img: string; gallery: string[]}> = {
+// Per-slug media: cover image + optional gallery. Activities with only a
+// cover (visual-arts, dance) render no gallery section on their article.
+const ACADEMY_MEDIA: Record<string, {img: string; gallery?: string[]}> = {
   biology: {img: BIOLOGY_IMGS[0], gallery: BIOLOGY_IMGS},
   'land-of-israel': {img: NEW_COUNTRY_IMG, gallery: [NEW_COUNTRY_IMG, ...COUNTRY_IMGS]},
   'social-sciences': {img: SOCIAL_SCIENCE_IMGS[0], gallery: SOCIAL_SCIENCE_IMGS},
   theatre: {img: NEW_THEATRE_IMG, gallery: [NEW_THEATRE_IMG, ...THEATER_IMGS]},
-  'visual-arts': {img: NEW_VISUAL_ARTS_IMG, gallery: [NEW_VISUAL_ARTS_IMG]},
-  dance: {img: NEW_DANCE_IMG, gallery: [NEW_DANCE_IMG]},
+  'visual-arts': {img: NEW_VISUAL_ARTS_IMG},
+  dance: {img: NEW_DANCE_IMG},
   basketball: {img: NEW_BASKETBALL_IMG, gallery: [NEW_BASKETBALL_IMG]},
 };
 
