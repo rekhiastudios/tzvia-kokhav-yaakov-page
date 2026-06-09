@@ -148,10 +148,10 @@ export async function ActivityDetailPage({locale, activity: act, related}: Props
         </section>
       )}
 
-      {/* ── Gallery ── */}
-      <section id="act-gallery" className="tz-act-gallery tz-page">
-        <p className="tz-act-section-eyebrow">{'// '}{t('stageLabel')}</p>
-        {act.gallery && act.gallery.length > 0 ? (
+      {/* ── Gallery — only when the activity has real photos ── */}
+      {act.gallery && act.gallery.length > 0 && (
+        <section id="act-gallery" className="tz-act-gallery tz-page">
+          <p className="tz-act-section-eyebrow">{'// '}{t('stageLabel')}</p>
           <div className="tz-act-gallery-grid is-photos">
             {act.gallery.map((src, i) => (
               <div key={i} className="tz-act-gallery-item tz-act-gallery-photo">
@@ -165,21 +165,8 @@ export async function ActivityDetailPage({locale, activity: act, related}: Props
               </div>
             ))}
           </div>
-        ) : (
-          <div className="tz-act-gallery-grid">
-            {[0,1,2,3,4,5].map((i) => (
-              <div key={i} className={`tz-act-gallery-item tz-ph${i === 0 ? ' tz-act-gallery-featured' : ''}`}>
-                <div className="tz-ph-inner">
-                  <span className="tz-ph-label">IMAGE</span>
-                </div>
-                {i === 5 && (
-                  <div className="tz-act-gallery-more">+12 MORE</div>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
+        </section>
+      )}
 
       {/* ── Milestones ── */}
       {act.milestones && act.milestones.length > 0 && (

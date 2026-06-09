@@ -57,6 +57,54 @@ export interface ActivityDetail extends ActivityMeta {
 
 export const ACTIVITIES_EN: ActivityDetail[] = [
   // ── ARTS ──────────────────────────────────────────────────────────────
+  {
+    slug: 'visual-arts',
+    name: 'Visual Arts',
+    cat: 'ARTS',
+    catSlug: 'arts',
+    catIdx: 1,
+    img: '/arts.png',
+    size: 'wide',
+    desc:
+      'A flexible creative activity where student volunteers paint, draw, design decorations, and contribute to special events across the Ulpenat.',
+    lede:
+      'Visual Arts at Ulpenat Tzvia Kokhav Yaakov gives students opportunities to bring creativity into school life through collaborative projects, decorations, and artistic contributions for meaningful events.',
+    aboutWatermark: 'CREATIVITY IN',
+    aboutGoldTitle: 'ACTION.',
+    aboutBody: [
+      'Visual Arts is a flexible creative activity that takes shape throughout the school year according to the needs of the Ulpenat. Rather than following a fixed weekly programme, it invites students to participate voluntarily in artistic projects connected to special occasions, school events, and shared spaces.',
+      'Students may paint, draw, create decorations, prepare visual elements, and help transform an idea into something tangible. Each project offers a different opportunity to experiment with colour, composition, materials, and collaborative work.',
+      'The activity allows students to contribute their talents in a practical and visible way. Their creativity becomes part of the atmosphere of the Ulpenat, enriching events and helping create spaces that feel thoughtful, welcoming, and connected to the school community.',
+    ],
+    glance: [
+      { label: 'Format', value: 'Voluntary activity' },
+      { label: 'Frequency', value: 'Event-based' },
+      { label: 'Focus', value: 'Painting · drawing · decoration' },
+      { label: 'Approach', value: 'Creative collaboration' },
+    ],
+    timelineTitle: 'FROM IDEA TO CREATION.',
+    timeline: [
+      {
+        period: 'STEP 01',
+        title: 'A shared purpose',
+        desc:
+          'Each project begins with a school event, occasion, or space that can be enriched through visual creativity.',
+      },
+      {
+        period: 'STEP 02',
+        title: 'Creative contribution',
+        desc:
+          'Student volunteers paint, draw, design, and prepare decorations or other artistic elements.',
+      },
+      {
+        period: 'STEP 03',
+        title: 'A visible result',
+        desc:
+          'The completed work becomes part of the Ulpenat environment and contributes to the atmosphere of the event.',
+      },
+    ],
+    relatedSlugs: ['theatre', 'dance'],
+  },
 
   {
     slug: 'theatre',
@@ -114,7 +162,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     ],
     relatedSlugs: ['dance', 'jewish-thought', 'social-sciences'],
   },
-
+  
   {
     slug: 'dance',
     name: 'Dance',
@@ -535,54 +583,7 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
     ],
     relatedSlugs: ['land-of-israel', 'social-sciences', 'theatre'],
   },
-  {
-    slug: 'visual-arts',
-    name: 'Visual Arts',
-    cat: 'ARTS',
-    catSlug: 'arts',
-    catIdx: 1,
-    img: '/arts.png',
-    size: 'wide',
-    desc:
-      'A flexible creative activity where student volunteers paint, draw, design decorations, and contribute to special events across the Ulpenat.',
-    lede:
-      'Visual Arts at Ulpenat Tzvia Kokhav Yaakov gives students opportunities to bring creativity into school life through collaborative projects, decorations, and artistic contributions for meaningful events.',
-    aboutWatermark: 'CREATIVITY IN',
-    aboutGoldTitle: 'ACTION.',
-    aboutBody: [
-      'Visual Arts is a flexible creative activity that takes shape throughout the school year according to the needs of the Ulpenat. Rather than following a fixed weekly programme, it invites students to participate voluntarily in artistic projects connected to special occasions, school events, and shared spaces.',
-      'Students may paint, draw, create decorations, prepare visual elements, and help transform an idea into something tangible. Each project offers a different opportunity to experiment with colour, composition, materials, and collaborative work.',
-      'The activity allows students to contribute their talents in a practical and visible way. Their creativity becomes part of the atmosphere of the Ulpenat, enriching events and helping create spaces that feel thoughtful, welcoming, and connected to the school community.',
-    ],
-    glance: [
-      { label: 'Format', value: 'Voluntary activity' },
-      { label: 'Frequency', value: 'Event-based' },
-      { label: 'Focus', value: 'Painting · drawing · decoration' },
-      { label: 'Approach', value: 'Creative collaboration' },
-    ],
-    timelineTitle: 'FROM IDEA TO CREATION.',
-    timeline: [
-      {
-        period: 'STEP 01',
-        title: 'A shared purpose',
-        desc:
-          'Each project begins with a school event, occasion, or space that can be enriched through visual creativity.',
-      },
-      {
-        period: 'STEP 02',
-        title: 'Creative contribution',
-        desc:
-          'Student volunteers paint, draw, design, and prepare decorations or other artistic elements.',
-      },
-      {
-        period: 'STEP 03',
-        title: 'A visible result',
-        desc:
-          'The completed work becomes part of the Ulpenat environment and contributes to the atmosphere of the event.',
-      },
-    ],
-    relatedSlugs: ['theatre', 'dance'],
-  },
+
 ];
 
 
@@ -1141,12 +1142,22 @@ const THEATER_IMGS = [
   `${CLD}/v1780433181/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-3-1-1536x1152_aujjhv.jpg`,
 ];
 
+// New 16:9 cover images (folder "Campus Images Enhanced/16:9 ratio").
+const NEW_THEATRE_IMG = `${CLD}/v1780997829/ChatGPT_Image_Jun_9_2026_12_36_28_PM_kynaeh.png`;
+const NEW_VISUAL_ARTS_IMG = `${CLD}/v1780998372/ChatGPT_Image_Jun_9_2026_12_19_34_PM_abuavh.png`;
+const NEW_DANCE_IMG = `${CLD}/v1780998968/ChatGPT_Image_Jun_9_2026_12_55_33_PM_pacopb.png`;
+const NEW_COUNTRY_IMG = `${CLD}/v1780997955/ChatGPT_Image_Jun_9_2026_12_38_54_PM_jbi9uy.png`;
+const NEW_BASKETBALL_IMG = `${CLD}/v1780998370/ChatGPT_Image_Jun_9_2026_12_22_23_PM_xq4t94.png`;
+
 /** Per-slug media: cover image (first) + full gallery. Applied across locales. */
 const ACADEMY_MEDIA: Record<string, {img: string; gallery: string[]}> = {
   biology: {img: BIOLOGY_IMGS[0], gallery: BIOLOGY_IMGS},
-  'land-of-israel': {img: COUNTRY_IMGS[0], gallery: COUNTRY_IMGS},
+  'land-of-israel': {img: NEW_COUNTRY_IMG, gallery: [NEW_COUNTRY_IMG, ...COUNTRY_IMGS]},
   'social-sciences': {img: SOCIAL_SCIENCE_IMGS[0], gallery: SOCIAL_SCIENCE_IMGS},
-  theatre: {img: THEATER_IMGS[0], gallery: THEATER_IMGS},
+  theatre: {img: NEW_THEATRE_IMG, gallery: [NEW_THEATRE_IMG, ...THEATER_IMGS]},
+  'visual-arts': {img: NEW_VISUAL_ARTS_IMG, gallery: [NEW_VISUAL_ARTS_IMG]},
+  dance: {img: NEW_DANCE_IMG, gallery: [NEW_DANCE_IMG]},
+  basketball: {img: NEW_BASKETBALL_IMG, gallery: [NEW_BASKETBALL_IMG]},
 };
 
 function withMedia(list: ActivityDetail[]): ActivityDetail[] {

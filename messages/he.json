@@ -107,7 +107,7 @@
     "num": "עדכונים",
     "titleMain": "אחרון מ",
     "titleHighlight": "הקמפוס",
-    "countLabel": "04 / 24 פריטים",
+    "countLabel": "{shown} / {total} פריטים",
     "allLink": "כל העדכונים",
     "readLink": "קרא מאמר",
     "items": [
@@ -158,7 +158,7 @@
         "catIdx": 4,
         "catSlug": "humanities",
         "slug": "land-of-israel",
-        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433152/%D7%90%D7%A8%D7%A5-1-1-1536x1152_siosyg.jpg",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780997955/ChatGPT_Image_Jun_9_2026_12_38_54_PM_jbi9uy.png",
         "size": "big",
         "desc": "ירושלים, הנגב והאזור ההררי — נחקרים דרך היסטוריה, גאוגרפיה, טבע ומחקר."
       },
@@ -168,7 +168,7 @@
         "catIdx": 1,
         "catSlug": "arts",
         "slug": "theatre",
-        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780433179/%D7%AA%D7%99%D7%90%D7%98%D7%A8%D7%95%D7%9F-1-1-1536x1152_mj72gy.jpg",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780997829/ChatGPT_Image_Jun_9_2026_12_36_28_PM_kynaeh.png",
         "size": "wide",
         "desc": "מסלול תלת-שנתי המשלב ספרות דרמטית, משחק, בימוי ועבודת במה."
       },
@@ -188,7 +188,7 @@
         "catIdx": 3,
         "catSlug": "sports",
         "slug": "basketball",
-        "img": "humanities.png",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780998370/ChatGPT_Image_Jun_9_2026_12_22_23_PM_xq4t94.png",
         "size": "",
         "desc": "תנועה, עבודת צוות וביטחון על המגרש הגדול שבמרכז הקמפוס."
       },
@@ -218,7 +218,7 @@
         "catIdx": 1,
         "catSlug": "arts",
         "slug": "visual-arts",
-        "img": "arts.png",
+        "img": "https://res.cloudinary.com/dcpeggch3/image/upload/v1780998372/ChatGPT_Image_Jun_9_2026_12_19_34_PM_abuavh.png",
         "size": "wide",
         "desc": "יצירתיות בפעולה — ציור, רישום ועיצוב שמעשירים את חיי האולפנה."
       }

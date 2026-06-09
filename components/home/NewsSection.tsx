@@ -6,7 +6,9 @@ import {getArticles} from '@/lib/articles';
 export function NewsSection() {
   const t = useTranslations('news');
   const locale = useLocale();
-  const items = getArticles(locale).slice(0, 4);
+  const allArticles = getArticles(locale);
+  const items = allArticles.slice(0, 4);
+  const pad = (n: number) => String(n).padStart(2, '0');
 
   return (
     <section id="news" className="tz-section tz-page">
@@ -58,7 +60,7 @@ export function NewsSection() {
 
       {/* Footer row */}
       <div className="tz-news-foot">
-        <span>{t('countLabel')}</span>
+        <span>{t('countLabel', {shown: pad(items.length), total: pad(allArticles.length)})}</span>
         <Link className="tz-news-more" href="/news">
           {t('allLink')} <span>→</span>
         </Link>
