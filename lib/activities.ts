@@ -58,55 +58,6 @@ export interface ActivityDetail extends ActivityMeta {
 export const ACTIVITIES_EN: ActivityDetail[] = [
   // ── ARTS ──────────────────────────────────────────────────────────────
   {
-    slug: 'visual-arts',
-    name: 'Visual Arts',
-    cat: 'ARTS',
-    catSlug: 'arts',
-    catIdx: 1,
-    img: '/arts.png',
-    size: 'wide',
-    desc:
-      'A flexible creative activity where student volunteers paint, draw, design decorations, and contribute to special events across the Ulpenat.',
-    lede:
-      'Visual Arts at Ulpenat Tzvia Kokhav Yaakov gives students opportunities to bring creativity into school life through collaborative projects, decorations, and artistic contributions for meaningful events.',
-    aboutWatermark: 'CREATIVITY IN',
-    aboutGoldTitle: 'ACTION.',
-    aboutBody: [
-      'Visual Arts is a flexible creative activity that takes shape throughout the school year according to the needs of the Ulpenat. Rather than following a fixed weekly programme, it invites students to participate voluntarily in artistic projects connected to special occasions, school events, and shared spaces.',
-      'Students may paint, draw, create decorations, prepare visual elements, and help transform an idea into something tangible. Each project offers a different opportunity to experiment with colour, composition, materials, and collaborative work.',
-      'The activity allows students to contribute their talents in a practical and visible way. Their creativity becomes part of the atmosphere of the Ulpenat, enriching events and helping create spaces that feel thoughtful, welcoming, and connected to the school community.',
-    ],
-    glance: [
-      { label: 'Format', value: 'Voluntary activity' },
-      { label: 'Frequency', value: 'Event-based' },
-      { label: 'Focus', value: 'Painting · drawing · decoration' },
-      { label: 'Approach', value: 'Creative collaboration' },
-    ],
-    timelineTitle: 'FROM IDEA TO CREATION.',
-    timeline: [
-      {
-        period: 'STEP 01',
-        title: 'A shared purpose',
-        desc:
-          'Each project begins with a school event, occasion, or space that can be enriched through visual creativity.',
-      },
-      {
-        period: 'STEP 02',
-        title: 'Creative contribution',
-        desc:
-          'Student volunteers paint, draw, design, and prepare decorations or other artistic elements.',
-      },
-      {
-        period: 'STEP 03',
-        title: 'A visible result',
-        desc:
-          'The completed work becomes part of the Ulpenat environment and contributes to the atmosphere of the event.',
-      },
-    ],
-    relatedSlugs: ['theatre', 'dance'],
-  },
-
-  {
     slug: 'theatre',
     name: 'Theatre',
     cat: 'ARTS',
@@ -210,6 +161,55 @@ export const ACTIVITIES_EN: ActivityDetail[] = [
       },
     ],
     relatedSlugs: ['theatre', 'basketball'],
+  },
+
+  {
+    slug: 'visual-arts',
+    name: 'Visual Arts',
+    cat: 'ARTS',
+    catSlug: 'arts',
+    catIdx: 1,
+    img: '/arts.png',
+    size: 'wide',
+    desc:
+      'A flexible creative activity where student volunteers paint, draw, design decorations, and contribute to special events across the Ulpenat.',
+    lede:
+      'Visual Arts at Ulpenat Tzvia Kokhav Yaakov gives students opportunities to bring creativity into school life through collaborative projects, decorations, and artistic contributions for meaningful events.',
+    aboutWatermark: 'CREATIVITY IN',
+    aboutGoldTitle: 'ACTION.',
+    aboutBody: [
+      'Visual Arts is a flexible creative activity that takes shape throughout the school year according to the needs of the Ulpenat. Rather than following a fixed weekly programme, it invites students to participate voluntarily in artistic projects connected to special occasions, school events, and shared spaces.',
+      'Students may paint, draw, create decorations, prepare visual elements, and help transform an idea into something tangible. Each project offers a different opportunity to experiment with colour, composition, materials, and collaborative work.',
+      'The activity allows students to contribute their talents in a practical and visible way. Their creativity becomes part of the atmosphere of the Ulpenat, enriching events and helping create spaces that feel thoughtful, welcoming, and connected to the school community.',
+    ],
+    glance: [
+      { label: 'Format', value: 'Voluntary activity' },
+      { label: 'Frequency', value: 'Event-based' },
+      { label: 'Focus', value: 'Painting · drawing · decoration' },
+      { label: 'Approach', value: 'Creative collaboration' },
+    ],
+    timelineTitle: 'FROM IDEA TO CREATION.',
+    timeline: [
+      {
+        period: 'STEP 01',
+        title: 'A shared purpose',
+        desc:
+          'Each project begins with a school event, occasion, or space that can be enriched through visual creativity.',
+      },
+      {
+        period: 'STEP 02',
+        title: 'Creative contribution',
+        desc:
+          'Student volunteers paint, draw, design, and prepare decorations or other artistic elements.',
+      },
+      {
+        period: 'STEP 03',
+        title: 'A visible result',
+        desc:
+          'The completed work becomes part of the Ulpenat environment and contributes to the atmosphere of the event.',
+      },
+    ],
+    relatedSlugs: ['theatre', 'dance'],
   },
 
   // ── SCIENCE ───────────────────────────────────────────────────────────

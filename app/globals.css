@@ -1662,11 +1662,13 @@
 }
 .tz-act-apply-btn { width: 100%; justify-content: center; margin-bottom: 10px; }
 .tz-act-brochure-btn {
+  display: flex; align-items: center; justify-content: center;
   width: 100%; background: transparent;
   border: 1px solid var(--tz-line-2); color: var(--tz-ink);
   font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
   font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
   padding: 11px 24px; border-radius: 999px; cursor: pointer;
+  text-align: center; white-space: nowrap;
   transition: border-color .14s, color .14s;
 }
 .tz-act-brochure-btn:hover { border-color: var(--tz-ink); }
@@ -2001,6 +2003,33 @@
   .tz-ev-day { font-size: 40px; }
   .tz-ev-mo, .tz-ev-dow { margin-top: 0; }
 }
+
+/* ── Calendar dark experiment ─────────────────────────────────────
+ * Navy variant of the Calendar section, matching the About palette.
+ * Activated by `tz-dark tz-cal-dark` on <section id="calendar">.
+ * REVERT: remove those two classes from CalendarSection.tsx — this
+ * whole block then becomes inert and can be deleted.
+ * Most colors flip automatically via the `.tz-dark` token swap; the
+ * rules below only patch values that are hardcoded for light mode. */
+.tz-cal-dark {
+  background: var(--tz-bg);
+  padding-bottom: 120px;
+  /* Light-mode shadows (navy-tinted) vanish on navy — use true black */
+  --tz-shadow-sm: 0 1px 0 rgba(0,0,0,.25), 0 6px 16px -8px rgba(0,0,0,.45);
+  --tz-shadow-md: 0 1px 0 rgba(0,0,0,.3), 0 14px 32px -16px rgba(0,0,0,.6);
+}
+/* Active tab: --tz-ink is white here, so the label must go navy */
+.tz-cal-dark .tz-cal-view.active { color: #000b21; }
+/* Out-of-month cells: the navy tint is invisible on navy */
+.tz-cal-dark .tz-day.empty { background: rgba(255,255,255,.03); }
+/* Day-hover card shadow, same reason as the token override above */
+.tz-cal-dark .tz-hover-card { box-shadow: 0 20px 60px rgba(0,0,0,.55); }
+/* --tz-gold-deep doesn't flip and reads muddy on navy — brighten */
+.tz-cal-dark .tz-hc-meta,
+.tz-cal-dark .tz-ev-mo,
+.tz-cal-dark .tz-ev-badge { color: var(--tz-gold); }
+/* Community badge: navy-tinted pill → soft white pill */
+.tz-cal-dark .tz-ev-row.community .tz-ev-badge { background: rgba(255,255,255,.10); }
 
 /* ── Contact ────────────────────────────────────────────────────── */
 .tz-contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: start; }
@@ -2534,7 +2563,6 @@
   .tz-act-crumb { flex-direction: column; align-items: flex-start; gap: 8px; }
   .tz-act-body-layout { grid-template-columns: 1fr; }
   .tz-act-sb { position: static; }
-  .tz-act-apply-btn { width: auto; }
   .tz-act-tl-grid { grid-template-columns: 1fr; }
   .tz-act-tl-card { border-inline-end: none; border-bottom: 1px solid var(--tz-line-2); }
   .tz-act-ms-grid { grid-template-columns: repeat(2, 1fr); }

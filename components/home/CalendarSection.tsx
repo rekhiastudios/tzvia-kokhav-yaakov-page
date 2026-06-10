@@ -191,6 +191,7 @@ export function CalendarSection() {
 
   /* ── Render ──────────────────────────────────────────────────────────────── */
   return (
+    /* Dark-palette experiment: remove `tz-dark tz-cal-dark` to revert to the light version. */
     <section id="calendar" className="tz-section tz-page">
       {/* Section header */}
       <div className="tz-sect-hd">
